@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="container">
+  <swiper class="banner" autoplay="true" interval="3000" duration="1000">
+    <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
+      <navigator url="{{item.link}}">
+        <image src="{{item.image_url}}" background-size="cover"></image>
+      </navigator>
+    </swiper-item>
+  </swiper>
+  <view class="status">
+    <!-- 客户dom -->
+    <view class="customer" wx:if="{{isShow}}">
+      <text class="title1">我是客户</text>
+      <view class="customerList" wx:for="{{customerList}}" data-url="{{item.pageUrl}}" bindtap="goPage">
+        <image src="{{item.img_url}}" />
+        <view>
+          <view class="ListTitle">{{item.titleone}}</view>
+          <view class="detailed">{{item.detailed}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 律师dom -->
+    <view class="lawyer " wx:if="{{!isShow}}">
+      <text class="title1">我是律师</text>
+      <view class="customerList" wx:for="{{lawyerList}}" data-url="{{item.pageUrl}}" bindtap="goPage">
+        <image src="{{item.img_url}}" />
+        <view>
+          <view class="ListTitle">{{item.titleone}}</view>
+          <view class="detailed">{{item.detailed}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class='dialog-login' wx:if="{{showLoginDialog}}" bindtap='onCloseDialog'>
+  <view class='dialog-body' catchtap='onDialogBody'>
+    <view class='title'>请选择登录方式</view>
+    <view class='content'>
+      <button type="primary" open-type="getUserInfo" bindgetuserinfo="onWechatLogin">微信登录</button>
+      <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" lang="zh_CN">手机号登录</button>
+    </view>
+  </view>
+</view>
+<view class='dialog-status' wx:if="{{showStatusDialog}}">
+  <view class='dialog-body' catchtap='onDialogBody'>
+    <view class='title'>请先确认您的使用身份</view>
+    <view class='content'>
+      <button type="primary" bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="0">我是客户</button>
+      <button bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="1">我是律师</button>
+    </view>
+  </view>
+</view>

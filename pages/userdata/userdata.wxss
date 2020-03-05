@@ -1,0 +1,111 @@
+/* pages/userdata/userdata.wxss */
+
+page {
+  background-color: #fff;
+}
+
+.headBar {
+  display: flex;
+  background-color: #fff;
+}
+
+.headBar view {
+  width: 100%;
+  font-size: 32rpx;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.active {
+  color: #0059ff;
+}
+
+.content {
+  background-color: #fff;
+  padding: 5px 10px;
+  padding-bottom: 80px;
+}
+
+.nameinput {
+  border: 1px solid #0059ff;
+  background-color: #f9f9f9;
+  height: 40px;
+  padding-left: 10px;
+  width: 93%;
+  margin: 10px auto;
+}
+
+.picker {
+  width: 100%;
+  position: relative;
+}
+
+.picker image {
+  position: absolute;
+  height: 27px;
+  width: 23px;
+  right: 4px;
+  top: 9px;
+}
+
+.kuang_weba {
+  width: 90%;
+  height: 45px;
+  text-align: center;
+  color: #fff;
+  position: fixed;
+  bottom: 20px;
+  left: 5%;
+  border-radius: 6px;
+  line-height: 45px;
+  background-color: #0059ff;
+}
+
+.upload {
+  position: relative;
+  margin: auto;
+  width: 400rpx;
+}
+.uploadW{
+  width: 100%;
+}
+.upload .addimg {
+  height: 130rpx;
+  width: 130rpx;
+  margin: auto;
+  display: block;
+  margin-top: 22px;
+}
+
+.upload .bigimg {
+  height: 532rpx;
+  width: 400rpx;
+  margin: auto;
+  display: block;
+  margin-top: 22px;
+}
+
+.upload .bigimg2 {
+  height: 400rpx;
+  width: 532rpx;
+  margin: auto;
+  display: block;
+  margin-top: 22px;
+}
+
+.closeimg {
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.close2 {
+  right: 72rpx;
+}

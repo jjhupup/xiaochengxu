@@ -1,0 +1,31 @@
+<!--pages/lawyer/dayi/dayi.wxml-->
+<!-- <text>pages/lawyer/dayi/dayi.wxml</text> -->
+<view class="headBar">
+  <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
+</view>
+<view wx:if="{{key==0}}">
+  {{key}}
+  <view class="questionList">
+    <view class="listTop">
+      <text>免费</text>
+      <text>请问疫情期间公司进行裁员，公司...</text>
+      <text>查看详情</text>
+    </view>
+    <view class="listBottom">
+      <text>民事代理</text>
+      <text>立即抢答</text>
+    </view>
+  </view>
+</view>
+<view wx:if="{{key==1}}">
+  {{key}}
+</view>
+<view wx:if="{{key==2}}">
+  {{key}}
+</view>
+<view wx:if="{{key==3}}">
+  {{key}}
+</view>
+<view wx:if="{{key==4}}">
+  {{key}}
+</view>

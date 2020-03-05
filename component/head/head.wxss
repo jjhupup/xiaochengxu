@@ -1,0 +1,10 @@
+/* component/head/head.wxss */
+.tips {
+  font-size: 13px;
+  color: #999;
+  text-align: center;
+}
+
+.tips text {
+  color: #467cfd;
+}

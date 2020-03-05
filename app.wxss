@@ -1,0 +1,91 @@
+/**app.wxss**/
+
+.martop12 {
+  margin-top: 8px;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.titleMini {
+  line-height: 36px;
+  font-size: 34rpx;
+  margin-top: 12px;
+  position: relative;
+}
+.title1 {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+  font-size: 19px;
+  position: relative;
+  text-indent: 15px;
+}
+
+.title1::after {
+  content: '';
+  height: 60%;
+  width: 6px;
+  position: absolute;
+  left: 0;
+  top: 9px;
+  background-color: #0057ff;
+}
+.submit{
+   width: 90%;
+   height: 40px;
+   margin: 30px auto;
+   color: #fff;
+   background-color: #0057ff;
+   border: 1px solid #46a5d8;
+   text-align: center;
+   line-height: 40px;
+   font-size: 18px;
+   letter-spacing: 4px;
+}
+.nameinput {
+  border: 1px solid #0057ff;
+  background-color: #f9f9f9;
+  height: 40px;
+  padding-left: 10px;
+  width: 93%;
+  margin: 10px auto;
+}
+.radio {
+  margin: 8px 12px;
+  font-size: 14px;
+}
+.textTips {
+  color: #999;
+  font-size: 14px;
+  line-height: 25px;
+  margin-top: 10px;
+}
+.questionInp {
+  width: 95%;
+  height: 160px;
+  margin: auto;
+  background-color: #f9f9f9;
+  padding: 6px;
+  border: 1px solid #0057ff;
+  text-indent: 8px;
+}
+.inputS {
+  width: 92%;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 8px;
+  margin: auto;
+  border: 1px solid #0057ff;
+}
+.pd10{
+  padding: 10px;
+}
+.noShow{
+  display: none;
+}

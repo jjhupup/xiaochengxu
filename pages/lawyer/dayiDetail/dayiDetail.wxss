@@ -1,0 +1,16 @@
+/* pages/lawyer/dayiDetail/dayiDetail.wxss */
+.conten{
+  padding: 10px;
+  position: relative;
+  margin-bottom: 50rpx;
+}
+.question{
+  text-indent: 32rpx;
+  font-size: 36rpx;
+}
+.creatdate{
+  position: absolute;
+  bottom: -22rpx;
+  right: 16rpx;
+  font-size: 34rpx;
+}

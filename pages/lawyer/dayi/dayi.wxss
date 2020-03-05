@@ -1,0 +1,91 @@
+/* pages/lawyer/dayi/dayi.wxss */
+
+page {
+  background-color: #f2f2f2;
+}
+
+.headBar {
+  display: flex;
+  background-color: #fff;
+}
+
+.headBar view {
+  width: 20%;
+  font-size: 28rpx;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+}
+
+.active {
+  color: #0059ff;
+}
+
+.questionList {
+  background-color: #fff;
+  padding: 0 10px;
+  height: 180rpx;
+}
+
+.questionList .listTop {
+  height: 40%;
+  display: flex;
+  padding-top: 30rpx;
+}
+
+.listTop text:nth-child(1) {
+  width: 100rpx;
+  height: 40rpx;
+  text-align: center;
+  line-height: 40rpx;
+  border: 1rpx solid #b8b8b8;
+  border-radius: 6rpx;
+}
+
+.listTop text:nth-child(2) {
+  padding-left: 16rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  flex: 1;
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.listTop text:nth-child(3) {
+  float: right;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  color: #0059ff;
+}
+
+.listBottom {
+  height: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.listBottom text:nth-child(1) {
+  width: 130rpx;
+  height: 50rpx;
+  font-size: 26rpx;
+  color: #fff;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #52b8ff;
+}
+
+.listBottom text:nth-child(2) {
+  width: 160rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  color: #0059ff;
+  border: 1px solid #0059ff;
+  text-align: center;
+  line-height: 60rpx;
+  border-radius: 6rpx;
+}

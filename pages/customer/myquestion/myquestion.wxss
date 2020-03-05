@@ -1,0 +1,19 @@
+/* pages/customer/myquestion/myquestion.wxss */
+.headBar {
+  display: flex;
+  background-color: #fff;
+}
+
+.headBar view {
+  width: 20%;
+  font-size: 28rpx;
+  border: 1px solid #f0f0f0;
+  box-sizing: border-box;
+  height: 76rpx;
+  text-align: center;
+  line-height: 76rpx;
+}
+
+.active {
+  color: #0059ff;
+}

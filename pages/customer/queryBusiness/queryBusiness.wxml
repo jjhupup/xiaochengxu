@@ -1,0 +1,14 @@
+<!--pages/queryBusiness/queryBusiness.wxml-->
+<view class="content">
+  <view class="title1 martop12">选择查询业务类型</view>
+  <picker class="inputS" bindchange="bindPickerChange" value="{{index1}}" range="{{stage}}">
+    <view class="picker">
+      <view>{{stage[index1]}}
+        <image src="/static/images/down.png" />
+      </view>
+    </view>
+  </picker>
+  <view class="titleMini martop12">查询人姓名</view>
+  <editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="请写下相关要查询的相关信息，我们会交由律师为您解答" />
+</view>
+<view class="submit" bindtap="subQuestion">提交咨询</view>

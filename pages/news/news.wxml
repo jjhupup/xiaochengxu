@@ -1,0 +1,17 @@
+<!--pages/news/news.wxml-->
+<view class="headBar">
+  <view bindtap="getData" class="{{key==0?'active':''}}" data-key="0">未读消息（0）</view>
+  <view bindtap="getData" class="{{key==1?'active':''}}" data-key="1">全部消息</view>
+</view>
+<view wx:if="{{key==0}}" class="unread">
+  <view class="UnreadList clearfix">
+    <view class="newstext">您有一个新的回复信息，请点击查看，吖辉祝你生活愉快~~</view>
+    <view>2020-03-04 15:20:13</view>
+  </view>
+</view>
+<view wx:if="{{key==1}}" class="unread">
+  <view class="UnreadList clearfix">
+    <view class="newstext2 ">您有一个新的回复信息，请点击查看，吖辉祝你生活愉快~~</view>
+    <view>2020-03-04 15:20:13</view>
+  </view>
+</view>

@@ -1,0 +1,48 @@
+/* pages/corporateLawyer/corporateLawyer.wxss */
+
+.Gwleixing .radio {
+  margin: 8px;
+}
+
+.inputS {
+  width: 95%;
+  height: 45px;
+  line-height: 45px;
+  padding-left: 8px;
+  margin: auto;
+  border: 1px solid #0059ff;
+}
+
+.picker {
+  width: 100%;
+  position: relative;
+}
+
+.picker image {
+  position: absolute;
+  height: 27px;
+  width: 23px;
+  right: 4px;
+  top: 9px;
+}
+.getmoney1 {
+  position: relative;
+}
+
+.getmoney1 text {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  height: 45px;
+  line-height: 45px;
+}
+.fiedls {
+  width: 90%;
+  height: 45px;
+  text-align: center;
+  color: #fff;
+  margin: 20px auto 40px;
+  border-radius: 6px;
+  line-height: 45px;
+  background-color: #0059ff;
+}

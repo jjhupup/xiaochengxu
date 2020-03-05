@@ -1,0 +1,38 @@
+<!--pages/my/my.wxml-->
+<!-- <text>pages/my/my.wxml</text> -->
+<view>
+  <view class="userData">
+    <image src="{{userImage}}" />
+    <view class="userName">{{userName}}</view>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+  </view>
+  <view class="myAbility">
+    <view class="title1">我的功能</view>
+    <view class="list" wx:if="{{status=='0'}}" >
+      <view class="allList" wx:for="{{datalist}}" bindtap="gopage" data-url="{{item.page_url}}">
+        <image class="img1" src="{{item.img_url}}" />
+        <view class="text">{{item.text}}</view>
+        <text class="num" wx:if="{{index==3}}">99</text>
+        <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" />
+      </view>
+    </view>
+    <view class="list" wx:if="{{status=='1'}}">
+      <view class="allList" wx:for="{{lawyerlist}}" bindtap="gopage" data-url="{{item.page_url}}">
+        <image class="img1" src="{{item.img_url}}" />
+        <view class="text">{{item.text}}</view>
+        <text class="num" wx:if="{{index==3}}">99</text>
+        <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" />
+      </view>
+    </view>
+  </view>
+
+</view>
+<view class='dialog-status' wx:if="{{showStatusDialog}}">
+  <view class='dialog-body' catchtap='onDialogBody'>
+    <view class='dialogtitle'>请先确认您的使用身份</view>
+    <view class='content'>
+      <button type="primary" bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="0">我是客户</button>
+      <button bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="1">我是律师</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,133 @@
+<!--pages/document/document.wxml-->
+<Header></Header>
+<view class="content">
+  <view class="title1 martop12">选择文书起草类型</view>
+  <picker class="inputS" bindchange="bindPickerChange" value="{{index1}}" range="{{stage}}">
+    <view class="picker">
+      <view>{{stage[index1]}}
+        <image src="/static/images/down.png" />
+      </view>
+    </view>
+  </picker>
+</view>
+<swiper class="orderSwiper" bindchange="changeIndex" style="height:{{swiperH}}" current="{{index1}}">
+  <block wx:for="{{stage}}" wx:key="index1">
+    <swiper-item>
+      <!-- swiper-item Class对应每个类型的内容盒子 index1=0或1时律师函&写诉状 -->
+      <view class="swiper-item " wx:if="{{index1=='0'||index1=='1'||index1=='2'||index1=='4'}}">
+        <view class="titleMini">请上传案件所涉证据</view>
+        <view class="yulanImg">
+          <view wx:for="{{imgurl}}" wx:key="index">
+            <image class="imglist" src="{{item}}" mode="aspectFill" />
+            <image class="close" bindtap="deleteImg" data-index="{{index}}" src="/static/images/close.png" />
+          </view>
+        </view>
+        <view class="upload">
+          <image src="/static/images/add.png" bindtap="addImg" />
+          <text>图片</text>
+        </view>
+        <view class="file">
+          <view class="uploadfile" bindtap="addWord">
+            上传文档
+          </view>
+          <view class="filelist" wx:for="{{tempFiles}}" wx:key="index">
+            <text>{{item.name}}</text>
+            <image bindtap="deletefile" data-index="{{index}}" src="/static/images/close.png" />
+          </view>
+        </view>
+        <!-- <view class="titleMini">可以承受的律师最高价</view>
+        <view class="paymoney">
+          <input type="number" />
+          <text>元</text>
+        </view> -->
+        <view class="titleMini">请设置响应时间要求</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="8hour" checked="true">
+            <text>8小时</text>
+          </radio>
+          <radio class="radio" value="12hour">
+            <text>12小时</text>
+          </radio>
+          <radio class="radio" value="24hour">
+            <text>24小时</text>
+          </radio>
+        </radio-group>
+        <view class="titleMini">请设置完成时限要求</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="8hour" checked="true">
+            <text>1日</text>
+          </radio>
+          <radio class="radio" value="12hour">
+            <text>3日</text>
+          </radio>
+          <radio class="radio" value="24hour">
+            <text>5日</text>
+          </radio>
+        </radio-group>
+        <view class="titleMini">审核要求</view>
+        <editor class="questionInp" wx:if="{{index1=='0'}}" bindblur="bindTextAreaBlur" placeholder="请尽量详尽描述案情，以便律师起草诉状，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。" />
+        <editor class="questionInp" wx:if="{{index1=='1'}}" bindblur="bindTextAreaBlur" placeholder="请尽量详尽描述案情，以便律师起草律师函，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；您的要求和理由是什么。" />
+        <editor class="questionInp" wx:if="{{index1=='2'}}" bindblur="bindTextAreaBlur" placeholder="请说明您是合同的哪一方，请描述您的审核要求，以便律师准确审核。" />
+        <editor class="questionInp" wx:if="{{index1=='4'}}" bindblur="bindTextAreaBlur" placeholder="请尽量详尽描述案情,包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况等。" />
+        <view class="submit" bindtap="subQuestion">提交咨询</view>
+      </view>
+      <!-- 取保侯审申请申诉 -->
+      <view class="swiper-item " wx:if="{{index1=='3'}}">
+        <view class="titleMini">申请人姓名</view>
+        <input confirm-type='next' class="nameinput" bindblur="getRealName" type="text" placeholder="请输入您的真实姓名" />
+        <view class="titleMini">您的性别</view>
+        <view class="genderchoose">
+          <radio-group class="radio-group" bindchange="radioChange">
+            <radio class="radio" value="1" checked="true">
+              <text>男士</text>
+            </radio>
+            <radio class="radio" value="0">
+              <text>女士</text>
+            </radio>
+          </radio-group>
+        </view>
+        <view class="titleMini">您是代表谁申请申诉？</view>
+
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="1" checked="true">
+            <text>本人</text>
+          </radio>
+          <radio class="radio" value="0">
+            <text>亲属</text>
+          </radio>
+          <radio class="radio" value="0">
+            <text>朋友</text>
+          </radio>
+        </radio-group>
+        <view class="titleMini">请设置响应时间要求</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="8hour" checked="true">
+            <text>8小时</text>
+          </radio>
+          <radio class="radio" value="12hour">
+            <text>12小时</text>
+          </radio>
+          <radio class="radio" value="24hour">
+            <text>24小时</text>
+          </radio>
+        </radio-group>
+        <view class="titleMini">请设置完成时限要求</view>
+        <radio-group class="radio-group" bindchange="radioChange">
+          <radio class="radio" value="8hour" checked="true">
+            <text>1日</text>
+          </radio>
+          <radio class="radio" value="12hour">
+            <text>3日</text>
+          </radio>
+          <radio class="radio" value="24hour">
+            <text>5日</text>
+          </radio>
+        </radio-group>
+        <view class="titleMini">审核要求</view>
+        <editor class="questionInp" wx:if="{{index1=='3'}}" bindblur="bindTextAreaBlur" placeholder="请说明您具体的申诉要求，和申诉人发生的事情和理由。" />
+         <view class="submit" bindtap="subQuestion">提交咨询</view>
+      </view>
+      <!-- swiper-item Class对应每个类型的内容盒子结束 -->
+    </swiper-item>
+  </block>
+</swiper>

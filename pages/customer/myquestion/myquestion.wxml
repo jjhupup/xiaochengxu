@@ -1,0 +1,4 @@
+<!--pages/customer/myquestion/myquestion.wxml-->
+<view class="headBar">
+  <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
+</view>

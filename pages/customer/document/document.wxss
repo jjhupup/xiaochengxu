@@ -1,0 +1,143 @@
+/* pages/document/document.wxss */
+
+page {
+  height: 100%;
+}
+
+.content {
+  padding: 5px 10px;
+}
+
+
+
+.picker {
+  width: 100%;
+  position: relative;
+}
+
+.picker image {
+  position: absolute;
+  height: 27px;
+  width: 23px;
+  right: 6px;
+  top: 9px;
+}
+
+.orderSwiper {
+  height: 140%;
+}
+
+.swiper-item {
+  margin-left: 10px;
+}
+
+.upload {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.upload image {
+  height: 60px;
+  width: 60px;
+}
+
+.yulanImg {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.yulanImg>view {
+  width: 21.5%;
+  height: 96px;
+  margin-right: 11px;
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.yulanImg .imglist {
+  width: 100%;
+  height: 100%;
+}
+
+.yulanImg image:nth-child(4n) {
+  margin-right: 0;
+}
+
+.upload text {
+  line-height: 80px;
+  margin-left: 8px;
+}
+
+.close {
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.file .uploadfile {
+  width: 25%;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #0057ff;
+}
+
+.file {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 14px;
+}
+
+.file view {
+  padding: 9px 5px;
+  line-height: 18px;
+  font-size: 13px;
+  border: 1px dotted;
+  margin-bottom: 12px;
+}
+
+.filelist {
+  margin-left: 6px;
+  position: relative;
+}
+
+.filelist image {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+}
+
+.paymoney {
+  position: relative;
+  padding-right: 10px;
+}
+
+.paymoney input {
+  width: 100%;
+  height: 46px;
+  margin: auto;
+  border: 1px solid #0057ff;
+}
+
+.paymoney text {
+  position: absolute;
+  top: 0px;
+  right: 5%;
+  line-height: 45px;
+}
+
+.radio {
+  margin-right: 22px;
+  font-size: 14px;
+}
+
+

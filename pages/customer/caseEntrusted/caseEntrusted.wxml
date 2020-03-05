@@ -1,0 +1,125 @@
+<!--pages/caseEntrusted/caseEntrusted.wxml-->
+<Header></Header>
+<view class="content clearfix">
+  <view class="title1">个人信息</view>
+  <view class="titleMini">您的姓名</view>
+  <input confirm-type='next' class="nameinput" bindblur="getRealName" type="text" placeholder="请输入您的真实姓名" />
+  <view class="titleMini">您的性别</view>
+  <view class="genderchoose">
+    <radio-group class="radio-group" bindchange="radioChange">
+      <radio class="radio" value="1" checked="true">
+        <text>男士</text>
+      </radio>
+      <radio class="radio" value="0">
+        <text>女士</text>
+      </radio>
+    </radio-group>
+  </view>
+  <view class="titleMini">您是代表谁找律师？</view>
+
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" value="1" checked="true">
+      <text>本人</text>
+    </radio>
+    <radio class="radio" value="0">
+      <text>亲属</text>
+    </radio>
+    <radio class="radio" value="0">
+      <text>单位</text>
+    </radio>
+    <radio class="radio" value="0">
+      <text>朋友</text>
+    </radio>
+  </radio-group>
+  <view class="title1 martop12">案件信息</view>
+  <view class="titleMini">您的案件类型</view>
+  <view class="clearfix">
+    <picker class="anjian1" bindchange="bindPickerChange" value="{{leixin1}}" range="{{anJianArray1}}">
+      <view class="picker">
+        <view>{{anJianArray1[index1]}}
+          <image src="/static/images/down.png" />
+        </view>
+      </view>
+    </picker>
+    <picker class="anjian1" bindchange="bindPickerChange" value="{{leixin2}}" range="{{anJianArray1}}">
+      <view class="picker">
+        <view>{{anJianArray1[index1]}}
+          <image src="/static/images/down.png" />
+        </view>
+      </view>
+    </picker>
+  </view>
+  <view class="titleMini">委托人在本案中得地位</view>
+  <picker class="inputS" bindchange="bindPickerChange" value="{{index1}}" range="{{status}}">
+    <view class="picker">
+      <view>{{status[index1]}}
+        <image src="/static/images/down.png" />
+      </view>
+    </view>
+  </picker>
+  <view class="titleMini">案件所处阶段</view>
+  <picker class="inputS" bindchange="bindPickerChange" value="{{index1}}" range="{{stage}}">
+    <view class="picker">
+      <view>{{stage[index1]}}
+        <image src="/static/images/down.png" />
+      </view>
+    </view>
+  </picker>
+  <view class="titleMini">案件管辖地</view>
+  <picker class="inputS" bindchange="getRegion" mode='region' value="{{regionVal}}">
+    <view class="picker">
+      <view>当前选择： {{regionVal[0]}}{{regionVal[1]}}{{regionVal[2]}}
+        <image src="/static/images/down.png " />
+      </view>
+    </view>
+  </picker>
+  <view class="textTips">请按收到的法院、仲裁委员会等机关的传票、裁决书、通知书等法律文书载明的管辖机关所在地选择。</view>
+  <view class="titleMini">您希望找哪里的律师？</view>
+  <picker class="inputS" bindchange="getRegion" mode='region' value="{{regionVal}}">
+    <view class="picker">
+      <view>当前选择： {{regionVal[0]}}{{regionVal[1]}}{{regionVal[2]}}
+        <image src="/static/images/down.png " />
+      </view>
+    </view>
+  </picker>
+  <view class="textTips">当地律师办理当地案件具有一定优势，建议您选择案件管辖地的律师；如您目前的居住地不在案件管辖地，出于沟通方便您也可选择您居住地的律师；如您有其他考虑，也可自由选择其他地区的律师，但律师异地办案通常会产生额外的差旅费。</view>
+  <view class="titleMini">案件是否涉及财产关系</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" value="true" checked="true">
+      <text>是</text>
+    </radio>
+    <radio class="radio" value="false">
+      <text>否</text>
+    </radio>
+  </radio-group>
+  <view class="titleMini">请输入争议的金额</view>
+  <view class="getmoney1">
+    <input class="inputS" type="number" bindblur="getZYmoney" />
+    <text>元</text>
+  </view>
+  <!-- <view class="titleMini">可承受的律师费最高价</view>
+  <view class="pay">
+    <input class="paymoney" type="number" bindblur="getPaymoney" />
+    <text>律师费预估</text>
+  </view>
+  <view class="tshi_three">300-2000</view> -->
+  <!-- <view class="textTips">
+    如您不知道该支付多少律师费，请点击上方“律师费预估”以作参考；您的报价并不是最终成交价，成交价一般低于您的报价；如某律师报价高于您的报价，平台将不向您匹配该律师
+  </view> -->
+  <view class="title1 martop12">律师选择</view>
+  <view class="titleMini">律师执业经验要求</view>
+  <radio-group class="radio-group" bindchange="radioChange">
+    <radio class="radio" value="一年" checked="true">
+      <text>一年以上</text>
+    </radio>
+    <radio class="radio" value="三年">
+      <text>三年以上</text>
+    </radio>
+    <radio class="radio" value="五年">
+      <text>五年以上</text>
+    </radio>
+  </radio-group>
+  <view class="titleMini">请输入案情简介</view>
+  <editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="(请尽量详尽描述案情，以便律师做准确分析，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。)" />
+</view>
+<view class="kuang_weba" >开始匹配律师</view>

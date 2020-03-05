@@ -1,0 +1,15 @@
+<!--pages/freeConsult/freeConsult.wxml-->
+<!-- <text>pages/freeConsult/freeConsult.wxml</text> -->
+
+<view class="choose">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      <view class="pickerLeft">请选择您的问题类型：</view>
+      <view class="pickerRight">{{array[index]}}
+        <image src="/static/images/down.png" />
+      </view>
+    </view>
+  </picker>
+</view>
+<editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="输入不少于20字，请尽量详细的说明您的问题" />
+<view class="submit" bindtap="subQuestion">提交咨询</view>

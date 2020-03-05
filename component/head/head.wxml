@@ -1,0 +1,5 @@
+<!--component/head/head.wxml-->
+<view class="Header">
+  <view class="tips">不知道怎么写，请联系客服
+    <text>110-119-120-11</text> </view>
+</view>

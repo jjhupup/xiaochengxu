@@ -1,0 +1,16 @@
+/* pages/queryBusiness/queryBusiness.wxss */
+.content{
+  padding: 10px;
+}
+.picker {
+  width: 100%;
+  position: relative;
+}
+
+.picker image {
+  position: absolute;
+  height: 27px;
+  width: 23px;
+  right: 6px;
+  top: 9px;
+}
