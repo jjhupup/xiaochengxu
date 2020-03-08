@@ -1,0 +1,74 @@
+/* pages/lawyer/mydayi/mydayi.wxss */
+
+.headBar {
+  display: flex;
+  background-color: #fff;
+}
+
+.headBar view {
+  width: 50%;
+  font-size: 30rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+}
+
+.active {
+  color: #0059ff;
+  position: relative;
+}
+
+.active::after {
+  content: '';
+  position: absolute;
+  background-color: #0059ff;
+  width: 60%;
+  height: 2px;
+  left: 20%;
+  bottom: 0;
+}
+
+.questionList {
+  background-color: #fff;
+  padding: 0 10px;
+  height: 150rpx;
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.listLeft {
+  flex: 1;
+  line-height: 25px;
+  padding: 10px 0;
+}
+
+.listRight {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.listRight text:nth-child(1) {
+  width: 130rpx;
+  height: 50rpx;
+  font-size: 26rpx;
+  color: #fff;
+  line-height: 50rpx;
+  text-align: center;
+  background-color: #74cb6f;
+  margin: auto;
+  border-radius: 4px;
+}
+
+.listRight text:nth-child(2) {
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 32px;
+  text-align: center;
+  background-color: #0059ff;
+  margin: auto;
+  width: 90%;
+  height: 32px;
+  border-radius: 6px;
+}

@@ -1,18 +1,31 @@
 // pages/lawyer/dayiDetail/dayiDetail.js
+const utils=require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    answer:''
+    answer:'',
+    questionData:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
+    let id=options.id
+    let that=this
+    utils.request(Api.GetDetailQuestion,{
+      id
+    },"POST").then(res=>{
+      console.log(res)
+      that.setData({
+        questionData:res.data
+      })
+    })
   },
 
   /**
@@ -66,12 +79,24 @@ Page({
   bindTextAreaBlur(e){
     console.log(e)
     this.setData({
-      answer: e.detail.text
+      answer: e.detail.value
     })
   },
   subQuestion(){
+    let that=this
     setTimeout(()=>{
-      console.log(this.data.answer)
+      console.log(that.data.answer)
+      utils.request(Api.Reply,{
+        advice_id:that.data.questionData.id,
+        pid:0,
+        content:that.data.answer,
+        from_openid:'110119',
+        from_name:'辉记律师',
+        to_openid: that.data.questionData.c_openid,
+        to_name:'辉'
+      },'POST').then(res=>{
+        console.log(res)
+      })
     },150)
   }
 })

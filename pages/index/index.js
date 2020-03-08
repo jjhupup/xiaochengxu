@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp()
 const utils = require('../../utils/util.js')
-const config = require('../../config/config.js')
+const Api=require('../../config/api.js')
 Page({
   data: {
     banner: [{
@@ -61,28 +61,28 @@ Page({
     lawyerList: [{
         id: 1,
         img_url: '/static/images/dayi.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=答疑解惑',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=0',
         titleone: '答疑解惑',
         detailed: '为客户答疑解惑，提升活跃度'
       },
       {
         id: 2,
         img_url: '/static/images/entrust.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=案件委托',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=1',
         titleone: '案件委托',
         detailed: '案件委托抢单，获取悬赏金'
       },
       {
         id: 3,
         img_url: '/static/images/wenshu2.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=文书委托',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=2',
         titleone: '文书委托',
         detailed: '接收客户的文书委托，获得悬赏金'
       },
       {
         id: 4,
         img_url: '/static/images/guwen.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=顾问委托',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=3',
         titleone: '顾问委托',
         detailed: '提交您的顾问需求，律师任你选择'
       }
@@ -97,7 +97,7 @@ Page({
 
   },
   onShow: function() {
-    console.log(utils, config)
+    console.log(utils,Api)
     let status = wx.getStorageSync('status')
     let that = this
     console.log(status)
@@ -122,10 +122,6 @@ Page({
   // 打开页面
   goPage: function(e) {
     console.log(e)
-    wx.request({
-      url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wx0ca41230ae85d573&secret=ab8814e39e16aef82c5b11090dedf9dd&js_code=JSCODE&grant_type=authorization_code',
-      method: 'GET'
-    })
     this.setData({
       gotoUrl: e.currentTarget.dataset.url
     })
@@ -180,8 +176,9 @@ Page({
       utils.login()
         .then(res => {
           console.log(res)
-          let url = "https://api.weixin.qq.com/sns/jscode2session?appid=" + config.appid + "&secret=" + config.appsecret + "&js_code=" + res + "&grant_type=authorization_code"
-          utils.request(url).then(res=>{
+          utils.request(Api.GetOpenId,{
+            js_code:res
+          },"get").then(res=>{
             // 获取的openid再通过登录接口发给后台
             console.log(res)
           })

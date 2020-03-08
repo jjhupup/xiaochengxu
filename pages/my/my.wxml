@@ -20,8 +20,8 @@
       <view class="allList" wx:for="{{lawyerlist}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>
-        <text class="num" wx:if="{{index==3}}">99</text>
-        <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" />
+        <!-- <text class="num" wx:if="{{index==3}}">99</text>
+        <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" /> -->
       </view>
     </view>
   </view>

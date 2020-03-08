@@ -37,6 +37,3 @@
 <view wx:if="{{key==3}}">
   {{key}}
 </view>
-<view wx:if="{{key==4}}">
-  {{key}}
-</view>

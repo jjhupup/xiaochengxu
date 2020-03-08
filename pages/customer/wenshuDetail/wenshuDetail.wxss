@@ -1,0 +1,65 @@
+/* pages/customer/wenshuDetail/wenshuDetail.wxss */
+.content{
+  padding: 10px;
+}
+.showimg {
+ display: flex;
+ flex-wrap: wrap; 
+}
+.showimg image{
+  width: 33%;
+  height: 260rpx;
+}
+.date{
+  float: right;
+  font-size: 28rpx;
+}
+.fileName{
+  border: 1px dotted #ccc;
+  padding: 6px 10px;
+}
+.lawyer{
+  display: flex;
+  height: 100px;
+  border: 1px dashed #ccc;
+  margin-bottom: 16px;
+}
+.lawyerL{
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.lawyerL image{
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 12px;
+}
+.lawyerL view{
+  text-indent: 12px;
+}
+.lawyerC{
+  flex: 1;
+  padding: 20px 0;
+}
+.paymoney{
+  color: #ff3b30;
+}
+.lawyerC view{
+font-size: 28rpx;
+line-height: 28px;
+}
+.lawyerR{
+  width: 20%;
+  text-align: center;
+}
+.lawyerR view{
+  font-size: 28rpx;
+  line-height: 30px;
+}
+.lawyerR .choose{
+  border: 1px solid #afd196;
+  background: #1aad19;
+  color: #fff;
+  border-radius: 4px;
+}

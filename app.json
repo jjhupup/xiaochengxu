@@ -16,7 +16,12 @@
     "pages/userdata/userdata",
     "pages/news/news",
     "pages/lawyer/lawyerOrder/lawyerOrder",
-    "pages/customer/myquestion/myquestion"
+    "pages/customer/myquestion/myquestion",
+    "pages/customer/mywenshu/mywenshu",
+    "pages/customer/wenshuDetail/wenshuDetail",
+    "pages/lawyer/offerDetail/offerDetail",
+    "pages/customer/questionDetail/questionDetail",
+    "pages/lawyer/mydayi/mydayi"
   ],
   "window": {
     "backgroundTextStyle": "light",

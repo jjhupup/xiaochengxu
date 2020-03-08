@@ -1,22 +1,22 @@
+/* pages/customer/mywenshu/mywenshu.wxss */
 /* pages/customer/myquestion/myquestion.wxss */
 .headBar {
   display: flex;
   background-color: #fff;
-  border-bottom: 1px solid #eee;
 }
 
 .headBar view {
-  width: 33.3%;
+  width: 25%;
   font-size: 28rpx;
+  border: 1px solid #f0f0f0;
   box-sizing: border-box;
-  height: 80rpx;
+  height: 76rpx;
   text-align: center;
   line-height: 76rpx;
 }
 
 .active {
   color: #0059ff;
-  border-bottom: 2px solid;
 }
 .questionList {
   background-color: #fff;
@@ -31,17 +31,16 @@
   padding-top: 30rpx;
 }
 
-.listTop text:nth-child(1) {
+/* .listTop text:nth-child(1) {
   width: 100rpx;
   height: 40rpx;
   text-align: center;
   line-height: 40rpx;
-  background-color: #83d944;
-  color: #fff;
+  border: 1rpx solid #b8b8b8;
   border-radius: 6rpx;
-}
+} */
 
-.listTop text:nth-child(2) {
+.listTop text:nth-child(1) {
   padding-left: 16rpx;
   height: 40rpx;
   line-height: 40rpx;
@@ -52,7 +51,7 @@
   text-overflow: ellipsis;
 }
 
-.listTop text:nth-child(3) {
+.listTop text:nth-child(2) {
   float: right;
   height: 40rpx;
   line-height: 40rpx;
@@ -81,11 +80,10 @@
   height: 60rpx;
   font-size: 28rpx;
   color: #fff;
-  background-color: #52b8ff;
-  border: 1px solid #55c2e4;
   text-align: center;
   line-height: 60rpx;
   border-radius: 6rpx;
+  background-color: #83d944;
 }
 .listBottom .over{
   color: #999 !important;

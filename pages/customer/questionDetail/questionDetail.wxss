@@ -1,0 +1,13 @@
+/* pages/customer/questionDetail/questionDetail.wxss */
+.content{
+  padding: 10px;
+}
+.questionTxt{
+  font-size: 32rpx;
+}
+.date{
+  text-align: right;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 66rpx;
+}

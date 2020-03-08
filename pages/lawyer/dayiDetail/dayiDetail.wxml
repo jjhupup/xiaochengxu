@@ -3,9 +3,34 @@
 <view class="conten">
   <view class="title1">免费咨询</view>
   <view class="question">
-    在超市买的东西，然后防疫特殊期间没有收银然后把钱给导购让他跑到其他收银台代为结账，他先去买其他的东西，后来那个导购吃饭忘了结账，然后出门的时候顾客被那个超市安检的查到了，然后这个导购以私自收钱名义被这个超市罚2000块钱，这个超市有这个权利罚2000块钱？吗？
+    {{questionData.content}}
   </view>
   <view class="creatdate">2020-03-03 12:12:12</view>
 </view>
-<editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" />
+<textarea class="questionInp" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" auto-height />
 <view class="submit" bindtap="subQuestion">提交回答</view>
+
+<view class="answerList">
+  <view class="titleMini">律师解答</view>
+  <view class="answer">
+    <view class="lsname">
+      <image src="https://wx.qlogo.cn/mmopen/vi_32/AAUCluXUZkSibUCOAkZxSSX4RCv6M7qm2ibxMZ72CHibqgw2CKpRMDryNY5wKz9Yrp2ZNxuOKnTCzxjOD0Rb35TjA/132" />
+      <text>本人</text>
+      <text class="date">1小时前</text>
+    </view>
+    <view class="answerContent">
+      这个责任，主要是在商场那边，你可以报警处理。
+    </view>
+    <view></view>
+  </view>
+  <view class="answer">
+    <view class="lsname">
+      <image src="https://wx.qlogo.cn/mmopen/vi_32/AAUCluXUZkSibUCOAkZxSSX4RCv6M7qm2ibxMZ72CHibqgw2CKpRMDryNY5wKz9Yrp2ZNxuOKnTCzxjOD0Rb35TjA/132" />
+      <text>周星驰律师</text>
+      <text class="date">1小时前</text>
+    </view>
+    <view class="answerContent">
+      ，然后出门的时候顾客被那个超市安检的查到了，然后这个导购以私自收钱名义被这个超市罚2000块钱，这个超市有这个权利罚2000块钱？吗？
+    </view>
+  </view>
+</view>

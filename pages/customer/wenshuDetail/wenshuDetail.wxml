@@ -1,0 +1,66 @@
+<!--pages/customer/wenshuDetail/wenshuDetail.wxml-->
+<view class="content">
+  <view class="title1">代写诉状</view>
+  <view class="clearfix">
+    <text>诉状要求描述：疫特殊期间没有收银然后把钱给导购让他跑到其他收银台代为结账，他先去买其他的东西，后来那个导购吃饭忘了结账，然后出门的时候顾客被那个超市安检的查到了。</text>
+    <view class="date">2020-03-02 10:12:32</view>
+  </view>
+  <view class="titleMini">上传的图片</view>
+  <view class="showimg">
+    <image src="/static/images/guwen.png" />
+  </view>
+  <view class="titleMini">上传的文档</view>
+  <text class="fileName">关于事情的具体经过.doc</text>
+  <view class="titleMini">以下律师可以为您服务</view>
+  <view class="lawyer">
+    <view class="lawyerL">
+      <image src="/static/images/guwen.png" />
+      <view>江大律师</view>
+    </view>
+    <view class="lawyerC">
+      <view>律师已看过你的诉状要求</view>
+      <view>该文书代写要价
+        <text class="paymoney">20￥</text>
+      </view>
+    </view>
+    <view class="lawyerR">
+      <view>执业3年</view>
+      <view>广东 广州</view>
+      <view class="choose" bindtap="paymoney">选他</view>
+    </view>
+  </view>
+  <view class="lawyer">
+    <view class="lawyerL">
+      <image src="/static/images/guwen.png" />
+      <view>林大律师</view>
+    </view>
+    <view class="lawyerC">
+      <view>律师已看过你的诉状要求</view>
+      <view>该文书代写要价
+        <text class="paymoney">20￥</text>
+      </view>
+    </view>
+    <view class="lawyerR">
+      <view>执业3年</view>
+      <view>广东 广州</view>
+      <view class="choose">选他</view>
+    </view>
+  </view>
+  <view class="lawyer">
+    <view class="lawyerL">
+      <image src="/static/images/guwen.png" />
+      <view>刘大律师</view>
+    </view>
+    <view class="lawyerC">
+      <view>律师已看过你的诉状要求</view>
+      <view>该文书代写要价
+        <text class="paymoney">20￥</text>
+      </view>
+    </view>
+    <view class="lawyerR">
+      <view>执业3年</view>
+      <view>广东 广州</view>
+      <view class="choose">选他</view>
+    </view>
+  </view>
+</view>

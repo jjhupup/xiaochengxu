@@ -65,50 +65,65 @@
 				},
 				{
 					"id": -1,
-					"name": "答疑解惑",
-					"pathName": "pages/lawyer/dayi/dayi",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/queryBusiness/queryBusiness",
-					"pathName": "pages/customer/queryBusiness/queryBusiness",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/dayiDetail/dayiDetail",
-					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/dayiDetail/dayiDetail",
-					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "个人信息修改",
-					"pathName": "pages/userdata/userdata",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "信息中心",
-					"pathName": "pages/news/news",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "我的订单",
 					"pathName": "pages/lawyer/lawyerOrder/lawyerOrder",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "文书订单detail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "客户文书",
+					"pathName": "pages/customer/mywenshu/mywenshu",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "服务中",
+					"pathName": "pages/lawyer/offerDetail/offerDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "律师看到的答疑解惑",
+					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的咨询",
+					"pathName": "pages/customer/myquestion/myquestion",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "questionDetail",
+					"pathName": "pages/customer/questionDetail/questionDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "dayi",
+					"pathName": "pages/lawyer/dayi/dayi",
+					"query": "title=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "mydayi",
+					"pathName": "pages/lawyer/mydayi/mydayi",
+					"query": "",
 					"scene": null
 				}
 			]

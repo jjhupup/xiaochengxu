@@ -1,6 +1,7 @@
 // pages/my/my.js
 const app = getApp()
 const utils = require('../../utils/util.js')
+const Api=require('../../config/api.js')
 const config = require('../../config/config.js')
 Page({
 
@@ -53,6 +54,11 @@ Page({
         text: '信息中心'
       },
       {
+        img_url:'/static/images/jieyi.png',
+        page_url:'/pages/lawyer/mydayi/mydayi?openid=121317386',
+        text:'解疑答惑'
+      },
+      {
         img_url: '/static/images/anjian.png',
         page_url:'/pages/lawyer/lawyerOrder/lawyerOrder',
         text: '我的订单'
@@ -67,21 +73,6 @@ Page({
    */
   onLoad: function(options) {
     let that=this
-    wx.login({
-      success(res) {
-        if (res.code) {
-          //发起网络请求
-          wx.request({
-            url: 'https://test.com/onLogin',
-            data: {
-              code: res.code
-            }
-          })
-        } else {
-          console.log('登录失败！' + res.errMsg)
-        }
-      }
-    })
   },
 
   /**
@@ -182,7 +173,14 @@ Page({
       })
       console.log(wx.getStorageSync('status'))
       wx.setStorageSync('userInfo', JSON.stringify(e.detail.userInfo));
-
+      utils.login()
+      .then(res=>{
+        utils.request(Api.GetOpenId,{
+          js_code:res
+        },'GET').then(res=>{
+          console.log(res)
+        })
+      })
     }
   },
   // 获取用户信息

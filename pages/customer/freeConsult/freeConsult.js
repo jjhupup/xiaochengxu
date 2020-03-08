@@ -1,5 +1,6 @@
 // pages/freeConsult/freeConsult.js
 const utils = require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
@@ -84,7 +85,7 @@ Page({
   subQuestion() {
     let that = this
     let index = this.data.index
-    console.log(that.data.array[index])
+    console.log(that.data.array[index],utils)
     wx.showModal({
       title: '提示',
       content: '是否提交问题？',
@@ -100,14 +101,21 @@ Page({
               icon: 'none',
               duration: 1200
             })
-          } else if (contentStr.length<20){
+          } else if (contentStr.length<10){
             wx.showToast({
-              title: '输入内容少于20字 ',
+              title: '输入内容少于10字 ',
               icon: 'none',
               duration: 1200
             })
           }else {
-            console.log('提交数据', contentStr)
+            console.log('提交数据', contentStr, Api)
+            utils.request(Api.Publish,{
+              c_openid:'1213107386',
+              topic:that.data.index,
+              content:contentStr
+            },"POST").then(res=>{
+              console.log(res)
+            })
           }
 
         } else if (res.cancel) {

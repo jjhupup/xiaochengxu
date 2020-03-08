@@ -2,3 +2,34 @@
 <view class="headBar">
   <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
+
+<view wx:if="{{key==0}}">
+  <view class="questionList">
+    <view class="listTop">
+      <text>免费</text>
+      <text>请问疫情期间公司进行裁员，公要搞大司...</text>
+      <text bindtap="lookDetail" data-orderStatus='1' data-look="true">查看详情</text>
+    </view>
+    <view class="listBottom">
+      <text>民事代理</text>
+      <text bindtap="lookDetail" data-orderStatus='1'>服务中</text>
+    </view>
+  </view>
+  <view class="questionList">
+    <view class="listTop">
+      <text>免费</text>
+      <text>请问疫情期间公司进行裁员，公要搞大司...</text>
+      <text bindtap="lookDetail" data-orderStatus='0' data-look="true">查看详情</text>
+    </view>
+    <view class="listBottom">
+      <text>民事代理</text>
+      <text  class="over" data-orderStatus='0' bindtap="lookDetail">已结束</text>
+    </view>
+  </view>
+</view>
+<view wx:if="{{key==1}}">
+  {{key}}
+</view>
+<view wx:if="{{key==2}}">
+  {{key}}
+</view>

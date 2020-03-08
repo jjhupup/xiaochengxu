@@ -5,7 +5,7 @@
 }
 
 .headBar view {
-  width: 20%;
+  width: 25%;
   font-size: 28rpx;
   border: 1px solid #f0f0f0;
   box-sizing: border-box;

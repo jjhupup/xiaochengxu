@@ -1,13 +1,11 @@
-// pages/customer/myquestion/myquestion.js
+// pages/customer/questionDetail/questionDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    NavArr: ['全部咨询', '服务中', '已结束'],
-    key: 0,
-    allQuestion:[]
+
   },
 
   /**
@@ -64,21 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-  getData(e) {
-    console.log(e)
-    this.setData({
-      key: e.currentTarget.dataset.index
-    })
-  },
-  lookDetail(e){
-    console.log(e.currentTarget.dataset)
-    let orderstatus = e.currentTarget.dataset.orderstatus
-    let look = e.currentTarget.dataset.look
-    if(orderstatus==1||(orderstatus==0&&look)){ // 跳转到解疑答惑页面
-      wx.navigateTo({
-        url: '/pages/customer/questionDetail/questionDetail',
-      })
-    }
   }
 })

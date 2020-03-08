@@ -1,0 +1,43 @@
+/* pages/lawyer/offerDetail/offerDetail.wxss */
+
+.content {
+  padding: 10px 12px;
+}
+
+.detailTxt {
+  font-size: 30rpx;
+}
+
+.date {
+  text-align: right;
+  font-size: 28rpx;
+}
+
+.imglist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.imglist image {
+  width: 30%;
+  height: 120px;
+  margin-bottom: 12px;
+}
+
+.filelist text {
+  padding: 4px 6px;
+  border: 1px dotted #ccc;
+}
+
+.baojia {
+  position: relative;
+}
+
+.baojia text {
+  position: absolute;
+  right: 16px;
+  top: 0;
+  height: 45px;
+  line-height: 45px;
+}

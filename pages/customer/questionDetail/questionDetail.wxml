@@ -1,0 +1,8 @@
+<!--pages/customer/questionDetail/questionDetail.wxml-->
+<view class="content">
+  <view class="title1">我的提问</view>
+  <view class="questionTxt">我朋友的游戏账号被我弄封了十年，他要求我赔偿2000元，可是他的账号现在市值600元左右，我应该赔偿多少钱我朋友的游戏账号被我弄封了十</view>
+  <view class="date">2020-03-05 13:41:21</view>
+  <view class="title1">律师解答</view>
+  
+</view>

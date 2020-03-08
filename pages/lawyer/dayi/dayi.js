@@ -1,12 +1,19 @@
 // pages/lawyer/dayi/dayi.js
+const utils=require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    NavArr:['抢单报价','待处理','服务中','已结束','已参与'],
-    key:0
+    NavArr:['抢单报价'],
+    key:0,
+    title:['答疑解惑','案件委托','文书委托','顾问委托'],
+    questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
+    Allquestion:[],
+    btnTxt:'立即抢答',
+    ordertype:0
   },
 
   /**
@@ -15,8 +22,17 @@ Page({
   onLoad: function (options) {
     console.log(options)
     wx.setNavigationBarTitle({
-      title: options.title
+      title: this.data.title[options.title]
     })
+    if(options.title!=0){
+      this.setData({
+        btnTxt:'立即报价抢单',
+        ordertype:1
+      })
+    }
+    // this.setData({
+    //   title:
+    // })
   },
 
   /**
@@ -30,7 +46,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let that=this
+    // 获取答疑解惑列表或者其他列表
+    utils.request(Api.GetAllQuestion).then(res=>{
+      console.log(res)
+      that.setData({
+        Allquestion:res.data
+      })
+    })
   },
 
   /**
@@ -61,12 +84,6 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   getData(e){
     console.log(e)
     this.setData({
@@ -74,8 +91,17 @@ Page({
     })
   },
   lookDetail(e){
-    wx.navigateTo({
-      url: '/pages/lawyer/dayiDetail/dayiDetail'
-    })
+    console.log(e)
+    let id = e.currentTarget.dataset.questionid
+    if(this.data.ordertype==0){
+      wx.navigateTo({
+        url: '/pages/lawyer/dayiDetail/dayiDetail?id='+id
+      })
+    }else{
+      console.log(222)
+      wx.navigateTo({
+        url: '/pages/lawyer/offerDetail/offerDetail?id='+id
+      })
+    }
   }
 })
