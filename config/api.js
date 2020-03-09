@@ -1,4 +1,4 @@
-const ApiRootUrl = 'http://193.112.246.98:3000/api/';
+const ApiRootUrl = 'http://193.112.246.98:9527/api/';
 
 module.exports = {
   GetOpenId: ApiRootUrl + 'user/authSession', //登录获取openid
@@ -8,4 +8,5 @@ module.exports = {
   GetDetailQuestion: ApiRootUrl + 'advice/detail',  ///advice/detail
   Reply:ApiRootUrl+'advice/reply',   //回复咨询
   OrderFaBu: ApiRootUrl + 'order/publish',  //发布文书起草，案件委托等需求
+  GetMyMFZX: ApiRootUrl +'advice/customer',  //获取客户自己的免费咨询列表
 };

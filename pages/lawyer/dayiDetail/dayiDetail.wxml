@@ -1,36 +1,46 @@
 <!--pages/lawyer/dayiDetail/dayiDetail.wxml-->
+<wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <!-- <text>pages/lawyer/dayiDetail/dayiDetail.wxml</text> -->
-<view class="conten">
+<view class="conten clearfix">
   <view class="title1">免费咨询</view>
   <view class="question">
     {{questionData.content}}
   </view>
-  <view class="creatdate">2020-03-03 12:12:12</view>
+  <view class="creatdate">{{questionData.create_time}}</view>
+  <view class="tools" data-pid="0" bindtap="openComment">
+    <image src="/static/images/comment.png" />
+    <text>回复</text>
+  </view>
 </view>
-<textarea class="questionInp" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" auto-height />
-<view class="submit" bindtap="subQuestion">提交回答</view>
+<view class="dialog-login " wx:if="{{isShowComment}}" bindtap="closeComment">
+  <view class="dialog-body" catchtap='onDialogBody'>
+    <textarea class="questionInp2" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" auto-height />
+    <view class="tjComment" bindtap="subQuestion">提交回答</view>
+  </view>
+</view>
 
 <view class="answerList">
   <view class="titleMini">律师解答</view>
-  <view class="answer">
+  <view class="answer clearfix" wx:for="{{questionData.replies}}">
     <view class="lsname">
       <image src="https://wx.qlogo.cn/mmopen/vi_32/AAUCluXUZkSibUCOAkZxSSX4RCv6M7qm2ibxMZ72CHibqgw2CKpRMDryNY5wKz9Yrp2ZNxuOKnTCzxjOD0Rb35TjA/132" />
-      <text>本人</text>
-      <text class="date">1小时前</text>
+      <text>{{item.from_name}}</text>
+      <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
     </view>
     <view class="answerContent">
-      这个责任，主要是在商场那边，你可以报警处理。
+      <text>{{item.content}}</text>
+      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+        <image src="/static/images/comment.png" />
+        <text>回复</text>
+      </view>
     </view>
-    <view></view>
-  </view>
-  <view class="answer">
-    <view class="lsname">
-      <image src="https://wx.qlogo.cn/mmopen/vi_32/AAUCluXUZkSibUCOAkZxSSX4RCv6M7qm2ibxMZ72CHibqgw2CKpRMDryNY5wKz9Yrp2ZNxuOKnTCzxjOD0Rb35TjA/132" />
-      <text>周星驰律师</text>
-      <text class="date">1小时前</text>
-    </view>
-    <view class="answerContent">
-      ，然后出门的时候顾客被那个超市安检的查到了，然后这个导购以私自收钱名义被这个超市罚2000块钱，这个超市有这个权利罚2000块钱？吗？
+
+    <view class="recomment" wx:for="{{item.children}}">
+      <view class="usertop">
+        <text>{{item.from_name}}</text>
+        <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+      </view>
+      <view>{{item.content}}</view>
     </view>
   </view>
 </view>

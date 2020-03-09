@@ -1,0 +1,33 @@
+var DateFr = {
+
+  getDate: function (time, splitStr,splitStr2) {
+
+    if (!time) return '';
+    var date = getDate(time);
+    var M = date.getMonth() + 1;
+    var y = date.getFullYear();
+    var d = date.getDate();
+    var hour = date.getHours()
+    var minute = date.getMinutes()
+    var second = date.getSeconds()
+    if (M < 10) M = "0" + M;
+    if (d < 10) d = "0" + d;
+    if (hour < 10) hour = "0" + hour;
+    if (minute < 10) minute = "0" + minute;
+    if (second < 10) second = "0" + second;
+    // if(hour<10) hour="0"+hour;
+
+    if (splitStr)
+      return y + splitStr + M + splitStr + d + ' ' + hour + splitStr2 + minute + splitStr2+second;
+    else
+      return {
+        y: y,
+        M: M,
+        d: d
+      };
+  }
+}
+
+module.exports = {
+  getDate: DateFr.getDate
+}

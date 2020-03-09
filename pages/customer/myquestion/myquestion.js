@@ -1,4 +1,6 @@
 // pages/customer/myquestion/myquestion.js
+const utils=require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
@@ -7,14 +9,15 @@ Page({
   data: {
     NavArr: ['全部咨询', '服务中', '已结束'],
     key: 0,
-    allQuestion:[]
+    allQuestion:[],
+    questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getListData()
   },
 
   /**
@@ -59,11 +62,29 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  getListData(){
+    let that=this
+    utils.request(Api.GetMyMFZX,{
+      openid:'1213107386'
+    },'POST').then(res=>{
+      console.log(res)
+      if (res.code =='S_Ok'){
+        res.data = res.data.reverse()
+        that.setData({
+          allQuestion:res.data
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '服务器出错，请稍后再试~',
+          success(){
+            wx.switchTab({
+              url: '/pages/my/my',
+            })
+          }
+        })
+      }
+    })
   },
   getData(e) {
     console.log(e)
@@ -75,9 +96,10 @@ Page({
     console.log(e.currentTarget.dataset)
     let orderstatus = e.currentTarget.dataset.orderstatus
     let look = e.currentTarget.dataset.look
+    let id = e.currentTarget.dataset.id
     if(orderstatus==1||(orderstatus==0&&look)){ // 跳转到解疑答惑页面
       wx.navigateTo({
-        url: '/pages/customer/questionDetail/questionDetail',
+        url: '/pages/customer/questionDetail/questionDetail?id='+id,
       })
     }
   }

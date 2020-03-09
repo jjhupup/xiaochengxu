@@ -111,7 +111,7 @@ Page({
             console.log('提交数据', contentStr, Api)
             utils.request(Api.Publish,{
               c_openid:'1213107386',
-              topic:that.data.index,
+              topic:that.data.index*1,
               content:contentStr
             },"POST").then(res=>{
               console.log(res)

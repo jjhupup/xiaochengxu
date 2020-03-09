@@ -53,6 +53,17 @@ Page({
       that.setData({
         Allquestion:res.data
       })
+    }).catch(rej => {
+      console.log(rej)
+      wx.showModal({
+        title: '提示',
+        content: '服务器出错，请稍后再试',
+        success(comfin){
+          wx.switchTab({
+            url: '/pages/index/index',
+          })
+        }
+      })
     })
   },
 

@@ -5,7 +5,7 @@
 <view wx:if="{{key==0}}">
   <view class="questionList">
     <view class="listLeft">
-      <text>朋友在疫情期间高价售卖口罩，请问这会被判刑嘛...</text>
+      <text>朋友在疫情期间高价售卖口罩，请问这会被判刑嘛朋友在疫情期间高价售卖口罩</text>
     </view>
     <view class="listRight">
       <text>民事代理</text>

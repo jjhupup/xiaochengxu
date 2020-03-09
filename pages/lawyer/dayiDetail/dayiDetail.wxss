@@ -1,47 +1,163 @@
 /* pages/lawyer/dayiDetail/dayiDetail.wxss */
-.conten{
+
+.conten {
   padding: 10px;
   position: relative;
-  margin-bottom: 50rpx;
+  margin-bottom: 16rpx;
 }
-.question{
+
+.question {
   text-indent: 32rpx;
   font-size: 32rpx;
 }
-.creatdate{
-  position: absolute;
-  bottom: -24rpx;
+
+.creatdate {
+  text-align: right;
+  margin-top: 8px;
   right: 16rpx;
   font-size: 30rpx;
 }
-.answerList{
+
+.answerList {
   border-top: 1px solid #ccc;
 }
-.answer{
+
+.answer {
   padding: 10px;
   border-bottom: 1px dotted #ccc;
 }
-.lsname{
+
+.lsname {
   display: flex;
   line-height: 50px;
 }
-.lsname text{
+
+.lsname text {
   margin-left: 12px;
 }
-.lsname image{
+
+.lsname image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-.lsname .date{
+
+.lsname .date {
   font-size: 28rpx;
   line-height: 52px;
 }
-.answerContent{
-  border: 1px solid #ccc;
-  padding: 10px 14px;
+
+.answerContent {
+  padding: 0px 14px;
   line-height: 20px;
   font-size: 14px;
   position: relative;
   margin-left: 50px;
+  margin-bottom: 12px;
+}
+
+.answerContent>text {
+}
+
+.tools {
+  float: right;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.tools image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.tools text {
+  margin-left: 3px;
+}
+
+.tools2 {
+  float: right;
+  margin-top: 5px;
+  font-size: 13px;
+}
+
+.tools2 image {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}
+
+.tools2 text {
+  margin-left: 3px;
+}
+
+.dialog-login {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 88;
+}
+
+.dialog-login .dialog-body {
+  width: 540rpx;
+  height: auto;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+  padding: 40rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.dialog-login .dialog-body .title {
+  width: 100%;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.dialog-login .dialog-body .content {
+  width: 100%;
+}
+
+.dialog-login .dialog-body button {
+  margin-top: 30rpx;
+}
+
+.tjComment {
+  width: 90%;
+  height: 36px;
+  margin: 0px auto;
+  color: #fff;
+  background-color: #0057ff;
+  border: 1px solid #46a5d8;
+  text-align: center;
+  line-height: 36px;
+  font-size: 15px;
+  letter-spacing: 4px;
+  border-radius: 6px;
+}
+
+.questionInp2 {
+  width: 90%;
+  margin: auto;
+  background-color: #f9f9f9;
+  padding: 10px 0;
+  border: 1px solid #0057ff;
+  text-indent: 8px;
+  margin-bottom: 12px;
+}
+
+.recomment {
+  margin-top: 6px;
+  width: 80%;
+  float: right;
+  border-top: 1px dashed #ccc;
+}
+.usertop>text:nth-child(1){
+  margin-right: 10px;
 }

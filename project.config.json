@@ -24,7 +24,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.10.1",
-	"appid": "wxf5f4627be4912f6d",
+	"appid": "wxf25ec7849576cefb",
 	"projectname": "LawApp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -72,27 +72,6 @@
 				},
 				{
 					"id": -1,
-					"name": "文书订单detail",
-					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "客户文书",
-					"pathName": "pages/customer/mywenshu/mywenshu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "服务中",
-					"pathName": "pages/lawyer/offerDetail/offerDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
 					"name": "律师看到的答疑解惑",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
 					"query": "",
@@ -106,24 +85,17 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 10,
+					"name": "pages/lawyer/dayiDetail/dayiDetail",
+					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": 5,
 					"name": "questionDetail",
 					"pathName": "pages/customer/questionDetail/questionDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "dayi",
-					"pathName": "pages/lawyer/dayi/dayi",
-					"query": "title=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "mydayi",
-					"pathName": "pages/lawyer/mydayi/mydayi",
-					"query": "",
+					"query": "id=2",
 					"scene": null
 				}
 			]

@@ -25,7 +25,7 @@ function request(url, data = {}, method = "GET") {
       data: data,
       method: method,
       header: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'X-Nideshop-Token': wx.getStorageSync('token')
       },
       success: function(res) {
@@ -76,29 +76,29 @@ function request(url, data = {}, method = "GET") {
     })
   });
 }
-  // 微信登录获取code
-  function login(){
-    return new Promise(function (resolve, reject) {
-      wx.login({
-        success: function (res) {
-          console.log(res)
-          if (res.code) {
-            resolve(res.code);
-          } else {
-            reject(res);
-          }
-        },
-        fail: function (err) {
-          reject(err);
+// 微信登录获取code
+function login() {
+  return new Promise(function(resolve, reject) {
+    wx.login({
+      success: function(res) {
+        console.log(res)
+        if (res.code) {
+          resolve(res.code);
+        } else {
+          reject(res);
         }
-      });
+      },
+      fail: function(err) {
+        reject(err);
+      }
     });
-  }
+  });
+}
 
 /**
  * 封装微信的的showModal api
  */
-function showModal(){
+function showModal() {
   wx.showModal({
     title: '提示',
     content: '是否提交问题？',
@@ -112,7 +112,25 @@ function showModal(){
     }
   })
 }
+
+function switchTimeFormat(time) {
+  const dateTime = new Date(time)
+  const year = dateTime.getFullYear()
+  const month = dateTime.getMonth() + 1
+  const date = dateTime.getDate()
+  const hour = dateTime.getHours()
+  const minute = dateTime.getMinutes()
+  const second = dateTime.getSeconds()
+  console.log(year,month,date,hour,minute,second)
+  return (year + '-' + addZero(month) + '-' + addZero(date) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second))
+}
+
+function addZero(v) {
+  return v < 10 ? '0' + v : v
+}
+
 module.exports = {
+  switchTimeFormat,
   formatTime,
   request,
   showModal,

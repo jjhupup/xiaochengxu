@@ -1,4 +1,5 @@
 // pages/lawyer/offerDetail/offerDetail.js
+// 案件委托的详细内容
 Page({
 
   /**

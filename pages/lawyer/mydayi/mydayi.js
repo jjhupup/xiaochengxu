@@ -63,5 +63,10 @@ Page({
     this.setData({
       key: e.currentTarget.dataset.index
     })
+  },
+  lookDetail(e){
+    wx.navigateTo({
+      url: '/pages/lawyer/dayiDetail/dayiDetail',
+    })
   }
 })
