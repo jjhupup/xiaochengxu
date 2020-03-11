@@ -2,45 +2,72 @@
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <!-- <text>pages/lawyer/dayiDetail/dayiDetail.wxml</text> -->
 <view class="conten clearfix">
-  <view class="title1">免费咨询</view>
-  <view class="question">
+  <text class="title">{{questionType[questionData.topic]}}</text>
+  <view class="questionTitle">
+    {{questionData.title||'这是一个标题！'}}
+  </view>
+  <view class="creatdate">发布时间： {{questionData.create_time}}</view>
+  <view class="questionContent">
     {{questionData.content}}
   </view>
-  <view class="creatdate">{{questionData.create_time}}</view>
   <view class="tools" data-pid="0" bindtap="openComment">
     <image src="/static/images/comment.png" />
     <text>回复</text>
   </view>
 </view>
-<view class="dialog-login " wx:if="{{isShowComment}}" bindtap="closeComment">
+<view class="dialog-login " wx:if="{{isShowComment}}">
   <view class="dialog-body" catchtap='onDialogBody'>
-    <textarea class="questionInp2" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" auto-height />
-    <view class="tjComment" bindtap="subQuestion">提交回答</view>
+    <view class="topTool">
+      <image bindtap="closeComment" src="/static/images/close2.png" />
+      <view bindtap="subQuestion">发布</view>
+    </view>
+    <textarea class="questionInp2" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" />
+    <!-- <view class="tjComment" >提交回答</view> -->
   </view>
 </view>
 
 <view class="answerList">
-  <view class="titleMini">律师解答</view>
+  <view class="titleMini ">律师解答</view>
   <view class="answer clearfix" wx:for="{{questionData.replies}}">
     <view class="lsname">
       <image src="https://wx.qlogo.cn/mmopen/vi_32/AAUCluXUZkSibUCOAkZxSSX4RCv6M7qm2ibxMZ72CHibqgw2CKpRMDryNY5wKz9Yrp2ZNxuOKnTCzxjOD0Rb35TjA/132" />
       <text>{{item.from_name}}</text>
       <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
     </view>
-    <view class="answerContent">
+    <view class="answerContent clearfix">
       <text>{{item.content}}</text>
       <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
         <image src="/static/images/comment.png" />
         <text>回复</text>
       </view>
     </view>
-
     <view class="recomment" wx:for="{{item.children}}">
       <view class="usertop">
-        <text>{{item.from_name}}</text>
+        <image src="/static/images/default_avatar.png" />
+        <text class="username">{{item.from_name}}</text>
         <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
       </view>
-      <view>{{item.content}}</view>
+      <view class="pd10 ml30">{{item.content}}</view>
+      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+        <image src="/static/images/comment.png" />
+        <text>回复</text>
+      </view>
+      <view class="recomment2" wx:for="{{item.children}}">
+        <view class="usertop">
+          <image src="/static/images/default_avatar.png" />
+          <text class="username">{{item.from_name}}</text>
+          <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+        </view>
+        <view class="pd10 ml30">{{item.content}}</view>
+        <view class="recomment2" wx:for="{{item.children}}">
+          <view class="usertop">
+            <image src="/static/images/default_avatar.png" />
+            <text class="username">{{item.from_name}}</text>
+            <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+          </view>
+          <view class="pd10 ml30">{{item.content}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

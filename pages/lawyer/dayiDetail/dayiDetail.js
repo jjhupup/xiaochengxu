@@ -8,10 +8,12 @@ Page({
    */
   data: {
     answer: '',
+    questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     id: '',
     pid: 0,
     questionData: [],
-    isShowComment: false
+    isShowComment: false,
+    canreply: true
   },
 
   /**
@@ -24,7 +26,7 @@ Page({
     that.setData({
       id: id
     })
-   getComment(id)
+    that.getComment(id)
   },
 
   getComment(id) {
@@ -34,7 +36,7 @@ Page({
     }, "POST").then(res => {
       console.log(res)
       res.data.create_time = utils.switchTimeFormat(res.data.create_time)
-      res.data.replies=that.treeData(res.data.replies)
+      res.data.replies = that.treeData(res.data.replies)
       // res.data.replies = res.data.replies.reverse()
       that.setData({
         questionData: res.data
@@ -104,26 +106,43 @@ Page({
           icon: 'none'
         })
       } else {
-        utils.request(Api.Reply, {
-          advice_id: that.data.questionData.id,
-          pid: that.data.pid,
-          content: that.data.answer,
-          from_openid: '110119',
-          from_name: '辉少',
-          to_openid: '13268720081',
-          to_name: 'c'
-        }, 'POST').then(res => {
-          console.log(res)
-          if (res.code = "S_Ok") {
-            that.setData({
-              isShowComment: false
-            })
-            wx.showToast({
-              title: '回复成功！',
-            })
-            that.getComment(that.data.id)
-          }
-        })
+        if (that.data.canreply) {
+          that.setData({
+            canreply: false
+          })
+          utils.request(Api.Reply, {
+            advice_id: that.data.questionData.id,
+            pid: that.data.pid,
+            content: that.data.answer,
+            from_openid: '123456',
+            from_name: '江少',
+            to_openid: '13268720081',
+            to_name: 'c'
+          }, 'POST').then(res => {
+            console.log(res)
+            setTimeout(()=>{
+              that.setData({
+                canreply: true
+              })
+            },300)
+            if (res.code = "S_Ok") {
+              if (res.error) {
+                wx.showToast({
+                  title: '暂不支持回复表情!',
+                  icon: 'none'
+                })
+              } else {
+                that.setData({
+                  isShowComment: false
+                })
+                wx.showToast({
+                  title: '回复成功！',
+                })
+                that.getComment(that.data.id)
+              }
+            }
+          })
+        }
       }
 
     }, 150)
@@ -147,12 +166,12 @@ Page({
   // 阻止冒泡
   onDialogBody() {},
   // 评论树状结构
-  treeData(data){
-      let cloneData = JSON.parse(JSON.stringify(data))
-      return cloneData.filter(father => {
-        let branchArr = cloneData.filter(child => father.id === child.pid)
-        branchArr.length > 0 ? father.children = branchArr : ''
-        return father.pid === 0 || father.pid === null;
-      })
+  treeData(data) {
+    let cloneData = JSON.parse(JSON.stringify(data))
+    return cloneData.filter(father => {
+      let branchArr = cloneData.filter(child => father.id === child.pid)
+      branchArr.length > 0 ? father.children = branchArr : ''
+      return father.pid === 0 || father.pid === null;
+    })
   }
 })

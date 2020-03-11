@@ -14,40 +14,35 @@ Page({
     userImage: '/static/images/userImage.jpg',
     datalist:[
       {
+        img_url: '/static/images/xinxi.png',
+        text: '信息中心'
+      },
+      {
         img_url:'/static/images/zixun.png',
         page_url:'/pages/customer/myquestion/myquestion',
         text:'我的咨询'
       },
       {
-        img_url: '/static/images/wenshu.png',
+        img_url: '/static/images/wenshuDA.png',
         page_url:'/pages/customer/mywenshu/mywenshu',
         text: '我的文书'
       },
       {
-        img_url: '/static/images/anjian.png',
-        page_url:'/pages/customer/',
+        img_url: '/static/images/ajweituo.png',
+        page_url: '',
         text: '我的案件'
       },
       {
-        img_url: '/static/images/xinxi.png',
-        text: '信息中心'
-      },
-      {
-        img_url: '/static/images/guwen2.png',
+        img_url: '/static/images/guwenWT.png',
         text: '我的顾问'
       },
       {
-        img_url: '/static/images/xiugai.png',
+        img_url: '/static/images/xiugai22.png',
         page_url:'/pages/userdata/userdata',
         text: '修改个人信息'
       }
     ],
     lawyerlist:[
-      {
-        img_url: '/static/images/xiugai.png',
-        page_url:'/pages/userdata/userdata',
-        text: '修改个人信息'
-      },
       {
         img_url: '/static/images/xinxi.png',
         page_url:'/pages/news/news',
@@ -55,13 +50,45 @@ Page({
       },
       {
         img_url:'/static/images/jieyi.png',
-        page_url:'/pages/lawyer/mydayi/mydayi?openid=121317386',
+        page_url:'/pages/lawyer/mydayi/mydayi?openid=110119',
         text:'解疑答惑'
       },
       {
-        img_url: '/static/images/anjian.png',
+        img_url: '/static/images/wenshuDA.png',
+        page_url: '/pages/lawyer/myWenShu/myWenShu?openid=110119',
+        text: '文书委托'
+      },
+      {
+        img_url: '/static/images/ajweituo.png',
+        page_url: '/pages/lawyer/AJweituo/AJweituo?openid=110119',
+        text: '案件委托'
+      },
+      {
+        img_url: '/static/images/guwenWT.png',
         page_url:'/pages/lawyer/lawyerOrder/lawyerOrder',
-        text: '我的订单'
+        text: '顾问委托'
+      },
+      {
+        img_url: '/static/images/xiugai22.png',
+        page_url: '/pages/userdata/userdata',
+        text: '修改个人信息'
+      }
+    ],
+    yijian:[
+      {
+        img_url: '/static/images/icon_feed_back.png',
+        page_url: '',
+        text: '意见反馈'
+      },
+      {
+        img_url: '/static/images/settings.png',
+        page_url: '',
+        text: '设置'
+      },
+      {
+        img_url: '/static/images/qrcode.png',
+        page_url: '',
+        text: '小程序二维码'
       }
     ],
     showStatusDialog:false,
@@ -151,6 +178,7 @@ Page({
   },
   // 微信登录，同时记录用户信息
   onWechatLogin(e) {
+    let that=this
     console.log(111, e)
     if (e.detail.errMsg !== 'getUserInfo:ok') {
       if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
@@ -162,21 +190,22 @@ Page({
       return false
     } else {
       // 设置用户信息,并发送用户信息和用户身份信息到后台，
-      this.setData({
+      that.setData({
         userInfo: e.detail.userInfo,
         userImage: e.detail.userInfo.avatarUrl,
         userName: e.detail.userInfo.nickName,
         showLoginDialog: false
       });
       wx.navigateTo({
-        url: this.data.gotoUrl
+        url: that.data.gotoUrl
       })
       console.log(wx.getStorageSync('status'))
       wx.setStorageSync('userInfo', JSON.stringify(e.detail.userInfo));
       utils.login()
       .then(res=>{
         utils.request(Api.GetOpenId,{
-          js_code:res
+          js_code:res,
+          userInfo:that.data.userInfo
         },'GET').then(res=>{
           console.log(res)
         })

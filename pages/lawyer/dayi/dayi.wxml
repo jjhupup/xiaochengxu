@@ -2,14 +2,36 @@
 <!-- <text>pages/lawyer/dayi/dayi.wxml</text> -->
 
 <view>
-  <view class="questionList" wx:for="{{Allquestion}}" wx:key="{{index}}">
+  <!-- <view class="questionList" wx:for="{{Allquestion}}" bindtap="lookDetail" data-questionId="{{item.id}}" wx:key="{{index}}">
     <view class="listTop">
-      <text>{{ordertype==0?'免费':'有酬'}}</text>
-      <text>{{item.content}}</text>
+      <text>咨询类型：</text>
+      <text>{{questionType[item.topic]}}</text>
     </view>
     <view class="listBottom">
-      <text>{{questionType[item.topic]}}</text>
-      <text bindtap="lookDetail" data-questionId="{{item.id}}">{{btnTxt}}</text>
+      <view class="conetnt">{{item.content}}</view>
+      <view class="number">{{item.replies.length}}回答</view>
+    </view>
+  </view> -->
+  <view class='item card' wx:for="{{Allquestion}}" hover-class='hover-class' data-questionId="{{item.id}}" catchtap='lookDetail'>
+    <view class='header'>
+      <view class='name' data-item='{{item}}' >
+        <image class='avatar' mode='aspectFill' src='{{item.user.avatarLarge || "/static/images/default_avatar.png"}}' />
+        <view>{{item.username||'某个吉尔'}}</view>
+      </view>
+      <view class='type'>{{questionType[item.topic]}}</view>
+    </view>
+    <view class='content'>
+      <view class='text'>
+        <view class='title'>{{item.title||'这是一个标题'}}</view>
+        <view class='desc'>{{item.content}}</view>
+      </view>
+      <image mode='aspectFill' class='img' src='{{item.screenshot}}' wx:if='{{item.screenshot}}'></image>
+    </view>
+    <view class='footer'>
+      <view class='label'>
+        <image src='/static/images/comment.png'></image>
+        <view class="number">{{item.replies.length}}回答</view>
+      </view>
     </view>
   </view>
 </view>

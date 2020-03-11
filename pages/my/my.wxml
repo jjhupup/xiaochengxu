@@ -7,25 +7,27 @@
     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
   </view>
   <view class="myAbility">
-    <view class="title1">我的功能</view>
     <view class="list" wx:if="{{status=='0'}}" >
       <view class="allList" wx:for="{{datalist}}" bindtap="gopage" data-url="{{item.page_url}}">
-        <image class="img1" src="{{item.img_url}}" />
-        <view class="text">{{item.text}}</view>
-        <text class="num" wx:if="{{index==3}}">99</text>
-        <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" />
-      </view>
-    </view>
-    <view class="list" wx:if="{{status=='1'}}">
-      <view class="allList" wx:for="{{lawyerlist}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>
         <!-- <text class="num" wx:if="{{index==3}}">99</text>
         <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" /> -->
       </view>
     </view>
+    <view class="list" wx:if="{{status=='1'}}">
+      <view class="allList" wx:for="{{lawyerlist}}" bindtap="gopage" data-url="{{item.page_url}}">
+        <image class="img1" src="{{item.img_url}}" />
+        <view class="text">{{item.text}}</view>
+      </view>
+    </view>
   </view>
-
+  <view class="order">
+     <view class="allList" wx:for="{{yijian}}" bindtap="gopage" data-url="{{item.page_url}}">
+        <image class="img1" src="{{item.img_url}}" />
+        <view class="text">{{item.text}}</view>
+      </view>
+  </view>
 </view>
 <view class='dialog-status' wx:if="{{showStatusDialog}}">
   <view class='dialog-body' catchtap='onDialogBody'>

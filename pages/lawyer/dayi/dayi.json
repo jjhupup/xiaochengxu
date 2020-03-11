@@ -1,3 +1,4 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "postItemTwo": "/components/postItemTwo/postItemTwo"
 }

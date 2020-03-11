@@ -1,4 +1,6 @@
 // pages/lawyer/mydayi/mydayi.js
+const utils = require('../../../utils/util.js')
+const Api = require('../../../config/api.js')
 Page({
 
   /**
@@ -6,65 +8,61 @@ Page({
    */
   data: {
     NavArr: ['服务中', '已结束'],
-    key:0
+    questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
+    key: 0,
+    openid: 0,
+    questionArr:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onLoad: function(options) {
+    console.log(options.openid)
+    this.setData({
+      openid: options.openid
+    })
+    this.getQuestionData(options.openid)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  getQuestionData(id) {
+    let that=this
+    utils.request(Api.GetLawyerQuestion, {
+      openid: id
+    }, 'POST').then(res => {
+      console.log(res)
+      that.setData({
+        questionArr:res.data
+      })
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   getData(e) {
     console.log(e)
     this.setData({
       key: e.currentTarget.dataset.index
     })
   },
-  lookDetail(e){
+  lookDetail(e) {
     wx.navigateTo({
       url: '/pages/lawyer/dayiDetail/dayiDetail',
     })

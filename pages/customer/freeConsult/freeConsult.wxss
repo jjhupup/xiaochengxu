@@ -1,31 +1,45 @@
 /* pages/freeConsult/freeConsult.wxss */
 
+page{
+  padding: 10px 16px;
+
+}
 .topBar {
   width: 100%;
   display: flex;
   margin-top: 20px;
 }
 
-.picker {
-  display: flex;
-  padding: 10px 16px;
-}
+
 
 .pickerLeft {
   height: 36px;
   line-height: 36px;
   font-size: 18px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.pickerLeft::after {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 9px;
+  width: 3px;
+  height: 54%;
+  background-color: #404040;
 }
 
 .pickerRight {
-  width: 150px;
+  width: 100%;
   line-height: 36px;
   height: 36px;
   text-indent: 14px;
-  border: 1px solid #0057ff;
+  border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
   color: #1e1e1e;
+  margin-top: 10px;
 }
 
 .pickerRight image {
@@ -35,4 +49,10 @@
   right: 4px;
   top: 4px;
 }
+.title{
+  width: 90%;
+height: 70px;
+margin: auto;
+border: 1px solid #ccc;
 
+}

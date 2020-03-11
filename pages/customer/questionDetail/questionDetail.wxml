@@ -25,6 +25,28 @@
         <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
       </view>
       <view>{{item.content}}</view>
+      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+        <image src="/static/images/comment.png" />
+        <text>回复</text>
+      </view>
+      <view class="recomment2" wx:for="{{item.children}}">
+        <view class="usertop">
+          <text>{{item.from_name}}</text>
+          <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+        </view>
+        <view>{{item.content}}</view>
+        <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+          <image src="/static/images/comment.png" />
+          <text>回复</text>
+        </view>
+        <view class="recomment2" wx:for="{{item.children}}">
+          <view class="usertop">
+            <text>{{item.from_name}}</text>
+            <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+          </view>
+          <view>{{item.content}}</view>
+        </view>
+      </view>
     </view>
   </view>
 </view>

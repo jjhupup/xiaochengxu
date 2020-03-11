@@ -118,11 +118,11 @@ function switchTimeFormat(time) {
   const year = dateTime.getFullYear()
   const month = dateTime.getMonth() + 1
   const date = dateTime.getDate()
-  const hour = dateTime.getHours()
-  const minute = dateTime.getMinutes()
-  const second = dateTime.getSeconds()
-  console.log(year,month,date,hour,minute,second)
-  return (year + '-' + addZero(month) + '-' + addZero(date) + ' ' + addZero(hour) + ':' + addZero(minute) + ':' + addZero(second))
+  // const hour = dateTime.getHours()
+  // const minute = dateTime.getMinutes()
+  // const second = dateTime.getSeconds()
+  // console.log(year,month,date,hour,minute,second)
+  return (year + '年' + addZero(month) + '月' + addZero(date) + '日')
 }
 
 function addZero(v) {

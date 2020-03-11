@@ -110,11 +110,24 @@ Page({
           }else {
             console.log('提交数据', contentStr, Api)
             utils.request(Api.Publish,{
-              c_openid:'1213107386',
+              c_openid:'13268720081',
               topic:that.data.index*1,
               content:contentStr
             },"POST").then(res=>{
               console.log(res)
+              if (res.code =='S_Ok'){
+                wx.showToast({
+                  title: '询问提交成功',
+                })
+                setTimeout(()=>{
+                  wx.navigateBack()
+                },800)
+              }else{
+                wx.showToast({
+                  title: res.msg,
+                  icon:'none'
+                })
+              }
             })
           }
 

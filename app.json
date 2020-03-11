@@ -21,7 +21,9 @@
     "pages/customer/wenshuDetail/wenshuDetail",
     "pages/lawyer/offerDetail/offerDetail",
     "pages/customer/questionDetail/questionDetail",
-    "pages/lawyer/mydayi/mydayi"
+    "pages/lawyer/mydayi/mydayi",
+    "pages/lawyer/myWenShu/myWenShu",
+    "pages/lawyer/AJweituo/AJweituo"
   ],
   "window": {
     "backgroundTextStyle": "light",

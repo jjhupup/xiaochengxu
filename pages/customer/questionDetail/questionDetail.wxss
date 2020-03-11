@@ -147,6 +147,12 @@
   float: right;
   border-top: 1px dashed #ccc;
 }
+.recomment2{
+  margin-top: 5px;
+  width: 88%;
+  border-top: 1px dashed #ccc;
+  float: right;
+}
 .usertop>text:nth-child(1){
   margin-right: 10px;
 }

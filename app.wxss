@@ -86,6 +86,9 @@
 .pd10{
   padding: 10px;
 }
+.ml30{
+  margin-left: 30px;
+}
 .noShow{
   display: none;
 }

@@ -71,10 +71,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "律师看到的答疑解惑",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "",
+					"query": "id=1",
 					"scene": null
 				},
 				{
@@ -85,7 +85,7 @@
 					"scene": null
 				},
 				{
-					"id": 10,
+					"id": 4,
 					"name": "pages/lawyer/dayiDetail/dayiDetail",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
 					"query": "id=2",
@@ -96,6 +96,34 @@
 					"name": "questionDetail",
 					"pathName": "pages/customer/questionDetail/questionDetail",
 					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "/questionDetail",
+					"pathName": "pages/customer/questionDetail/questionDetail",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "律师答疑",
+					"pathName": "pages/lawyer/mydayi/mydayi",
+					"query": "openid=110119",
+					"scene": null
+				},
+				{
+					"id": 8,
+					"name": "答疑解惑",
+					"pathName": "pages/lawyer/dayi/dayi",
+					"query": "title=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/freeConsult/freeConsult",
+					"pathName": "pages/customer/freeConsult/freeConsult",
+					"query": "openid=110119",
 					"scene": null
 				}
 			]

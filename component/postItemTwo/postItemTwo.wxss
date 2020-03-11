@@ -1,67 +1,3 @@
-/* pages/lawyer/dayi/dayi.wxss */
-
-page {
-  background-color: #fff;
-}
-
-.questionList {
-  width: 95%;
-  background-color: #fff;
-  margin: auto;
-  height: 200rpx;
-  border-bottom: 1px dotted #ccc;
-}
-
-.questionList .listTop {
-  height: 25%;
-  display: flex;
-  padding-top: 30rpx;
-  font-family: PingFangSC-regular;
-}
-
-.listTop text:nth-child(1) {
-  color: #999;
-  font-size: 13px;
-}
-
-.listTop text:nth-child(2) {
-  padding-left: 16rpx;
-  height: 40rpx;
-  line-height: 40rpx;
-  flex: 1;
-  font-size: 28rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.listTop text:nth-child(3) {
-  float: right;
-  height: 40rpx;
-  line-height: 40rpx;
-  font-size: 28rpx;
-  color: #0059ff;
-}
-
-.listBottom {
-  height: 40%;
-}
-
-.conetnt {
-  font-size: 18px;
-  color: #000;
-  line-height: 53rpx;
-  height: 74rpx;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.number {
-  color: #797979;
-  font-size: 13px;
-}
-/* adsfsadgasdgasdg */
 .content .title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -128,7 +64,6 @@ page {
   width: 30rpx;
   height: 30rpx;
   margin-right: 8rpx;
-  margin-top: 3px;
 }
 .footer {
   display: flex;

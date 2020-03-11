@@ -3,12 +3,12 @@
   <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
 <view wx:if="{{key==0}}">
-  <view class="questionList">
+  <view class="questionList" wx:for="{{questionArr}}">
     <view class="listLeft">
-      <text>朋友在疫情期间高价售卖口罩，请问这会被判刑嘛朋友在疫情期间高价售卖口罩</text>
+      <text>{{item.content}}</text>
     </view>
     <view class="listRight">
-      <text>民事代理</text>
+      <text>{{questionType[item.topic]}}</text>
       <text bindtap="lookDetail">继续解答</text>
     </view>
   </view>
