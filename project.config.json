@@ -10,6 +10,7 @@
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
+		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -65,65 +66,44 @@
 				},
 				{
 					"id": -1,
-					"name": "我的订单",
-					"pathName": "pages/lawyer/lawyerOrder/lawyerOrder",
+					"name": "pages/customer/freeConsult/freeConsult",
+					"pathName": "pages/customer/freeConsult/freeConsult",
 					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "律师看到的答疑解惑",
-					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "id=1",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "我的咨询",
-					"pathName": "pages/customer/myquestion/myquestion",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 4,
 					"name": "pages/lawyer/dayiDetail/dayiDetail",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
 					"query": "id=2",
 					"scene": null
 				},
 				{
-					"id": 5,
-					"name": "questionDetail",
-					"pathName": "pages/customer/questionDetail/questionDetail",
-					"query": "id=2",
-					"scene": null
-				},
-				{
 					"id": -1,
-					"name": "/questionDetail",
-					"pathName": "pages/customer/questionDetail/questionDetail",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "律师答疑",
+					"name": "pages/lawyer/mydayi/mydayi",
 					"pathName": "pages/lawyer/mydayi/mydayi",
-					"query": "openid=110119",
-					"scene": null
-				},
-				{
-					"id": 8,
-					"name": "答疑解惑",
-					"pathName": "pages/lawyer/dayi/dayi",
-					"query": "title=0",
+					"query": "id=2",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "pages/customer/freeConsult/freeConsult",
-					"pathName": "pages/customer/freeConsult/freeConsult",
-					"query": "openid=110119",
+					"name": "修改信息",
+					"pathName": "pages/userdata/userdata",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "文书起草",
+					"pathName": "pages/customer/document/document",
+					"query": "order_type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/myquestion/myquestion",
+					"pathName": "pages/customer/myquestion/myquestion",
+					"query": "id=2",
 					"scene": null
 				}
 			]

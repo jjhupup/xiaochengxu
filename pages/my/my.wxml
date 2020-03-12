@@ -7,7 +7,7 @@
     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
   </view>
   <view class="myAbility">
-    <view class="list" wx:if="{{status=='0'}}" >
+    <view class="list" wx:if="{{role=='1'}}" >
       <view class="allList" wx:for="{{datalist}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>
@@ -15,7 +15,7 @@
         <image class="img2" src="/static/images/tishi.png" wx:if="{{index==3}}" /> -->
       </view>
     </view>
-    <view class="list" wx:if="{{status=='1'}}">
+    <view class="list" wx:if="{{role=='2'}}">
       <view class="allList" wx:for="{{lawyerlist}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>

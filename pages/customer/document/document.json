@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "Header":"/component/head/head"
-  }
+  },
+  "navigationBarTitleText": "文书起草"
 }

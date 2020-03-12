@@ -9,11 +9,12 @@ Page({
   data: {
     answer: '',
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
-    id: '',
+    advice_id: '',
     pid: 0,
     questionData: [],
     isShowComment: false,
-    canreply: true
+    canreply: true,
+    userInfo: {}
   },
 
   /**
@@ -21,25 +22,27 @@ Page({
    */
   onLoad: function(options) {
     console.log(options)
-    let id = options.id
+    let advice_id = options.id
     let that = this
     that.setData({
-      id: id
+      advice_id: advice_id,
+      userInfo: wx.getStorageSync('userInfo')
     })
-    that.getComment(id)
+    that.getComment(advice_id)
   },
 
-  getComment(id) {
+  getComment(advice_id) {
     let that = this
     utils.request(Api.GetDetailQuestion, {
-      id
+      advice_id
     }, "POST").then(res => {
       console.log(res)
       res.data.create_time = utils.switchTimeFormat(res.data.create_time)
       res.data.replies = that.treeData(res.data.replies)
       // res.data.replies = res.data.replies.reverse()
       that.setData({
-        questionData: res.data
+        questionData: res.data,
+        advicer: res.data.advicer
       })
       console.log(res.data)
     }).catch(rej => {
@@ -114,17 +117,17 @@ Page({
             advice_id: that.data.questionData.id,
             pid: that.data.pid,
             content: that.data.answer,
-            from_openid: '123456',
-            from_name: '江少',
-            to_openid: '13268720081',
-            to_name: 'c'
+            from_openid: wx.getStorageSync('openid'), //当前评论人的openid
+            from_name: that.data.userInfo.nickName, //当前评论人的name
+            to_openid: that.data.advicer.openid, //发布咨询者的openid
+            to_name: that.data.advicer.nick_name //发布咨询者的name
           }, 'POST').then(res => {
             console.log(res)
-            setTimeout(()=>{
+            setTimeout(() => {
               that.setData({
                 canreply: true
               })
-            },300)
+            }, 300)
             if (res.code = "S_Ok") {
               if (res.error) {
                 wx.showToast({
@@ -138,9 +141,16 @@ Page({
                 wx.showToast({
                   title: '回复成功！',
                 })
-                that.getComment(that.data.id)
+                that.getComment(that.data.advice_id)
               }
             }
+          }).catch(rej => {
+            console.log(rej)
+            setTimeout(() => {
+              that.setData({
+                canreply: true
+              })
+            }, 300)
           })
         }
       }

@@ -2,21 +2,11 @@
 <!-- <text>pages/lawyer/dayi/dayi.wxml</text> -->
 
 <view>
-  <!-- <view class="questionList" wx:for="{{Allquestion}}" bindtap="lookDetail" data-questionId="{{item.id}}" wx:key="{{index}}">
-    <view class="listTop">
-      <text>咨询类型：</text>
-      <text>{{questionType[item.topic]}}</text>
-    </view>
-    <view class="listBottom">
-      <view class="conetnt">{{item.content}}</view>
-      <view class="number">{{item.replies.length}}回答</view>
-    </view>
-  </view> -->
   <view class='item card' wx:for="{{Allquestion}}" hover-class='hover-class' data-questionId="{{item.id}}" catchtap='lookDetail'>
     <view class='header'>
       <view class='name' data-item='{{item}}' >
-        <image class='avatar' mode='aspectFill' src='{{item.user.avatarLarge || "/static/images/default_avatar.png"}}' />
-        <view>{{item.username||'某个吉尔'}}</view>
+        <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
+        <view>{{item.advicer.nick_name||'某个吉尔'}}</view>
       </view>
       <view class='type'>{{questionType[item.topic]}}</view>
     </view>
@@ -33,5 +23,9 @@
         <view class="number">{{item.replies.length}}回答</view>
       </view>
     </view>
+  </view>
+  <view wx:if="{{Allquestion.length==0}}">
+
+  暂无数据~
   </view>
 </view>

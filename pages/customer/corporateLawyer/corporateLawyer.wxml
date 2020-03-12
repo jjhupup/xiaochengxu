@@ -1,6 +1,6 @@
 <!--pages/corporateLawyer/corporateLawyer.wxml-->
 <!-- <text>pages/corporateLawyer/corporateLawyer.wxml</text> -->
-<Header></Header>
+
 <view class="pd10">
   <view class="title1">个人信息</view>
   <view class="titleMini">您的姓名</view>
@@ -8,10 +8,10 @@
   <view class="titleMini">您的性别</view>
   <view class="genderchoose">
     <radio-group class="radio-group" bindchange="radioChange">
-      <radio class="radio" color="#0059ff" value="1" checked="true">
+      <radio class="radio" color="#24adf3" value="1" checked="true">
         <text>男士</text>
       </radio>
-      <radio class="radio" color="#0059ff" value="0">
+      <radio class="radio" color="#24adf3" value="0">
         <text>女士</text>
       </radio>
     </radio-group>
@@ -20,152 +20,71 @@
   <input confirm-type='next' class="nameinput" bindblur="getRealName" type="text" placeholder="请输入您所在单位的完整名称" />
   <view class="titleMini">您的单位性质</view>
   <view class="danwei">
-    <radio-group class="radio-group" bindchange="getdanweiVal">
-      <radio class="radio" color="#0059ff" value="0" checked="true">
-        <text>民营企业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="1">
-        <text>国有企业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="2">
-        <text>集体企业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="3">
-        <text>外资企业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="4">
-        <text>上市公司</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="5">
-        <text>事业单位</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="6">
-        <text>政府机关</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="7">
-        <text>其他性质</text>
-      </radio>
-    </radio-group>
+    <picker class="inputS" bindchange="getRegion" mode='selector' range="{{danweiType}}" value="{{wordTypeKey}}">
+      <view class="picker">
+        <view class="{{wordTypeKey==0?'color1':''}}"> {{danweiType[wordTypeKey]}}
+          <text>选择</text>
+        </view>
+      </view>
+    </picker>
   </view>
   <view class="titleMini">您的单位所属行业</view>
   <view class="hangye">
-    <radio-group class="radio-group" bindchange="getdanweiVal">
-      <radio class="radio" color="#0059ff" value="0" checked="true">
-        <text>金融行业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="1">
-        <text>保险行业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="2">
-        <text>期货行业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="3">
-        <text>医疗行业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="4">
-        <text>交通运输</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="5">
-        <text>矿产资源</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="6">
-        <text>基金行业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="7">
-        <text>房地产业</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="8">
-        <text>其他行业</text>
-      </radio>
-    </radio-group>
+    <picker class="inputS" bindchange="getRegion" mode='selector' range="{{profession}}" value="{{professionKey}}">
+      <view class="picker">
+        <view class="{{professionKey==0?'color1':''}}">{{profession[professionKey]}}
+          <text>选择</text>
+        </view>
+      </view>
+    </picker>
   </view>
-  <view class="title1">案件信息</view>
+  <view class="title1">顾问信息</view>
   <view class="titleMini">您需要的顾问类型</view>
   <view class="Gwleixing">
-    <radio-group class="radio-group" bindchange="getdanweiVal">
-      <radio class="radio" color="#0059ff" value="0" checked="true">
-        <text>常年法律顾问</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="1">
-        <text>新三板挂牌</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="2">
-        <text>公司上市</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="3">
-        <text>私募基金登记</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="4">
-        <text>基金设立</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="5">
-        <text>债券发行</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="6">
-        <text>股权激励</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="7">
-        <text>投融资</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="8">
-        <text>并购重组</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="9">
-        <text>破产重整</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="10">
-        <text>资产证券化</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="11">
-        <text>ppp</text>
-      </radio>
-      <radio class="radio" color="#0059ff" value="12">
-        <text>其他专项顾问</text>
-      </radio>
-    </radio-group>
+    <picker class="inputS" bindchange="getAdviser" mode='selector' range="{{adviserType}}" value="{{adviserKey}}">
+      <view class="picker">
+        <view class="{{adviserKey==0?'color1':''}}">{{adviserType[adviserKey]}}
+          <text>选择</text>
+        </view>
+      </view>
+    </picker>
   </view>
   <view class="titleMini">您希望找哪里的律师？</view>
   <picker class="inputS" bindchange="getRegion" mode='region' value="{{regionVal}}">
     <view class="picker">
-      <view>当前选择： {{regionVal[0]}}{{regionVal[1]}}{{regionVal[2]}}
-        <image src="/static/images/down.png " />
+      <view >当前选择： {{regionVal[0]}}{{regionVal[1]}}{{regionVal[2]}}
+        <text>选择</text>
       </view>
     </view>
   </picker>
   <view class="textTips">*当地律师提供顾问服务具有便捷性，建议您选择当地的律师；如您认为当地律师不能胜任您的要求，也可自由选择其他地区的律师，但异地律师会产生额外的差旅费</view>
-  <view class="titleMini">可承受的律师费最高价</view>
-  <view class="getmoney1">
-    <input class="inputS" type="number" bindblur="getZYmoney" />
-    <text>元</text>
-  </view>
-  <view class="textTips">*您可根据单位规模情况或项目复杂程度，参照市场价格并结合心理预期自行报价；您的报价并不是最终成交价，成交价一般低于您的报价；如某律师报价高于您的报价，平台将不向您匹配该律师。</view>
-  <view class="textTips">视顾问单位法律事项多少，较少建议5万元左右/年，一般建议10万元左右/年，较多建议15万元左右/年。</view>
   <view class="title1">顾问选择</view>
   <view class="titleMini">请设置响应时间要求</view>
   <radio-group class="radio-group" bindchange="radioChange">
-    <radio class="radio" color="#0059ff" value="8hour" checked="true">
+    <radio class="radio" color="#24adf3" value="8hour" checked="true">
       <text>8小时</text>
     </radio>
-    <radio class="radio" color="#0059ff" value="12hour">
+    <radio class="radio" color="#24adf3" value="12hour">
       <text>12小时</text>
     </radio>
-    <radio class="radio" color="#0059ff" value="24hour">
+    <radio class="radio" color="#24adf3" value="24hour">
       <text>24小时</text>
     </radio>
   </radio-group>
   <view class="titleMini">律师执业经验要求</view>
   <radio-group class="radio-group" bindchange="radioChange">
-    <radio class="radio" color="#0059ff" value="一年" checked="true">
+    <radio class="radio" color="#24adf3" value="一年" checked="true">
       <text>一年以上</text>
     </radio>
-    <radio class="radio" color="#0059ff" value="三年">
+    <radio class="radio" color="#24adf3" value="三年">
       <text>三年以上</text>
     </radio>
-    <radio class="radio" color="#0059ff" value="五年">
+    <radio class="radio" color="#24adf3" value="五年">
       <text>五年以上</text>
     </radio>
   </radio-group>
   <view class="titleMini">需求描述</view>
   <editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="(说明您的需求及特殊要求)" />
 </view>
-<view class="fiedls" >开始匹配律师</view>
+<view class="fiedls">开始匹配律师</view>
+<Header></Header>

@@ -12,7 +12,6 @@ page {
 .headBar view {
   width: 100%;
   font-size: 32rpx;
-  border: 1px solid #f0f0f0;
   box-sizing: border-box;
   height: 100rpx;
   text-align: center;
@@ -20,22 +19,24 @@ page {
 }
 
 .active {
-  color: #0059ff;
+  color: #43c1ad;
+  position: relative;
+}
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background-color: #43c1ad;
+  bottom: 0;
+  left: 20%;
 }
 
 .content {
   background-color: #fff;
   padding: 5px 10px;
   padding-bottom: 80px;
-}
-
-.nameinput {
-  border: 1px solid #0059ff;
-  background-color: #f9f9f9;
-  height: 40px;
-  padding-left: 10px;
-  width: 93%;
-  margin: 10px auto;
 }
 
 .picker {
@@ -61,7 +62,7 @@ page {
   left: 5%;
   border-radius: 6px;
   line-height: 45px;
-  background-color: #0059ff;
+  background-color: #46a5d8;
 }
 
 .upload {
@@ -69,9 +70,11 @@ page {
   margin: auto;
   width: 400rpx;
 }
-.uploadW{
+
+.uploadW {
   width: 100%;
 }
+
 .upload .addimg {
   height: 130rpx;
   width: 130rpx;

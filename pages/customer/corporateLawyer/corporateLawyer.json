@@ -1,5 +1,6 @@
 {
   "usingComponents": {
     "Header":"/component/head/head"
-  }
+  },
+  "navigationBarTitleText": "法律顾问"
 }

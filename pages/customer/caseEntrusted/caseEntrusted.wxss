@@ -4,22 +4,13 @@
   padding: 5px 10px;
 }
 
-.nameinput {
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  height: 40px;
-  padding-left: 10px;
-  width: 93%;
-  margin: 10px auto;
-}
-
 .anjian1 {
   width: 46%;
   height: 45px;
   text-indent: 5%;
   line-height: 42px;
   float: left;
-  border: 1px solid #0059ff;
+  border-bottom: 1px solid #ccc;
   box-sizing: border-box;
   margin: 4px 2%;
 }
@@ -29,24 +20,15 @@
   position: relative;
 }
 
-.picker image {
+.picker text {
   position: absolute;
-  height: 27px;
-  width: 23px;
-  right: 4px;
-  top: 9px;
-}
-
-.inputS {
-  width: 95%;
   height: 45px;
+  width: 42px;
+  right: 4px;
+  top: 0px;
+  color: #539ec7;
   line-height: 45px;
-  padding-left: 8px;
-  margin: auto;
-  border: 1px solid #0059ff;
 }
-
-
 
 .getmoney1 {
   position: relative;
@@ -64,7 +46,7 @@
   width: 58%;
   height: 45px;
   line-height: 45px;
-  border: 1px solid #0059ff;
+  border: 1px solid #ccc;
 }
 
 .pay {
@@ -75,14 +57,14 @@
   width: 40%;
   height: 45px;
   line-height: 45px;
-  background-color: #0059ff;
+  background-color: #46a5d8;
   border: 1px solid #7fc9ee;
   color: #fff;
   border-radius: 4px;
   margin-left: 2px;
   text-align: center;
 }
-   
+
 .kuang_weba {
   width: 90%;
   height: 45px;
@@ -91,5 +73,5 @@
   margin: 20px auto 40px;
   border-radius: 6px;
   line-height: 45px;
-  background-color: #0059ff;
+  background-color: #46a5d8;
 }

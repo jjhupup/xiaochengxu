@@ -1,16 +1,20 @@
 /* pages/customer/questionDetail/questionDetail.wxss */
-.content{
+
+.content {
   padding: 10px;
 }
-.questionTxt{
+
+.questionTxt {
   font-size: 32rpx;
 }
-.date{
+
+.date {
   text-align: right;
   font-size: 28rpx;
   color: #666;
   line-height: 66rpx;
 }
+
 .answer {
   padding: 10px;
   border-bottom: 1px dotted #ccc;
@@ -87,12 +91,12 @@
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.5);
-  z-index: 88;
+  z-index: 888;
 }
 
 .dialog-login .dialog-body {
-  width: 540rpx;
-  height: auto;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background: #fff;
   border-radius: 5px;
@@ -101,6 +105,25 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.topTool {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.topTool image {
+  height: 28px;
+  width: 28px;
+  padding: 5px;
+}
+
+.topTool view {
+  line-height: 34px;
+  margin-right: 8px;
+  color: #1d65f7;
 }
 
 .dialog-login .dialog-body .title {
@@ -133,10 +156,9 @@
 
 .questionInp2 {
   width: 90%;
+  height: 100%;
   margin: auto;
-  background-color: #f9f9f9;
   padding: 10px 0;
-  border: 1px solid #0057ff;
   text-indent: 8px;
   margin-bottom: 12px;
 }
@@ -147,12 +169,14 @@
   float: right;
   border-top: 1px dashed #ccc;
 }
-.recomment2{
+
+.recomment2 {
   margin-top: 5px;
   width: 88%;
   border-top: 1px dashed #ccc;
   float: right;
 }
-.usertop>text:nth-child(1){
+
+.usertop>text:nth-child(1) {
   margin-right: 10px;
 }

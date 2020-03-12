@@ -4,7 +4,7 @@
 </view>
 
 <view wx:if="{{key==0}}">
-  <view class="questionList" wx:for="{{allQuestion}}">
+  <!-- <view class="questionList" wx:for="{{allQuestion}}">
     <view class="listTop">
       <text>免费</text>
       <text>{{item.content}}</text>
@@ -13,6 +13,28 @@
     <view class="listBottom">
       <text>{{questionType[item.topic]}}</text>
       <text bindtap="lookDetail" data-id="{{item.id}}" data-orderStatus='{{item.status}}'>{{item.status==1?'服务中':'已结束'}}</text>
+    </view>
+  </view> -->
+  <view class='item card' wx:for="{{allQuestion}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+    <view class='header'>
+      <view class='name' data-item='{{item}}' >
+        <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
+        <view>{{item.advicer.nick_name||'某个吉尔'}}</view>
+      </view>
+      <view class='type'>{{questionType[item.topic]}}</view>
+    </view>
+    <view class='content'>
+      <view class='text'>
+        <view class='title'>{{item.title||'这是一个标题'}}</view>
+        <view class='desc'>{{item.content}}</view>
+      </view>
+      <image mode='aspectFill' class='img' src='{{item.screenshot}}' wx:if='{{item.screenshot}}'></image>
+    </view>
+    <view class='footer'>
+      <view class='label'>
+        <image src='/static/images/comment.png'></image>
+        <view class="number">{{item.replies.length}}回答</view>
+      </view>
     </view>
   </view>
 </view>

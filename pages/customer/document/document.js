@@ -1,4 +1,6 @@
 // pages/document/document.js
+const utils=require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
@@ -7,6 +9,7 @@ Page({
   data: {
     stage: ['代写诉状', '发律师函', '合同审核', '取保候审申请申诉', '再审申请书'],
     index1:0,
+    textType:'代写诉状',
     imgurl:[],
     tempFiles:[],
     swiperH:"126%"
@@ -29,7 +32,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.showShareMenu()
   },
 
   /**
@@ -74,7 +76,8 @@ Page({
   changeIndex(e) {
     console.log(e.detail.current)
     this.setData({
-      index1: e.detail.current
+      index1: e.detail.current,
+      textType: this.data.stage[e.detail.current]
     })
   },
   bindPickerChange(e){
@@ -150,6 +153,41 @@ Page({
       that.setData({
         swiperH: listHeight + 100 + 'px'
       })
+    })
+  },
+  subQuestion(e){
+    let that=this
+    console.log(e.detail.value)
+    let obj = e.detail.value
+    obj.description=obj.description.replace(/\s*/g, "");
+    if (obj.description==''||obj.description.length<10){
+      wx.showToast({
+        title: '请详细填写案件或文书要求描述~',
+        icon:'none',
+        duration:2000
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '请确认文书提交类型和相关证据的上传提交~',
+        confirmText:'确认提交',
+        success:(res=>{
+          if(res.confirm){ //确认了，提交数据
+            console.log(obj)
+            obj.textType=that.data.textType
+            that.publishOrder(obj)
+          }
+        })
+      })
+    }
+  },
+  publishOrder(obj){
+    utils.request(Api.OrderPublish,{
+      customer_openid: wx.getStorageSync('openid'),
+      order_type:1,
+      extra_info:obj
+    },'POST').then(res=>{
+      console.log(res)
     })
   }
 })

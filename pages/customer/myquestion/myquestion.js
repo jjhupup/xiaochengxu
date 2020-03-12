@@ -65,7 +65,7 @@ Page({
   getListData(){
     let that=this
     utils.request(Api.GetMyMFZX,{
-      openid:'1213107386'
+      customer_openid: wx.getStorageSync('openid')
     },'POST').then(res=>{
       console.log(res)
       if (res.code =='S_Ok'){
@@ -88,16 +88,28 @@ Page({
   },
   getData(e) {
     console.log(e)
-    this.setData({
-      key: e.currentTarget.dataset.index
+    let that=this
+    let index = e.currentTarget.dataset.index
+    that.setData({
+      key: index
     })
+    if (index==1){
+      console.log(that.data.allQuestion)
+      let data = that.data.allQuestion
+      let list=[]
+      data = data.filter(({replies})=>{
+        list=replies.filter((from_name)=>{
+          if (from_name=='辉') return replies
+        })
+      })
+      console.log(data, list)
+    }
   },
   lookDetail(e){
     console.log(e.currentTarget.dataset)
     let orderstatus = e.currentTarget.dataset.orderstatus
-    let look = e.currentTarget.dataset.look
-    let id = e.currentTarget.dataset.id
-    if(orderstatus==1||(orderstatus==0&&look)){ // 跳转到解疑答惑页面
+    let id = e.currentTarget.dataset.questionid
+    if(orderstatus==1){ // 跳转到解疑答惑页面
       wx.navigateTo({
         url: '/pages/customer/questionDetail/questionDetail?id='+id,
       })

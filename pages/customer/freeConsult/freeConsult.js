@@ -9,7 +9,9 @@ Page({
   data: {
     array: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     index: 0,
-    questionContext: ''
+    questionTitle:'',
+    questionContext: ' ',
+    openid:''
   },
 
   /**
@@ -30,7 +32,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+      this.setData({
+        openid:wx.getStorageSync('openid')
+      })
   },
 
   /**
@@ -81,6 +85,12 @@ Page({
       questionContext: e.detail.delta.ops[0].insert
     })
   },
+  GetTextTitle(e){
+    console.log(e.detail.value)
+    this.setData({
+      questionTitle: e.detail.value
+    })
+  },
   // 提交数据
   subQuestion() {
     let that = this
@@ -93,7 +103,9 @@ Page({
         if (res.confirm) {
           console.log('用户点击确定')
           let contentStr = that.data.questionContext
+          let titletxt=that.data.questionTitle
           contentStr = contentStr.replace(/\s*/g, "");
+          titletxt = titletxt.replace(/\s*/g, "");
           console.log(contentStr, contentStr.length)
           if (that.data.questionContext == '') {
             wx.showToast({
@@ -107,11 +119,18 @@ Page({
               icon: 'none',
               duration: 1200
             })
+          } else if (titletxt.length==0){
+            wx.showToast({
+              title: '请填写内容标题~',
+              icon: 'none',
+              duration: 1200
+            })
           }else {
             console.log('提交数据', contentStr, Api)
             utils.request(Api.Publish,{
-              c_openid:'13268720081',
+              advicer_openid:that.data.openid,
               topic:that.data.index*1,
+              title: titletxt,
               content:contentStr
             },"POST").then(res=>{
               console.log(res)
@@ -124,7 +143,7 @@ Page({
                 },800)
               }else{
                 wx.showToast({
-                  title: res.msg,
+                  title: res.error.msg,
                   icon:'none'
                 })
               }

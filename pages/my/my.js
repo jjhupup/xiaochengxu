@@ -1,7 +1,7 @@
 // pages/my/my.js
 const app = getApp()
 const utils = require('../../utils/util.js')
-const Api=require('../../config/api.js')
+const Api = require('../../config/api.js')
 const config = require('../../config/config.js')
 Page({
 
@@ -9,49 +9,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo:{},
+    userInfo: {},
     userName: '请点击头像登录',
     userImage: '/static/images/userImage.jpg',
-    datalist:[
-      {
+    datalist: [{
         img_url: '/static/images/xinxi.png',
+        page_url: '/pages/news/news',
         text: '信息中心'
       },
       {
-        img_url:'/static/images/zixun.png',
-        page_url:'/pages/customer/myquestion/myquestion',
-        text:'我的咨询'
+        img_url: '/static/images/zixun.png',
+        page_url: '/pages/customer/myquestion/myquestion',
+        text: '我的咨询'
       },
       {
         img_url: '/static/images/wenshuDA.png',
-        page_url:'/pages/customer/mywenshu/mywenshu',
+        page_url: '/pages/customer/mywenshu/mywenshu',
         text: '我的文书'
       },
       {
         img_url: '/static/images/ajweituo.png',
-        page_url: '',
+        page_url: '/pages/customer/myAnJian/myAnJian',
         text: '我的案件'
       },
       {
         img_url: '/static/images/guwenWT.png',
+        page_url: '/pages/customer/myGuWen/myGuWen',
         text: '我的顾问'
       },
       {
         img_url: '/static/images/xiugai22.png',
-        page_url:'/pages/userdata/userdata',
+        page_url: '/pages/userdata/userdata',
         text: '修改个人信息'
       }
     ],
-    lawyerlist:[
-      {
+    lawyerlist: [{
         img_url: '/static/images/xinxi.png',
-        page_url:'/pages/news/news',
+        page_url: '/pages/news/news',
         text: '信息中心'
       },
       {
-        img_url:'/static/images/jieyi.png',
-        page_url:'/pages/lawyer/mydayi/mydayi?openid=110119',
-        text:'解疑答惑'
+        img_url: '/static/images/jieyi.png',
+        page_url: '/pages/lawyer/mydayi/mydayi',
+        text: '解疑答惑'
       },
       {
         img_url: '/static/images/wenshuDA.png',
@@ -60,12 +60,12 @@ Page({
       },
       {
         img_url: '/static/images/ajweituo.png',
-        page_url: '/pages/lawyer/AJweituo/AJweituo?openid=110119',
+        page_url: '/pages/lawyer/myAJweituo/myAJweituo?openid=110119',
         text: '案件委托'
       },
       {
         img_url: '/static/images/guwenWT.png',
-        page_url:'/pages/lawyer/lawyerOrder/lawyerOrder',
+        page_url: '/pages/lawyer/lawyerOrder/lawyerOrder',
         text: '顾问委托'
       },
       {
@@ -74,8 +74,7 @@ Page({
         text: '修改个人信息'
       }
     ],
-    yijian:[
-      {
+    yijian: [{
         img_url: '/static/images/icon_feed_back.png',
         page_url: '',
         text: '意见反馈'
@@ -91,15 +90,15 @@ Page({
         text: '小程序二维码'
       }
     ],
-    showStatusDialog:false,
-    status:0
+    showStatusDialog: false,
+    role: 0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let that=this
+    let that = this
   },
 
   /**
@@ -113,32 +112,31 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let that=this
+    let that = this
     let userInfo = wx.getStorageSync('userInfo')
+    console.log(userInfo)
     if (userInfo) {
       that.setData({
-        userName: JSON.parse(userInfo).nickName,
-        userImage: JSON.parse(userInfo).avatarUrl
+        userName: userInfo.nickName,
+        userImage: userInfo.avatarUrl
       })
     }
 
-    let status = wx.getStorageSync('status')
-    console.log(status)
-    if (!status) {
+    let role = wx.getStorageSync('role')
+    console.log(role)
+    if (!role) {
       console.log('还没身份')
       that.setData({
         showStatusDialog: true
       })
     } else {
       that.setData({
-        status: status * 1
+        role: role * 1
       })
-      if (status * 1 == 1) {
-        that.setData({
-          isShow: false,
-          showStatusDialog:false
-        })
-      }
+      that.setData({
+        isShow: false,
+        showStatusDialog: false
+      })
     }
   },
 
@@ -178,7 +176,7 @@ Page({
   },
   // 微信登录，同时记录用户信息
   onWechatLogin(e) {
-    let that=this
+    let that = this
     console.log(111, e)
     if (e.detail.errMsg !== 'getUserInfo:ok') {
       if (e.detail.errMsg === 'getUserInfo:fail auth deny') {
@@ -201,26 +199,57 @@ Page({
       })
       console.log(wx.getStorageSync('status'))
       wx.setStorageSync('userInfo', JSON.stringify(e.detail.userInfo));
-      utils.login()
-      .then(res=>{
-        utils.request(Api.GetOpenId,{
-          js_code:res,
-          userInfo:that.data.userInfo
-        },'GET').then(res=>{
-          console.log(res)
-        })
-      })
+
     }
   },
   // 获取用户信息
   getUserInfo: function(e) {
     console.log(e)
+    wx.setStorageSync('userInfo', e.detail.userInfo)
     this.setData({
       userName: e.detail.userInfo.nickName,
       userImage: e.detail.userInfo.avatarUrl
     })
   },
-  getPhoneNumber:function(e){
+  // 获取openid和role身份
+  getUserData() {
+    let that = this
+    return new Promise((resolve, rej) => {
+      utils.login()
+        .then(res => {
+          console.log(res)
+          utils.request(Api.GetOpenId, {
+            js_code: res,
+            user_info: that.data.userInfo
+          }, "POST").then(res => {
+            // 获取的openid再通过登录接口发给后台
+            console.log(res)
+            if (res.code == 'S_Ok') {
+              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('role', res.data.role)
+              wx.setStorageSync('user_id', res.data.id)
+              resolve(res.data.role)
+            } else {
+              wx.showToast({
+                title: '登录出错！',
+                icon: 'none'
+              })
+            }
+          })
+        })
+    })
+
+  },
+  //  发送用户选择的身份信息，更新用户身份状态
+  upDataRole() {
+    utils.request(Api.UpDataUserData, {
+      user_id: wx.getStorageSync('user_id'),
+      role: wx.getStorageSync('role')
+    }, "POST").then(res => {
+      console.log(res)
+    })
+  },
+  getPhoneNumber: function(e) {
     console.log(e)
   },
   // 登录按钮关闭和身份框关闭
@@ -229,12 +258,19 @@ Page({
       showStatusDialog: false
     })
   },
+  //设置页面展示内容
+  setpageFG(role) {
+    let that = this
+    that.setData({
+      role: role
+    })
+  },
   optStatus(e) {
-    let status = e.currentTarget.dataset.status
+    let role = e.currentTarget.dataset.role
     let statusName = ''
     let that = this
-    console.log(status)
-    if (status * 1 == 0) {
+    console.log(role)
+    if (role * 1 == 1) {
       statusName = '客户'
     } else {
       statusName = '律师'
@@ -243,32 +279,43 @@ Page({
       title: '提示！',
       content: '确认身份后不能随意修改，请认真选择，当前选择是' + statusName,
       showCancel: true,
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         if (res.confirm) {
-          console.log('确认了身份选择', status, statusName)
-          wx.setStorage({
-            key: 'status',
-            data: status,
-          })
-          that.onCloseDialog()
-          if (status * 1 == 0) {
-            that.setData({
-              isShow: true,
-              status:0
-            })
-            return
-          }
-          that.setData({
-            isShow: false,
-            status: 1
+          console.log('确认了身份选择', role, statusName)
+          let userRole = ''
+          that.getUserData().then(res2 => {
+            console.log(res2)
+            if (res2 == 0) { //用户没注册过
+              wx.setStorageSync('role', role)
+              // 再去调用接口跟新后台用户的身份
+              that.upDataRole()
+              that.onCloseDialog() //关闭弹窗
+              // 设置页面展示内容
+              that.setpageFG(role)
+              return
+            } else if (res2 != role) { //返回来的数据和用户选择的不一样，说明已经注册过
+              wx.showToast({
+                title: '用户已注册~',
+                icon: 'none'
+              })
+              that.onCloseDialog()
+              wx.setStorageSync('role', res2)
+              // 根据后台数据来显示页面内容
+              that.setpageFG(res2)
+              return
+            } else { //返回来的数据和用户选择的一样
+              that.setpageFG(res2)
+              that.onCloseDialog()
+              wx.setStorageSync('role', res2)
+            }
           })
         }
       }
     })
   },
   // 我的功能页面跳转
-  gopage(e){
+  gopage(e) {
     console.log(e)
     wx.navigateTo({
       url: e.currentTarget.dataset.url

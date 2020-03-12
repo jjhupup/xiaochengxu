@@ -4,26 +4,19 @@
   margin: 8px;
 }
 
-.inputS {
-  width: 95%;
-  height: 45px;
-  line-height: 45px;
-  padding-left: 8px;
-  margin: auto;
-  border: 1px solid #0059ff;
-}
-
 .picker {
   width: 100%;
   position: relative;
 }
 
-.picker image {
+.picker text {
   position: absolute;
-  height: 27px;
-  width: 23px;
-  right: 4px;
-  top: 9px;
+  height: 45px;
+  line-height: 45px;
+  width: 44px;
+  right: 2px;
+  top: 0px;
+  color: #539ec7;
 }
 .getmoney1 {
   position: relative;
@@ -44,5 +37,8 @@
   margin: 20px auto 40px;
   border-radius: 6px;
   line-height: 45px;
-  background-color: #0059ff;
+  background-color: #46a5d8;
+}
+.color1{
+  color: #9a9a9a;
 }

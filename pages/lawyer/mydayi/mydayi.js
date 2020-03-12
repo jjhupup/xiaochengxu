@@ -10,7 +10,7 @@ Page({
     NavArr: ['服务中', '已结束'],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     key: 0,
-    openid: 0,
+    lawyer_openid: 0,
     questionArr:[]
   },
 
@@ -18,11 +18,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options.openid)
     this.setData({
-      openid: options.openid
+      lawyer_openid: wx.getStorageSync('openid')
     })
-    this.getQuestionData(options.openid)
+    this.getQuestionData(this.data.lawyer_openid)
   },
 
   /**
@@ -48,7 +47,7 @@ Page({
   getQuestionData(id) {
     let that=this
     utils.request(Api.GetLawyerQuestion, {
-      openid: id
+      lawyer_openid: id
     }, 'POST').then(res => {
       console.log(res)
       that.setData({
@@ -63,8 +62,9 @@ Page({
     })
   },
   lookDetail(e) {
+    console.log(e)
     wx.navigateTo({
-      url: '/pages/lawyer/dayiDetail/dayiDetail',
+      url: '/pages/lawyer/dayiDetail/dayiDetail?id=' + e.currentTarget.dataset.id,
     })
   }
 })

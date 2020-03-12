@@ -61,55 +61,69 @@ page {
   color: #797979;
   font-size: 13px;
 }
+
 /* adsfsadgasdgasdg */
+
 .content .title {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
 }
+
 .item {
   padding: 0 30rpx;
-  margin-bottom: 20rpx;
+  margin-bottom: 14rpx;
   box-sizing: border-box;
   background: #fff;
+  margin-top: 10px;
+  box-shadow: 8px 4px 8px #ddd;
+
 }
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80rpx;
-  font-size: 28rpx;
+  font-size: 30rpx;
   color: #abb4bf;
 }
+
 .name {
   display: flex;
   align-items: center;
   color: #333;
 }
+
 .header .avatar {
-  width: 40rpx;
-  height: 40rpx;
+  width: 70rpx;
+  height: 70rpx;
   border-radius: 50%;
   margin-right: 10rpx;
 }
+
 .content {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .content .text {
   flex: 1;
 }
+
 .content .img {
   width: 130rpx;
   height: 130rpx;
   margin-left: 20rpx;
 }
+
 .content .title {
   font-size: 32rpx;
   margin-bottom: 10rpx;
 }
+
 .content .desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -117,6 +131,7 @@ page {
   overflow: hidden;
   color: #abb4bf;
 }
+
 .label {
   display: flex;
   align-items: center;
@@ -124,18 +139,20 @@ page {
   color: #abb4bf;
   margin-right: 40rpx;
 }
+
 .label image {
   width: 30rpx;
   height: 30rpx;
   margin-right: 8rpx;
   margin-top: 3px;
 }
+
 .footer {
   display: flex;
   align-items: center;
   height: 80rpx;
 }
-.hover-class,
-.navigator-hover {
+
+.hover-class, .navigator-hover {
   background: #f2f2f2 !important;
 }

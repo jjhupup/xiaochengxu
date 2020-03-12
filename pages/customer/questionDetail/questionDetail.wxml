@@ -52,7 +52,11 @@
 </view>
 <view class="dialog-login " wx:if="{{isShowComment}}" bindtap="closeComment">
   <view class="dialog-body" catchtap='onDialogBody'>
-    <textarea class="questionInp2" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" auto-height />
+  <view class="topTool">
+      <image bindtap="closeComment" src="/static/images/close2.png" />
+      <view bindtap="subQuestion">发布</view>
+    </view>
+    <textarea class="questionInp2" bindblur="bindTextAreaBlur" placeholder="请输入您的回复" />
     <view class="tjComment" bindtap="subQuestion">提交回答</view>
   </view>
 </view>

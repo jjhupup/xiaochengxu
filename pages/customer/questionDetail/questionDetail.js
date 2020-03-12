@@ -10,7 +10,6 @@ Page({
     questionData: {},
     isShowComment: false,
     pid: 0,
-    id:0,
     answer: ''
   },
 
@@ -19,7 +18,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      id:options.id
+      advice_id:options.id
     })
     this.getData(options.id)
   },
@@ -54,7 +53,7 @@ Page({
   getData(id) {
     let that = this
     utils.request(Api.GetDetailQuestion, {
-      id: id
+      advice_id: id
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
@@ -130,7 +129,7 @@ Page({
             wx.showToast({
               title: '回复成功！',
             })
-            that.getData(that.data.id)
+            that.getData(that.data.advice_id)
           }
         })
       }

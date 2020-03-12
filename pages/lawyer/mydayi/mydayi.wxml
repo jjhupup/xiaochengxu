@@ -3,13 +3,34 @@
   <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
 <view wx:if="{{key==0}}">
-  <view class="questionList" wx:for="{{questionArr}}">
+  <!-- <view class="questionList" wx:for="{{questionArr}}">
     <view class="listLeft">
       <text>{{item.content}}</text>
     </view>
     <view class="listRight">
       <text>{{questionType[item.topic]}}</text>
       <text bindtap="lookDetail">继续解答</text>
+    </view>
+  </view> -->
+  <view class='item card' wx:for="{{questionArr}}" hover-class='hover-class' data-id="{{item.id}}" catchtap='lookDetail'>
+    <view class='header'>
+      <view class='name' data-item='{{item}}'>
+        <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
+        <view>{{item.advicer.real_name||item.advicer.nick_name||'某某某'}}</view>
+      </view>
+      <view class='type'>{{questionType[item.topic]}}</view>
+    </view>
+    <view class='content'>
+      <view class='text'>
+        <view class='title'>{{item.title||'这是一个标题'}}</view>
+        <view class='desc'>{{item.content}}</view>
+      </view>
+    </view>
+    <view class='footer'>
+      <view class='label'>
+        <image src='/static/images/comment.png'></image>
+        <view class="number">{{item.replies.length}}回答</view>
+      </view>
     </view>
   </view>
 </view>

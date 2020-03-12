@@ -5,15 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    status: wx.getStorageSync('status'),
+    status: wx.getStorageSync('role'),
     Navarr: [
       ['个人信息'],
       ['个人信息', '律师认证']
     ],
-    regionVal:['广东省','广州市','天河区'],
+    regionVal: ['广东省', '广州市', '天河区'],
     key: 0,
-    userImg:'',
-    zhenjianImg:''
+    userImg: '',
+    zhenjianImg: ''
   },
 
   /**
@@ -21,7 +21,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      status:wx.getStorageSync('status')
+      status: wx.getStorageSync('role')
     })
   },
 
@@ -95,14 +95,14 @@ Page({
       sourceType: ['album', 'camera'],
       success(res) {
         console.log(res)
-        if(lx==0){
+        if (lx == 0) {
           let imgurl = res.tempFilePaths
           let imgurl2 = that.data.userImg
           imgurl2 = imgurl2.concat(imgurl)
           that.setData({
             userImg: imgurl2
           })
-        }else{
+        } else {
           let imgurl = res.tempFilePaths
           let imgurl2 = that.data.zhenjianImg
           imgurl2 = imgurl2.concat(imgurl)
@@ -114,14 +114,17 @@ Page({
     })
   },
   // 删除图片
-  deleteImg(e) { 
+  deleteImg(e) {
     this.setData({
       userImg: ''
     })
   },
-  deleteZJImg(){
+  deleteZJImg() {
     this.setData({
       zhenjianImg: ''
     })
+  },
+  saveUserData(e) {
+    console.log(e,123)
   }
 })

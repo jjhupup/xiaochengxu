@@ -28,7 +28,7 @@ page {
 }
 
 .swiper-item {
-  margin-left: 10px;
+  padding: 10px;
 }
 
 .upload {
@@ -85,7 +85,7 @@ page {
   font-size: 16px;
   line-height: 20px;
   text-align: center;
-  border: 1px solid #0057ff;
+  border: 1px solid #ccc;
 }
 
 .file {
@@ -125,7 +125,7 @@ page {
   width: 100%;
   height: 46px;
   margin: auto;
-  border: 1px solid #0057ff;
+  border: 1px solid #ccc;
 }
 
 .paymoney text {
