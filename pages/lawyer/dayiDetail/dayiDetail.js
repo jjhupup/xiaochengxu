@@ -14,7 +14,9 @@ Page({
     questionData: [],
     isShowComment: false,
     canreply: true,
-    userInfo: {}
+    userInfo: {},
+    advicer:'',
+    to_openid:'' //被回复者openid
   },
 
   /**
@@ -32,17 +34,18 @@ Page({
   },
 
   getComment(advice_id) {
+    console.log('拉取数据')
     let that = this
     utils.request(Api.GetDetailQuestion, {
       advice_id
     }, "POST").then(res => {
       console.log(res)
       res.data.create_time = utils.switchTimeFormat(res.data.create_time)
-      res.data.replies = that.treeData(res.data.replies)
+      res.data.replies = that.treeData(res.data[0].replies)
       // res.data.replies = res.data.replies.reverse()
       that.setData({
         questionData: res.data,
-        advicer: res.data.advicer
+        advicer: res.data[0].advicer
       })
       console.log(res.data)
     }).catch(rej => {
@@ -114,13 +117,11 @@ Page({
             canreply: false
           })
           utils.request(Api.Reply, {
-            advice_id: that.data.questionData.id,
+            advice_id: that.data.questionData[0].id,
             pid: that.data.pid,
             content: that.data.answer,
             from_openid: wx.getStorageSync('openid'), //当前评论人的openid
-            from_name: that.data.userInfo.nickName, //当前评论人的name
-            to_openid: that.data.advicer.openid, //发布咨询者的openid
-            to_name: that.data.advicer.nick_name //发布咨询者的name
+            to_openid: that.data.advicer.openid //当前评论人的name
           }, 'POST').then(res => {
             console.log(res)
             setTimeout(() => {
@@ -177,7 +178,10 @@ Page({
   onDialogBody() {},
   // 评论树状结构
   treeData(data) {
-    let cloneData = JSON.parse(JSON.stringify(data))
+    let cloneData = (data)
+    if(!data){
+      return []
+    }
     return cloneData.filter(father => {
       let branchArr = cloneData.filter(child => father.id === child.pid)
       branchArr.length > 0 ? father.children = branchArr : ''

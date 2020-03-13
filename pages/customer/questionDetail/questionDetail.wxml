@@ -2,8 +2,16 @@
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="content">
   <view class="title1">我的提问</view>
-  <view class="questionTxt">{{questionData.content}}</view>
-  <view class="date">{{dateFr.getDate(questionData.create_time,'-',':')}}</view>
+  <view class="conten clearfix">
+    <text class="title">{{questionType[questionData[0].topic]}}</text>
+    <view class="questionTitle">
+      {{questionData[0].title||'这是一个标题！'}}
+    </view>
+    <view class="creatdate">发布时间： {{questionData[0].create_time}}</view>
+    <view class="questionContent">
+      {{questionData[0].content}}
+    </view>
+  </view>
   <view class="title1">律师解答</view>
   <view class="answer clearfix" wx:for="{{questionData.replies}}">
     <view class="lsname">
@@ -52,7 +60,7 @@
 </view>
 <view class="dialog-login " wx:if="{{isShowComment}}" bindtap="closeComment">
   <view class="dialog-body" catchtap='onDialogBody'>
-  <view class="topTool">
+    <view class="topTool">
       <image bindtap="closeComment" src="/static/images/close2.png" />
       <view bindtap="subQuestion">发布</view>
     </view>

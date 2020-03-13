@@ -66,44 +66,16 @@
 				},
 				{
 					"id": -1,
-					"name": "pages/customer/freeConsult/freeConsult",
-					"pathName": "pages/customer/freeConsult/freeConsult",
-					"query": "",
+					"name": "pages/customer/questionDetail/questionDetail",
+					"pathName": "pages/customer/questionDetail/questionDetail",
+					"query": "id=4",
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 2,
 					"name": "pages/lawyer/dayiDetail/dayiDetail",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/mydayi/mydayi",
-					"pathName": "pages/lawyer/mydayi/mydayi",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "修改信息",
-					"pathName": "pages/userdata/userdata",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "文书起草",
-					"pathName": "pages/customer/document/document",
-					"query": "order_type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/myquestion/myquestion",
-					"pathName": "pages/customer/myquestion/myquestion",
-					"query": "id=2",
+					"query": "id=1",
 					"scene": null
 				}
 			]

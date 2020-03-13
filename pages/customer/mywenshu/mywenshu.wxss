@@ -1,5 +1,7 @@
 /* pages/customer/mywenshu/mywenshu.wxss */
+
 /* pages/customer/myquestion/myquestion.wxss */
+
 .headBar {
   display: flex;
   background-color: #fff;
@@ -8,7 +10,6 @@
 .headBar view {
   width: 25%;
   font-size: 28rpx;
-  border: 1px solid #f0f0f0;
   box-sizing: border-box;
   height: 76rpx;
   text-align: center;
@@ -16,8 +17,20 @@
 }
 
 .active {
-  color: #0059ff;
+  color: #43c1ad;
+  position: relative;
 }
+
+.active::after {
+  content: "";
+  position: absolute;
+  width: 60%;
+  height: 2px;
+  background-color: #43c1ad;
+  bottom: 0;
+  left: 20%;
+}
+
 .questionList {
   background-color: #fff;
   padding: 0 10px;
@@ -85,7 +98,8 @@
   border-radius: 6rpx;
   background-color: #83d944;
 }
-.listBottom .over{
+
+.listBottom .over {
   color: #999 !important;
   border: 1px solid #999 !important;
   background-color: #fff !important;

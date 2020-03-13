@@ -8,6 +8,7 @@ Page({
    */
   data: {
     questionData: {},
+    questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     isShowComment: false,
     pid: 0,
     answer: ''
@@ -75,12 +76,18 @@ Page({
     })
   },
   treeData(data) {
-    let cloneData = JSON.parse(JSON.stringify(data))
-    return cloneData.filter(father => {
-      let branchArr = cloneData.filter(child => father.id === child.pid)
-      branchArr.length > 0 ? father.children = branchArr : ''
-      return father.pid === 0 || father.pid === null;
-    })
+    let cloneData =data
+    console.log('data',data)
+    if(data){
+      return cloneData.filter(father => {
+        let branchArr = cloneData.filter(child => father.id === child.pid)
+        branchArr.length > 0 ? father.children = branchArr : ''
+        return father.pid === 0 || father.pid === null;
+      })
+    }else{
+      return []
+    }
+    
   },
   // 评论功能关闭
   closeComment(e) {

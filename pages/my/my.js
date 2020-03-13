@@ -116,6 +116,7 @@ Page({
     let userInfo = wx.getStorageSync('userInfo')
     console.log(userInfo)
     if (userInfo) {
+      userInfo = JSON.parse(userInfo)
       that.setData({
         userName: userInfo.nickName,
         userImage: userInfo.avatarUrl
