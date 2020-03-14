@@ -75,7 +75,21 @@
 					"id": 2,
 					"name": "pages/lawyer/dayiDetail/dayiDetail",
 					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "id=1",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "案件委托",
+					"pathName": "pages/customer/caseEntrusted/caseEntrusted",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/userdata/userdata",
+					"pathName": "pages/userdata/userdata",
+					"query": "id=2",
 					"scene": null
 				}
 			]

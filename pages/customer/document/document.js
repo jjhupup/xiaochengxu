@@ -183,11 +183,12 @@ Page({
   },
   publishOrder(obj){
     utils.request(Api.OrderPublish,{
-      customer_openid: wx.getStorageSync('openid'),
+      customer_id: wx.getStorageSync('user_id'),
       order_type:1,
       extra_info:obj
     },'POST').then(res=>{
       console.log(res)
+      
     })
   }
 })

@@ -53,7 +53,7 @@ page {
 }
 
 .kuang_weba {
-  width: 90%;
+  width: 90% !important;
   height: 45px;
   text-align: center;
   color: #fff;
@@ -63,6 +63,9 @@ page {
   border-radius: 6px;
   line-height: 45px;
   background-color: #46a5d8;
+  letter-spacing: 8px;
+  text-indent: 8px;
+  padding: 0;
 }
 
 .upload {

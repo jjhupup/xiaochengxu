@@ -5,7 +5,7 @@
 </view>
 <!-- 律师个人信息 -->
 <view wx:if="{{status==2&&key==0}}" class="content">
-  <form  bindsubmit="saveUserData">
+  <form  bindsubmit="saveLawyerData">
     <view class="titleMini">您的姓名</view>
     <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的真实姓名" />
     <view class="titleMini">所在的律师事务所</view>

@@ -28,7 +28,7 @@
 
 <view class="answerList">
   <view class="titleMini ">律师解答</view>
-  <view class="answer clearfix" wx:for="{{questionData[0].replies}}">
+  <view class="answer clearfix" wx:for="{{replies}}">
     <view class="lsname">
       <image src="{{item.from.avatar_url}}" />
       <text>{{item.from.real_name||item.from.nick_name}}</text>
@@ -43,8 +43,8 @@
     </view>
     <view class="recomment" wx:for="{{item.children}}">
       <view class="usertop">
-        <image src="/static/images/default_avatar.png" />
-        <text class="username">{{item.from_name}}</text>
+        <image src="{{item.from.avatar_url}}" />
+        <text class="username">{{item.from.real_name||item.from.nick_name}}</text>
         <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
       </view>
       <view class="pd10 ml30">{{item.content}}</view>
@@ -54,8 +54,8 @@
       </view>
       <view class="recomment2" wx:for="{{item.children}}">
         <view class="usertop">
-          <image src="/static/images/default_avatar.png" />
-          <text class="username">{{item.from_name}}</text>
+          <image src="{{item.from.avatar_url}}" />
+          <text class="username">{{item.from.real_name||item.from.nick_name}}</text>
           <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
         </view>
         <view class="pd10 ml30">{{item.content}}</view>

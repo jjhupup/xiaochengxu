@@ -12,11 +12,12 @@ Page({
     advice_id: '',
     pid: 0,
     questionData: [],
+    replies:[],
     isShowComment: false,
     canreply: true,
     userInfo: {},
-    advicer:'',
-    to_openid:'' //被回复者openid
+    advicer: '',
+    to_openid: '' //被回复者openid
   },
 
   /**
@@ -41,9 +42,12 @@ Page({
     }, "POST").then(res => {
       console.log(res)
       res.data.create_time = utils.switchTimeFormat(res.data.create_time)
-      res.data.replies = that.treeData(res.data[0].replies)
+      let replies = that.treeData(res.data[0].replies)
+      res.data.replies = replies
+      console.log('res', res )
       // res.data.replies = res.data.replies.reverse()
       that.setData({
+        replies: replies,
         questionData: res.data,
         advicer: res.data[0].advicer
       })
@@ -178,14 +182,44 @@ Page({
   onDialogBody() {},
   // 评论树状结构
   treeData(data) {
-    let cloneData = (data)
-    if(!data){
+    let cloneData = data
+    console.log(data)
+    if (!data) {
       return []
+    }else{
+      return cloneData.filter(father => {
+        console.log('fater', father)
+        let brachArr = cloneData.filter(child => {
+          console.log('child', child)
+          if (father.id == child.pid) {
+            return child
+          }
+        })
+        console.log(brachArr)
+        if (brachArr.length > 0) {
+          father.children = brachArr
+        }
+        console.log('2334', father)
+        if (father.pid == 0) {
+          console.log(44555,father)
+          return father
+        }else{
+          return 
+        }
+      })
+      console.log('cloneData', aaa)
     }
-    return cloneData.filter(father => {
-      let branchArr = cloneData.filter(child => father.id === child.pid)
-      branchArr.length > 0 ? father.children = branchArr : ''
-      return father.pid === 0 || father.pid === null;
-    })
+     
+
+    // return cloneData.filter(father => {
+    //   console.log(father)
+    //   let branchArr = cloneData.filter(child => {
+    //     console.log('child', child)
+    //     return father.id === child.pid
+    //   })
+    //   console.log('brancharr', branchArr)
+    //   branchArr.length > 0 ? father.children = branchArr : ''
+    //   return father.pid === 0 || father.pid === null;
+    // })
   }
 })

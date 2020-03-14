@@ -11,4 +11,5 @@ module.exports = {
   GetLawyerQuestion: ApiRootUrl +'advice/lawyer',   //获取律师的回复咨询列表
   UpDataUserData: ApiRootUrl +'user/update',        //更新用户信息 
   OrderPublish: ApiRootUrl + 'order/publish',       //发布文书起草，案件委托等需求
+  GetOrderList: ApiRootUrl +'order/list'
 };

@@ -1,4 +1,6 @@
 // pages/userdata/userdata.js
+const utils=require('../../utils/util.js')
+const Api=require('../../config/api.js')
 Page({
 
   /**
@@ -124,7 +126,26 @@ Page({
       zhenjianImg: ''
     })
   },
-  saveUserData(e) {
-    console.log(e,123)
+  saveLawyerData(e) {
+    console.log(e.detail.value,123)
+    this.updataUserData(e.detail.value)
+  },
+  updataUserData(obj){
+   let updata={
+     user_id: wx.getStorageSync('user_id'),
+     base_info:{
+       real_name: obj.real_name
+     },
+     extra_profile:{
+       office:obj.office,
+       location:obj.location,
+       experience_year: obj.experience_year
+     }
+   }
+    utils.request(Api.UpDataUserData,{
+      ...updata
+    },'POST').then(res=>{
+      console.log(res)
+    })
   }
 })

@@ -66,18 +66,18 @@ Page({
         detailed: '为客户答疑解惑，提升活跃度'
       },
       {
-        id: 2,
-        img_url: '/static/images/entrust.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=1',
-        titleone: '案件委托',
-        detailed: '案件委托抢单，获取悬赏金'
-      },
-      {
         id: 3,
         img_url: '/static/images/wenshu2.png',
-        pageUrl: '/pages/lawyer/dayi/dayi?title=2',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=1',
         titleone: '文书委托',
         detailed: '接收客户的文书委托，获得悬赏金'
+      },
+      {
+        id: 2,
+        img_url: '/static/images/entrust.png',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=2',
+        titleone: '案件委托',
+        detailed: '案件委托抢单，获取悬赏金'
       },
       {
         id: 4,
@@ -223,7 +223,7 @@ Page({
   },
   //设置页面展示内容
   setpageFG(role) {
-    let that=this
+    let that = this
     if (role == 1) {
       that.setData({
         isShow: true
@@ -236,10 +236,12 @@ Page({
   },
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
-    utils.request(Api.UpDataUserData,{
-      user_id:wx.getStorageSync('user_id'),
-      role:wx.getStorageSync('role')
-    },"POST").then(res=>{
+    utils.request(Api.UpDataUserData, {
+      user_id: wx.getStorageSync('user_id'),
+      base_info: {
+        role: wx.getStorageSync('role')
+      }
+    }, "POST").then(res => {
       console.log(res)
     })
   },
@@ -253,6 +255,12 @@ Page({
     } else {
       statusName = '律师'
     }
+    wx.requestSubscribeMessage({
+      tmplIds: ['Q49V7Pv4pGG-sQkFRL6L9q7TI_nIUstxI89lcly1WWI'],
+      success(res) {
+        console.log(res)
+      }
+    })
     wx.showModal({
       title: '提示！',
       content: '确认身份后不能随意修改，请认真选择，当前选择是' + statusName,
@@ -296,12 +304,14 @@ Page({
   upDataRole2(role) {
     utils.request(Api.UpDataUserData, {
       user_id: wx.getStorageSync('user_id'),
-      role: role
+      base_info: {
+        role: role
+      }
     }, "POST").then(res => {
       console.log(res)
     })
   },
-  change(){
+  change() {
     this.upDataRole2(2)
   },
   change2() {

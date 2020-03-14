@@ -40,7 +40,7 @@
 }
 
 .submit {
-  width: 90%;
+  width: 90% !important;
   height: 40px;
   margin: 30px auto;
   color: #fff;
@@ -49,6 +49,7 @@
   line-height: 40px;
   font-size: 18px;
   letter-spacing: 4px;
+  padding: 0;
 }
 
 .nameinput {

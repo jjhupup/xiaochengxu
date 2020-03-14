@@ -75,5 +75,14 @@ Page({
     this.setData({
       regionVal: e.detail.value
     })
+  },
+  getAnJianType(e){
+    console.log(e)
+    this.setData({
+      leixin1:e.detail.value
+    })
+  },
+  getAnJianData(e){
+    console.log(e)
   }
 })
