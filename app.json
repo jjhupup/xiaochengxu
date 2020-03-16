@@ -23,7 +23,8 @@
     "pages/customer/questionDetail/questionDetail",
     "pages/lawyer/mydayi/mydayi",
     "pages/lawyer/myWenShu/myWenShu",
-    "pages/lawyer/myAJweituo/myAJweituo"
+    "pages/lawyer/myAJweituo/myAJweituo",
+    "pages/lawyer/AJquote/AJquote"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -29,7 +29,7 @@
     <view class='footer'>
       <view class='label'>
         <image src='/static/images/comment.png'></image>
-        <view class="number">{{item.replies.length}}回答</view>
+        <view class="number">{{item.receive_replies.length-1}}回答</view>
       </view>
     </view>
   </view>

@@ -65,7 +65,7 @@ Page({
   getListData(){
     let that=this
     utils.request(Api.GetMyMFZX,{
-      customer_openid: wx.getStorageSync('openid')
+      user_id: wx.getStorageSync('user_id')
     },'POST').then(res=>{
       console.log(res)
       if (res.code =='S_Ok'){

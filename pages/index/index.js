@@ -195,16 +195,21 @@ Page({
   // 获取openid和role身份
   getUserData() {
     let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
     return new Promise((resolve, rej) => {
       utils.login()
         .then(res => {
           console.log(res)
+          wx.hideLoading()
           utils.request(Api.GetOpenId, {
             js_code: res,
             user_info: that.data.userInfo
           }, "POST").then(res => {
             // 获取的openid再通过登录接口发给后台
             console.log(res)
+           
             if (res.code == 'S_Ok') {
               wx.setStorageSync('openid', res.data.openid)
               wx.setStorageSync('role', res.data.role)
@@ -238,9 +243,9 @@ Page({
   upDataRole() {
     utils.request(Api.UpDataUserData, {
       user_id: wx.getStorageSync('user_id'),
-      base_info: {
+      base_info: JSON.stringify({
         role: wx.getStorageSync('role')
-      }
+      })
     }, "POST").then(res => {
       console.log(res)
     })
@@ -304,9 +309,9 @@ Page({
   upDataRole2(role) {
     utils.request(Api.UpDataUserData, {
       user_id: wx.getStorageSync('user_id'),
-      base_info: {
+      base_info: JSON.stringify({
         role: role
-      }
+      })
     }, "POST").then(res => {
       console.log(res)
     })

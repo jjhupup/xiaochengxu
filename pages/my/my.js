@@ -245,7 +245,9 @@ Page({
   upDataRole() {
     utils.request(Api.UpDataUserData, {
       user_id: wx.getStorageSync('user_id'),
-      role: wx.getStorageSync('role')
+      base_info:JSON.stringify({
+        role: wx.getStorageSync('role')
+      })
     }, "POST").then(res => {
       console.log(res)
     })

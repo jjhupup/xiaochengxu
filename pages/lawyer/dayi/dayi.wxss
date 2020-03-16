@@ -156,3 +156,7 @@ page {
 .hover-class, .navigator-hover {
   background: #f2f2f2 !important;
 }
+.gxdi{
+font-size: 14px;
+color: #555;
+}

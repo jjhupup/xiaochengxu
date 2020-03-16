@@ -11,7 +11,8 @@ Page({
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     isShowComment: false,
     pid: 0,
-    answer: ''
+    answer: '', 
+    replies:[]
   },
 
   /**
@@ -58,9 +59,10 @@ Page({
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
-        res.data.replies = that.treeData(res.data.replies)
+        let replies = that.treeData(res.data[0].replies)
         that.setData({
-          questionData: res.data
+          questionData: res.data,
+          replies: replies
         })
       } else {
         wx.showModal({
@@ -120,13 +122,12 @@ Page({
         })
       } else {
         utils.request(Api.Reply, {
-          advice_id: that.data.questionData.id,
+          advice_id: that.data.advice_id,
           pid: that.data.pid,
           content: that.data.answer,
-          from_openid: '110119',
-          from_name: '辉少',
-          to_openid: '13268720081',
-          to_name: 'c'
+          title: that.data.questionData[0].title,
+          from_openid: wx.getStorageSync('openid'),
+          to_openid: that.data.questionData[0].advicer.openid
         }, 'POST').then(res => {
           console.log(res)
           if (res.code = "S_Ok") {

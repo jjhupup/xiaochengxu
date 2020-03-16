@@ -98,6 +98,20 @@
 					"pathName": "pages/lawyer/mydayi/mydayi",
 					"query": "id=2",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/dayi/dayi",
+					"pathName": "pages/lawyer/dayi/dayi",
+					"query": "title=2",
+					"scene": null
+				},
+				{
+					"id": 7,
+					"name": "AJquote",
+					"pathName": "pages/lawyer/AJquote/AJquote",
+					"query": "id=8",
+					"scene": null
 				}
 			]
 		}

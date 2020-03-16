@@ -9,9 +9,10 @@ Page({
   data: {
     NavArr: ['抢单报价'],
     key: 0,
-    title: ['答疑解惑', '案件委托', '文书委托', '顾问委托'],
+    title: ['答疑解惑', '文书委托', '案件委托', '顾问委托'],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     Allquestion: [],
+    AllOrder:[],
     btnTxt: '立即抢答',
     ordertype: 0
   },
@@ -60,6 +61,9 @@ Page({
       type: that.data.ordertype
     },'POST').then(res=>{
       console.log(res)
+      that.setData({
+        AllOrder:res.data
+      })
     })
   },
   // 咨询页面数据获取
@@ -131,5 +135,12 @@ Page({
         url: '/pages/lawyer/offerDetail/offerDetail?id=' + id
       })
     }
+  },
+  // 去往律师报价页面
+  goQuote(e){
+    console.log(e)
+    wx.navigateTo({
+      url: '/pages/lawyer/AJquote/AJquote?id='+e.currentTarget.dataset.id,
+    })
   }
 })

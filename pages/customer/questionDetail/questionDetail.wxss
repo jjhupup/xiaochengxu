@@ -178,6 +178,7 @@
   width: 80%;
   float: right;
   border-top: 1px dashed #ccc;
+  padding-top: 5px;
 }
 
 .recomment2 {
@@ -189,4 +190,14 @@
 
 .usertop>text:nth-child(1) {
   margin-right: 10px;
+}
+.usertop image{
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.usertop text{
+  margin: 0 5px;
+  font-size: 14px;
 }

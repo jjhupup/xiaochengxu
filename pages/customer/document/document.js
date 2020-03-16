@@ -185,10 +185,17 @@ Page({
     utils.request(Api.OrderPublish,{
       customer_id: wx.getStorageSync('user_id'),
       order_type:1,
-      extra_info:obj
+      extra_info:JSON.stringify(obj)
     },'POST').then(res=>{
       console.log(res)
-      
+      if (res.code =='S_Ok'){
+        wx.showToast({
+          title: '咨询提交成功',
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1000)
+      }
     })
   }
 })

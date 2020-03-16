@@ -38,25 +38,25 @@
           </view>
           <view class="titleMini">请设置响应时间要求</view>
           <radio-group class="radio-group" name='response_time' >
-            <radio class="radio" color="#24adf3" value="8" checked="true">
+            <radio class="radio" color="#5677FC" value="8" checked="true">
               <text>8小时</text>
             </radio>
-            <radio class="radio" color="#24adf3" value="12">
+            <radio class="radio" color="#5677FC" value="12">
               <text>12小时</text>
             </radio>
-            <radio class="radio" color="#24adf3" value="24">
+            <radio class="radio" color="#5677FC" value="24">
               <text>24小时</text>
             </radio>
           </radio-group>
           <view class="titleMini">请设置完成时限要求</view>
           <radio-group class="radio-group" name='limit_time' >
-            <radio class="radio" color="#24adf3" value="1" checked="true">
+            <radio class="radio" color="#5677FC" value="1" checked="true">
               <text>1日</text>
             </radio>
-            <radio class="radio" color="#24adf3" value="3">
+            <radio class="radio" color="#5677FC" value="3">
               <text>3日</text>
             </radio>
-            <radio class="radio" color="#24adf3" value="5">
+            <radio class="radio" color="#5677FC" value="5">
               <text>5日</text>
             </radio>
           </radio-group>
@@ -76,10 +76,10 @@
         <view class="titleMini">您的性别</view>
         <view class="genderchoose">
           <radio-group class="radio-group" bindchange="radioChange">
-            <radio class="radio" color="#24adf3" value="1" checked="true">
+            <radio class="radio" color="#5677FC" value="1" checked="true">
               <text>男士</text>
             </radio>
-            <radio class="radio" color="#24adf3" value="0">
+            <radio class="radio" color="#5677FC" value="0">
               <text>女士</text>
             </radio>
           </radio-group>
@@ -87,37 +87,37 @@
         <view class="titleMini">您是代表谁申请申诉？</view>
 
         <radio-group class="radio-group" bindchange="radioChange">
-          <radio class="radio" color="#24adf3" value="1" checked="true">
+          <radio class="radio" color="#5677FC" value="1" checked="true">
             <text>本人</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="0">
+          <radio class="radio" color="#5677FC" value="0">
             <text>亲属</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="0">
+          <radio class="radio" color="#5677FC" value="0">
             <text>朋友</text>
           </radio>
         </radio-group>
         <view class="titleMini">请设置响应时间要求</view>
         <radio-group class="radio-group" bindchange="radioChange">
-          <radio class="radio" color="#24adf3" value="8hour" checked="true">
+          <radio class="radio" color="#5677FC" value="8hour" checked="true">
             <text>8小时</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="12hour">
+          <radio class="radio" color="#5677FC" value="12hour">
             <text>12小时</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="24hour">
+          <radio class="radio" color="#5677FC" value="24hour">
             <text>24小时</text>
           </radio>
         </radio-group>
         <view class="titleMini">请设置完成时限要求</view>
         <radio-group class="radio-group" bindchange="radioChange">
-          <radio class="radio" color="#24adf3" value="8hour" checked="true">
+          <radio class="radio" color="#5677FC" value="8hour" checked="true">
             <text>1日</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="12hour">
+          <radio class="radio" color="#5677FC" value="12hour">
             <text>3日</text>
           </radio>
-          <radio class="radio" color="#24adf3" value="24hour">
+          <radio class="radio" color="#5677FC" value="24hour">
             <text>5日</text>
           </radio>
         </radio-group>
