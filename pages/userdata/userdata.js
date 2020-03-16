@@ -133,19 +133,24 @@ Page({
   updataUserData(obj){
    let updata={
      user_id: wx.getStorageSync('user_id'),
-     base_info:{
+     base_info: JSON.stringify({
        real_name: obj.real_name
-     },
-     extra_profile:{
-       office:obj.office,
-       location:obj.location,
+     }),
+     extra_profile: JSON.stringify({
+       office: obj.office,
+       location: obj.location,
        experience_year: obj.experience_year
-     }
+     })
    }
     utils.request(Api.UpDataUserData,{
       ...updata
     },'POST').then(res=>{
       console.log(res)
+      if (res.code =='S_Ok'){
+        wx.showToast({
+          title: '信息修改成功~',
+        })
+      }
     })
   }
 })

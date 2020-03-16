@@ -15,8 +15,8 @@
   <view class='item card' wx:for="{{questionArr}}" hover-class='hover-class' data-id="{{item.id}}" catchtap='lookDetail'>
     <view class='header'>
       <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.advicer.real_name||item.advicer.nick_name||'某某某'}}</view>
+        <image class='avatar' mode='aspectFill' src='{{item.avatar_url || "/static/images/default_avatar.png"}}' />
+        <view>{{item.real_name||item.nick_name||'某某某'}}</view>
       </view>
       <view class='type'>{{questionType[item.topic]}}</view>
     </view>

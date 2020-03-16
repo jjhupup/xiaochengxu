@@ -19,9 +19,9 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      lawyer_openid: wx.getStorageSync('openid')
+      user_id: wx.getStorageSync('user_id')
     })
-    this.getQuestionData(this.data.lawyer_openid)
+    this.getQuestionData(this.data.user_id)
   },
 
   /**
@@ -47,7 +47,7 @@ Page({
   getQuestionData(id) {
     let that=this
     utils.request(Api.GetLawyerQuestion, {
-      lawyer_openid: id
+      user_id: id
     }, 'POST').then(res => {
       console.log(res)
       that.setData({
