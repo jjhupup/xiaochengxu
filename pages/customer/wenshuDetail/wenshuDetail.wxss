@@ -15,8 +15,9 @@
 }
 
 .date {
-  float: right;
   font-size: 28rpx;
+  margin-top: 10px;
+  color: #999;
 }
 
 .fileName {
@@ -27,8 +28,8 @@
 .lawyer {
   display: flex;
   height: 140px;
-  border: 1px dashed #ccc;
   margin-bottom: 16px;
+  box-shadow: 2px 2px 6px #cecece;
 }
 
 .lawyerL {
@@ -55,7 +56,7 @@
 }
 
 .price {
-  color: #ff3b30;
+  color: #ff3b30 !important;
 }
 
 .lawyerC view {
@@ -63,49 +64,63 @@
   line-height: 28px;
   color: #010101;
 }
-.lawyerC .office{
+
+.lawyerC .office {
   line-height: 24px;
   text-indent: 2px;
 }
-.lawyerC .forte{
+
+.lawyerC .forte {
   color: #999;
   font-size: 12px;
   text-indent: 3px;
 }
-.lawyerC .centerB{
+
+.lawyerC .centerB {
   font-size: 12px;
 }
-.lawyerC .centerB image{
+
+.lawyerC .centerB image {
   width: 12px;
   height: 12px;
   vertical-align: middle;
 }
-.lawyerC .grade{
+
+.lawyerC .grade {
   color: #ff9800;
 }
-.lawyerC .num{
+
+.lawyerC .num {
   color: #888;
   font-size: 13px;
   margin-left: 14px;
 }
+
 .lawyerR {
   width: 20%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 6px;
 }
 
 .lawyerR view {
   font-size: 28rpx;
   line-height: 30px;
+  color: #666;
 }
-.lawyer .tag{
+
+.lawyer .tag {
   border: 1px solid #28b8a1;
-  height: 28px;
+  height: 24px;
   color: #28b8a1;
-  line-height: 28px;
+  line-height: 24px;
   text-align: center;
   padding: 0 6px;
-  border-radius: 8px;
+  border-radius: 16px;
 }
+
 .lawyerR .choose {
   border: 1px solid #afd196;
   background: #1aad19;

@@ -12,6 +12,8 @@ module.exports = {
   UpDataUserData: ApiRootUrl +'user/update',        //更新用户信息 
   OrderPublish: ApiRootUrl + 'order/publish',       //发布文书起草，案件委托等需求
   GetOrderList: ApiRootUrl +'order/list',           //律师获取需求订单
-  GetOrderDetail: ApiRootUrl +'order/detail',       //律师获取案件详情
+  GetOrderDetail: ApiRootUrl +'order/detail',       //律师和客户获取案件详情
   Baojia: ApiRootUrl +'order/bid',                  // 律师对订单报价
+  GetCustomerOrderData:ApiRootUrl+'order/customerList',     //客户获取自己的需求订单
+  GetLawyerListData:ApiRootUrl+'order/lawyerList',   //律师获取自己的需求订单
 };

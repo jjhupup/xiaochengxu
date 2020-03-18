@@ -1,28 +1,25 @@
 <!--pages/lawyer/offerDetail/offerDetail.wxml-->
 <view class="content">
-  <view class="title1">案情事宜进展</view>
+  <view class="title1">文书要求和资料</view>
   <view class="titleMini">客户描述</view>
-  <view class="detailTxt">如果遇到家暴并且持有受伤照片那么报警后家暴者会受到怎么的处理 被家暴者又有什么法律援助等来捍卫自己的权利</view>
-  <view class="date">2020-03-06 12:45:12</view>
+  <view class="detailTxt">{{OrderData.extra_info.description}}</view>
+  <!-- <view class="date">2020-03-06 12:45:12</view> -->
   <view class="titleMini">图片与文档资料</view>
-  <view class="imglist">
+  <view>无</view>
+  <!-- <view class="imglist">
     <image mode="aspectFill" src="/static/images/zj.jpg" />
     <image mode="aspectFill" src="/static/images/zj.jpg" />
     <image mode="aspectFill" src="/static/images/zj.jpg" />
     <image mode="aspectFill" src="/static/images/zj.jpg" />
-  </view>
-  <view class="filelist">
+  </view> -->
+  <!-- <view class="filelist">
     <text class="file">打架斗殴.doc</text>
-  </view>
+  </view> -->
   <view class="textTips">文档点击可供下载</view>
-  <view class="title1">案件的其他信息</view>
-  <view class="titleMini">1.该案件处于一审状态</view>
-  <view class="titleMini">2.委托客户在本案的地位是原告</view>
-  <view class="titleMini">3.办案涉及财产关系，受争议的金额为200000元</view>
-  <view class="title1">报价</view>
-  <view class="baojia">
-    <input class="inputS" type="number" placeholder="请输入您的报价"/>
-    <text>元</text>
-  </view>
-  <view class="submit">提交报价信息</view>
+  <view class="titleMini">文书要求起草类型</view>
+  <view class="type">{{OrderData.extra_info.textType}}</view>
 </view>
+<view class="baojia">
+    <input type="number" bindblur="getMoney" placeholder="请输入报价金额" />
+    <view bindtap="BaoJiaFun">我要报价</view>
+  </view>

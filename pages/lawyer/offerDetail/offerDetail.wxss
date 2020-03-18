@@ -2,6 +2,7 @@
 
 .content {
   padding: 10px 12px;
+  padding-bottom: 70px;
 }
 
 .detailTxt {
@@ -29,15 +30,46 @@
   padding: 4px 6px;
   border: 1px dotted #ccc;
 }
-
-.baojia {
-  position: relative;
+.type{
+  color: #5677fc;
+  font-size: 15px;
 }
-
-.baojia text {
-  position: absolute;
-  right: 16px;
-  top: 0;
-  height: 45px;
-  line-height: 45px;
+.baojia{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.baojia input{
+  width: 52%;
+  height: 48px;
+  line-height: 50px;
+  border: 1px solid #dfdfdf;
+  padding-left: 10px;
+  margin: 0 2%
+}
+.baojia view{
+  width: 40%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  color: #fff;
+  background-color: #5677fc;
+}
+.contentlist text:nth-child(1){
+  font-size: 14px;
+  color: #555;
+}
+.contentlist text:nth-child(2){
+  flex: 1;
+}
+.contentlist{
+  color: #000;
+  line-height: 32px;
+  display: flex;
+  padding: 5px 0;
 }

@@ -33,14 +33,26 @@ page {
   bottom: 0;
 }
 
+.topText {
+  font-size: 18px;
+  text-indent: 16px;
+  background-color: #fff;
+  line-height: 42px;
+  border-bottom: 1px solid #eee;
+}
+
+.date {
+  font-size: 14px;
+  color: #777;
+  line-height: 31px;
+}
+
 .item {
-  padding: 0 30rpx;
-  margin-bottom: 14rpx;
+  padding: 10px 30rpx;
+  margin-bottom: 12px;
   box-sizing: border-box;
   background: #fff;
-  margin-top: 10px;
-  box-shadow: 8px 4px 8px #ddd;
-
+  box-shadow: 8px 4px 8px #f1f1f1;
 }
 
 .header {
@@ -91,7 +103,7 @@ page {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: #abb4bf;
+  color: #161718;
 }
 
 .label {

@@ -1,4 +1,6 @@
 // pages/corporateLawyer/corporateLawyer.js
+const utils=require('../../../utils/util.js')
+const Api=require('../../../config/api.js')
 Page({
 
   /**
@@ -34,39 +36,97 @@ Page({
   onShow: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
+  getDWeiType(e){
+    console.log(e)
+    this.setData({
+      wordTypeKey:e.detail.value
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
+  getProfession(e) {
+    console.log(e)
+    this.setData({
+      professionKey: e.detail.value
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
+  getAdviser(e) {
+    console.log(e)
+    this.setData({
+      adviserKey: e.detail.value
+    })
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
+  getRegion(e){
+    console.log(e)
+    this.setData({
+      regionVal: e.detail.value
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
-
+  getAllData(e){
+    console.log(e.detail.value)
+    let obj=e.detail.value
+    let that=this
+    if (that.data.wordTypeKey==0||that.data.professionKey==0||that.data.adviserKey==0){
+      wx.showToast({
+        title: '请选择您的相关工作性质信息！',
+        icon:'none'
+      })
+    } else if (obj.real_name==''){
+      wx.showToast({
+        title: '请填写您的姓名！',
+        icon: 'none'
+      })
+    }else if(obj.danweiName==''){
+      wx.showToast({
+        title: '请填写您的工作单位名称！',
+        icon: 'none'
+      })
+    }else if(obj.describe==''||obj.describe.length<10){
+      wx.showToast({
+        title: '顾问需求描述请大于10个字',
+        icon: 'none'
+      })
+    }else{
+      //提交数据
+      wx.showModal({
+        title: '提示！',
+        content: '即将提交数据~',
+        success(res){
+          console.log(res)
+          if (res.confirm){
+            that.uploadData(obj)
+          }
+        }
+      })
+      // that.uploadData(obj)
+    }
+  },
+  uploadData(obj){
+    utils.request(Api.OrderPublish,{
+      customer_id:wx.getStorageSync('user_id'),
+      order_type:3,
+      extra_info:JSON.stringify(obj)
+    },'POST').then(res=>{
+      console.log(res)
+      if (res.code =='S_Ok'){
+        wx.showModal({
+          title: '提示',
+          content: '订单以为您提交~',
+          success(){
+            wx.switchTab({
+              url: '/pages/index/index',
+            })
+          }
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '服务器出错！',
+          success() {
+            wx.switchTab({
+              url: 'pages/index/index',
+            })
+          }
+        })
+      }
+    })
   }
 })

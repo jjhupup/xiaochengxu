@@ -112,6 +112,55 @@
 					"pathName": "pages/lawyer/AJquote/AJquote",
 					"query": "id=8",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/offerDetail/offerDetail",
+					"pathName": "pages/lawyer/offerDetail/offerDetail",
+					"query": "id=10",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/corporateLawyer/corporateLawyer",
+					"pathName": "pages/customer/corporateLawyer/corporateLawyer",
+					"query": "id=10",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/paymoney/paymoney",
+					"pathName": "pages/customer/paymoney/paymoney",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 12,
+					"name": "pages/customer/mywenshu/mywenshu",
+					"pathName": "pages/customer/mywenshu/mywenshu",
+					"query": "type=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/guwen/guwen",
+					"pathName": "pages/lawyer/guwen/guwen",
+					"query": "id=12",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "id=10",
+					"scene": null
 				}
 			]
 		}

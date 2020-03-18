@@ -1,14 +1,16 @@
 <!--pages/queryBusiness/queryBusiness.wxml-->
 <view class="content">
-  <view class="title1 ">选择查询业务类型</view>
-  <picker class="inputS" bindchange="bindPickerChange" value="{{index1}}" range="{{stage}}">
-    <view class="picker">
-      <view>{{stage[index1]}}
-        <image src="/static/images/down.png" />
+  <form bindsubmit="getData">
+    <view class="title1 ">选择查询业务类型</view>
+    <picker class="inputS" bindchange="bindPickerChange" name="findtype" value="{{stage[index1]}}" range="{{stage}}">
+      <view class="picker">
+        <view>{{stage[index1]}}
+          <image src="/static/images/down.png" />
+        </view>
       </view>
-    </view>
-  </picker>
-  <view class="title1 ">查询人相关信息</view>
-  <editor class="questionInp" bindblur="bindTextAreaBlur" placeholder="请写下相关要查询的相关信息，我们会交由律师为您解答" />
+    </picker>
+    <view class="title1 ">查询人相关信息</view>
+    <textarea class="questionInp" name="desc" placeholder="请写下相关要查询的相关信息，我们会交由律师为您解答" />
+    <button class="submit" form-type="submit">提交咨询</button>
+  </form>
 </view>
-<view class="submit" bindtap="subQuestion">提交咨询</view>

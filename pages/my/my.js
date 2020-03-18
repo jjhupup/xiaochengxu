@@ -24,12 +24,12 @@ Page({
       },
       {
         img_url: '/static/images/wenshuDA.png',
-        page_url: '/pages/customer/mywenshu/mywenshu',
+        page_url: '/pages/customer/mywenshu/mywenshu?type=1&name=我的文书',
         text: '我的文书'
       },
       {
         img_url: '/static/images/ajweituo.png',
-        page_url: '/pages/customer/myAnJian/myAnJian',
+        page_url: '/pages/customer/mywenshu/mywenshu?type=2&name=我的案件',
         text: '我的案件'
       },
       {

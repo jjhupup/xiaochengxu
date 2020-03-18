@@ -1,4 +1,6 @@
-// pages/queryBusiness/queryBusiness.js
+// pages/queryBusiness/queryBusiness.js  OrderPublish
+const util = require('../../../utils/util.js')
+const Api = require('../../../config/api.js')
 Page({
 
   /**
@@ -6,66 +8,64 @@ Page({
    */
   data: {
     stage: ['房产信息', '工商内档/外档', '结婚证', '身份证信息/户籍登记信息', '车辆登记信息'],
-    index1:0,
-
+    index1: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  getData(e) {
+    console.log(e)
+    let that=this
+    let obj = e.detail.value
+    wx.showModal({
+      title: '提示~',
+      content: '确定提交咨询的信息为' + obj.findtype,
+      success() {
+        that.tijiaoData(obj)
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  tijiaoData(obj) {
+    util.request(Api.OrderPublish,{
+      customer_id:wx.getStorageSync('user_id'),
+      order_type:4,
+      extra_info:JSON.stringify(obj)
+    },'POST').then(res=>{
+      console.log(res)
+      if(res.code=='S_Ok'){
+        wx.showToast({
+          title: '提交成功',
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1000)
+      }else{
+        wx.showToast({
+          title: '提交失败~',
+          icon:'none'
+        })
+      }
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  bindPickerChange(e){
+  bindPickerChange(e) {
     this.setData({
       index1: e.detail.value
     })

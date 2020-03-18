@@ -24,7 +24,10 @@
     "pages/lawyer/mydayi/mydayi",
     "pages/lawyer/myWenShu/myWenShu",
     "pages/lawyer/myAJweituo/myAJweituo",
-    "pages/lawyer/AJquote/AJquote"
+    "pages/lawyer/AJquote/AJquote",
+    "pages/customer/paymoney/paymoney",
+    "pages/customer/myAnjian/myAnjian",
+    "pages/customer/AnjianDetail/AnjianDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -213,6 +213,7 @@ Page({
             if (res.code == 'S_Ok') {
               wx.setStorageSync('openid', res.data.openid)
               wx.setStorageSync('role', res.data.role)
+              wx.setStorageSync('verify_status', res.data.verify_status)
               wx.setStorageSync('user_id', res.data.id)
               resolve(res.data.role)
             } else {

@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['服务中', '已结束'],
+    NavArr: ['发出的回复', '收到的回复'],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     key: 0,
     lawyer_openid: 0,

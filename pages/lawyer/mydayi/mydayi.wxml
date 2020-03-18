@@ -1,39 +1,47 @@
 <!--pages/lawyer/mydayi/mydayi.wxml-->
+<wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
   <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
 <view wx:if="{{key==0}}">
-  <!-- <view class="questionList" wx:for="{{questionArr}}">
-    <view class="listLeft">
-      <text>{{item.content}}</text>
-    </view>
-    <view class="listRight">
-      <text>{{questionType[item.topic]}}</text>
-      <text bindtap="lookDetail">继续解答</text>
-    </view>
-  </view> -->
-  <view class='item card' wx:for="{{questionArr}}" hover-class='hover-class' data-id="{{item.id}}" catchtap='lookDetail'>
-    <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.real_name||item.nick_name||'某某某'}}</view>
-      </view>
-      <view class='type'>{{questionType[item.topic]}}</view>
-    </view>
+<view class="topText">评论（{{questionArr[0].create_replies.length}}）</view>
+  <view class='item card' wx:for="{{questionArr[0].create_replies}}" hover-class='hover-class' data-id="{{item.advice.id}}" catchtap='lookDetail'>
     <view class='content'>
       <view class='text'>
-        <view class='title'>{{item.title||'这是一个标题'}}</view>
-        <view class='desc'>{{item.content}}</view>
+        <view class='title'>
+          <text>我的答复：</text>
+          <text>{{item.content}}</text>
+        </view>
+        <view class="date">
+          <text>{{dateFr.getDate2(item.create_time,'-',':')}}</text>
+        </view>
+        <view class='desc'>咨询标题：{{item.advice.title||'这是一个标题'}}</view>
+        <!-- <view class='desc'>{{item.advice.content}}</view> -->
+
       </view>
     </view>
-    <view class='footer'>
+    <!-- <view class='footer'>
       <view class='label'>
         <image src='/static/images/comment.png'></image>
         <view class="number">{{item.receive_replies.length-1}}回答</view>
       </view>
-    </view>
+    </view> -->
   </view>
 </view>
 <view wx:if="{{key==1}}">
-  {{key}}
+<view class="topText">评论（{{questionArr[0].receive_replies.length}}）</view>
+  <view class='item card' wx:for="{{questionArr[0].receive_replies}}" hover-class='hover-class' data-id="{{item.advice.id}}" catchtap='lookDetail'>
+    <view class='content'>
+      <view class='text'>
+        <view class='title'>
+          <text>收到的回复：</text>
+          <text>{{item.content}}</text>
+        </view>
+        <view class='desc'>咨询标题：{{item.advice.title||'这是一个标题'}}</view>
+        <!-- <view class='desc'>{{item.advice.content}}</view> -->
+
+      </view>
+    </view>
+  </view>
+
 </view>

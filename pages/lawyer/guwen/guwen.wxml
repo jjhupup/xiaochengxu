@@ -1,2 +1,33 @@
 <!--pages/lawyer/guwen/guwen.wxml-->
-<text>pages/lawyer/guwen/guwen.wxml</text>
+<view class="conetnt">
+  <view class="title2">用户信息</view>
+  <view class="yaoqiu">
+    <text>客户姓名：</text>
+    <view>{{GuwenData.extra_info.real_name}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作单位：</text>
+    <view>{{GuwenData.extra_info.danweiName}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作性质：</text>
+    <view>{{GuwenData.extra_info.DweiType}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作行业：</text>
+    <view>{{GuwenData.extra_info.profession}}</view>
+  </view>
+  <view class="title2">顾问需求信息</view>
+  <view class="yaoqiu">
+    <text>工作经验：</text>
+    <view>{{GuwenData.extra_info.experience}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>顾问类型：</text>
+    <view>{{GuwenData.extra_info.adviserType}}</view>
+  </view>
+</view>
+<view class="baojia">
+  <input type="number" bindblur="getMoney" placeholder="请输入报价金额" />
+  <view bindtap="BaoJiaFun">我要报价</view>
+</view>

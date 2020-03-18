@@ -12,9 +12,12 @@ Page({
     title: ['答疑解惑', '文书委托', '案件委托', '顾问委托'],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     Allquestion: [],
-    AllOrder:[],
+    AJAllOrder: [], //案件
+    WSAllOrder: [], //文书
+    GWAllOrder: [], //顾问
     btnTxt: '立即抢答',
-    ordertype: 0
+    ordertype: 0,
+    verify_status: 1
   },
 
   /**
@@ -48,27 +51,45 @@ Page({
    */
   onShow: function() {
     let that = this
+    that.setData({
+      verify_status: wx.getStorageSync('verify_status')
+    })
     if (that.data.ordertype == 0) {
       that.getZixunData()
-    }else{
+    } else {
       that.getOrderData()
     }
   },
   // 获取案件文书顾问数据
-  getOrderData(){
-    let that=this
-    utils.request(Api.GetOrderList,{
+  getOrderData() {
+    let that = this
+    utils.request(Api.GetOrderList, {
       type: that.data.ordertype
-    },'POST').then(res=>{
+    }, 'POST').then(res => {
       console.log(res)
-      that.setData({
-        AllOrder:res.data
-      })
+      let type = that.data.ordertype
+      if (type == 1) {
+        // 文书起草
+        that.setData({
+          WSAllOrder: res.data
+        })
+      } else if (type == 2) {
+        //案件委托
+        that.setData({
+          AJAllOrder: res.data
+        })
+      } else if (type == 3) {
+        // 法律顾问
+        that.setData({
+          GWAllOrder: res.data
+        })
+      }
+
     })
   },
   // 咨询页面数据获取
   getZixunData() {
-    let that=this
+    let that = this
     // 获取答疑解惑列表或者其他列表
     utils.request(Api.GetAllQuestion).then(res => {
       console.log(res)
@@ -88,33 +109,6 @@ Page({
       })
     })
   },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
 
   getData(e) {
     console.log(e)
@@ -129,18 +123,35 @@ Page({
       wx.navigateTo({
         url: '/pages/lawyer/dayiDetail/dayiDetail?id=' + id
       })
-    } else {
-      console.log(222)
-      wx.navigateTo({
-        url: '/pages/lawyer/offerDetail/offerDetail?id=' + id
-      })
     }
   },
   // 去往律师报价页面
-  goQuote(e){
+  goQuote(e) {
     console.log(e)
-    wx.navigateTo({
-      url: '/pages/lawyer/AJquote/AJquote?id='+e.currentTarget.dataset.id,
-    })
+    if (this.data.verify_status == 3) {
+      if (this.data.ordertype == 2) {
+        wx.navigateTo({
+          url: '/pages/lawyer/AJquote/AJquote?id=' + e.currentTarget.dataset.id,
+        })
+      } else if (this.data.ordertype == 3) {
+        wx.navigateTo({
+          url: '/pages/lawyer/guwen/guwen?id=' + e.currentTarget.dataset.id,
+        })
+      } else {
+        wx.navigateTo({
+          url: '/pages/lawyer/offerDetail/offerDetail?id=' + e.currentTarget.dataset.id
+        })
+      }
+    } else if (this.data.verify_status == 2) {
+      wx.showModal({
+        title: '提示~',
+        content: '您的律师认证还在审核中，请审核通过后再进行下一步操作'
+      })
+    } else {
+      wx.showModal({
+        title: '提示~',
+        content: '请提交您的律师相关证件，再进行下一步操作'
+      })
+    }
   }
 })

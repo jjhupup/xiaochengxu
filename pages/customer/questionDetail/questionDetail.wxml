@@ -7,7 +7,7 @@
     <view class="questionTitle">
       {{questionData[0].title||'这是一个标题！'}}
     </view>
-    <view class="creatdate">发布时间： {{questionData[0].create_time}}</view>
+    <view class="creatdate">发布时间： {{dateFr.getDate2(questionData[0].create_time,'-',':')}}</view>
     <view class="questionContent">
       {{questionData[0].content}}
     </view>
