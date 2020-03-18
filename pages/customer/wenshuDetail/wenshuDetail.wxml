@@ -1,7 +1,7 @@
 <!--pages/customer/wenshuDetail/wenshuDetail.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="content">
-  <view class="title1">代写诉状</view>
+  <view class="title2">代写诉状</view>
   <view class="clearfix">
     <text>{{wenshuData.extra_info.description}}</text>
     <view class="date">发布时间：{{dateFr.getDate2(wenshuData.create_time,'-',':')}}</view>
@@ -15,7 +15,7 @@
   <!-- <text class="fileName">关于事情的具体经过.doc</text> -->
   <view>暂无</view>
   <view></view>
-  <view class="title1">以下律师可以为您服务</view>
+  <view class="title2">以下律师可以为您服务</view>
   <view class="lawyer" wx:for="{{wenshuData.bidders}}">
     <view class="lawyerL">
       <image src="{{item.lawyer.avatar_url||'/static/images/guwen.png'}}" />

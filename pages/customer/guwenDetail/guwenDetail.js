@@ -1,13 +1,15 @@
-// pages/customer/AnjianDetail/AnjianDetail.js
+// pages/customer/guwenDetail/guwenDetail.js
 const utils = require('../../../utils/util.js')
 const Api = require('../../../config/api.js')
+
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
     id:0,
-    anjianData:{}
+    GuwenData:{}
   },
 
   /**
@@ -18,7 +20,6 @@ Page({
       id:options.id
     })
     this.getData(options.id)
-
   },
 
   /**
@@ -34,15 +35,15 @@ Page({
   onShow: function () {
 
   },
-  getData(id){
-    let that=this
-    utils.request(Api.GetOrderDetail,{
-      order_id:id
-    },"POST").then(res=>{
+  getData(id) {
+    let that = this
+    utils.request(Api.GetOrderDetail, {
+      order_id: id
+    }, "POST").then(res => {
       console.log(res)
-      if(res.code=='S_Ok'){
+      if (res.code == 'S_Ok') {
         that.setData({
-          anjianData:res.data
+          GuwenData: res.data
         })
       }
     })

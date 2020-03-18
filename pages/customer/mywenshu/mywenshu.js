@@ -100,7 +100,7 @@ Page({
         })
       }else{ //进入顾问详细页
         wx.navigateTo({
-          url: '/pages/customer/AnjianDetail/AnjianDetail?id=' + id,
+          url: '/pages/customer/guwenDetail/guwenDetail?id=' + id,
         })
       }
 

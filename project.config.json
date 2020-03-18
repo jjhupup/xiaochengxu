@@ -65,101 +65,10 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/customer/questionDetail/questionDetail",
-					"pathName": "pages/customer/questionDetail/questionDetail",
-					"query": "id=4",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "pages/lawyer/dayiDetail/dayiDetail",
-					"pathName": "pages/lawyer/dayiDetail/dayiDetail",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "案件委托",
-					"pathName": "pages/customer/caseEntrusted/caseEntrusted",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/userdata/userdata",
-					"pathName": "pages/userdata/userdata",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/mydayi/mydayi",
-					"pathName": "pages/lawyer/mydayi/mydayi",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/dayi/dayi",
-					"pathName": "pages/lawyer/dayi/dayi",
-					"query": "title=2",
-					"scene": null
-				},
-				{
-					"id": 7,
-					"name": "AJquote",
-					"pathName": "pages/lawyer/AJquote/AJquote",
-					"query": "id=8",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/offerDetail/offerDetail",
-					"pathName": "pages/lawyer/offerDetail/offerDetail",
-					"query": "id=10",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/corporateLawyer/corporateLawyer",
-					"pathName": "pages/customer/corporateLawyer/corporateLawyer",
-					"query": "id=10",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/wenshuDetail/wenshuDetail",
-					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/paymoney/paymoney",
-					"pathName": "pages/customer/paymoney/paymoney",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 12,
+					"id": 1,
 					"name": "pages/customer/mywenshu/mywenshu",
 					"pathName": "pages/customer/mywenshu/mywenshu",
-					"query": "type=1",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/guwen/guwen",
-					"pathName": "pages/lawyer/guwen/guwen",
-					"query": "id=12",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/wenshuDetail/wenshuDetail",
-					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
-					"query": "id=10",
+					"query": "type=2&name=我的案件",
 					"scene": null
 				}
 			]

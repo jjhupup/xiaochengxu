@@ -84,7 +84,14 @@ Page({
         img_url: '/static/images/guwen.png',
         pageUrl: '/pages/lawyer/dayi/dayi?title=3',
         titleone: '顾问委托',
-        detailed: '提交您的顾问需求，律师任你选择'
+        detailed: '顾问委托抢单，获取悬赏金'
+      },
+      {
+        id: 5,
+        img_url: '/static/images/find.png',
+        pageUrl: '/pages/lawyer/find/find?title=4',
+        titleone: '查询委托',
+        detailed: '查询委托抢单，获取悬赏金'
       }
     ],
     showLoginDialog: false,

@@ -34,7 +34,7 @@ Page({
       },
       {
         img_url: '/static/images/guwenWT.png',
-        page_url: '/pages/customer/myGuWen/myGuWen',
+        page_url: '/pages/customer/mywenshu/mywenshu?type=3&name=我的顾问',
         text: '我的顾问'
       },
       {

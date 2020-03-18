@@ -27,7 +27,8 @@
     "pages/lawyer/AJquote/AJquote",
     "pages/customer/paymoney/paymoney",
     "pages/customer/myAnjian/myAnjian",
-    "pages/customer/AnjianDetail/AnjianDetail"
+    "pages/customer/AnjianDetail/AnjianDetail",
+    "pages/customer/guwenDetail/guwenDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",
