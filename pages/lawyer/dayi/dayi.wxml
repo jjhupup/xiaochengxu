@@ -79,7 +79,7 @@
     </view>
   </view>
   <!-- 顾问委托 -->
-<view class='item card' wx:if="{{GWAllOrder}}" bindtap="goQuote" data-id="{{item.id}}" wx:for="{{GWAllOrder}}">
+  <view class='item card' wx:if="{{GWAllOrder}}" bindtap="goQuote" data-id="{{item.id}}" wx:for="{{GWAllOrder}}">
     <view class='header'>
       <view class='name' data-item='{{item}}'>
         <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
@@ -105,5 +105,28 @@
       暂无数据~
     </view>
   </view>
-
+  <!-- 业务查询 -->
+  <view class='item card' wx:if="{{CXAllOrder}}" bindtap="goQuote" data-id="{{item.id}}" wx:for="{{CXAllOrder}}">
+    <view class='header'>
+      <view class='name' data-item='{{item}}'>
+        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
+        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
+      </view>
+      <view class='type'>{{item.extra_info.findtype}}</view>
+    </view>
+    <view class='content'>
+      <view class='text'>
+        <view class='title'>{{item.extra_info.desc}}</view>
+      </view>
+    </view>
+    <view class='footer'>
+      <view class='label'>
+        <image src='/static/images/ajweituo.png'></image>
+        <view class="number">已有{{item.bidders.length}}个律师报价</view>
+      </view>
+    </view>
+    <view wx:if="{{AllOrder.length==0}}">
+      暂无数据~
+    </view>
+  </view>
 </view>

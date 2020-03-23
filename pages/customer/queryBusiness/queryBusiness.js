@@ -45,8 +45,8 @@ Page({
   },
   tijiaoData(obj) {
     util.request(Api.OrderPublish,{
-      customer_id:wx.getStorageSync('user_id'),
-      order_type:4,
+      customer_id:wx.getStorageSync('openid'),
+      case_type:4,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{
       console.log(res)

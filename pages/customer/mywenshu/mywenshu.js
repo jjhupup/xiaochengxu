@@ -10,10 +10,12 @@ Page({
     NavArr: ['全部文书', '待处理', '服务中', '已结束'],
     NavArr2: ['全部案件', '待处理', '服务中', '已结束'],
     NavArr3: ['全部顾问', '待处理', '服务中', '已结束'],
+    NavArr4: ['全部查询', '待处理', '服务中', '已结束'],
     key: 0,
     allWenshu: [],
     allAnjian: [],
     allGuwen: [],
+    allChaxun:[],
     type: 0
   },
 
@@ -48,7 +50,7 @@ Page({
     let that = this
     util.request(Api.GetCustomerOrderData, {
       type: type,
-      user_id: wx.getStorageSync('user_id')
+      customer_id: wx.getStorageSync('openid')
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
@@ -60,7 +62,11 @@ Page({
           that.setData({
             allAnjian: res.data
           })
-        } else {
+        }else if(type==4){
+          that.setData({
+            allChaxun: res.data
+          })
+        }else {
           that.setData({
             allGuwen: res.data
           })
@@ -97,6 +103,10 @@ Page({
       }else if(this.data.type==2){ // 进入案件详细页
         wx.navigateTo({
           url: '/pages/customer/AnjianDetail/AnjianDetail?id=' + id,
+        })
+      } else if (this.data.type ==4){ //进入查询页面
+        wx.navigateTo({
+          url: '/pages/customer/chaxun/chaxun?id=' + id,
         })
       }else{ //进入顾问详细页
         wx.navigateTo({

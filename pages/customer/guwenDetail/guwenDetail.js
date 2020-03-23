@@ -38,7 +38,7 @@ Page({
   getData(id) {
     let that = this
     utils.request(Api.GetOrderDetail, {
-      order_id: id
+      case_id: id
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {

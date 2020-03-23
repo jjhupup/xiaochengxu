@@ -1,0 +1,12 @@
+<!--pages/lawyer/tixian/tixian.wxml-->
+<view class="content">
+  <view class="Mymoney">
+    <view>我的余额</view>
+    <view>1002.22</view>
+  </view>
+  <view class="draw">
+    <view>提现金额</view>
+    <input type="number" placeholder="请输入提现金额" />
+  </view>
+  <view class="tixian">确定</view>
+</view>

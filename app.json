@@ -28,7 +28,11 @@
     "pages/customer/paymoney/paymoney",
     "pages/customer/myAnjian/myAnjian",
     "pages/customer/AnjianDetail/AnjianDetail",
-    "pages/customer/guwenDetail/guwenDetail"
+    "pages/customer/guwenDetail/guwenDetail",
+    "pages/customer/chaxun/chaxun",
+    "pages/lawyer/chaxun/chaxun",
+    "pages/personal/personal",
+    "pages/lawyer/tixian/tixian"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -47,12 +51,6 @@
         "iconPath": "static/images/home1.png",
         "selectedIconPath": "static/images/home2.png",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/search/search",
-        "iconPath": "static/images/search1.png",
-        "selectedIconPath": "static/images/search2.png",
-        "text": "找律师"
       },
       {
         "pagePath": "pages/my/my",

@@ -32,7 +32,7 @@ Page({
   getDetail(id) {
     let that = this
     utils.request(Api.GetOrderDetail, {
-      order_id: id
+      case_id: id
     }, 'POST').then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
@@ -62,7 +62,7 @@ Page({
     let bidders = this.data.AJDetail.bidders
     console.log(123, bidders)
     bidders.map(val => {
-      if (val.lawyer.id == wx.getStorageSync('user_id')) {
+      if (val.lawyer.uid == wx.getStorageSync('openid')) {
         can = false
         wx.showModal({
           title: '提示！',
@@ -88,8 +88,8 @@ Page({
   pushMoneyOrder(){
     let that=this
     utils.request(Api.Baojia,{
-      order_id:that.data.order_id,
-      lawyer_id: wx.getStorageSync('user_id'),
+      case_id:that.data.order_id,
+      lawyer_id: wx.getStorageSync('openid'),
       price:that.data.bjmoney
     },'POST').then(res=>{
       console.log(res)

@@ -3,7 +3,7 @@
 <view class="content">
   <view class="title1">我的提问</view>
   <view class="conten clearfix">
-    <text class="title">{{questionType[questionData[0].topic]}}</text>
+    <text class="title">{{questionType[questionData[0].topic-1]}}</text>
     <view class="questionTitle">
       {{questionData[0].title||'这是一个标题！'}}
     </view>

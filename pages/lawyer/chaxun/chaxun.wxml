@@ -1,0 +1,35 @@
+<view class="content">
+  <view class="title1">查询要求</view>
+  <view class="contentlist">
+    <text>申请人姓名：</text>
+    <text>{{AJDetail.extra_info.real_name}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件类型：</text>
+    <text>{{AJDetail.extra_info.AJtype}}</text>
+  </view>
+  <view class="contentlist">
+    <text>委托人在本案中的地位：</text>
+    <text>{{AJDetail.extra_info.DiWei}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件所处阶段：</text>
+    <text>{{AJDetail.extra_info.JieDuan}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件管辖地：</text>
+    <text>{{AJDetail.extra_info.GXdi[0]+'-'+AJDetail.extra_info.GXdi[1]+'-'+AJDetail.extra_info.GXdi[2]}}</text>
+  </view>
+  <view class="contentlist" wx:if="{{AJDetail.extra_info.SJmoney==true}}">
+    <text>案件涉及金额：</text>
+    <text>{{AJDetail.extra_info.ZYmoney}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件详情：</text>
+    <text>{{AJDetail.extra_info.DetailTxt}}</text>
+  </view>
+</view>
+<view class="baojia">
+  <input type="number" bindblur="getMoney" placeholder="请输入报价金额" />
+  <view bindtap="BaoJiaFun">我要报价</view>
+</view>

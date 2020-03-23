@@ -19,7 +19,7 @@ Page({
    */
   onLoad: function(options) {
     this.setData({
-      user_id: wx.getStorageSync('user_id')
+      user_id: wx.getStorageSync('openid')
     })
     this.getQuestionData(this.data.user_id)
   },

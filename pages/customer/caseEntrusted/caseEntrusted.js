@@ -95,6 +95,7 @@ Page({
   getAnJianData(e){
     console.log(e.detail.value)
     let obj = e.detail.value
+    let that=this
     if (!obj.real_name){
       wx.showToast({
         title: '请填写您的姓名',
@@ -105,7 +106,7 @@ Page({
         title: '请填写受争议的金额~',
         icon: 'none'
       })
-    } else if (obj.AJtype == 0 || obj.DiWei == 0 || obj.JieDuan==0){
+    } else if (this.data.leixin1 == 0 || this.data.diweiIndex == 0 || this.data.jieduanIndex==0){
       wx.showToast({
         title: '请选择相关案件信息~',
         icon: 'none'
@@ -117,7 +118,16 @@ Page({
       })
     }else{
       //提交数据
-      this.tijiaoData(obj)
+      wx.showModal({
+        title: '提交数据提示',
+        content: '确认无误后，即可提交委托信息~',
+        success(res){
+          if(res.confirm){
+            that.tijiaoData(obj)
+          }
+        }
+      })
+      
     }
   },
   Diwei(e){
@@ -132,8 +142,8 @@ Page({
   },
   tijiaoData(obj){
     utils.request(Api.OrderPublish,{
-      customer_id:wx.getStorageSync('user_id'),
-      order_type:2,
+      customer_id:wx.getStorageSync('openid'),
+      case_type:2,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{
       console.log(res)

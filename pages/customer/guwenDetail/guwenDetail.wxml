@@ -27,7 +27,7 @@
     <view>{{GuwenData.extra_info.adviserType}}</view>
   </view>
   <view class="title2">以下律师可以为您服务</view>
-  <view class="lawyer" wx:for="{{anjianData.bidders}}">
+  <view class="lawyer" wx:for="{{GuwenData.bidders}}">
     <view class="lawyerL">
       <image src="{{item.lawyer.avatar_url||'/static/images/guwen.png'}}" />
     </view>

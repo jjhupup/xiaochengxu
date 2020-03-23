@@ -10,10 +10,11 @@ module.exports = {
   GetMyMFZX: ApiRootUrl +'advice/customer',         //获取客户自己的免费咨询列表
   GetLawyerQuestion: ApiRootUrl +'user/relateReply',//获取律师的回复咨询列表
   UpDataUserData: ApiRootUrl +'user/update',        //更新用户信息 
-  OrderPublish: ApiRootUrl + 'order/publish',       //发布文书起草，案件委托等需求
-  GetOrderList: ApiRootUrl +'order/list',           //律师获取需求订单
-  GetOrderDetail: ApiRootUrl +'order/detail',       //律师和客户获取案件详情
-  Baojia: ApiRootUrl +'order/bid',                  // 律师对订单报价
-  GetCustomerOrderData:ApiRootUrl+'order/customerList',     //客户获取自己的需求订单
-  GetLawyerListData:ApiRootUrl+'order/lawyerList',   //律师获取自己的需求订单
+  OrderPublish: ApiRootUrl + 'case/publish',       //发布文书起草，案件委托等需求
+  GetOrderList: ApiRootUrl +'case/list',           //律师获取需求订单
+  GetOrderDetail: ApiRootUrl +'case/detail',       //律师和客户获取案件详情
+  Baojia: ApiRootUrl +'case/bid',                  // 律师对订单报价
+  GetCustomerOrderData: ApiRootUrl +'case/customerList',     //客户获取自己的需求订单
+  GetLawyerListData: ApiRootUrl +'case/lawyerList',   //律师获取自己的需求订单
+  GetUserData: ApiRootUrl +'user/detail',            //获取用户信息
 };

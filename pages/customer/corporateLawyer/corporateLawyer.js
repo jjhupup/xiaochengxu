@@ -101,15 +101,15 @@ Page({
   },
   uploadData(obj){
     utils.request(Api.OrderPublish,{
-      customer_id:wx.getStorageSync('user_id'),
-      order_type:3,
+      customer_id:wx.getStorageSync('openid'),
+      case_type:3,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{
       console.log(res)
       if (res.code =='S_Ok'){
         wx.showModal({
           title: '提示',
-          content: '订单以为您提交~',
+          content: '订单提交成功~~',
           success(){
             wx.switchTab({
               url: '/pages/index/index',

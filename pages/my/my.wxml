@@ -22,12 +22,12 @@
       </view>
     </view>
   </view>
-  <view class="order">
+  <!-- <view class="order">
      <view class="allList" wx:for="{{yijian}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>
       </view>
-  </view>
+  </view> -->
 </view>
 <view class='dialog-status' wx:if="{{showStatusDialog}}">
   <view class='dialog-body' catchtap='onDialogBody'>

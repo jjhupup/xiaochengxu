@@ -15,6 +15,7 @@ Page({
     AJAllOrder: [], //案件
     WSAllOrder: [], //文书
     GWAllOrder: [], //顾问
+    CXAllOrder: [], //查询
     btnTxt: '立即抢答',
     ordertype: 0,
     verify_status: 1
@@ -83,6 +84,11 @@ Page({
         that.setData({
           GWAllOrder: res.data
         })
+      }else{
+        // 查询
+        that.setData({
+          CXAllOrder: res.data
+        })
       }
 
     })
@@ -136,6 +142,10 @@ Page({
       } else if (this.data.ordertype == 3) {
         wx.navigateTo({
           url: '/pages/lawyer/guwen/guwen?id=' + e.currentTarget.dataset.id,
+        })
+      } else if (this.data.ordertype == 4){
+        wx.navigateTo({
+          url: '/pages/lawyer/chaxun/chaxun?id=' + e.currentTarget.dataset.id,
         })
       } else {
         wx.navigateTo({

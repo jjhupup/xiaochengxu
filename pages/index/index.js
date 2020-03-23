@@ -89,7 +89,7 @@ Page({
       {
         id: 5,
         img_url: '/static/images/find.png',
-        pageUrl: '/pages/lawyer/find/find?title=4',
+        pageUrl: '/pages/lawyer/dayi/dayi?title=4',
         titleone: '查询委托',
         detailed: '查询委托抢单，获取悬赏金'
       }
@@ -218,10 +218,9 @@ Page({
             console.log(res)
            
             if (res.code == 'S_Ok') {
-              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('openid', res.data.uid)
               wx.setStorageSync('role', res.data.role)
               wx.setStorageSync('verify_status', res.data.verify_status)
-              wx.setStorageSync('user_id', res.data.id)
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -250,7 +249,7 @@ Page({
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('user_id'),
+      user_id: wx.getStorageSync('openid'),
       base_info: JSON.stringify({
         role: wx.getStorageSync('role')
       })
@@ -316,7 +315,7 @@ Page({
   //测试用！！！！！！！！
   upDataRole2(role) {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('user_id'),
+      user_id: wx.getStorageSync('openid'),
       base_info: JSON.stringify({
         role: role
       })

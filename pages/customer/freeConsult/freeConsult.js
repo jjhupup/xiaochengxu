@@ -128,7 +128,7 @@ Page({
           }else {
             console.log('提交数据', contentStr, Api)
             utils.request(Api.Publish,{
-              advicer_openid:that.data.openid,
+              advicer_id:that.data.openid,
               topic:that.data.index*1+1,
               title: titletxt,
               content:contentStr

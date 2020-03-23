@@ -183,8 +183,8 @@ Page({
   },
   publishOrder(obj){
     utils.request(Api.OrderPublish,{
-      customer_id: wx.getStorageSync('user_id'),
-      order_type:1,
+      customer_id: wx.getStorageSync('openid'),
+      case_type:1,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{
       console.log(res)

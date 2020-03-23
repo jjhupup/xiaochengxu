@@ -38,15 +38,26 @@ Page({
         text: '我的顾问'
       },
       {
+        img_url: '/static/images/finds.png',
+        page_url: '/pages/customer/mywenshu/mywenshu?type=4&name=我的查询',
+        text: '我的查询'
+      },
+      {
         img_url: '/static/images/xiugai22.png',
         page_url: '/pages/userdata/userdata',
         text: '修改个人信息'
       }
     ],
-    lawyerlist: [{
+    lawyerlist: [
+      {
         img_url: '/static/images/xinxi.png',
         page_url: '/pages/news/news',
         text: '信息中心'
+      },
+      {
+        img_url: '/static/images/money.png',
+        page_url: '/pages/lawyer/tixian/tixian',
+        text: '提现'
       },
       {
         img_url: '/static/images/jieyi.png',
@@ -74,22 +85,6 @@ Page({
         text: '修改个人信息'
       }
     ],
-    yijian: [{
-        img_url: '/static/images/icon_feed_back.png',
-        page_url: '',
-        text: '意见反馈'
-      },
-      {
-        img_url: '/static/images/settings.png',
-        page_url: '',
-        text: '设置'
-      },
-      {
-        img_url: '/static/images/qrcode.png',
-        page_url: '',
-        text: '小程序二维码'
-      }
-    ],
     showStatusDialog: false,
     role: 0
   },
@@ -99,6 +94,7 @@ Page({
    */
   onLoad: function(options) {
     let that = this
+    that.getUser()
   },
 
   /**
@@ -116,9 +112,9 @@ Page({
     let userInfo = wx.getStorageSync('userInfo')
     console.log(userInfo)
     if (userInfo) {
-      userInfo = JSON.parse(userInfo)
+      // userInfo = JSON.parse(userInfo)
       that.setData({
-        userName: userInfo.nickName,
+        userName: userInfo.real_name||userInfo.nickName,
         userImage: userInfo.avatarUrl
       })
     }
@@ -226,9 +222,8 @@ Page({
             // 获取的openid再通过登录接口发给后台
             console.log(res)
             if (res.code == 'S_Ok') {
-              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('openid', res.data.uid)
               wx.setStorageSync('role', res.data.role)
-              wx.setStorageSync('user_id', res.data.id)
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -244,7 +239,7 @@ Page({
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('user_id'),
+      user_id: wx.getStorageSync('openid'),
       base_info:JSON.stringify({
         role: wx.getStorageSync('role')
       })
@@ -278,6 +273,12 @@ Page({
     } else {
       statusName = '律师'
     }
+    wx.requestSubscribeMessage({
+      tmplIds: ['Q49V7Pv4pGG-sQkFRL6L9q7TI_nIUstxI89lcly1WWI'],
+      success(res) {
+        console.log(res)
+      }
+    })
     wx.showModal({
       title: '提示！',
       content: '确认身份后不能随意修改，请认真选择，当前选择是' + statusName,
@@ -322,6 +323,22 @@ Page({
     console.log(e)
     wx.navigateTo({
       url: e.currentTarget.dataset.url
+    })
+  },
+  // 获取用户信息
+  getUser(){
+    let that=this
+    utils.request(Api.GetUserData,{
+      user_id:wx.getStorageSync('openid')
+    },'POST').then(res=>{
+      console.log(res)
+      let userinfo = wx.getStorageSync('userInfo')
+      userinfo.real_name = res.data.real_name
+      wx.setStorageSync('userInfo', userinfo)
+      that.setData({
+        userName: res.data.real_name||res.data.nick_name,
+        avatar_url:res.data.avatar_url
+      })
     })
   }
 })

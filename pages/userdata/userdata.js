@@ -132,7 +132,7 @@ Page({
   },
   updataUserData(obj){
    let updata={
-     user_id: wx.getStorageSync('user_id'),
+     user_id: wx.getStorageSync('openid'),
      base_info: JSON.stringify({
        real_name: obj.real_name
      }),
@@ -150,6 +150,9 @@ Page({
         wx.showToast({
           title: '信息修改成功~',
         })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1200)
       }
     })
   }

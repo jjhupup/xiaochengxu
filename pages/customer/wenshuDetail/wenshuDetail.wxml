@@ -1,7 +1,7 @@
 <!--pages/customer/wenshuDetail/wenshuDetail.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="content">
-  <view class="title2">代写诉状</view>
+  <view class="title2">{{wenshuData.extra_info.textType}}</view>
   <view class="clearfix">
     <text>{{wenshuData.extra_info.description}}</text>
     <view class="date">发布时间：{{dateFr.getDate2(wenshuData.create_time,'-',':')}}</view>

@@ -1,0 +1,47 @@
+/* pages/lawyer/tixian/tixian.wxss */
+.content{
+  padding: 10px;
+}
+.Mymoney{
+  width: 100%;
+   background: -webkit-linear-gradient(left,#1e88f5,#00baff);
+  height: 120px;
+  color: #fff;
+  border-radius: 8px;
+  text-indent: 24px;
+}
+.Mymoney view:nth-child(1){
+  height: 60px;
+  line-height: 80px;
+  font-size: 16px;
+}
+.Mymoney view:nth-child(2){
+  height: 60px;
+  line-height: 50px;
+  font-size: 20px;
+}
+.draw view{
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 20px;
+}
+.draw input{
+  border-bottom: 1px solid #ccc;
+  height: 50px;
+  padding-left: 10px;
+
+}
+.tixian{
+  width: 90%;
+  position: fixed;
+  bottom: 20px;
+  left: 5%;
+  height: 42px;
+  line-height: 42px;
+  text-align: center;
+  font-size: 18px;
+  background-color: #02b6fe;
+  color: #fff;
+  border-radius: 8px;
+}

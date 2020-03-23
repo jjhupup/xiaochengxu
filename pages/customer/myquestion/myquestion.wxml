@@ -21,7 +21,7 @@
         <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
         <view>{{item.advicer.nick_name||'某个吉尔'}}</view>
       </view>
-      <view class='type'>{{questionType[item.topic]}}</view>
+      <view class='type'>{{questionType[item.topic-1]}}</view>
     </view>
     <view class='content'>
       <view class='text'>
@@ -37,6 +37,7 @@
       </view>
     </view>
   </view>
+  <view wx:if="{{allQuestion.length==0}}">没有相关咨询信息~</view>
 </view>
 <view wx:if="{{key==1}}">
   {{key}}
