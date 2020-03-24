@@ -11,6 +11,7 @@ Page({
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     advice_id: '',
     pid: 0,
+    to_id:'',
     questionData: [],
     replies:[],
     isShowComment: false,
@@ -122,10 +123,11 @@ Page({
           })
           utils.request(Api.Reply, {
             advice_id: that.data.questionData[0].id,
+            title:that.data.questionData[0].title,
             pid: that.data.pid,
             content: that.data.answer,
-            from_openid: wx.getStorageSync('openid'), //当前评论人的openid
-            to_openid: that.data.advicer.openid //当前评论人的name
+            from_id: wx.getStorageSync('openid'), //当前评论人的openid
+            to_id: that.data.to_id //被评论人的name
           }, 'POST').then(res => {
             console.log(res)
             setTimeout(() => {
@@ -166,7 +168,8 @@ Page({
   openComment(e) {
     console.log(e.currentTarget.dataset.pid)
     this.setData({
-      pid: e.currentTarget.dataset.pid
+      pid: e.currentTarget.dataset.pid,
+      to_id: e.currentTarget.dataset.to_id
     })
     this.setData({
       isShowComment: true

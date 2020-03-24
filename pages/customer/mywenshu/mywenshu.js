@@ -94,7 +94,7 @@ Page({
     let statusOeder = e.currentTarget.dataset.orderstatus
     let id = e.currentTarget.dataset.questionid
     console.log(e, statusOeder)
-    if (statusOeder == 1) { // 订单待处理状态，进入选择律师页面
+    if (statusOeder == 0) { // 订单待处理状态，进入选择律师页面
       console.log('页面跳转1')
       if (this.data.type == 1) { //进入有图片展示的文书详细页
         wx.navigateTo({

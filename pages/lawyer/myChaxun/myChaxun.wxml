@@ -1,21 +1,20 @@
-<!--pages/lawyer/myWenShu/myWenShu.wxml-->
+<!--pages/lawyer/AJweituo/AJweituo.wxml-->
 <view class="headBar">
   <view bindtap="getDatalist" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
 <view wx:if="{{key==0}}">
-<!-- 文书 -->
-  <view class='item card'  wx:for="{{allWenshu}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+   <view class='item card'  wx:for="{{allChaxun}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='header'>
       <view class='name' data-item='{{item}}'>
         <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
         <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
       </view>
-      <view class='type'>{{questionType[item.topic]}}</view>
+      <view class='type'>{{item.extra_info.findtype}}</view>
     </view>
     <view class='content'>
       <view class='text'>
-        <view class='title'>{{item.extra_info.textType}}</view>
-        <view class='desc'>{{item.extra_info.description}}</view>
+        <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
+        <view class='title'>{{item.extra_info.desc}}</view>
       </view>
     </view>
     <view class='footer'>

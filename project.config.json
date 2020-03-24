@@ -98,6 +98,13 @@
 					"pathName": "pages/lawyer/tixian/tixian",
 					"query": "id=3",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/mywenshu/mywenshu",
+					"pathName": "pages/customer/mywenshu/mywenshu",
+					"query": "type=1&name=我的文书",
+					"scene": null
 				}
 			]
 		}

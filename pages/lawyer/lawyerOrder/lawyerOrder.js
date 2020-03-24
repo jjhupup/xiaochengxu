@@ -1,19 +1,22 @@
-// pages/lawyer/lawyerOrder/lawyerOrder.js
+// pages/lawyer/AJweituo/AJweituo.js
+const utils = require('../../../utils/util.js')
+const Api = require('../../../config/api.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    NavArr: ['全部订单', '待处理', '服务中', '已结束'],
-    key: 0
+    NavArr: ['全部案件', '待处理', '服务中', '已结束'],
+    key: 0,
+    allGuwen: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.getData()
   },
 
   /**
@@ -29,45 +32,24 @@ Page({
   onShow: function () {
 
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  getData(e) {
+  getDatalist(e) {
     console.log(e)
     this.setData({
       key: e.currentTarget.dataset.index
     })
-  }
+  },
+  getData() {
+    let that = this
+    utils.request(Api.GetLawyerListData, {
+      type: 3,
+      lawyer_id: wx.getStorageSync('openid')
+    }, 'POST').then(res => {
+      console.log(res)
+      if (res.code == 'S_Ok') {
+        that.setData({
+          allGuwen: res.data
+        })
+      }
+    })
+  },
 })

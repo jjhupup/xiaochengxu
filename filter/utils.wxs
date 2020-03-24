@@ -51,10 +51,21 @@ var DateFr = {
         M: M,
         d: d
       };
+  },
+  // 过滤待处理的订单
+  PendingOrder:function(data){
+    console.log('data',data)
+    return data.filter(function(val){
+      console.log(999)
+      if (val.status==0){
+        return val
+      }
+    })
   }
 }
 
 module.exports = {
   getDate: DateFr.getDate,
-  getDate2: DateFr.getDate2
+  getDate2: DateFr.getDate2,
+  PendingOrder: DateFr.PendingOrder
 }

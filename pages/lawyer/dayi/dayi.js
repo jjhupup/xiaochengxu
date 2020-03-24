@@ -125,9 +125,15 @@ Page({
   lookDetail(e) {
     console.log(e)
     let id = e.currentTarget.dataset.questionid
-    if (this.data.ordertype == 0) {
+    let verify_status = wx.getStorageSync('verify_status')
+    if (this.data.ordertype == 0 && verify_status==3) {
       wx.navigateTo({
         url: '/pages/lawyer/dayiDetail/dayiDetail?id=' + id
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '请提交您的律师相关证件，再进行下一步操作',
       })
     }
   },

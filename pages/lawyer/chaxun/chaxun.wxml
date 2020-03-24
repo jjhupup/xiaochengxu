@@ -1,32 +1,16 @@
 <view class="content">
   <view class="title1">查询要求</view>
   <view class="contentlist">
-    <text>申请人姓名：</text>
-    <text>{{AJDetail.extra_info.real_name}}</text>
+    <text>查询者姓名：</text>
+    <text>{{chaxun.publisher.real_name||chaxun.publisher.nick_name}}</text>
   </view>
   <view class="contentlist">
-    <text>案件类型：</text>
-    <text>{{AJDetail.extra_info.AJtype}}</text>
+    <text>查询信息：</text>
+    <text>{{chaxun.extra_info.findtype}}</text>
   </view>
   <view class="contentlist">
-    <text>委托人在本案中的地位：</text>
-    <text>{{AJDetail.extra_info.DiWei}}</text>
-  </view>
-  <view class="contentlist">
-    <text>案件所处阶段：</text>
-    <text>{{AJDetail.extra_info.JieDuan}}</text>
-  </view>
-  <view class="contentlist">
-    <text>案件管辖地：</text>
-    <text>{{AJDetail.extra_info.GXdi[0]+'-'+AJDetail.extra_info.GXdi[1]+'-'+AJDetail.extra_info.GXdi[2]}}</text>
-  </view>
-  <view class="contentlist" wx:if="{{AJDetail.extra_info.SJmoney==true}}">
-    <text>案件涉及金额：</text>
-    <text>{{AJDetail.extra_info.ZYmoney}}</text>
-  </view>
-  <view class="contentlist">
-    <text>案件详情：</text>
-    <text>{{AJDetail.extra_info.DetailTxt}}</text>
+    <text>相关信息：</text>
+    <text>{{chaxun.extra_info.desc}}</text>
   </view>
 </view>
 <view class="baojia">

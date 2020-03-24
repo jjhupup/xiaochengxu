@@ -66,18 +66,23 @@ Page({
       },
       {
         img_url: '/static/images/wenshuDA.png',
-        page_url: '/pages/lawyer/myWenShu/myWenShu?openid=110119',
+        page_url: '/pages/lawyer/myWenShu/myWenShu',
         text: '文书委托'
       },
       {
         img_url: '/static/images/ajweituo.png',
-        page_url: '/pages/lawyer/myAJweituo/myAJweituo?openid=110119',
+        page_url: '/pages/lawyer/myAJweituo/myAJweituo',
         text: '案件委托'
       },
       {
         img_url: '/static/images/guwenWT.png',
         page_url: '/pages/lawyer/lawyerOrder/lawyerOrder',
         text: '顾问委托'
+      },
+      {
+        img_url: '/static/images/finds.png',
+        page_url: '/pages/lawyer/myChaxun/myChaxun',
+        text: '我的查询'
       },
       {
         img_url: '/static/images/xiugai22.png',
@@ -94,7 +99,8 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-    that.getUser()
+    
+    
   },
 
   /**
@@ -112,6 +118,7 @@ Page({
     let userInfo = wx.getStorageSync('userInfo')
     console.log(userInfo)
     if (userInfo) {
+      that.getUser()
       // userInfo = JSON.parse(userInfo)
       that.setData({
         userName: userInfo.real_name||userInfo.nickName,
@@ -224,6 +231,7 @@ Page({
             if (res.code == 'S_Ok') {
               wx.setStorageSync('openid', res.data.uid)
               wx.setStorageSync('role', res.data.role)
+              wx.setStorageSync('verify_status', res.data.verify_status)
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -333,11 +341,19 @@ Page({
     },'POST').then(res=>{
       console.log(res)
       let userinfo = wx.getStorageSync('userInfo')
+      try{
+        userinfo = JSON.parse(userinfo) 
+      } catch (err){
+        console.log(err)
+        userinfo = userinfo
+      }
+      console.log(456)
       userinfo.real_name = res.data.real_name
+      userinfo.verify_status = res.data.verify_status
       wx.setStorageSync('userInfo', userinfo)
       that.setData({
         userName: res.data.real_name||res.data.nick_name,
-        avatar_url:res.data.avatar_url
+        userImage:res.data.avatar_url
       })
     })
   }

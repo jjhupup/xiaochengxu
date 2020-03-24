@@ -87,12 +87,16 @@ Page({
   },
   pushMoneyOrder() {
     let that = this
+    wx.showLoading({
+      title: '提交中~',
+    })
     utils.request(Api.Baojia, {
       case_id	: that.data.GuwenData.id,
       lawyer_id: wx.getStorageSync('openid'),
       price: that.data.bjmoney
     }, 'POST').then(res => {
       console.log(res)
+      wx.hideLoading()
       if (res.code == 'S_Ok') {
         wx.showToast({
           title: '提交成功，即将返回首页~',

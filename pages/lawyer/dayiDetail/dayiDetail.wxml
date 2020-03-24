@@ -10,7 +10,7 @@
   <view class="questionContent">
     {{questionData[0].content}}
   </view>
-  <view class="tools" data-pid="0" bindtap="openComment">
+  <view class="tools" data-pid="0" data-to_id="{{questionData[0].advicer.uid}}" bindtap="openComment">
     <image src="/static/images/comment.png" />
     <text>回复</text>
   </view>
@@ -36,7 +36,7 @@
     </view>
     <view class="answerContent clearfix">
       <text>{{item.content}}</text>
-      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+      <view class="tools2" data-pid="{{item.id}}" data-to_id="{{item.from.uid}}" bindtap="openComment">
         <image src="/static/images/comment.png" />
         <text>回复</text>
       </view>
@@ -48,7 +48,7 @@
         <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
       </view>
       <view class="pd10 ml30">{{item.content}}</view>
-      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+      <view class="tools2" data-pid="{{item.id}}" data-to_id="{{item.from.uid}}" bindtap="openComment">
         <image src="/static/images/comment.png" />
         <text>回复</text>
       </view>
