@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['全部咨询', '服务中', '已结束'],
+    NavArr: ['全部咨询', '已结束'],
     key: 0,
     allQuestion:[],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼']

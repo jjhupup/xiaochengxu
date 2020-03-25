@@ -66,44 +66,9 @@
 				},
 				{
 					"id": 1,
-					"name": "pages/customer/mywenshu/mywenshu",
-					"pathName": "pages/customer/mywenshu/mywenshu",
-					"query": "type=2&name=我的案件",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/myWenShu/myWenShu",
-					"pathName": "pages/lawyer/myWenShu/myWenShu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "chaxun",
-					"pathName": "pages/lawyer/chaxun/chaxun",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/personal/personal",
-					"pathName": "pages/personal/personal",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/tixian/tixian",
-					"pathName": "pages/lawyer/tixian/tixian",
-					"query": "id=3",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/mywenshu/mywenshu",
-					"pathName": "pages/customer/mywenshu/mywenshu",
-					"query": "type=1&name=我的文书",
+					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"query": "case_id=2",
 					"scene": null
 				}
 			]

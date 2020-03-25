@@ -54,6 +54,20 @@ Page({
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
+        res.data=res.data.filter(val=>{
+          if(val.status==0){
+            if(val.bidders.length==0){
+              val.statustxt = '待抢单'
+            }else{
+              val.statustxt = '未支付'
+            }
+          }else if(val.status==1){
+            val.statustxt='服务中'
+          }else if(val.status==2){
+            val.statustxt='已结束'
+          }
+          return val
+        })
         if (type == 1) {
           that.setData({
             allWenshu: res.data

@@ -33,7 +33,8 @@
     "pages/lawyer/chaxun/chaxun",
     "pages/personal/personal",
     "pages/lawyer/tixian/tixian",
-    "pages/lawyer/myChaxun/myChaxun"
+    "pages/lawyer/myChaxun/myChaxun",
+    "pages/lawyer/myOrderDetail/myOrderDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

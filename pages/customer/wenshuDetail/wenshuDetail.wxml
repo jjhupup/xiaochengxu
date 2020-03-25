@@ -16,28 +16,5 @@
   <view>暂无</view>
   <view></view>
   <view class="title2">以下律师可以为您服务</view>
-  <view class="lawyer" wx:for="{{wenshuData.bidders}}">
-    <view class="lawyerL">
-      <image src="{{item.lawyer.avatar_url||'/static/images/guwen.png'}}" />
-    </view>
-    <view class="lawyerC">
-      <view class="name">{{item.lawyer.real_name||item.lawyer.nick_name}}</view>
-      <view class="office">{{item.lawyer.extra_profile||'具化律师事务所'}}</view>
-      <view class="forte">
-        <text>擅长:</text>
-        <text>上单，打野，adc</text>
-      </view>
-      <view class="centerB">
-        <image src="/static/images/star.png" />
-        <text class="grade">4.5</text>
-        <text class="num">420个回答</text>
-      </view>
-    </view>
-    <view class="lawyerR">
-      <view class="tag">从业5年</view>
-      <view>广东 广州</view>
-      <view class="price">￥{{item.price}}.00</view>
-      <view class="choose" data-lawyeropenid="{{item.lawyer.openid}}" bindtap="paymoney">选他</view>
-    </view>
-  </view>
+  <choose-lawyer orderData="{{wenshuData.bidders}}"></choose-lawyer>
 </view>

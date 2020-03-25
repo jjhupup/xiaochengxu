@@ -12,9 +12,12 @@ module.exports = {
   UpDataUserData: ApiRootUrl +'user/update',        //更新用户信息 
   OrderPublish: ApiRootUrl + 'case/publish',       //发布文书起草，案件委托等需求
   GetOrderList: ApiRootUrl +'case/list',           //律师获取需求订单
-  GetOrderDetail: ApiRootUrl +'case/detail',       //律师和客户获取案件详情
+  GetOrderDetail: ApiRootUrl +'case/detail',       //获取案件详情
   Baojia: ApiRootUrl +'case/bid',                  // 律师对订单报价
   GetCustomerOrderData: ApiRootUrl +'case/customerList',     //客户获取自己的需求订单
   GetLawyerListData: ApiRootUrl +'case/lawyerList',   //律师获取自己的需求订单
   GetUserData: ApiRootUrl +'user/detail',            //获取用户信息
+  //支付接口！！！！
+  GetPayParams: ApiRootUrl +'pay/getPayParams',      //获取支付参数
+  Withdrawal: ApiRootUrl +'order/withdrawal',           //提现申请
 };

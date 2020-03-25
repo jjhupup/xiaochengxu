@@ -221,6 +221,7 @@ Page({
               wx.setStorageSync('openid', res.data.uid)
               wx.setStorageSync('role', res.data.role)
               wx.setStorageSync('verify_status', res.data.verify_status)
+              wx.setStorageSync('token', res.token)
               resolve(res.data.role)
             } else {
               wx.showToast({

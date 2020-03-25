@@ -1,2 +1,18 @@
 <!--pages/customer/chaxun/chaxun.wxml-->
-<text>pages/customer/chaxun/chaxun.wxml</text>
+<view class="content">
+  <view class="title1">查询要求</view>
+  <view class="contentlist">
+    <text>查询者姓名：</text>
+    <text>{{chaxun.publisher.real_name||chaxun.publisher.nick_name}}</text>
+  </view>
+  <view class="contentlist">
+    <text>查询信息：</text>
+    <text>{{chaxun.extra_info.findtype}}</text>
+  </view>
+  <view class="contentlist">
+    <text>相关信息：</text>
+    <text>{{chaxun.extra_info.desc}}</text>
+  </view>
+  <view class="title2">以下律师可以为您服务</view>
+  <choose-lawyer orderData="{{chaxun.bidders}}"></choose-lawyer>
+</view>

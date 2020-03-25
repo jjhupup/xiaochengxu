@@ -47,11 +47,5 @@ Page({
       }
     })
   },
-  paymoney(e) {
-    console.log(e.currentTarget.dataset)
-    let openid = e.currentTarget.dataset.lawyeropenid
-    wx.navigateTo({
-      url: '/pages/customer/paymoney/paymoney?openid=' + openid,
-    })
-  }
+  
 })

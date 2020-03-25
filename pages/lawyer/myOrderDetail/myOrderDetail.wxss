@@ -1,8 +1,30 @@
-/* pages/lawyer/AJquote/AJquote.wxss */
+/* pages/lawyer/myOrderDetail/myOrderDetail.wxss */
 
 .content {
   padding: 10px;
 }
+
+.showimg {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.showimg image {
+  width: 33%;
+  height: 260rpx;
+}
+
+.date {
+  font-size: 28rpx;
+  margin-top: 10px;
+  color: #999;
+}
+
+.fileName {
+  border: 1px dotted #ccc;
+  padding: 6px 10px;
+}
+
 .title2 {
   display: block;
   height: 60px;
@@ -21,8 +43,6 @@
   top: 17px;
   background-color: #404040;
 }
-
-
 .contentlist text:nth-child(1) {
   font-size: 14px;
   color: #555;
@@ -38,27 +58,22 @@
   display: flex;
   padding: 5px 0;
 }
-
-.lawyer {
+.yaoqiu {
+  height: 50px;
+  line-height: 50px;
   display: flex;
-  height: 140px;
-  margin-bottom: 16px;
-  box-shadow: 2px 2px 6px #cecece;
 }
 
-.lawyerL {
-  width: 23%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+.yaoqiu view {
+  color: #000;
+  padding: 0 8px;
+  flex: 1;
+  border-bottom: 1px solid #ccc;
 }
-
-.lawyerL image {
-  width: 120rpx;
-  height: 120rpx;
-  margin-left: 12px;
+.baojia{
+  color: red;
 }
-
-.lawyerL view {
-  text-indent: 12px;
+.mybidder{
+  height: 36px;
+  line-height: 36px;
 }

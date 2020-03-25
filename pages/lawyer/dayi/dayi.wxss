@@ -72,11 +72,11 @@ page {
 }
 
 .item {
-  padding: 0 30rpx;
+  padding: 6px 30rpx;
   margin-bottom: 14rpx;
   box-sizing: border-box;
   background: #fff;
-  margin-top: 10px;
+  margin-top: 15px;
   box-shadow: 8px 4px 8px #ddd;
 
 }
@@ -102,7 +102,13 @@ page {
   border-radius: 50%;
   margin-right: 10rpx;
 }
+.type{
+  color: #abb4bf;
+  font-size: 14px;
+  width: 27%;
+text-align: right;
 
+}
 .content {
   display: flex;
   justify-content: space-between;
@@ -122,14 +128,31 @@ page {
 .content .title {
   font-size: 32rpx;
   margin-bottom: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1
 }
-
+.content .text .title view:nth-child(1){
+  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+.title view:nth-child(1){
+  flex: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
 .content .desc {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
-  color: #abb4bf;
+  color: #666;
 }
 
 .label {

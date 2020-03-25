@@ -1,8 +1,8 @@
 <!--pages/personal/personal.wxml-->
 <view class="content">
   <view class="top">
-    <image src="/static/images/guwen.png" />
-    <view class="name">张元洪律师</view>
+    <image src="{{lawyerData.avatar_url||'/static/images/guwen.png'}}" />
+    <view class="name">{{lawyerData.real_name||lawyerData.nick_name}}律师</view>
     <view class="dizi">
       <text>广州-天河</text>
       <text>执业6年</text>

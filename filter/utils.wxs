@@ -53,11 +53,11 @@ var DateFr = {
       };
   },
   // 过滤待处理的订单
-  PendingOrder:function(data){
+  PendingOrder:function(data,type){
     console.log('data',data)
     return data.filter(function(val){
       console.log(999)
-      if (val.status==0){
+      if (val.status == type){
         return val
       }
     })

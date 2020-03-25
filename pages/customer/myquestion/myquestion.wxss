@@ -10,7 +10,7 @@ page{
 }
 
 .headBar view {
-  width: 33.3%;
+  width: 50%;
   font-size: 28rpx;
   box-sizing: border-box;
   height: 80rpx;

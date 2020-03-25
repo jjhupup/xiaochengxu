@@ -5,13 +5,13 @@
 <view wx:if="{{key==0}}">
 <!-- 文书 -->
   <view class='item card'  wx:for="{{allWenshu}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <view class='header'>
+    <!-- <view class='header'>
       <view class='name' data-item='{{item}}'>
         <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
         <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
       </view>
       <view class='type'>{{questionType[item.topic]}}</view>
-    </view>
+    </view> -->
     <view class='content'>
       <view class='text'>
         <view class='title'>{{item.extra_info.textType}}</view>

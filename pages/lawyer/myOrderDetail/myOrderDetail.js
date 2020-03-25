@@ -1,4 +1,4 @@
-// pages/customer/wenshuDetail/wenshuDetail.js
+// pages/lawyer/myOrderDetail/myOrderDetail.js
 const util = require('../../../utils/util.js')
 const Api = require('../../../config/api.js')
 Page({
@@ -7,19 +7,19 @@ Page({
    * 页面的初始数据
    */
   data: {
-    id:0,
-    wenshuData:{}
+    allData:{},
+    mybidder:{},
+    type:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.getCaseData(options.case_id)
     this.setData({
-      id:options.id
+      type:options.type
     })
-    this.getDetail(options.id)
-    console.log(123)
   },
 
   /**
@@ -35,26 +35,24 @@ Page({
   onShow: function () {
 
   },
-  getDetail(id){
+
+  getCaseData(id){
     let that=this
     util.request(Api.GetOrderDetail,{
       case_id:id
-    },"POST").then(res=>{
-      console.log(res)
+    },'post').then(res=>{
       if(res.code=='S_Ok'){
-        that.setData({
-          wenshuData:res.data
-        })
-      }else{
-        wx.showModal({
-          title: '提示',
-          content: '数据请求出错！',
-          success(){
-            wx.navigateBack()
+       let bidder= res.data.bidders.filter(val=>{
+          if (val.lawyer.uid==wx.getStorageSync('openid')){
+            return val
           }
+        })
+        console.log(bidder)
+        that.setData({
+          allData:res.data,
+          mybidder:bidder
         })
       }
     })
-  },
-  
+  }
 })

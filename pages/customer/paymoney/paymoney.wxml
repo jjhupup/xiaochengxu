@@ -1,15 +1,15 @@
 <!--pages/customer/paymoney/paymoney.wxml-->
 <!-- <text>pages/customer/paymoney/paymoney.wxml</text> -->
 <view class="top">
-  <image src="/static/images/guwen.png" />
+  <image src="{{lawyerdata.avatar_url||'/static/images/guwen.png'}}" />
   <view class="topCenter">
     <view class="name">
-      <text>江建辉</text>
+      <text>{{lawyerdata.real_name||lawyerdata.nick_name}}</text>
       <text>三年经验</text>
     </view>
     <view class="officeName">王者律师事务所</view>
   </view>
-  <view class="price">￥19.00</view>
+  <view class="price">￥{{price}}</view>
 </view>
 <view class="tips">
   <text>回复时间</text>
@@ -18,14 +18,14 @@
 <view class="down">
   <view class="money">
     <text>合计：</text>
-    <text>￥19.00</text>
+    <text>￥{{price}}</text>
   </view>
   <view bindtap="tanchuPay" class="paybtn">立即支付</view>
 </view>
 <view class="shade" wx:if="{{payshow}}" bindtap="closeShow">
   <view class="paymothed" catchtap="onDialogBody">
     <view class="paymothedtxt">选择支付</view>
-    <view class="money">￥19.00</view>
+    <view class="money">￥{{price}}</view>
     <view class="weixin">
       <image src="/static/images/pay.png" />
       <text>微信支付</text>
