@@ -4,8 +4,8 @@
     <image src="{{lawyerData.avatar_url||'/static/images/guwen.png'}}" />
     <view class="name">{{lawyerData.real_name||lawyerData.nick_name}}律师</view>
     <view class="dizi">
-      <text>广州-天河</text>
-      <text>执业6年</text>
+      <text>{{location}}</text>
+      <text>执业{{lawyerData.extra_profile.experience_year}}年</text>
     </view>
     <view class="desc">
       <view>
@@ -66,5 +66,26 @@
   <view>
     <icon type="success" size="18" />
     <text>实名认证</text>
+  </view>
+</view>
+
+<view class="down" wx:if="{{price!=0}}">
+  <view class="money">
+    <text></text>
+    <text>￥{{price}}</text>
+  </view>
+  <view bindtap="tanchuPay" class="paybtn">选择该律师并支付</view>
+</view>
+
+<view class="shade" wx:if="{{payshow}}" bindtap="closeShow">
+  <view class="paymothed" catchtap="onDialogBody">
+    <view class="paymothedtxt">选择支付</view>
+    <view class="money">￥{{price}}</view>
+    <view class="weixin">
+      <image src="/static/images/pay.png" />
+      <text>微信支付</text>
+      <image class="gou" src="/static/images/paycho.png" />
+    </view>
+    <view class="gopay" bindtap="paymoney">立即支付</view>
   </view>
 </view>

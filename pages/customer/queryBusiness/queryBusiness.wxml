@@ -11,6 +11,6 @@
     </picker>
     <view class="title1 ">查询人相关信息</view>
     <textarea class="questionInp" name="desc" placeholder="请写下相关要查询的相关信息，我们会交由律师为您解答" />
-    <button class="submit" form-type="submit">提交咨询</button>
+    <button class="submit" form-type="submit">提交查询</button>
   </form>
 </view>

@@ -15,7 +15,7 @@
     <swiper-item>
       <!-- swiper-item Class对应每个类型的内容盒子 index1=0或1时律师函&写诉状 -->
       <form bindsubmit="subQuestion">
-        <view class="swiper-item " wx:if="{{index1=='0'||index1=='1'||index1=='2'||index1=='4'}}">
+        <view class="swiper-item" wx:if="{{index1=='0'||index1=='1'||index1=='2'||index1=='4'}}">
           <view class="titleMini">请上传案件所涉证据</view>
           <view class="yulanImg">
             <view wx:for="{{imgurl}}" wx:key="index">

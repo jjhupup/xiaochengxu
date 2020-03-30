@@ -66,6 +66,7 @@ page {
   letter-spacing: 8px;
   text-indent: 8px;
   padding: 0;
+  z-index: 999;
 }
 
 .upload {
@@ -114,4 +115,16 @@ page {
 
 .close2 {
   right: 72rpx;
+}
+.expertList{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.checkbox{
+  margin: 6px 0;
+  width: 32%
+}
+.checkbox checkbox{
+  vertical-align: middle;
 }

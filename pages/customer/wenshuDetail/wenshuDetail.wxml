@@ -16,5 +16,5 @@
   <view>暂无</view>
   <view></view>
   <view class="title2">以下律师可以为您服务</view>
-  <choose-lawyer orderData="{{wenshuData.bidders}}"></choose-lawyer>
+  <choose-lawyer orderData="{{wenshuData.bidders}}" caseid="{{id}}"></choose-lawyer>
 </view>

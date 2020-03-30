@@ -41,15 +41,9 @@ Page({
         img_url: '/static/images/finds.png',
         page_url: '/pages/customer/mywenshu/mywenshu?type=4&name=我的查询',
         text: '我的查询'
-      },
-      {
-        img_url: '/static/images/xiugai22.png',
-        page_url: '/pages/userdata/userdata',
-        text: '修改个人信息'
       }
     ],
-    lawyerlist: [
-      {
+    lawyerlist: [{
         img_url: '/static/images/xinxi.png',
         page_url: '/pages/news/news',
         text: '信息中心'
@@ -84,11 +78,11 @@ Page({
         page_url: '/pages/lawyer/myChaxun/myChaxun',
         text: '我的查询'
       },
-      {
-        img_url: '/static/images/xiugai22.png',
-        page_url: '/pages/userdata/userdata',
-        text: '修改个人信息'
-      }
+      // {
+      //   img_url: '/static/images/xiugai22.png',
+      //   page_url: '/pages/userdata/userdata',
+      //   text: '修改个人信息'
+      // }
     ],
     showStatusDialog: false,
     role: 0
@@ -99,8 +93,8 @@ Page({
    */
   onLoad: function(options) {
     let that = this
-    
-    
+
+
   },
 
   /**
@@ -117,11 +111,19 @@ Page({
     let that = this
     let userInfo = wx.getStorageSync('userInfo')
     console.log(userInfo)
+    let nowtime = new Date()
+    nowtime = Date.parse(nowtime)
+    let loginTime = wx.getStorageSync('loginTime')
+    console.log((nowtime - loginTime), loginTime)
+    if (nowtime - loginTime > 172800000 && loginTime) {
+      console.log('超过两天，从新请求')
+      that.getUserData()
+    }
     if (userInfo) {
       that.getUser()
       // userInfo = JSON.parse(userInfo)
       that.setData({
-        userName: userInfo.real_name||userInfo.nickName,
+        userName: userInfo.real_name || userInfo.nickName,
         userImage: userInfo.avatarUrl
       })
     }
@@ -178,6 +180,11 @@ Page({
   onShareAppMessage: function() {
 
   },
+  goshezhi() {
+    wx.navigateTo({
+      url: '/pages/userdata/userdata',
+    })
+  },
   // 微信登录，同时记录用户信息
   onWechatLogin(e) {
     let that = this
@@ -229,9 +236,15 @@ Page({
             // 获取的openid再通过登录接口发给后台
             console.log(res)
             if (res.code == 'S_Ok') {
-              wx.setStorageSync('openid', res.data.uid)
+              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('user_id', res.data.id)
               wx.setStorageSync('role', res.data.role)
               wx.setStorageSync('verify_status', res.data.verify_status)
+              wx.setStorageSync('token', res.token)
+              let loginTime = new Date()
+              loginTime = Date.parse(loginTime)
+              console.log(loginTime)
+              wx.setStorageSync('loginTime', loginTime)
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -247,8 +260,8 @@ Page({
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('openid'),
-      base_info:JSON.stringify({
+      user_id: wx.getStorageSync('user_id'),
+      base_info: JSON.stringify({
         role: wx.getStorageSync('role')
       })
     }, "POST").then(res => {
@@ -334,16 +347,16 @@ Page({
     })
   },
   // 获取用户信息
-  getUser(){
-    let that=this
-    utils.request(Api.GetUserData,{
-      user_id:wx.getStorageSync('openid')
-    },'POST').then(res=>{
+  getUser() {
+    let that = this
+    utils.request(Api.GetUserData, {
+      user_id: wx.getStorageSync('user_id')
+    }, 'POST').then(res => {
       console.log(res)
       let userinfo = wx.getStorageSync('userInfo')
-      try{
-        userinfo = JSON.parse(userinfo) 
-      } catch (err){
+      try {
+        userinfo = JSON.parse(userinfo)
+      } catch (err) {
         console.log(err)
         userinfo = userinfo
       }
@@ -352,8 +365,8 @@ Page({
       userinfo.verify_status = res.data.verify_status
       wx.setStorageSync('userInfo', userinfo)
       that.setData({
-        userName: res.data.real_name||res.data.nick_name,
-        userImage:res.data.avatar_url
+        userName: res.data.real_name || res.data.nick_name,
+        userImage: res.data.avatar_url
       })
     })
   }

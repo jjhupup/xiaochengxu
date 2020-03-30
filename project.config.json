@@ -70,6 +70,13 @@
 					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
 					"query": "case_id=2",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "id=6",
+					"scene": null
 				}
 			]
 		}

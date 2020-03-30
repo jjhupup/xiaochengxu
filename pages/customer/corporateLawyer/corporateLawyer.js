@@ -101,7 +101,7 @@ Page({
   },
   uploadData(obj){
     utils.request(Api.OrderPublish,{
-      customer_id:wx.getStorageSync('openid'),
+      customer_id:wx.getStorageSync('user_id'),
       case_type:3,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{

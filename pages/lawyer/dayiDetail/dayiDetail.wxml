@@ -6,11 +6,11 @@
   <view class="questionTitle">
     {{questionData[0].title||'这是一个标题！'}}
   </view>
-  <view class="creatdate">发布时间：{{dateFr.getDate(questionData[0].create_time,'-',':')}}</view>
+  <view class="creatdate">发布时间：{{dateFr.getDate2(questionData[0].create_time,'-',':')}}</view>
   <view class="questionContent">
     {{questionData[0].content}}
   </view>
-  <view class="tools" data-pid="0" data-to_id="{{questionData[0].advicer.uid}}" bindtap="openComment">
+  <view class="tools" data-pid="0" data-to_id="{{questionData[0].advicer.id}}" bindtap="openComment">
     <image src="/static/images/comment.png" />
     <text>回复</text>
   </view>
@@ -36,10 +36,10 @@
     </view>
     <view class="answerContent clearfix">
       <text>{{item.content}}</text>
-      <view class="tools2" data-pid="{{item.id}}" data-to_id="{{item.from.uid}}" bindtap="openComment">
+      <!-- <view class="tools2" data-pid="{{item.id}}" data-to_id="{{item.from.uid}}" bindtap="openComment">
         <image src="/static/images/comment.png" />
         <text>回复</text>
-      </view>
+      </view> -->
     </view>
     <view class="recomment" wx:for="{{item.children}}">
       <view class="usertop">

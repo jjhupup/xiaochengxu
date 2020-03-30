@@ -141,3 +141,6 @@ page {
 }
 
 
+.zuigao{
+  height: 830px !important;
+}

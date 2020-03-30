@@ -1,12 +1,12 @@
 <!--component/chooseLawyer/chooseLawyer.wxml-->
 <!-- <view>子组件</view> -->
 <view class="lawyer" wx:for="{{orderData}}">
-    <view class="lawyerL" bindtap="golawyerData" data-uid="{{item.lawyer.uid}}">
+    <view class="lawyerL" bindtap="golawyerData" data-case_id="{{caseid}}" data-price="{{item.price}}" data-userid="{{item.lawyer.id}}">
       <image src="{{item.lawyer.avatar_url||'/static/images/guwen.png'}}" />
     </view>
     <view class="lawyerC">
       <view class="name">{{item.lawyer.real_name||item.lawyer.nick_name}}</view>
-      <view class="office">{{item.lawyer.extra_profile||'廖化律师事务所'}}</view>
+      <view class="office">{{item.lawyer.extra_profile.office||'廖化律师事务所'}}</view>
       <view class="forte">
         <text>擅长:</text>
         <text>上单，打野，adc</text>
@@ -14,13 +14,12 @@
       <view class="centerB">
         <!-- <image src="/static/images/star.png" />
         <text class="grade">4.5</text> -->
-        <text>广东 广州</text>
-        <text class="num">420个回答</text>
+        <text>{{item.lawyer.extra_profile.location[0]+'-'+item.lawyer.extra_profile.location[1]}}</text>
       </view>
     </view>
     <view class="lawyerR">
-      <view class="tag">从业5年</view>
+      <view class="tag">从业{{item.lawyer.extra_profile.experience_year}}年</view>
       <view class="price">￥{{item.price}}.00</view>
-      <view class="choose" data-lawyeropenid="{{item.lawyer.uid}}" data-case_id="{{id}}" data-price="{{item.price}}" bindtap="paymoney">选他</view>
+      <view class="choose" data-userid="{{item.lawyer.id}}" data-case_id="{{caseid}}" data-price="{{item.price}}" bindtap="golawyerData">选他</view>
     </view>
   </view>

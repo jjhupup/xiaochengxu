@@ -5,9 +5,14 @@
     <image src="{{userImage}}" />
     <view class="userName">{{userName}}</view>
     <button open-type="getUserInfo" bindgetuserinfo="getUserInfo"></button>
+    <view class="toright">
+      <view class="goshezhi" catchtap="goshezhi">
+        <image src="/static/images/right02.png" />
+      </view>
+    </view>
   </view>
   <view class="myAbility">
-    <view class="list" wx:if="{{role=='1'}}" >
+    <view class="list" wx:if="{{role=='1'}}">
       <view class="allList" wx:for="{{datalist}}" bindtap="gopage" data-url="{{item.page_url}}">
         <image class="img1" src="{{item.img_url}}" />
         <view class="text">{{item.text}}</view>

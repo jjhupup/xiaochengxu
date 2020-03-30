@@ -4,7 +4,7 @@
 }
 .Mymoney{
   width: 100%;
-   background: -webkit-linear-gradient(left,#1e88f5,#00baff);
+   background: -webkit-linear-gradient(left,#6d84dd,#5d71c0);
   height: 120px;
   color: #fff;
   border-radius: 8px;
@@ -32,6 +32,10 @@
   padding-left: 10px;
 
 }
+.draw .tips{
+  color: #5677fc;
+  font-size: 15px;
+}
 .tixian{
   width: 90%;
   position: fixed;
@@ -41,7 +45,7 @@
   line-height: 42px;
   text-align: center;
   font-size: 18px;
-  background-color: #02b6fe;
+  background-color: #5677fc;
   color: #fff;
   border-radius: 8px;
 }

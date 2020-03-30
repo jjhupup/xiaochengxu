@@ -62,7 +62,7 @@ Page({
     // 判断律师是否已经报过价了
     let bidders = this.data.GuwenData.bidders
     bidders.map(val => {
-      if (val.lawyer.uid == wx.getStorageSync('openid')) {
+      if (val.lawyer.id == wx.getStorageSync('user_id')) {
         can = false
         wx.showModal({
           title: '提示！',
@@ -92,7 +92,7 @@ Page({
     })
     utils.request(Api.Baojia, {
       case_id	: that.data.GuwenData.id,
-      lawyer_id: wx.getStorageSync('openid'),
+      lawyer_id: wx.getStorageSync('user_id'),
       price: that.data.bjmoney
     }, 'POST').then(res => {
       console.log(res)

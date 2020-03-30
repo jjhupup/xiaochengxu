@@ -8,6 +8,14 @@
   <form bindsubmit="saveLawyerData">
     <view class="titleMini">您的姓名</view>
     <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的真实姓名" />
+    <view class="titleMini">您的电话号码</view>
+    <input confirm-type='next' class="nameinput" name='phone' type="number" placeholder="请输入您的手机号码" />
+   <view class="titleMini">选择您的擅长领域</view>
+    <checkbox-group class="expertList" name="expertData">
+      <label class="checkbox" wx:for="{{expert}}">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
+      </label>
+    </checkbox-group>
     <view class="titleMini">所在的律师事务所</view>
     <input confirm-type='next' class="nameinput" name='office' type="text" placeholder="请输入您所在的律师事务所" />
     <view class="titleMini">执业地域</view>

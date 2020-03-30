@@ -126,7 +126,7 @@ Page({
             title:that.data.questionData[0].title,
             pid: that.data.pid,
             content: that.data.answer,
-            from_id: wx.getStorageSync('openid'), //当前评论人的openid
+            from_id: wx.getStorageSync('user_id'), //当前评论人的openid
             to_id: that.data.to_id //被评论人的name
           }, 'POST').then(res => {
             console.log(res)

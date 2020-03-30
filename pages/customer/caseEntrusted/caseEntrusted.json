@@ -1,6 +1,5 @@
 {
   "usingComponents": {
-    "Header":"/component/head/head"
   },
   "navigationBarTitleText": "案件委托"
 }

@@ -49,7 +49,7 @@ this.getData(options.id)
       }else{
         wx.showModal({
           title: '提示',
-          content: '请求数据出！',
+          content: '请求数据出错！',
           success(){
             wx.switchTab({
               url: '/pages/index/index',
@@ -79,7 +79,7 @@ this.getData(options.id)
     let bidders = this.data.chaxun.bidders
     console.log(123, bidders)
     bidders.map(val => {
-      if (val.lawyer.uid == wx.getStorageSync('openid')) {
+      if (val.lawyer.id == wx.getStorageSync('user_id')) {
         can = false
         wx.showModal({
           title: '提示！',
@@ -106,7 +106,7 @@ this.getData(options.id)
     let that = this
     utils.request(Api.Baojia, {
       case_id: that.data.order_id,
-      lawyer_id: wx.getStorageSync('openid'),
+      lawyer_id: wx.getStorageSync('user_id'),
       price: that.data.bjmoney
     }, 'POST').then(res => {
       console.log(res)

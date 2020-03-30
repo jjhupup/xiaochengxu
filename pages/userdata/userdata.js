@@ -1,6 +1,6 @@
 // pages/userdata/userdata.js
-const utils=require('../../utils/util.js')
-const Api=require('../../config/api.js')
+const utils = require('../../utils/util.js')
+const Api = require('../../config/api.js')
 Page({
 
   /**
@@ -13,6 +13,67 @@ Page({
       ['个人信息', '律师认证']
     ],
     regionVal: ['广东省', '广州市', '天河区'],
+    expert: [{
+        name: '债权债务',
+        checked: false
+      },
+      {
+        name: '刑事辩论',
+        checked: false
+      },
+      {
+        name: '合同纠纷',
+        checked: false
+      },
+      {
+        name: '房产纠纷',
+        checked: false
+      },
+      {
+        name: '毒品犯罪',
+        checked: false
+      },
+      {
+        name: '取保候审',
+        checked: false
+      },
+      {
+        name: '工伤赔偿',
+        checked: false
+      },
+      {
+        name: '交通事故',
+        checked: false
+      },
+      {
+        name: '家庭婚姻',
+        checked: false
+      },
+      {
+        name: '工程建筑',
+        checked: false
+      },
+      {
+        name: '法律顾问',
+        checked: false
+      },
+      {
+        name: '知识产权',
+        checked: false
+      },
+      {
+        name: '公司法',
+        checked: false
+      },
+      {
+        name: '侵权',
+        checked: false
+      },
+      {
+        name: '继承',
+        checked: false
+      }
+    ],
     key: 0,
     userImg: '',
     zhenjianImg: ''
@@ -38,41 +99,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function() {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function() {
 
   },
   getData(e) {
@@ -127,32 +153,34 @@ Page({
     })
   },
   saveLawyerData(e) {
-    console.log(e.detail.value,123)
+    console.log(e.detail.value, 123)
     this.updataUserData(e.detail.value)
   },
-  updataUserData(obj){
-   let updata={
-     user_id: wx.getStorageSync('openid'),
-     base_info: JSON.stringify({
-       real_name: obj.real_name
-     }),
-     extra_profile: JSON.stringify({
-       office: obj.office,
-       location: obj.location,
-       experience_year: obj.experience_year
-     })
-   }
-    utils.request(Api.UpDataUserData,{
+  updataUserData(obj) {
+    let updata = {
+      user_id: wx.getStorageSync('user_id'),
+      base_info: JSON.stringify({
+        real_name: obj.real_name
+      }),
+      extra_profile: JSON.stringify({
+        office: obj.office,
+        location: obj.location,
+        phone: obj.phone,
+        expertData:obj.expertData,
+        experience_year: obj.experience_year
+      })
+    }
+    utils.request(Api.UpDataUserData, {
       ...updata
-    },'POST').then(res=>{
+    }, 'POST').then(res => {
       console.log(res)
-      if (res.code =='S_Ok'){
+      if (res.code == 'S_Ok') {
         wx.showToast({
           title: '信息修改成功~',
         })
-        setTimeout(()=>{
+        setTimeout(() => {
           wx.navigateBack()
-        },1200)
+        }, 1200)
       }
     })
   }

@@ -50,7 +50,7 @@ Page({
     let that = this
     util.request(Api.GetCustomerOrderData, {
       type: type,
-      customer_id: wx.getStorageSync('openid')
+      customer_id: wx.getStorageSync('user_id')
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {

@@ -149,5 +149,10 @@ Page({
     this.setData({
       answer: e.detail.value
     })
+  },
+  goSeeLawyer(e){
+    wx.navigateTo({
+      url: '/pages/personal/personal?userid=' + e.currentTarget.dataset.userid,
+    })
   }
 })

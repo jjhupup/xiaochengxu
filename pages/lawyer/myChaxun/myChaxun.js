@@ -42,7 +42,7 @@ Page({
     let that = this
     utils.request(Api.GetLawyerListData, {
       type: 4,
-      lawyer_id: wx.getStorageSync('openid')
+      lawyer_id: wx.getStorageSync('user_id')
     }, 'POST').then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {

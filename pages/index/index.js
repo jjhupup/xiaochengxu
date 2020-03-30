@@ -104,9 +104,17 @@ Page({
 
   },
   onShow: function() {
-    console.log(utils, Api)
     let role = wx.getStorageSync('role')
     let that = this
+    let nowtime = new Date()
+    nowtime = Date.parse(nowtime)
+    let loginTime=wx.getStorageSync('loginTime')
+    console.log((nowtime - loginTime), loginTime)
+    if (nowtime - loginTime > 172800000 && loginTime){
+      console.log('超过两天，从新请求')
+      that.getUserData()
+    }
+    console.log(utils, Api)
     console.log(role)
     if (!role) {
       console.log('还没身份')
@@ -218,10 +226,15 @@ Page({
             console.log(res)
            
             if (res.code == 'S_Ok') {
-              wx.setStorageSync('openid', res.data.uid)
+              wx.setStorageSync('openid', res.data.openid)
+              wx.setStorageSync('user_id', res.data.id)
               wx.setStorageSync('role', res.data.role)
               wx.setStorageSync('verify_status', res.data.verify_status)
               wx.setStorageSync('token', res.token)
+              let loginTime = new Date()
+              loginTime = Date.parse(loginTime)
+              console.log(loginTime)
+              wx.setStorageSync('loginTime', loginTime)
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -316,7 +329,7 @@ Page({
   //测试用！！！！！！！！
   upDataRole2(role) {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('openid'),
+      user_id: wx.getStorageSync('user_id'),
       base_info: JSON.stringify({
         role: role
       })

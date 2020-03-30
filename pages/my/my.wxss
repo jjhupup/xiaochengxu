@@ -5,12 +5,13 @@ page {
 }
 
 .userData {
-  width: 80%;
+  width: 86%;
   height: 90px;
   background-color: #fff;
   display: flex;
-  padding: 10px 10%;
+  padding: 10px 4% 10px 10%;
   margin-top: 12px;
+  align-items: center;
 }
 
 .userData image {
@@ -34,6 +35,24 @@ page {
   position: absolute;
   top: 20px;
   left: 10%;
+}
+
+.toright {
+  flex: 1;
+  height: 100%;
+}
+
+.toright .goshezhi {
+  height: 100%;
+  width: 30%;
+  float: right;
+}
+
+.toright image {
+  float: right;
+  width: 26px;
+  height: 26px;
+  margin-top: 30px;
 }
 
 .myAbility {
@@ -161,7 +180,8 @@ page {
 .dialog-status .dialog-body button {
   margin-top: 30rpx;
 }
-.order{
+
+.order {
   background-color: #fff;
   margin-top: 12px;
 }

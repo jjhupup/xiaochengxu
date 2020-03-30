@@ -113,8 +113,6 @@
     </radio-group>
     <view class="titleMini">请输入案情简介</view>
     <textarea class="questionInp" name="DetailTxt" placeholder="(请尽量详尽描述案情，以便律师做准确分析，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。)" />
-    <button form-type="submit" class="kuang_weba">开始匹配律师</button>
+    <button form-type="submit" class="submit">开始匹配律师</button>
   </form>
 </view>
-
-<Header></Header>

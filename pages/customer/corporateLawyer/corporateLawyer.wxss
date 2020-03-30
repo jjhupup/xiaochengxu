@@ -16,7 +16,7 @@
   width: 44px;
   right: 2px;
   top: 0px;
-  color: #539ec7;
+  color: #5677fc;
 }
 
 .getmoney1 {
@@ -31,17 +31,7 @@
   line-height: 45px;
 }
 
-.fiedls {
-  width: 90% !important;
-  height: 45px;
-  text-align: center;
-  color: #fff;
-  margin: 20px auto 40px;
-  border-radius: 6px;
-  line-height: 45px;
-  background-color: #46a5d8;
-  padding: 0;
-}
+
 
 .color1 {
   color: #9a9a9a;

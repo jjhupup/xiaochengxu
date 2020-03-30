@@ -15,16 +15,16 @@
   <view class="title1">律师解答</view>
   <view class="answer clearfix" wx:for="{{replies}}">
     <view class="lsname">
-      <image src="{{item.from.avatar_url}}" />
+      <image src="{{item.from.avatar_url}}" bindtap="goSeeLawyer" data-userid="{{item.from.id}}" />
       <text>{{item.from.real_name||item.from.nick_name}}</text>
-      <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+      <text class="date">{{dateFr.getDate2(item.create_time,'-',':')}}</text>
     </view>
     <view class="answerContent">
       <text>{{item.content}}</text>
-      <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
+      <!-- <view class="tools2" data-pid="{{item.id}}" bindtap="openComment">
         <image src="/static/images/comment.png" />
         <text>回复</text>
-      </view>
+      </view> -->
     </view>
 
     <view class="recomment" wx:for="{{item.children}}">

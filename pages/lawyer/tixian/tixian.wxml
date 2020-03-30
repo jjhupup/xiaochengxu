@@ -7,6 +7,7 @@
   <view class="draw">
     <view>提现金额</view>
     <input type="number" placeholder="请输入提现金额" />
+    <view class="tips">温馨提示：每次提现需收取10%的手续费</view>
   </view>
   <view class="tixian">确定</view>
 </view>

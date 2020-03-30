@@ -32,6 +32,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    this.addSwiperH()
   },
 
   /**
@@ -75,6 +76,9 @@ Page({
   
   changeIndex(e) {
     console.log(e.detail.current)
+    if (e.detail.current==3){
+      this.addSwiperH(3)
+    }
     this.setData({
       index1: e.detail.current,
       textType: this.data.stage[e.detail.current]
@@ -143,13 +147,18 @@ Page({
     this.addSwiperH()
   },
   // 动态给swiper高度方法
-  addSwiperH(){
+  addSwiperH(num){
     let that=this
     var query = wx.createSelectorQuery();
-    query.select('.swiper-item').boundingClientRect()
+    console.log(query)
+      query.select('.swiper-item').boundingClientRect()
+    
     query.exec((res) => {
       console.log(res)
       var listHeight = res[0].height; // 获取list高度
+      if(num){
+        listHeight=800
+      }
       that.setData({
         swiperH: listHeight + 100 + 'px'
       })
@@ -183,7 +192,7 @@ Page({
   },
   publishOrder(obj){
     utils.request(Api.OrderPublish,{
-      customer_id: wx.getStorageSync('openid'),
+      customer_id: wx.getStorageSync('user_id'),
       case_type:1,
       extra_info:JSON.stringify(obj)
     },'POST').then(res=>{

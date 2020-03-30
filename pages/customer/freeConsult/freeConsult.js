@@ -11,7 +11,7 @@ Page({
     index: 0,
     questionTitle:'',
     questionContext: ' ',
-    openid:''
+    user_id:''
   },
 
   /**
@@ -33,7 +33,7 @@ Page({
    */
   onShow: function() {
       this.setData({
-        openid:wx.getStorageSync('openid')
+        user_id:wx.getStorageSync('user_id')
       })
   },
 
@@ -128,7 +128,7 @@ Page({
           }else {
             console.log('提交数据', contentStr, Api)
             utils.request(Api.Publish,{
-              advicer_id:that.data.openid,
+              advicer_id:that.data.user_id,
               topic:that.data.index*1+1,
               title: titletxt,
               content:contentStr
