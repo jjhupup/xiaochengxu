@@ -30,7 +30,7 @@
     <view class="genderchoose">
       <input confirm-type='next' class="nameinput" name='experience_year' type="number" placeholder="请输入您的工作年限" />
     </view>
-    <button class="kuang_weba" form-type='submit'>保存</button>
+    <button class="submit" form-type='submit'>保存</button>
   </form>
 </view>
 <!-- 律师证上传 -->
@@ -48,7 +48,7 @@
     <image src="/static/images/close.png" class="closeimg close2" bindtap="deleteZJImg" wx-if="{{zhenjianImg}}" />
   </view>
   <view class="textTips">请及时上传材料以完成认证，未完成认证的律师将无法提供法律服务。</view>
-  <view class="kuang_weba">申请认证</view>
+  <view class="submit">申请认证</view>
 </view>
 <!-- 普通用户 -->
 <view wx:if="{{status==1&&key==0}}" class="content">
@@ -61,7 +61,7 @@
       <image src="{{userImg}}" wx-if="{{userImg}}" mode="aspectFill" class="bigimg" />
       <image src="/static/images/close.png" class="closeimg" bindtap="deleteImg" wx-if="{{userImg}}" />
     </view>
-    <button class="kuang_weba" form-type="submit">保存</button>
+    <button class="submit" form-type="submit">保存</button>
   </form>
 
 </view>
