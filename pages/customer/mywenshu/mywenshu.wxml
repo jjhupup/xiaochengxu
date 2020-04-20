@@ -1,22 +1,20 @@
 <!--pages/customer/mywenshu/mywenshu.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
-  <view bindtap="getData" wx:if="{{type==1}}" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
-  <view bindtap="getData" wx:if="{{type==2}}" class="{{index==key?'active':''}}" wx:for="{{NavArr2}}" data-index="{{index}}">{{item}}</view>
-  <view bindtap="getData" wx:if="{{type==3}}" class="{{index==key?'active':''}}" wx:for="{{NavArr3}}" data-index="{{index}}">{{item}}</view>
-  <view bindtap="getData" wx:if="{{type==4}}" class="{{index==key?'active':''}}" wx:for="{{NavArr4}}" data-index="{{index}}">{{item}}</view>
+  <scroll-view scroll-x="true">
+    <view class="tabnav">
+      <view bindtap="getData" wx:if="{{type==1}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
+      <view bindtap="getData" wx:if="{{type==2}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr2}}" data-index="{{index}}">{{item}}</view>
+      <view bindtap="getData" wx:if="{{type==3}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr3}}" data-index="{{index}}">{{item}}</view>
+      <view bindtap="getData" wx:if="{{type==4}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr4}}" data-index="{{index}}">{{item}}</view>
+    </view>
+  </scroll-view>
+
 </view>
 <!-- 全部订单 -->
-<view wx:if="{{key==0}}">
+<view>
   <!-- 文书 -->
-  <view class='item card' wx:if="{{type==1}}" wx:for="{{allWenshu}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
+  <view class='item card' wx:if="{{type==1}}" wx:for="{{key==0?allWenshu:dateFr.PendingOrder(allWenshu,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}"  data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <view class='title'>{{item.extra_info.description}}</view>
       <view class='desc'>{{item.extra_info.textType}}</view>
@@ -26,17 +24,11 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
+      <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
   <!-- 案件 -->
-  <view class='item card' wx:if="{{type==2}}" wx:for="{{allAnjian}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
+  <view class='item card' wx:if="{{type==2}}" wx:for="{{key==0?allAnjian:dateFr.PendingOrder(allAnjian,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
       <view class='title'>{{item.extra_info.DetailTxt}}</view>
@@ -47,17 +39,11 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
+       <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
   <!-- 顾问 -->
-  <view class='item card' wx:if="{{type==3}}" wx:for="{{allGuwen}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
+  <view class='item card' wx:if="{{type==3}}" wx:for="{{key==0?allGuwen:dateFr.PendingOrder(allGuwen,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
       <view class='title'>{{item.extra_info.describe}}</view>
@@ -68,17 +54,11 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
+       <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
   <!-- 查询 -->
-  <view class='item card' wx:if="{{type==4}}" wx:for="{{allChaxun}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
+  <view class='item card' wx:if="{{type==4}}" wx:for="{{key==0?allChaxun:dateFr.PendingOrder(allChaxun,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <view class='title'>{{item.extra_info.desc}}</view>
       <view class='desc'>{{item.extra_info.findtype}}</view>
@@ -88,179 +68,7 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
+      <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
-</view>
-<!-- 待处理 -->
-<view wx:if="{{key==1}}">
-  <!-- 文书 -->
-  <view class='item card' wx:if="{{type==1}}" wx:for="{{dateFr.PendingOrder(allWenshu,0)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <view class='title'>{{item.extra_info.description}}</view>
-      <view class='desc'>{{item.extra_info.textType}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 案件 -->
-  <view class='item card' wx:if="{{type==2}}" wx:for="{{dateFr.PendingOrder(allAnjian,0)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
-      <view class='title'>{{item.extra_info.DetailTxt}}</view>
-      <view class='desc'>{{item.extra_info.AJtype}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 顾问 -->
-  <view class='item card' wx:if="{{type==3}}" wx:for="{{dateFr.PendingOrder(allGuwen,0)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
-      <view class='title'>{{item.extra_info.describe}}</view>
-      <view class='desc'>{{item.extra_info.adviserType}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 查询 -->
-  <view class='item card' wx:if="{{type==4}}" wx:for="{{dateFr.PendingOrder(allChaxun,0)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <view class='title'>{{item.extra_info.desc}}</view>
-      <view class='desc'>{{item.extra_info.findtype}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-</view>
-<!-- 服务中，给了钱了 -->
-<view wx:if="{{key==2}}">
-  <!-- 文书 -->
-  <view class='item card' wx:if="{{type==1}}" wx:for="{{dateFr.PendingOrder(allWenshu,1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <view class='title'>{{item.extra_info.description}}</view>
-      <view class='desc'>{{item.extra_info.textType}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 案件 -->
-  <view class='item card' wx:if="{{type==2}}" wx:for="{{dateFr.PendingOrder(allAnjian,1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
-      <view class='title'>{{item.extra_info.DetailTxt}}</view>
-      <view class='desc'>{{item.extra_info.AJtype}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 顾问 -->
-  <view class='item card' wx:if="{{type==3}}" wx:for="{{ dateFr.PendingOrder(allGuwen,1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
-      <view class='title'>{{item.extra_info.describe}}</view>
-      <view class='desc'>{{item.extra_info.adviserType}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-  <!-- 查询 -->
-  <view class='item card' wx:if="{{type==4}}" wx:for="{{dateFr.PendingOrder(allChaxun,1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
-      </view>
-      <view class='type'>{{item.statustxt}}</view>
-    </view> -->
-    <view class='content'>
-      <view class='title'>{{item.extra_info.desc}}</view>
-      <view class='desc'>{{item.extra_info.findtype}}</view>
-    </view>
-    <view class='footer'>
-      <view class='label'>
-        <image src='/static/images/ajweituo.png'></image>
-        <view class="number">{{item.bidders.length}}报价</view>
-      </view>
-    </view>
-  </view>
-</view>
-<view wx:if="{{key==3}}">
-  {{key}}
 </view>

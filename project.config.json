@@ -24,7 +24,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.1",
+	"libVersion": "2.10.4",
 	"appid": "wxf25ec7849576cefb",
 	"projectname": "LawApp",
 	"debugOptions": {
@@ -76,6 +76,12 @@
 					"name": "pages/customer/wenshuDetail/wenshuDetail",
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
 					"query": "id=6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/myWenShu/myWenShu",
+					"pathName": "pages/lawyer/myWenShu/myWenShu",
 					"scene": null
 				}
 			]

@@ -7,15 +7,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['全部文书', '待处理', '服务中', '已结束'],
-    NavArr2: ['全部案件', '待处理', '服务中', '已结束'],
-    NavArr3: ['全部顾问', '待处理', '服务中', '已结束'],
-    NavArr4: ['全部查询', '待处理', '服务中', '已结束'],
+    NavArr: ['全部文书', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr2: ['全部案件', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr3: ['全部顾问', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr4: ['全部查询', '服务中', '申诉中', '待确认', '已结束'],
     key: 0,
     allWenshu: [],
     allAnjian: [],
     allGuwen: [],
-    allChaxun:[],
+    allChaxun: [],
     type: 0
   },
 
@@ -54,17 +54,17 @@ Page({
     }, "POST").then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
-        res.data=res.data.filter(val=>{
-          if(val.status==0){
-            if(val.bidders.length==0){
+        res.data = res.data.filter(val => {
+          if (val.status == 0) {
+            if (val.bidders.length == 0) {
               val.statustxt = '待抢单'
-            }else{
+            } else {
               val.statustxt = '未支付'
             }
-          }else if(val.status==1){
-            val.statustxt='服务中'
-          }else if(val.status==2){
-            val.statustxt='已结束'
+          } else if (val.status == 1) {
+            val.statustxt = '服务中'
+          } else if (val.status == 2) {
+            val.statustxt = '已结束'
           }
           return val
         })
@@ -76,11 +76,11 @@ Page({
           that.setData({
             allAnjian: res.data
           })
-        }else if(type==4){
+        } else if (type == 4) {
           that.setData({
             allChaxun: res.data
           })
-        }else {
+        } else {
           that.setData({
             allGuwen: res.data
           })
@@ -108,31 +108,11 @@ Page({
     let statusOeder = e.currentTarget.dataset.orderstatus
     let id = e.currentTarget.dataset.questionid
     console.log(e, statusOeder)
-    if (statusOeder == 0) { // 订单待处理状态，进入选择律师页面
+    // 订单待处理状态，进入选择律师页面
       console.log('页面跳转1')
-      if (this.data.type == 1) { //进入有图片展示的文书详细页
         wx.navigateTo({
-          url: '/pages/customer/wenshuDetail/wenshuDetail?id=' + id,
+          url: '/pages/customer/wenshuDetail/wenshuDetail?id=' + id + '&type=' + this.data.type + '&status=' + statusOeder,
         })
-      }else if(this.data.type==2){ // 进入案件详细页
-        wx.navigateTo({
-          url: '/pages/customer/AnjianDetail/AnjianDetail?id=' + id,
-        })
-      } else if (this.data.type ==4){ //进入查询页面
-        wx.navigateTo({
-          url: '/pages/customer/chaxun/chaxun?id=' + id,
-        })
-      }else{ //进入顾问详细页
-        wx.navigateTo({
-          url: '/pages/customer/guwenDetail/guwenDetail?id=' + id,
-        })
-      }
-
-    } else if (statusOeder == 2) { //服务中状态，进入为自己服务的律师对话页面
-
-    } else {
-
-    }
     // this.setData({
     //   key:
     // })

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "choose-lawyer":"../../../component/chooseLawyer/chooseLawyer"
+    "choose-lawyer":"../../../component/chooseLawyer/chooseLawyer",
+    "lawyer-data":"../../../component/lawyerData/lawyerData"
   }
 }

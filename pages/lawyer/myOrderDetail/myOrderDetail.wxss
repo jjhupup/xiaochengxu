@@ -77,3 +77,87 @@
   height: 36px;
   line-height: 36px;
 }
+.tools{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+.tools view{
+  width: 50%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+.upload{
+  background-color: #4b8bf4;
+  color: #fff;
+}
+.shensu{
+  background-color: #dd4f43;
+  color: #fff;
+}
+.dialog-login {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 888;
+}
+
+.dialog-login .dialog-body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+  padding: 40rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}
+
+.topTool {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.topTool image {
+  height: 28px;
+  width: 28px;
+  padding: 5px;
+}
+
+.topTool view {
+  line-height: 34px;
+  margin-right: 8px;
+  color: #1d65f7;
+}
+
+.dialog-login .dialog-body .title {
+  width: 100%;
+  text-align: center;
+  line-height: 60rpx;
+}
+
+.dialog-login .dialog-body .content {
+  width: 100%;
+}
+
+.dialog-login .dialog-body button {
+  margin-top: 30rpx;
+}
+.questionInp2 {
+  width: 90%;
+  height: 100%;
+  margin: auto;
+  padding: 10px 0;
+  text-indent: 8px;
+  margin-bottom: 12px;
+}

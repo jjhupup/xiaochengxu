@@ -7,17 +7,12 @@
 <view wx:if="{{status==2&&key==0}}" class="content">
   <form bindsubmit="saveLawyerData">
     <view class="titleMini">您的姓名</view>
-    <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的真实姓名" />
+    <input confirm-type='next' class="nameinput" value="{{userData.real_name}}" name='real_name' type="text" placeholder="请输入您的真实姓名" />
     <view class="titleMini">您的电话号码</view>
     <input confirm-type='next' class="nameinput" name='phone' type="number" placeholder="请输入您的手机号码" />
-   <view class="titleMini">选择您的擅长领域</view>
-    <checkbox-group class="expertList" name="expertData">
-      <label class="checkbox" wx:for="{{expert}}">
-        <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
-      </label>
-    </checkbox-group>
+   
     <view class="titleMini">所在的律师事务所</view>
-    <input confirm-type='next' class="nameinput" name='office' type="text" placeholder="请输入您所在的律师事务所" />
+    <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.office}}" name='office' type="text" placeholder="请输入您所在的律师事务所" />
     <view class="titleMini">执业地域</view>
     <picker class="inputS" bindchange="getRegion" name='location' mode='region' value="{{regionVal}}">
       <view class="picker">
@@ -28,8 +23,14 @@
     </picker>
     <view class="titleMini">您的经历年限</view>
     <view class="genderchoose">
-      <input confirm-type='next' class="nameinput" name='experience_year' type="number" placeholder="请输入您的工作年限" />
+      <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.experience_year}}" name='experience_year' type="number" placeholder="请输入您的工作年限" />
     </view>
+    <view class="titleMini">选择您的擅长领域</view>
+    <checkbox-group class="expertList" name="expertData">
+      <label class="checkbox" wx:for="{{expert}}">
+        <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
+      </label>
+    </checkbox-group>
     <button class="submit" form-type='submit'>保存</button>
   </form>
 </view>

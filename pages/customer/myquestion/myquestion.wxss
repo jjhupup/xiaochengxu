@@ -19,7 +19,7 @@ page{
 }
 
 .active {
-  color: #43c1ad;
+  color: #5677fc;
   position:relative;
 }
 
@@ -28,7 +28,7 @@ page{
   position: absolute;
   width: 60%;
   height: 2px;
-  background-color: #43c1ad;
+  background-color: #5677fc;
   bottom: 0;
   left: 20%;
 }

@@ -1,0 +1,28 @@
+<!--component/lawyerData/lawyerData.wxml-->
+<wxs module="dateFr" src="../../filter/utils.wxs"></wxs>
+<view class="lawyer">
+  <view class="lawyerL" bindtap="golawyerData"  data-userid="{{orderData.id}}">
+    <image src="{{orderData.avatar_url||'/static/images/guwen.png'}}" />
+  </view>
+  <view class="lawyerC">
+    <view class="name">{{orderData.real_name||orderData.nick_name}}</view>
+    <view class="office">{{orderData.extra_profile.office||'廖化律师事务所'}}</view>
+    <view class="forte">
+      <text>擅长:</text>
+      <text>上单，打野，adc</text>
+    </view>
+    <view class="centerB">
+      <!-- <image src="/static/images/star.png" />
+        <text class="grade">4.5</text> -->
+      <text>{{orderData.extra_profile.location[0]+'-'+orderData.extra_profile.location[1]}}</text>
+    </view>
+  </view>
+  <view class="lawyerR">
+    <view wx:if="{{status==2}}" class="tag" bindtap='shensu'>申诉</view>
+    <view wx:if="{{status==3}}" class="tag" bindtap="quxiaoshensu">取消申诉</view>
+    <view class="price" bindtap="call">
+      <image src="/static/images/call.png" />
+      <text>13268720081</text>
+    </view>
+  </view>
+</view>

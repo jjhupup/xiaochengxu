@@ -7,17 +7,24 @@
   background-color: #fff;
 }
 
-.headBar view {
-  width: 25%;
+
+.headBar .tabnav {
+  height: 50px;
+  width: 425px;
+  display: flex;
+  flex-direction: row;
+}
+
+.topitem {
+  width: 85px;
   font-size: 28rpx;
   box-sizing: border-box;
   height: 76rpx;
   text-align: center;
   line-height: 76rpx;
 }
-
 .active {
-  color: #5677FC;
+  color: #5677fc;
   position: relative;
 }
 
@@ -26,10 +33,11 @@
   position: absolute;
   width: 60%;
   height: 2px;
-  background-color: #5677FC;
+  background-color: #5677fc;
   bottom: 0;
   left: 20%;
 }
+
 .item {
   padding: 8px 30rpx;
   margin-bottom: 14rpx;
@@ -91,8 +99,8 @@
 }
 
 .content .desc {
- padding-left: 8px;
- font-size: 14px;
+  padding-left: 8px;
+  font-size: 14px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -119,10 +127,13 @@
   display: flex;
   align-items: center;
   height: 80rpx;
+  justify-content: space-between;
+}
+.footer .status{
+  color: #5677fc;
+  font-size: 14px;
 }
 
 .hover-class, .navigator-hover {
   background: #f2f2f2 !important;
 }
-
-

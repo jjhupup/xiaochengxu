@@ -4,15 +4,21 @@
   background-color: #fff;
 }
 
-.headBar view {
-  width: 25%;
+.headBar .tabnav{
+  height: 50px;
+  width: 500px;
+  display: flex;
+  flex-direction:row;
+}
+
+.topitem {
+  width: 100px;
   font-size: 28rpx;
   box-sizing: border-box;
   height: 76rpx;
   text-align: center;
   line-height: 76rpx;
 }
-
 .active {
   color: #5677FC;
   position: relative;
@@ -93,7 +99,10 @@
   overflow: hidden;
   color: #abb4bf;
 }
-
+.type{
+  color: #999;
+  padding: 0 4px;
+}
 .label {
   display: flex;
   align-items: center;
@@ -117,4 +126,16 @@
 
 .hover-class, .navigator-hover {
   background: #f2f2f2 !important;
+}
+.showErr{
+  color: #ff4202;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 50px;
+}
+.showErr image{
+  width: 100px;
+  height: 100px;
+  margin-top: 100px;
 }

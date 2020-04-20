@@ -38,8 +38,8 @@
   <view class='dialog-body' catchtap='onDialogBody'>
     <view class='dialogtitle'>请先确认您的使用身份</view>
     <view class='content'>
-      <button type="primary" bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="0">我是客户</button>
-      <button bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="1">我是律师</button>
+      <button type="primary" bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="1">我是客户</button>
+      <button bindtap="optStatus" open-type="getUserInfo" bindgetuserinfo="onWechatLogin" data-status="2">我是律师</button>
     </view>
   </view>
 </view>

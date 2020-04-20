@@ -34,7 +34,8 @@
     "pages/personal/personal",
     "pages/lawyer/tixian/tixian",
     "pages/lawyer/myChaxun/myChaxun",
-    "pages/lawyer/myOrderDetail/myOrderDetail"
+    "pages/lawyer/myOrderDetail/myOrderDetail",
+    "pages/lawyer/uploadData/uploadData"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -46,7 +47,7 @@
     "backgroundColor": "#fff",
     "borderStyle": "white",
     "color": "#000",
-    "selectedColor": "#4a78b8",
+    "selectedColor": "#5677fc",
     "list": [
       {
         "pagePath": "pages/index/index",

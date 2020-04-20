@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['已参与报价', '待处理', '服务中', '已结束'],
+    NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '已结束'],
     key: 0,
     allGuwen: []
   },
@@ -55,8 +55,9 @@ Page({
   lookDetail(e) {
     console.log(e.currentTarget.dataset)
     let case_id = e.currentTarget.dataset.questionid
+    let orderstatus = e.currentTarget.dataset.orderstatus
     wx.navigateTo({
-      url: '/pages/lawyer/myOrderDetail/myOrderDetail?case_id=' + case_id + '&type=3',
+      url: '/pages/lawyer/myOrderDetail/myOrderDetail?case_id=' + case_id + '&type=3&orderstatus=' + orderstatus,
     })
   }
 })

@@ -285,7 +285,8 @@ Page({
     })
   },
   optStatus(e) {
-    let role = e.currentTarget.dataset.role
+    console.log(e)
+    let role = e.currentTarget.dataset.status
     let statusName = ''
     let that = this
     console.log(role)

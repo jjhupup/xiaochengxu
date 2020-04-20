@@ -34,35 +34,6 @@ Page({
   onShow: function () {
     this.addSwiperH()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
   /**
    * 用户点击右上角分享
    */
@@ -185,6 +156,7 @@ Page({
             console.log(obj)
             obj.textType=that.data.textType
             that.publishOrder(obj)
+            that.FileUpload()
           }
         })
       })
@@ -206,5 +178,40 @@ Page({
         },1000)
       }
     })
+  },
+  // 图片预览
+  seeImg(e){
+    console.log(e)
+    this.FileUpload()
+    let imgurls = this.data.imgurl
+    let index = e.target.dataset.key
+    wx.previewImage({
+      current: imgurls[index], // 当前显示图片的http链接
+      urls: imgurls // 需要预览的图片http链接列表
+    })
+  },
+  // 图片上传
+  FileUpload(){
+    let that=this
+    if (that.data.imgurl.length!=0){
+      console.log(456, that.data.imgurl[0])
+      wx.uploadFile({
+        url: Api.FileUpload, 
+        header:{
+          'content-type':'multipart/form-data'
+        },
+        filePath: that.data.imgurl[0],
+        name: 'files',
+        success(res) {
+          console.log('imgres',res)
+          const data = res.data
+          //do something
+        },
+        fail(err){
+          console.log(err)
+        }
+      })
+    }
+    
   }
 })

@@ -43,13 +43,20 @@ Page({
 
  getUserinfo(){
    let that=this
+   wx.showLoading({
+     title: '加载中...',
+   })
    util.request(Api.GetUserData,{
      user_id: that.data.userid
    },'post').then(res=>{
      console.log(res)
+     wx.hideLoading()
      if(res.code=='S_Ok'){
-       let location = res.data.extra_profile.location[0] + '-' + res.data.extra_profile.location[1]
-       console.log(location)
+       let location=''
+       if (res.data.extra_profile){
+          location = res.data.extra_profile.location[0] + '-' + res.data.extra_profile.location[1]
+         console.log(location)
+       }
        that.setData({
          location:location,
          lawyerData:res.data

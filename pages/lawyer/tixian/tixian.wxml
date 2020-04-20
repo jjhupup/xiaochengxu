@@ -2,12 +2,12 @@
 <view class="content">
   <view class="Mymoney">
     <view>我的余额</view>
-    <view>1002.22</view>
+    <view>{{totalBalance}}</view>
   </view>
   <view class="draw">
     <view>提现金额</view>
-    <input type="number" placeholder="请输入提现金额" />
+    <input type="number" bindblur="TJmoney" placeholder="请输入提现金额" />
     <view class="tips">温馨提示：每次提现需收取10%的手续费</view>
   </view>
-  <view class="tixian">确定</view>
+  <view class="tixian" bindtap="tixian">确定</view>
 </view>

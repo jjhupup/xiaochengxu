@@ -1,10 +1,10 @@
 <!--pages/customer/wenshuDetail/wenshuDetail.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
-<view class="content">
-  <view class="title2">{{wenshuData.extra_info.textType}}</view>
+<view class="content" wx:if="{{type==1}}">
+  <view class="title2">{{allData.extra_info.textType}}</view>
   <view class="clearfix">
-    <text>{{wenshuData.extra_info.description}}</text>
-    <view class="date">发布时间：{{dateFr.getDate2(wenshuData.create_time,'-',':')}}</view>
+    <text>{{allData.extra_info.description}}</text>
+    <view class="date">发布时间：{{dateFr.getDate2(allData.create_time,'-',':')}}</view>
   </view>
   <view class="titleMini">上传的图片</view>
   <view class="showimg">
@@ -15,6 +15,99 @@
   <!-- <text class="fileName">关于事情的具体经过.doc</text> -->
   <view>暂无</view>
   <view></view>
-  <view class="title2">以下律师可以为您服务</view>
-  <choose-lawyer orderData="{{wenshuData.bidders}}" caseid="{{id}}"></choose-lawyer>
+</view>
+<view class="content" wx:if="{{type==2}}">
+  <view class="title2">案件信息</view>
+  <view class="contentlist">
+    <text>申请人姓名：</text>
+    <text>{{allData.extra_info.real_name}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件类型：</text>
+    <text>{{allData.extra_info.AJtype}}</text>
+  </view>
+  <view class="contentlist">
+    <text>委托人在本案中的地位：</text>
+    <text>{{allData.extra_info.DiWei}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件所处阶段：</text>
+    <text>{{allData.extra_info.JieDuan}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件管辖地：</text>
+    <text>{{allData.extra_info.GXdi[0]+'-'+allData.extra_info.GXdi[1]+'-'+allData.extra_info.GXdi[2]}}</text>
+  </view>
+  <view class="contentlist" wx:if="{{allData.extra_info.SJmoney==true}}">
+    <text>案件涉及金额：</text>
+    <text>{{allData.extra_info.ZYmoney}}</text>
+  </view>
+  <view class="contentlist">
+    <text>案件详情：</text>
+    <text>{{allData.extra_info.DetailTxt}}</text>
+  </view>
+</view>
+<view class="content" wx:if="{{type==3}}">
+  <view class="title2">用户信息</view>
+  <view class="yaoqiu">
+    <text>客户姓名：</text>
+    <view>{{allData.extra_info.real_name}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作单位：</text>
+    <view>{{allData.extra_info.danweiName}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作性质：</text>
+    <view>{{allData.extra_info.DweiType}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>工作行业：</text>
+    <view>{{allData.extra_info.profession}}</view>
+  </view>
+  <view class="title2">顾问需求信息</view>
+  <view class="yaoqiu">
+    <text>工作经验：</text>
+    <view>{{allData.extra_info.experience}}</view>
+  </view>
+  <view class="yaoqiu">
+    <text>顾问类型：</text>
+    <view>{{allData.extra_info.adviserType}}</view>
+  </view>
+</view>
+<view class="content" wx:if="{{type==4}}">
+  <view class="title1">查询要求</view>
+  <view class="contentlist">
+    <text>查询者姓名：</text>
+    <text>{{allData.publisher.real_name||allData.publisher.nick_name}}</text>
+  </view>
+  <view class="contentlist">
+    <text>查询信息：</text>
+    <text>{{allData.extra_info.findtype}}</text>
+  </view>
+  <view class="contentlist">
+    <text>相关信息：</text>
+    <text>{{allData.extra_info.desc}}</text>
+  </view>
+</view>
+<!-- 代抢单时显示可选择的律师列表 -->
+<view wx:if="{{status==0}}">
+  <view class="title2 ml10">以下律师可以为您服务</view>
+  <choose-lawyer orderData="{{allData.bidders}}" caseid="{{id}}"></choose-lawyer>
+</view>
+<!-- 申诉中 -->
+<!-- 除了待抢单状态，显示选择的律师信息 -->
+<view wx:if="{{status!=0}}" style="margin-bottom:80px">
+   <view class="title2 ml10">当前律师正为您服务</view>
+   <lawyer-data orderData="{{allData.selectLawyer}}" caseid="{{id}}" bindparent="shensu" bindqxshensu="quxiaoshensu" status="{{status}}"></lawyer-data>
+</view>
+<view class="dialog-login " wx:if="{{isShowComment}}">
+  <view class="dialog-body" catchtap='onDialogBody'>
+    <view class="topTool">
+      <image bindtap="closeComment" src="/static/images/close2.png" />
+      <view bindtap="subQuestion">确认</view>
+    </view>
+    <textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
+    <!-- <view class="tjComment" >提交回答</view> -->
+  </view>
 </view>

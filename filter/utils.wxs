@@ -26,7 +26,7 @@ var DateFr = {
         d: d
       };
   },
-  getDate2: function (time, splitStr, splitStr2) {
+  getDate2: function(time, splitStr, splitStr2) {
 
     if (!time) return '';
     var date = getDate(time);
@@ -44,7 +44,7 @@ var DateFr = {
     // if(hour<10) hour="0"+hour;
 
     if (splitStr)
-      return y + splitStr + M + splitStr + d + ' ' + hour + splitStr2+minute+splitStr2+second
+      return y + splitStr + M + splitStr + d + ' ' + hour + splitStr2 + minute + splitStr2 + second
     else
       return {
         y: y,
@@ -53,19 +53,39 @@ var DateFr = {
       };
   },
   // 过滤待处理的订单
-  PendingOrder:function(data,type){
-    console.log('data',data)
-    return data.filter(function(val){
+  PendingOrder: function(data, type) {
+    return data.filter(function(val) {
       console.log(999)
-      if (val.status == type){
+      if (val.status == type) {
         return val
       }
     })
+  },
+  StatusTxt: function(status) {
+    console.log(444,status)
+    switch (status) {
+      case 0:
+        return '待抢单'
+        break;
+      case 2:
+        return '服务中'
+        break;
+      case 3:
+        return '申述中'
+        break;
+      case 4:
+        return '待确认'
+        break;
+      case 5:
+        return '已完成'
+        break;
+    }
   }
 }
 
 module.exports = {
   getDate: DateFr.getDate,
   getDate2: DateFr.getDate2,
-  PendingOrder: DateFr.PendingOrder
+  PendingOrder: DateFr.PendingOrder,
+  StatusTxt: DateFr.StatusTxt
 }

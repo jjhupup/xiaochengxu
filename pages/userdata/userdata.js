@@ -76,7 +76,8 @@ Page({
     ],
     key: 0,
     userImg: '',
-    zhenjianImg: ''
+    zhenjianImg: '',
+    userData:{}
   },
 
   /**
@@ -85,6 +86,18 @@ Page({
   onLoad: function(options) {
     this.setData({
       status: wx.getStorageSync('role')
+    })
+    let that=this
+    utils.request(Api.GetUserData,{
+      user_id:wx.getStorageSync('user_id')
+    },'POST').then(res=>{
+      console.log(res)
+      if(res.code=='S_Ok'){
+        that.setData({
+          userData:res.data,
+          regionVal: res.data.extra_profile.location
+        })
+      }
     })
   },
 

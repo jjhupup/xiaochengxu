@@ -1,5 +1,6 @@
-const ApiRootUrl = 'http://193.112.246.98:9527/api/';
-
+const ApiRootUrl = 'https://huaronghr.com/api/';
+// https://huaronghr.com/api/
+// http://193.112.246.98:9527/api/
 module.exports = {
   GetOpenId: ApiRootUrl + 'user/authSession',       //登录获取openid
   Publish:ApiRootUrl+'advice/publish',              //客户发布免费咨询
@@ -20,4 +21,8 @@ module.exports = {
   //支付接口！！！！
   GetPayParams: ApiRootUrl +'pay/getPayParams',      //获取支付参数
   Withdrawal: ApiRootUrl +'order/withdrawal',           //提现申请
+  GetUserBalance: ApiRootUrl +'user/balance',            //获取余额
+  ApplyRefund: ApiRootUrl +'order/applyRefund',         //用户申诉  
+  // 文件上传
+  FileUpload: ApiRootUrl +'files/upload',          //文件图片上传
 };

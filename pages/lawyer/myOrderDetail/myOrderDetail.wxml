@@ -90,10 +90,25 @@
       <text>{{allData.extra_info.desc}}</text>
     </view>
   </view>
-  <view class="title2">报价信息</view>
+  <view class="titleMini" >我的报价</view>
   <view class="mybidder">
-    <text>我的报价</text>
+    <text></text>
     <text class="baojia">￥{{mybidder[0].price}}</text>
   </view>
 
+</view>
+<view class="tools" wx:if="{{status==2}}">
+  <!-- <navigator url="/pages/lawyer/uploadData/uploadData"> -->
+  <view class="upload" bindtap="goUpload">完成服务</view>
+  <view class="shensu" bindtap="shensu">申诉</view>
+</view>
+<view class="dialog-login " wx:if="{{isShowComment}}">
+  <view class="dialog-body" catchtap='onDialogBody'>
+    <view class="topTool">
+      <image bindtap="closeComment" src="/static/images/close2.png" />
+      <view bindtap="subQuestion">确认</view>
+    </view>
+    <textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
+    <!-- <view class="tjComment" >提交回答</view> -->
+  </view>
 </view>

@@ -18,6 +18,11 @@ const formatNumber = n => {
 /**
  * 封封微信的的request
  */
+ // if(method=='GET'){
+    //   contentType = 'application/json'
+    // }else{
+    //   contentType = 'application/x-www-form-urlencoded'
+    // }
 function request(url, data = {}, method = "GET") {
   return new Promise(function(resolve, reject) {
     wx.request({
@@ -26,7 +31,7 @@ function request(url, data = {}, method = "GET") {
       method: method,
       header: {
         'Content-Type': 'application/json',
-        'Authorization': ' Bearer '+wx.getStorageSync('token')
+        'Authorization':'Bearer '+wx.getStorageSync('token')
       },
       success: function(res) {
         console.log("success",res);
@@ -71,7 +76,7 @@ function request(url, data = {}, method = "GET") {
       },
       fail: function(err) {
         reject(err)
-        console.log("failed")
+        console.log("failed",err)
       }
     })
   });

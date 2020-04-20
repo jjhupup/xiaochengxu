@@ -1,21 +1,26 @@
 <!--pages/lawyer/AJweituo/AJweituo.wxml-->
+<wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
-  <view bindtap="getDatalist" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
+  <scroll-view scroll-x="true">
+    <view class="tabnav">
+      <view bindtap="getDatalist" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
+    </view>
+  </scroll-view>
 </view>
-<view wx:if="{{key==0}}">
-  <view class='item card'  wx:for="{{allGuwen}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
-    <view class='header'>
+<view>
+  <view class='item card' wx:for="{{key==0?dateFr.PendingOrder(allGuwen,key):dateFr.PendingOrder(allGuwen,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+    <!-- <view class='header'>
       <view class='name' data-item='{{item}}'>
         <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
         <view>{{item.publisher.nick_name||item.publisher.real_name}}</view>
       </view>
-      <view class='type'>{{item.extra_info.adviserType}}</view>
-    </view>
+    </view> -->
     <view class='content'>
       <view class='text'>
         <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
         <view class='title'>{{item.extra_info.describe}}</view>
       </view>
+       <view class='type'>{{item.extra_info.adviserType}}</view>
     </view>
     <view class='footer'>
       <view class='label'>
@@ -24,7 +29,16 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{allGuwen.length==0}}">
-    暂无案件信息~
+  <view wx:if="{{key==0}}">
+    <view class="showErr" wx:if="{{dateFr.PendingOrder(allGuwen,key).length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
+  <view wx:if="{{key!=0}}">
+    <view class="showErr" wx:if="{{dateFr.PendingOrder(allGuwen,key+1).length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
   </view>
 </view>

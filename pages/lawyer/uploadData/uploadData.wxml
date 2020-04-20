@@ -1,0 +1,16 @@
+<!--pages/lawyer/uploadData/uploadData.wxml-->
+
+<view class="content">
+  <view class="titleMini">请上传您完成订单的资料证明</view>
+  <view class="yulanImg">
+    <view wx:for="{{imgurl}}" wx:key="index">
+      <image class="imglist" src="{{item}}" mode="aspectFill" />
+      <image class="close" bindtap="deleteImg" data-index="{{index}}" src="/static/images/close.png" />
+    </view>
+  </view>
+  <view class="upload">
+    <image src="/static/images/add.png" bindtap="addImg" />
+    <text>图片</text>
+  </view>
+  <view class="submit">确认上传</view>
+</view>
