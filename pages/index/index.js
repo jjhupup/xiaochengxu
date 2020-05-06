@@ -263,7 +263,7 @@ Page({
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
     utils.request(Api.UpDataUserData, {
-      user_id: wx.getStorageSync('openid'),
+      user_id: wx.getStorageSync('user_id'),
       base_info: JSON.stringify({
         role: wx.getStorageSync('role')
       })
