@@ -109,5 +109,41 @@ Page({
         })
       }
     })
+  },
+  seeImg(e) {
+    let that = this
+    console.log(e.target.dataset.index)
+    let key = e.target.dataset.index
+    wx.previewImage({
+      current: that.data.OrderData.extra_info.imgs[key], // 当前显示图片的http链接
+      urls: that.data.OrderData.extra_info.imgs // 需要预览的图片http链接列表
+    })
+  },
+  uploadFile(e) {
+    wx.showModal({
+      title: '下载提示~',
+      content: '是否下载' + e.target.dataset.filename + '文件？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.downloadFile({
+            url: e.target.dataset.path, //仅为示例，并非真实的资源
+            success(res) {
+              console.log(res)
+              if (res.statusCode === 200) {
+                wx.openDocument({
+                  filePath: res.tempFilePath,
+                  success: function (res) {
+                    console.log('打开文档成功')
+                  },
+                  fail: function (res) {
+                    console.log(res);
+                  },
+                })
+              }
+            }
+          })
+        }
+      }
+    })
   }
 })

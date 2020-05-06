@@ -7,16 +7,17 @@ Page({
 
   /**
    * 页面的初始数据
+   * {
+        img_url: '/static/images/xinxi.png',
+        page_url: '/pages/news/news',
+        text: '信息中心'
+      },
    */
   data: {
     userInfo: {},
     userName: '请点击头像登录',
     userImage: '/static/images/userImage.jpg',
-    datalist: [{
-        img_url: '/static/images/xinxi.png',
-        page_url: '/pages/news/news',
-        text: '信息中心'
-      },
+    datalist: [
       {
         img_url: '/static/images/zixun.png',
         page_url: '/pages/customer/myquestion/myquestion',
@@ -43,11 +44,7 @@ Page({
         text: '我的查询'
       }
     ],
-    lawyerlist: [{
-        img_url: '/static/images/xinxi.png',
-        page_url: '/pages/news/news',
-        text: '信息中心'
-      },
+    lawyerlist: [
       {
         img_url: '/static/images/money.png',
         page_url: '/pages/lawyer/tixian/tixian',
@@ -367,7 +364,7 @@ Page({
       wx.setStorageSync('userInfo', userinfo)
       that.setData({
         userName: res.data.real_name || res.data.nick_name,
-        userImage: res.data.avatar_url
+        userImage: res.data.extra_profile.id_photo ||res.data.avatar_url
       })
     })
   }

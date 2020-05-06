@@ -19,7 +19,7 @@ page {
 }
 
 .active {
-  color: #5677FC;
+  color: #5677fc;
   position: relative;
 }
 
@@ -28,7 +28,7 @@ page {
   position: absolute;
   width: 60%;
   height: 2px;
-  background-color: #5677FC;
+  background-color: #5677fc;
   bottom: 0;
   left: 20%;
 }
@@ -62,7 +62,7 @@ page {
   left: 5%;
   border-radius: 6px;
   line-height: 45px;
-  background-color: #5677FC;
+  background-color: #5677fc;
   letter-spacing: 8px;
   text-indent: 8px;
   padding: 0;
@@ -116,15 +116,29 @@ page {
 .close2 {
   right: 72rpx;
 }
-.expertList{
+
+.expertList {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.checkbox{
+
+.checkbox {
   margin: 6px 0;
-  width: 32%
+  width: 32%;
 }
-.checkbox checkbox{
+
+.checkbox checkbox {
   vertical-align: middle;
+}
+
+.questionInp {
+  width: 96%;
+  height: 160px;
+  margin: 16px auto;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  text-indent: 8px;
+  line-height: 30px;
+  padding: 2%;
 }

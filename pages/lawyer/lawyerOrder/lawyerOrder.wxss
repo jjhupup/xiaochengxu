@@ -9,6 +9,7 @@
   width: 500px;
   display: flex;
   flex-direction:row;
+  /* transform: translateX(20px); */
 }
 
 .topitem {

@@ -72,7 +72,6 @@
 .content {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
 .content .text {
@@ -101,6 +100,7 @@
 .content .desc {
   padding-left: 8px;
   font-size: 14px;
+  line-height: 23px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;

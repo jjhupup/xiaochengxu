@@ -18,6 +18,7 @@ module.exports = {
   GetCustomerOrderData: ApiRootUrl +'case/customerList',     //客户获取自己的需求订单
   GetLawyerListData: ApiRootUrl +'case/lawyerList',   //律师获取自己的需求订单
   GetUserData: ApiRootUrl +'user/detail',            //获取用户信息
+  UpdateOrder: ApiRootUrl +'case/updateStatus',             //更新订单状态
   //支付接口！！！！
   GetPayParams: ApiRootUrl +'pay/getPayParams',      //获取支付参数
   Withdrawal: ApiRootUrl +'order/withdrawal',           //提现申请

@@ -1,4 +1,5 @@
 /* component/chooseLawyer/chooseLawyer.wxss */
+
 .lawyer {
   display: flex;
   height: 140px;
@@ -48,6 +49,14 @@
   color: #999;
   font-size: 12px;
   text-indent: 3px;
+  width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lawyerC .forte text {
+  margin: 0 3px;
 }
 
 .lawyerC .centerB {
@@ -101,4 +110,3 @@
   color: #fff;
   border-radius: 4px;
 }
-

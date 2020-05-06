@@ -9,8 +9,8 @@
     <view class="titleMini">您的姓名</view>
     <input confirm-type='next' class="nameinput" value="{{userData.real_name}}" name='real_name' type="text" placeholder="请输入您的真实姓名" />
     <view class="titleMini">您的电话号码</view>
-    <input confirm-type='next' class="nameinput" name='phone' type="number" placeholder="请输入您的手机号码" />
-   
+    <input confirm-type='next' class="nameinput" name='phone' value="{{userData.phone}}" type="number" placeholder="请输入您的手机号码" />
+
     <view class="titleMini">所在的律师事务所</view>
     <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.office}}" name='office' type="text" placeholder="请输入您所在的律师事务所" />
     <view class="titleMini">执业地域</view>
@@ -21,21 +21,27 @@
         </view>
       </view>
     </picker>
+    <view class="titleMini">办公地点</view>
+    <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.office_address}}" name='office_address' type="number" placeholder="请输入您的办公地址" />
+
     <view class="titleMini">您的经历年限</view>
     <view class="genderchoose">
       <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.experience_year}}" name='experience_year' type="number" placeholder="请输入您的工作年限" />
     </view>
     <view class="titleMini">选择您的擅长领域</view>
-    <checkbox-group class="expertList" name="expertData">
+    <checkbox-group class="expertList" name="expertData" value="{{userData.extra_profile.expertise_area}}">
       <label class="checkbox" wx:for="{{expert}}">
         <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
       </label>
     </checkbox-group>
+    <textarea class="questionInp"  name='introduction' value="{{userData.extra_profile.introduction}}" placeholder="请简洁的介绍一下自己，方便用户了解您" />
     <button class="submit" form-type='submit'>保存</button>
   </form>
 </view>
 <!-- 律师证上传 -->
 <view wx:if="{{status==2&&key==1}}" class="content">
+  <view class="titleMini">请填写律师执业编号</view>
+  <input confirm-type='next' class="nameinput" bindblur="getLicense_no" name='lawyerNum' type="number" placeholder="请输入您的律师执业编号" />
   <view class="titleMini">请上传您的免冠照片</view>
   <view class="upload">
     <image src="/static/images/add.png" class="addimg" data-Lx="0" wx-if="{{!userImg}}" bindtap="addImg" />
@@ -49,12 +55,12 @@
     <image src="/static/images/close.png" class="closeimg close2" bindtap="deleteZJImg" wx-if="{{zhenjianImg}}" />
   </view>
   <view class="textTips">请及时上传材料以完成认证，未完成认证的律师将无法提供法律服务。</view>
-  <view class="submit">申请认证</view>
+  <view class="submit" bindtap="attestLawyer">申请认证</view>
 </view>
 <!-- 普通用户 -->
 <view wx:if="{{status==1&&key==0}}" class="content">
-  <form>
-    <view class="titleMini">昵称</view>
+  <form bindsubmit="subQuestion">
+    <view class="titleMini">姓名</view>
     <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的用户昵称" />
     <view class="titleMini">请上传您的照片</view>
     <view class="upload">

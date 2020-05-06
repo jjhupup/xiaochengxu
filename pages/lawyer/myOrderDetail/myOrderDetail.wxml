@@ -8,13 +8,15 @@
       <view class="date">发布时间：{{dateFr.getDate2(allData.create_time,'-',':')}}</view>
     </view>
     <view class="titleMini">上传的图片</view>
-    <view class="showimg">
-      <!-- <image src="/static/images/guwen.png" /> -->
-      暂无
+    <view class="imglist">
+      <image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" wx:for="{{allData.extra_info.imgs}}" wx:key="index" />
     </view>
     <view class="titleMini">上传的文档</view>
-    <!-- <text class="fileName">关于事情的具体经过.doc</text> -->
-    <view>暂无</view>
+    <view class="filelist">
+      <text class="file" wx:for="{{allData.extra_info.files}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+    </view>
+    <view class="textTips">文档点击可供下载</view>
+    <view wx:if="{{allData.extra_info.files.length==0}}">暂无</view>
   </view>
   <view wx:if="{{type==2}}">
     <view class="title2">案件信息</view>
@@ -90,7 +92,7 @@
       <text>{{allData.extra_info.desc}}</text>
     </view>
   </view>
-  <view class="titleMini" >我的报价</view>
+  <view class="titleMini">我的报价</view>
   <view class="mybidder">
     <text></text>
     <text class="baojia">￥{{mybidder[0].price}}</text>
@@ -100,7 +102,7 @@
 <view class="tools" wx:if="{{status==2}}">
   <!-- <navigator url="/pages/lawyer/uploadData/uploadData"> -->
   <view class="upload" bindtap="goUpload">完成服务</view>
-  <view class="shensu" bindtap="shensu">申诉</view>
+  <!-- <view class="shensu" bindtap="shensu">申诉</view> -->
 </view>
 <view class="dialog-login " wx:if="{{isShowComment}}">
   <view class="dialog-body" catchtap='onDialogBody'>
@@ -111,4 +113,7 @@
     <textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
     <!-- <view class="tjComment" >提交回答</view> -->
   </view>
+</view>
+<view class="tools2" wx:if="{{status==3}}">
+  <view class="cancel" bindtap="cancelShenSu">取消申诉</view>
 </view>

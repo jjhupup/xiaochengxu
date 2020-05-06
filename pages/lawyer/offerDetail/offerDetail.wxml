@@ -5,16 +5,12 @@
   <view class="detailTxt">{{OrderData.extra_info.description}}</view>
   <!-- <view class="date">2020-03-06 12:45:12</view> -->
   <view class="titleMini">图片与文档资料</view>
-  <view>无</view>
-  <!-- <view class="imglist">
-    <image mode="aspectFill" src="/static/images/zj.jpg" />
-    <image mode="aspectFill" src="/static/images/zj.jpg" />
-    <image mode="aspectFill" src="/static/images/zj.jpg" />
-    <image mode="aspectFill" src="/static/images/zj.jpg" />
-  </view> -->
-  <!-- <view class="filelist">
-    <text class="file">打架斗殴.doc</text>
-  </view> -->
+  <view class="imglist">
+    <image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" wx:for="{{OrderData.extra_info.imgs}}" wx:key="index" />
+  </view>
+  <view class="filelist">
+    <text class="file" wx:for="{{OrderData.extra_info.files}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+  </view>
   <view class="textTips">文档点击可供下载</view>
   <view class="titleMini">文书要求起草类型</view>
   <view class="type">{{OrderData.extra_info.textType}}</view>

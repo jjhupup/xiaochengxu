@@ -9,7 +9,8 @@ Page({
   data: {
     NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '已结束'],
     key:0,
-    allAjweituo:[]
+    allAjweituo:[],
+    scrollL:0
   },
 
   /**
@@ -34,9 +35,16 @@ Page({
   },
   getDatalist(e) {
     console.log(e)
+    this.getData()
     this.setData({
       key: e.currentTarget.dataset.index
     })
+    let key = e.currentTarget.dataset.index
+    if (key == 3) {
+      this.setData({
+        scrollL: 100
+      })
+    }
   },
   getData() {
     let that = this

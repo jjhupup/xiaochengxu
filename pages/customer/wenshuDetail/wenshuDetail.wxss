@@ -10,8 +10,9 @@
 }
 
 .showimg image {
-  width: 33%;
+  width: 31%;
   height: 260rpx;
+  margin-left: 2%;
 }
 
 .date {
@@ -23,6 +24,8 @@
 .fileName {
   border: 1px dotted #ccc;
   padding: 6px 10px;
+  margin-right: 10px;
+
 }
 
 .title2 {
@@ -59,6 +62,7 @@
   display: flex;
   padding: 5px 0;
 }
+
 .yaoqiu {
   height: 50px;
   line-height: 50px;
@@ -71,27 +75,32 @@
   flex: 1;
   border-bottom: 1px solid #ccc;
 }
-.tools{
+
+.tools {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
 }
-.tools view{
+
+.tools view {
   width: 100%;
   text-align: center;
   height: 50px;
   line-height: 50px;
 }
-.upload{
+
+.upload {
   background-color: #4b8bf4;
   color: #fff;
 }
-.shensu{
+
+.shensu {
   background-color: #dd4f43;
   color: #fff;
 }
+
 .dialog-login {
   width: 100%;
   height: 100%;
@@ -147,6 +156,7 @@
 .dialog-login .dialog-body button {
   margin-top: 30rpx;
 }
+
 .questionInp2 {
   width: 90%;
   height: 100%;

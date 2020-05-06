@@ -9,7 +9,7 @@
       <view class="office">{{item.lawyer.extra_profile.office||'廖化律师事务所'}}</view>
       <view class="forte">
         <text>擅长:</text>
-        <text>上单，打野，adc</text>
+        <text wx:for="{{item.lawyer.extra_profile.expertise_area}}">{{item}}</text>
       </view>
       <view class="centerB">
         <!-- <image src="/static/images/star.png" />

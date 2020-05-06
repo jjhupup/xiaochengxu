@@ -1,7 +1,7 @@
 <!--pages/lawyer/myWenShu/myWenShu.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
-  <scroll-view scroll-x="true">
+  <scroll-view scroll-x="true" scorll-left="{{scrollL}}">
     <view class="tabnav">
       <view bindtap="getDatalist" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
     </view>

@@ -1,13 +1,13 @@
 <!--pages/personal/personal.wxml-->
 <view class="content">
   <view class="top">
-    <image src="{{lawyerData.avatar_url||'/static/images/guwen.png'}}" />
+    <image src="{{lawyerData.extra_profile.id_photo||lawyerData.avatar_url||'/static/images/guwen.png'}}" />
     <view class="name">{{lawyerData.real_name||lawyerData.nick_name}}律师</view>
     <view class="dizi">
       <text>{{location}}</text>
       <text>执业{{lawyerData.extra_profile.experience_year}}年</text>
     </view>
-    <view class="desc">
+    <!-- <view class="desc">
       <view>
         <text>4.9</text>
         <text>综合评分</text>
@@ -20,7 +20,7 @@
         <text>一天内</text>
         <text>平均响应时间</text>
       </view>
-    </view>
+    </view> -->
   </view>
 
 </view>
@@ -29,28 +29,25 @@
   <view class="datalist">
     <view class="ltitle">擅长领域:</view>
     <view class="rcontent">
-      <view>公司法</view>
-      <view>婚姻家庭</view>
-      <view>继承</view>
-      <view>经济仲裁</view>
+      <view wx:for="{{lawyerData.extra_profile.expertise_area}}">{{item}}</view>
     </view>
   </view>
   <view class="datalist">
     <view class="ltitle">执业证号:</view>
     <view class="r">
-      0
+      {{lawyerData.extra_profile.license_no}}
     </view>
   </view>
   <view class="datalist">
     <view class="ltitle">律师介绍:</view>
     <view class="r">
-      <view>张元洪律师法律博士，香港高等法院执业律师，同时具有香港高等法院律师证件。</view>
+      <view>{{lawyerData.extra_profile.introduction}}</view>
     </view>
   </view>
   <view class="datalist">
     <view class="ltitle">办公地址:</view>
     <view class="r">
-      <view>香港皇后大道东4319号东没中心3楼307室。</view>
+      <view>{{lawyerData.extra_profile.office_address}}</view>
     </view>
   </view>
 </view>

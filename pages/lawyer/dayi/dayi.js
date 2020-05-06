@@ -125,7 +125,7 @@ Page({
     let that=this
     this.getLawyerData(id).then(res => {
       console.log('resres', res)
-      if (that.data.ordertype == 0 && res.verify_status == 2) {
+      if (that.data.ordertype == 0 && res.verify_status == 3) {
         wx.navigateTo({
           url: '/pages/lawyer/dayiDetail/dayiDetail?id=' + id
         })
@@ -156,7 +156,7 @@ Page({
     let id = e.currentTarget.dataset.id
     let that=this
     this.getLawyerData().then(res => {
-      if (res.verify_status == 1) {  // 测试先用的2，后面要改回3
+      if (res.verify_status == 3) {  // 测试先用的2，后面要改回3
         if (that.data.ordertype == 2) {
           wx.navigateTo({
             url: '/pages/lawyer/AJquote/AJquote?id=' + id,

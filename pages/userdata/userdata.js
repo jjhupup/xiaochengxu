@@ -77,7 +77,8 @@ Page({
     key: 0,
     userImg: '',
     zhenjianImg: '',
-    userData:{}
+    userData: {},
+    License_no: 0
   },
 
   /**
@@ -87,14 +88,25 @@ Page({
     this.setData({
       status: wx.getStorageSync('role')
     })
-    let that=this
-    utils.request(Api.GetUserData,{
-      user_id:wx.getStorageSync('user_id')
-    },'POST').then(res=>{
+    let that = this
+    utils.request(Api.GetUserData, {
+      user_id: wx.getStorageSync('user_id')
+    }, 'POST').then(res => {
       console.log(res)
-      if(res.code=='S_Ok'){
+      if (res.code == 'S_Ok') {
+        let expert = that.data.expert.filter(val => {
+          return res.data.extra_profile.expertise_area.filter(item => {
+            if (val.name == item) {
+              val.checked = true
+              return val
+            } else {
+              return val
+            }
+          })
+        })
         that.setData({
-          userData:res.data,
+          userData: res.data,
+          expert: expert,
           regionVal: res.data.extra_profile.location
         })
       }
@@ -167,20 +179,38 @@ Page({
   },
   saveLawyerData(e) {
     console.log(e.detail.value, 123)
-    this.updataUserData(e.detail.value)
+    let obj = e.detail.value
+    if (!(/^1[3456789]\d{9}$/.test(obj.phone))) {
+      wx.showToast({
+        title: '请填写正确的手机号码~',
+        icon: 'none'
+      })
+      return
+    } else if (obj.expertData.length == 0) {
+      wx.showToast({
+        title: '请填写您擅长的领域~',
+        icon: 'none'
+      })
+      return
+    } else {
+      this.updataUserData(obj)
+    }
+    // this.updataUserData(e.detail.value)
   },
   updataUserData(obj) {
     let updata = {
       user_id: wx.getStorageSync('user_id'),
       base_info: JSON.stringify({
-        real_name: obj.real_name
+        real_name: obj.real_name,
+        phone: obj.phone
       }),
       extra_profile: JSON.stringify({
         office: obj.office,
         location: obj.location,
-        phone: obj.phone,
-        expertData:obj.expertData,
-        experience_year: obj.experience_year
+        expertise_area: obj.expertData,
+        experience_year: obj.experience_year,
+        introduction: obj.introduction,
+        office_address: obj.office_address
       })
     }
     utils.request(Api.UpDataUserData, {
@@ -194,6 +224,141 @@ Page({
         setTimeout(() => {
           wx.navigateBack()
         }, 1200)
+      }
+    })
+  },
+  subQuestion(e) {
+    console.log(e.detail.value)
+    let that = this
+    let real_name = e.detail.value.real_name
+    if (e.detail.value.real_name = '') {
+      wx.showToast({
+        title: '请填写您的姓名',
+        icon: 'none'
+      })
+    } else if (that.data.userImg == '') {
+      wx.showToast({
+        title: '请选择您的头像',
+        icon: 'none'
+      })
+    } else {
+      console.log(456)
+      // utils.request(Api.FileUpload,)
+      wx.showLoading({
+        title: '上传中~',
+      })
+      wx.uploadFile({
+        url: Api.FileUpload,
+        header: {
+          'content-type': 'multipart/form-data',
+          'Authorization': 'Bearer ' + wx.getStorageSync('token')
+        },
+        filePath: that.data.userImg,
+        name: 'files',
+        success(res) {
+          console.log('files', res)
+          wx.hideLoading()
+          let data = res.data
+          data = JSON.parse(data)
+          that.setData({
+            uploadImgs: data.data.urls[0]
+          })
+          let updata = {
+            user_id: wx.getStorageSync('user_id'),
+            base_info: JSON.stringify({
+              real_name: real_name
+            }),
+            extra_profile: JSON.stringify({
+              id_photo: data.data.urls[0]
+            })
+          }
+          utils.request(Api.UpDataUserData, updata, "POST").then(res => {
+            console.log(res)
+          })
+        }
+      })
+    }
+
+  },
+  getLicense_no(e) {
+    console.log(e.detail.value)
+    this.setData({
+      License_no: e.detail.value
+    })
+  },
+  attestLawyer() {
+
+    let that = this
+    console.log(444, that.data.License_no)
+    wx.showModal({
+      title: '提示',
+      content: '确认无误后即将提交~',
+      success(res) {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '上传中~',
+          })
+          let upload1 = new Promise((reslove, reject) => {
+            wx.uploadFile({
+              url: Api.FileUpload,
+              header: {
+                'content-type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + wx.getStorageSync('token')
+              },
+              filePath: that.data.userImg,
+              name: 'files',
+              success(res) {
+                console.log('files', res)
+                let data = res.data
+                data = JSON.parse(data)
+                that.setData({
+                  userImg: data.data.urls[0]
+                })
+                reslove(data.data.urls[0])
+              }
+            })
+          })
+          let upload2 = new Promise((reslove, reject) => {
+            wx.uploadFile({
+              url: Api.FileUpload,
+              header: {
+                'content-type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + wx.getStorageSync('token')
+              },
+              filePath: that.data.zhenjianImg,
+              name: 'files',
+              success(res) {
+                console.log('files', res)
+                let data = res.data
+                data = JSON.parse(data)
+                that.setData({
+                  zhenjianImg: data.data.urls[0]
+                })
+                reslove(data.data.urls[0])
+              }
+            })
+          })
+          Promise.all([upload1, upload2]).then(allres=>{
+            console.log('allres',allres)
+            wx.hideLoading()
+            let updata = {
+              user_id: wx.getStorageSync('user_id'),
+              base_info: '',
+              extra_profile: JSON.stringify({
+                id_photo: that.data.userImg,
+                license_photo: that.data.zhenjianImg,
+                license_no: that.data.License_no
+              })
+            }
+            utils.request(Api.UpDataUserData,updata,"POST").then(res=>{
+              if(res){
+                wx.showToast({
+                  title: '认证信息已提交',
+                })
+              }
+            })
+          })
+        }
       }
     })
   }

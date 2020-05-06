@@ -80,14 +80,20 @@ Page({
   paymoney() {
     console.log('支付')
     let that = this
-    util.request(Api.GetPayParams, {
-      body: '支付给' + that.data.lawyerData.nick_name + '的律师费用',
-      total_fee: 100,
-      openid: wx.getStorageSync('openid'),
-      select_lawyer_id: that.data.lawyerData.id,
-      case_id: that.data.case_id
-    }, "POST").then(res => {
-      console.log('res', res)
+    // util.request(Api.GetPayParams, {
+    //   body: '支付给' + that.data.lawyerData.nick_name + '的律师费用',
+    //   total_fee: 100,
+    //   openid: wx.getStorageSync('openid'),
+    //   select_lawyer_id: that.data.lawyerData.id,
+    //   case_id: that.data.case_id
+    // }, "POST").then(res => {
+    //   console.log('res', res)
+    // })
+    util.request(Api.UpdateOrder,{
+      case_id:that.data.caseid,
+      status:2
+    },"POST").then(res=>{
+      console.log(res)
     })
   }
 })
