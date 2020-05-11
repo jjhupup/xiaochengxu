@@ -35,6 +35,19 @@ Page({
     console.log(e)
     let that=this
     let obj = e.detail.value
+    if(obj.desc==''){
+      wx.showToast({
+        title: '请填写相关查询的信息！',
+        icon:'none'
+      })
+      return
+    }
+    wx.requestSubscribeMessage({
+      tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+      success(res) {
+        console.log(res)
+      }
+    })
     wx.showModal({
       title: '提示~',
       content: '确定提交咨询的信息为' + obj.findtype,

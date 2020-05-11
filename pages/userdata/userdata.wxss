@@ -52,6 +52,24 @@ page {
   top: 9px;
 }
 
+.picker text {
+  position: absolute;
+  height: 45px;
+  width: 50px;
+  right: 4px;
+  top: 0px;
+  color: #5677fc;
+  line-height: 45px;
+  float: right;
+  text-align: right;
+}
+.picker>view{
+  padding-right: 56px;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+
+}
 .kuang_weba {
   width: 90% !important;
   height: 45px;

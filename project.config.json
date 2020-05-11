@@ -24,8 +24,8 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.10.4",
-	"appid": "wxf25ec7849576cefb",
+	"libVersion": "2.11.0",
+	"appid": "wx1ff6190b4c35f587",
 	"projectname": "LawApp",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -118,6 +118,20 @@
 					"name": "pages/customer/mywenshu/mywenshu",
 					"pathName": "pages/customer/mywenshu/mywenshu",
 					"query": "type=1&name=我的文书",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/lawyer/AJquote/AJquote",
+					"pathName": "pages/lawyer/AJquote/AJquote",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/lawyer/offerDetail/offerDetail",
+					"pathName": "pages/lawyer/offerDetail/offerDetail",
+					"query": "id=3",
 					"scene": null
 				}
 			]

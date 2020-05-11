@@ -14,7 +14,7 @@
 <!-- 全部订单 -->
 <view>
   <!-- 文书 -->
-  <view class='item card' wx:if="{{type==1}}" wx:for="{{key==0?allWenshu:dateFr.PendingOrder(allWenshu,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}"  data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+  <view class='item card' wx:if="{{type==1}}" wx:for="{{key==0?allWenshu:dateFr.PendingOrder(allWenshu,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <view class='title'>{{item.extra_info.description}}</view>
       <view class='desc'>{{item.extra_info.textType}}</view>
@@ -39,7 +39,7 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
-       <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
+      <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
   <!-- 顾问 -->
@@ -54,7 +54,7 @@
         <image src='/static/images/ajweituo.png'></image>
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
-       <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
+      <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
     </view>
   </view>
   <!-- 查询 -->
@@ -69,6 +69,30 @@
         <view class="number">{{item.bidders.length}}报价</view>
       </view>
       <view class="status">{{dateFr.StatusTxt(item.status)}}</view>
+    </view>
+  </view>
+  <view wx:if="{{type==1}}">
+    <view class="showErr" wx:if="{{allWenshu.length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
+  <view wx:if="{{type==2}}">
+    <view class="showErr" wx:if="{{allAnjian.length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
+  <view wx:if="{{type==3}}">
+    <view class="showErr" wx:if="{{allGuwen.length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
+  <view wx:if="{{type==4}}">
+    <view class="showErr" wx:if="{{allChaxun.length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
     </view>
   </view>
 </view>

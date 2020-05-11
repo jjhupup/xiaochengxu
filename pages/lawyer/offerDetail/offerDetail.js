@@ -73,6 +73,12 @@ Page({
       }
     })
     if (can) {
+      wx.requestSubscribeMessage({
+        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+        success(res) {
+          console.log(res)
+        }
+      })
       wx.showModal({
         title: '提示',
         content: '您对该订单的报价为' + that.data.bjmoney + '元',

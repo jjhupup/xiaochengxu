@@ -9,7 +9,7 @@ Page({
   data: {
     NavArr: ['抢单报价'],
     key: 0,
-    title: ['答疑解惑', '文书委托', '案件委托', '顾问委托'],
+    title: ['答疑解惑', '文书委托', '案件委托', '顾问委托','查询委托'],
     questionType: ['民事代理', '商事纠纷', '刑事辩护', '行政诉讼'],
     Allquestion: [],
     AJAllOrder: [], //案件
@@ -140,7 +140,7 @@ Page({
           content: '请提交您的律师相关证件，再进行下一步操作',
           success(data) {
             if (data.confirm) {
-              wx.navigateTo({
+              wx.redirectTo({
                 url: '/pages/userdata/userdata',
               })
             }

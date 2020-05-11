@@ -11,13 +11,19 @@
     <view class="titleMini">您的电话号码</view>
     <input confirm-type='next' class="nameinput" name='phone' value="{{userData.phone}}" type="number" placeholder="请输入您的手机号码" />
 
-    <view class="titleMini">所在的律师事务所</view>
-    <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.office}}" name='office' type="text" placeholder="请输入您所在的律师事务所" />
+    <view class="titleMini">所在的律师事务所名</view>
+    <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.office}}" name='office' type="text" placeholder="请输入您所在的律师事务所名字" />
+
     <view class="titleMini">执业地域</view>
-    <picker class="inputS" bindchange="getRegion" name='location' mode='region' value="{{regionVal}}">
+    <!-- <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
       <view class="picker">
-        <view>当前选择： {{regionVal[0]}}{{regionVal[1]}}{{regionVal[2]}}
-          <image src="/static/images/down.png " />
+        当前选择：{{region[0]}}，{{region[1]}}，{{region[2]}}
+      </view>
+    </picker> -->
+    <picker mode='region'  class="inputS" bindchange="getRegion" name="location" value="{{region}}">
+      <view class="picker">
+        <view>当前选择： {{region[0]}} {{region[1]}} {{region[2]}}
+          <text>选择</text>
         </view>
       </view>
     </picker>
@@ -29,6 +35,7 @@
       <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.experience_year}}" name='experience_year' type="number" placeholder="请输入您的工作年限" />
     </view>
     <view class="titleMini">选择您的擅长领域</view>
+    
     <checkbox-group class="expertList" name="expertData" value="{{userData.extra_profile.expertise_area}}">
       <label class="checkbox" wx:for="{{expert}}">
         <checkbox value="{{item.name}}" checked="{{item.checked}}" />{{item.name}}
@@ -41,7 +48,7 @@
 <!-- 律师证上传 -->
 <view wx:if="{{status==2&&key==1}}" class="content">
   <view class="titleMini">请填写律师执业编号</view>
-  <input confirm-type='next' class="nameinput" bindblur="getLicense_no" name='lawyerNum' type="number" placeholder="请输入您的律师执业编号" />
+  <input confirm-type='next' class="nameinput" bindinput="getLicense_no" name='lawyerNum' type="number" placeholder="请输入您的律师执业编号" />
   <view class="titleMini">请上传您的免冠照片</view>
   <view class="upload">
     <image src="/static/images/add.png" class="addimg" data-Lx="0" wx-if="{{!userImg}}" bindtap="addImg" />

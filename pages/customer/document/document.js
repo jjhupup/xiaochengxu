@@ -12,8 +12,8 @@ Page({
     textType: '代写诉状',
     imgurl: [],
     tempFiles: [],
-    uploadFiles:[],
-    uploadImgs:[],
+    uploadFiles: [],
+    uploadImgs: [],
     swiperH: "126%"
   },
   /**
@@ -151,6 +151,12 @@ Page({
         duration: 2000
       })
     } else {
+      wx.requestSubscribeMessage({
+        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+        success(res) {
+          console.log(res)
+        }
+      })
       wx.showModal({
         title: '提示',
         content: '请确认文书提交类型和相关证据的上传提交~',
@@ -162,7 +168,7 @@ Page({
             console.log(obj)
             wx.showLoading({
               title: '文件上传中~',
-              mask:true
+              mask: true
             })
             Promise.all([...that.FilesUpload(that.data.imgurl), ...that.FilesUpload(that.data.tempFiles, true)]).then(allres => {
               // let filesData=[]
@@ -225,10 +231,10 @@ Page({
     let that = this
     if (filesData.length != 0) {
       console.log(456, filesData, isFile)
-      let allres11=[]
+      let allres11 = []
       let aa
       for (let i = 0; i < filesData.length; i++) {
-        aa=new Promise((resolve, reject) => {
+        aa = new Promise((resolve, reject) => {
           wx.uploadFile({
             url: Api.FileUpload,
             header: {
@@ -240,12 +246,12 @@ Page({
             success(res) {
               console.log('files', res)
               const data = res.data
-              if(isFile){
+              if (isFile) {
                 filesData[i].path = JSON.parse(data).data.urls[0]
                 that.setData({
                   uploadFiles: filesData
                 })
-              }else{
+              } else {
                 filesData[i] = JSON.parse(data).data.urls[0]
                 that.setData({
                   uploadImgs: filesData
@@ -263,7 +269,7 @@ Page({
         allres11.push(aa)
       }
       console.log(allres11)
-      return (allres11)   
+      return (allres11)
     } else {
       return new Promise((resolve, reject) => {
         resolve([])

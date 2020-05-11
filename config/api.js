@@ -20,7 +20,7 @@ module.exports = {
   GetUserData: ApiRootUrl +'user/detail',            //获取用户信息
   UpdateOrder: ApiRootUrl +'case/updateStatus',             //更新订单状态
   //支付接口！！！！
-  GetPayParams: ApiRootUrl +'pay/getPayParams',      //获取支付参数
+  GetPayParams: ApiRootUrl +'order/getPayParams',      //获取支付参数
   Withdrawal: ApiRootUrl +'order/withdrawal',           //提现申请
   GetUserBalance: ApiRootUrl +'user/balance',            //获取余额
   ApplyRefund: ApiRootUrl +'order/applyRefund',         //用户申诉  

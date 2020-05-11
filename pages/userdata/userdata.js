@@ -12,7 +12,7 @@ Page({
       ['个人信息'],
       ['个人信息', '律师认证']
     ],
-    regionVal: ['广东省', '广州市', '天河区'],
+    region: ['广东省', '广州市', '海珠区'],
     expert: [{
         name: '债权债务',
         checked: false
@@ -77,8 +77,12 @@ Page({
     key: 0,
     userImg: '',
     zhenjianImg: '',
+    uploadUserImg: '',
+    uploadZjImg: '',
     userData: {},
-    License_no: 0
+    License_no: '',
+    canClick:true,
+    canUplod:true
   },
 
   /**
@@ -95,20 +99,29 @@ Page({
       console.log(res)
       if (res.code == 'S_Ok') {
         let expert = that.data.expert.filter(val => {
-          return res.data.extra_profile.expertise_area.filter(item => {
-            if (val.name == item) {
-              val.checked = true
-              return val
-            } else {
-              return val
-            }
-          })
+          if (res.data.extra_profile && res.data.extra_profile.expertise_area) {
+            return res.data.extra_profile.expertise_area.filter(item => {
+              if (val.name == item) {
+                val.checked = true
+                return val
+              } else {
+                return val
+              }
+            })
+          }else{
+            return val
+          }
         })
+
         that.setData({
           userData: res.data,
-          expert: expert,
-          regionVal: res.data.extra_profile.location
+          expert: expert
         })
+        if (res.data.extra_profile) {
+          that.setData({
+            regionVal: res.data.extra_profile.location
+          })
+        }
       }
     })
   },
@@ -135,7 +148,7 @@ Page({
   getRegion(e) {
     console.log(e)
     this.setData({
-      regionVal: e.detail.value
+      region: e.detail.value
     })
   },
   addImg(e) {
@@ -150,17 +163,15 @@ Page({
         console.log(res)
         if (lx == 0) {
           let imgurl = res.tempFilePaths
-          let imgurl2 = that.data.userImg
-          imgurl2 = imgurl2.concat(imgurl)
           that.setData({
-            userImg: imgurl2
+            userImg: imgurl[0]
           })
         } else {
           let imgurl = res.tempFilePaths
-          let imgurl2 = that.data.zhenjianImg
-          imgurl2 = imgurl2.concat(imgurl)
+          // let imgurl2 = that.data.zhenjianImg
+          // imgurl2 = imgurl2.concat(imgurl)
           that.setData({
-            zhenjianImg: imgurl2
+            zhenjianImg: imgurl[0]
           })
         }
       }
@@ -180,6 +191,7 @@ Page({
   saveLawyerData(e) {
     console.log(e.detail.value, 123)
     let obj = e.detail.value
+    let that=this
     if (!(/^1[3456789]\d{9}$/.test(obj.phone))) {
       wx.showToast({
         title: '请填写正确的手机号码~',
@@ -192,12 +204,19 @@ Page({
         icon: 'none'
       })
       return
-    } else {
-      this.updataUserData(obj)
+    } else { 
+      if(that.data.canClick){
+        this.updataUserData(obj)
+      }
+      
     }
     // this.updataUserData(e.detail.value)
   },
   updataUserData(obj) {
+    let that=this
+    that.setData({
+      canClick:false
+    })
     let updata = {
       user_id: wx.getStorageSync('user_id'),
       base_info: JSON.stringify({
@@ -221,9 +240,12 @@ Page({
         wx.showToast({
           title: '信息修改成功~',
         })
-        setTimeout(() => {
-          wx.navigateBack()
-        }, 1200)
+        that.setData({
+          canClick:true
+        })
+        // setTimeout(() => {
+        //   wx.navigateBack()
+        // }, 1200)
       }
     })
   },
@@ -274,6 +296,11 @@ Page({
           }
           utils.request(Api.UpDataUserData, updata, "POST").then(res => {
             console.log(res)
+            if(res.code=='S_Ok'){
+              wx.showToast({
+                title: '修改成功',
+              })
+            }
           })
         }
       })
@@ -289,7 +316,41 @@ Page({
   attestLawyer() {
 
     let that = this
-    console.log(444, that.data.License_no)
+    console.log(444, that.data.License_no, that.data.userImg, that.data.zhenjianImg)
+    if (!that.data.canUplod){
+      wx.showToast({
+        title: '已经提交申请认证，请等待认证结果',
+        icon:'none'
+      })
+      return
+    }
+    wx.requestSubscribeMessage({
+      tmplIds: ['_uZ9yGSNAit3ler7kga7AfhH6TmuEjQ9wkKSKUgyL8s'],
+      success(res) {
+        console.log(res)
+      }
+    })
+    if (that.data.License_no == '') {
+      wx.showToast({
+        title: '请输入您的律师执业编号！',
+        icon: 'none'
+      })
+      return
+    }
+    if (that.data.userImg==''){
+      wx.showToast({
+        title: '选择您的免冠照片！',
+        icon:'none'
+      })
+      return
+    }
+    if (that.data.zhenjianImg == '') {
+      wx.showToast({
+        title: '选择您的律师证件照片！',
+        icon: 'none'
+      })
+      return
+    }
     wx.showModal({
       title: '提示',
       content: '确认无误后即将提交~',
@@ -312,9 +373,13 @@ Page({
                 let data = res.data
                 data = JSON.parse(data)
                 that.setData({
-                  userImg: data.data.urls[0]
+                  uploadUserImg: data.data.urls[0]
                 })
                 reslove(data.data.urls[0])
+              },
+              fail(err) {
+                console.log(err)
+                reject(err)
               }
             })
           })
@@ -332,14 +397,18 @@ Page({
                 let data = res.data
                 data = JSON.parse(data)
                 that.setData({
-                  zhenjianImg: data.data.urls[0]
+                  uploadZjImg: data.data.urls[0]
                 })
                 reslove(data.data.urls[0])
+              },
+              fail(err) {
+                console.log(err)
+                reject(err)
               }
             })
           })
-          Promise.all([upload1, upload2]).then(allres=>{
-            console.log('allres',allres)
+          Promise.all([upload1, upload2]).then(allres => {
+            console.log('allres', allres)
             wx.hideLoading()
             let updata = {
               user_id: wx.getStorageSync('user_id'),
@@ -350,12 +419,22 @@ Page({
                 license_no: that.data.License_no
               })
             }
-            utils.request(Api.UpDataUserData,updata,"POST").then(res=>{
-              if(res){
+            utils.request(Api.UpDataUserData, updata, "POST").then(res => {
+              if (res) {
                 wx.showToast({
                   title: '认证信息已提交',
                 })
+                that.setData({
+                  canUplod:false
+                })
               }
+            })
+          }).catch((err) => {
+            console.log('err', err)
+            wx.hideLoading()
+            wx.showToast({
+              title: '上传出错，请重试',
+              icon:'none'
             })
           })
         }

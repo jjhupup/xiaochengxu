@@ -86,6 +86,12 @@ Page({
       })
     }else{
       //提交数据
+      wx.requestSubscribeMessage({
+        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+        success(res) {
+          console.log(res)
+        }
+      })
       wx.showModal({
         title: '提示！',
         content: '即将提交数据~',

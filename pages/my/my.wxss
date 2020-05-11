@@ -12,6 +12,7 @@ page {
   padding: 10px 4% 10px 10%;
   margin-top: 12px;
   align-items: center;
+  position: relative;
 }
 
 .userData image {

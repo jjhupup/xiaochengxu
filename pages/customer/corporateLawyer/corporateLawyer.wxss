@@ -13,10 +13,11 @@
   position: absolute;
   height: 45px;
   line-height: 45px;
-  width: 44px;
+  width: 62px;
   right: 2px;
   top: 0px;
   color: #5677fc;
+  text-align: right;
 }
 
 .getmoney1 {

@@ -2,7 +2,7 @@
 <!-- <view>子组件</view> -->
 <view class="lawyer" wx:for="{{orderData}}">
     <view class="lawyerL" bindtap="golawyerData" data-case_id="{{caseid}}" data-price="{{item.price}}" data-userid="{{item.lawyer.id}}">
-      <image src="{{item.lawyer.avatar_url||'/static/images/guwen.png'}}" />
+      <image src="{{item.lawyer.extra_profile.id_photo||item.lawyer.avatar_url}}" />
     </view>
     <view class="lawyerC">
       <view class="name">{{item.lawyer.real_name||item.lawyer.nick_name}}</view>

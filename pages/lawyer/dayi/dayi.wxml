@@ -3,13 +3,6 @@
 
 <view>
   <view class='item card' wx:if="{{Allquestion}}" wx:for="{{Allquestion}}" hover-class='hover-class' data-questionId="{{item.id}}" catchtap='lookDetail'>
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.advicer.nick_name||'某个吉尔'}}</view>
-      </view>
-      <view class='type'>{{questionType[item.topic]}}</view>
-    </view> -->
     <view class='content'>
       <view class='text'>
         <view class='title'>
@@ -32,13 +25,6 @@
   </view>
   <!-- 文书起草 -->
   <view class='item card' wx:if="{{WSAllOrder}}" bindtap="goQuote" data-id="{{item.id}}" wx:for="{{WSAllOrder}}">
-    <!-- <view class='header'>
-      <view class='name' data-item='{{item}}'>
-        <image class='avatar' mode='aspectFill' src='{{item.publisher.avatar_url || "/static/images/default_avatar.png"}}' />
-        <view>{{item.publisher.nick_name||item.publisher.real_name||'某个吉尔'}}</view>
-      </view>
-      <view class='type'>{{item.extra_info.textType}}</view>
-    </view> -->
     <view class='content'>
       <!-- <view class='text'>
         <view class='title'>{{item.extra_info.description}}</view>
@@ -54,9 +40,6 @@
         <view class="number">{{item.bidders.length}}个报价</view>
       </view>
 
-    </view>
-    <view wx:if="{{AllOrder.length==0}}">
-      暂无数据~
     </view>
   </view>
   <!-- 案件委托 -->
@@ -137,6 +120,26 @@
       </view>
     </view>
     <view wx:if="{{AllOrder.length==0}}">
+      暂无数据~
+    </view>
+  </view>
+  <view wx:if="{{ordertype==1}}">
+    <view wx:if="{{WSAllOrder.length==0}}">
+      暂无数据~
+    </view>
+  </view>
+   <view wx:if="{{ordertype==2}}">
+    <view wx:if="{{AJAllOrder.length==0}}">
+      暂无数据~
+    </view>
+  </view>
+  <view wx:if="{{ordertype==3}}">
+    <view wx:if="{{GWAllOrder.length==0}}">
+      暂无数据~
+    </view>
+  </view>
+  <view wx:if="{{ordertype==4}}">
+    <view wx:if="{{CXAllOrder.length==0}}">
       暂无数据~
     </view>
   </view>

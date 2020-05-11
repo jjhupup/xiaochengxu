@@ -1,23 +1,13 @@
 <!--pages/customer/myquestion/myquestion.wxml-->
+<wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
   <view bindtap="getData" class="{{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
 </view>
 
 <view wx:if="{{key==0}}">
-  <!-- <view class="questionList" wx:for="{{allQuestion}}">
-    <view class="listTop">
-      <text>免费</text>
-      <text>{{item.content}}</text>
-      <text bindtap="lookDetail" ata-id="{{item.id}}" data-orderStatus='{{item.status}}' data-look="true">查看详情</text>
-    </view>
-    <view class="listBottom">
-      <text>{{questionType[item.topic]}}</text>
-      <text bindtap="lookDetail" data-id="{{item.id}}" data-orderStatus='{{item.status}}'>{{item.status==1?'服务中':'已结束'}}</text>
-    </view>
-  </view> -->
   <view class='item card' wx:for="{{allQuestion}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='header'>
-      <view class='name' data-item='{{item}}' >
+      <view class='name' data-item='{{item}}'>
         <image class='avatar' mode='aspectFill' src='{{item.advicer.avatar_url || "/static/images/default_avatar.png"}}' />
         <view>{{item.advicer.nick_name||'某个吉尔'}}</view>
       </view>
@@ -37,11 +27,17 @@
       </view>
     </view>
   </view>
-  <view wx:if="{{allQuestion.length==0}}">没有相关咨询信息~</view>
+  <view wx:if="{{allQuestion.length==0}}">
+    <view class="showErr" wx:if="{{allQuestion.length==0}}">
+      <image src="/static/images/chaxunErr.png" />
+      <view>暂无数据</view>
+    </view>
+  </view>
 </view>
 <view wx:if="{{key==1}}">
-  {{key}}
-</view>
-<view wx:if="{{key==2}}">
-  {{key}}
+  <view class="showErr" wx:if="{{dateFr.PendingOrder(allQuestion,2).length==0}}">
+    <image src="/static/images/chaxunErr.png" />
+    <view>暂无数据</view>
+  </view>
+  
 </view>

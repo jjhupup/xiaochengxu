@@ -118,6 +118,12 @@ Page({
       })
     }else{
       //提交数据
+      wx.requestSubscribeMessage({
+        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+        success(res) {
+          console.log(res)
+        }
+      })
       wx.showModal({
         title: '提交数据提示',
         content: '确认无误后，即可提交委托信息~',

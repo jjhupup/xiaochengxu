@@ -63,6 +63,12 @@ Page({
     })
   },
   shensu() {
+    wx.requestSubscribeMessage({
+      tmplIds: ['g0eCjDV_aShehwkFX2uO1GDVgs8R1c6L1_UVylMTN3Q'],
+      success(res) {
+        console.log(res)
+      }
+    })
     this.setData({
       isShowComment: true
     })

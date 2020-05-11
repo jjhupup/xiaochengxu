@@ -119,10 +119,18 @@ Page({
     if (userInfo) {
       that.getUser()
       // userInfo = JSON.parse(userInfo)
-      that.setData({
-        userName: userInfo.real_name || userInfo.nickName,
-        userImage: userInfo.avatarUrl
-      })
+      if (userInfo.real_name){
+        that.setData({
+          userName: userInfo.real_name,
+          userImage: userInfo.avatarUrl
+        })
+      }else{
+        that.setData({
+          userName:  userInfo.nickName,
+          userImage: userInfo.avatarUrl
+        })
+      }
+     
     }
 
     let role = wx.getStorageSync('role')
@@ -217,6 +225,16 @@ Page({
     this.setData({
       userName: e.detail.userInfo.nickName,
       userImage: e.detail.userInfo.avatarUrl
+    })
+    let obj={
+      user_id:wx.getStorageSync('user_id'),
+      base_info: JSON.stringify({
+        nick_name: e.detail.userInfo.nickName,
+        avatar_url: e.detail.userInfo.avatarUrl
+      })
+    }
+    utils.request(Api.UpDataUserData,obj,'POST').then(res=>{
+      console.log(res)
     })
   },
   // 获取openid和role身份
@@ -363,9 +381,13 @@ Page({
       userinfo.verify_status = res.data.verify_status
       wx.setStorageSync('userInfo', userinfo)
       that.setData({
-        userName: res.data.real_name || res.data.nick_name,
-        userImage: res.data.extra_profile.id_photo ||res.data.avatar_url
+        userName: res.data.real_name || res.data.nick_name
       })
+      if (res.data.extra_profile){
+        that.setData({
+          userImage: res.data.extra_profile.id_photo || res.data.avatar_url
+        })
+      }
     })
   }
 })

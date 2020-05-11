@@ -118,9 +118,7 @@ Page({
     console.log(role)
     if (!role) {
       console.log('还没身份')
-      that.setData({
-        showStatusDialog: true
-      })
+      that.getUserData()
     } else {
       that.setData({
         role: role * 1,
@@ -224,7 +222,7 @@ Page({
           }, "POST").then(res => {
             // 获取的openid再通过登录接口发给后台
             console.log(res)
-           
+           wx.hideLoading()
             if (res.code == 'S_Ok') {
               wx.setStorageSync('openid', res.data.openid)
               wx.setStorageSync('user_id', res.data.id)
@@ -235,6 +233,11 @@ Page({
               loginTime = Date.parse(loginTime)
               console.log(loginTime)
               wx.setStorageSync('loginTime', loginTime)
+              if(res.data.role==0){
+                that.setData({
+                  showStatusDialog: true
+                })
+              }
               resolve(res.data.role)
             } else {
               wx.showToast({
@@ -262,6 +265,7 @@ Page({
   },
   //  发送用户选择的身份信息，更新用户身份状态
   upDataRole() {
+    let that=this
     utils.request(Api.UpDataUserData, {
       user_id: wx.getStorageSync('user_id'),
       base_info: JSON.stringify({
@@ -269,6 +273,11 @@ Page({
       })
     }, "POST").then(res => {
       console.log(res)
+      if(res.code=='S_Ok'){
+        that.setData({
+          showStatusDialog:false
+        })
+      }
     })
   },
   optStatus(e) {
@@ -281,12 +290,12 @@ Page({
     } else {
       statusName = '律师'
     }
-    wx.requestSubscribeMessage({
-      tmplIds: ['Q49V7Pv4pGG-sQkFRL6L9q7TI_nIUstxI89lcly1WWI'],
-      success(res) {
-        console.log(res)
-      }
-    })
+    // wx.requestSubscribeMessage({
+    //   tmplIds: ['Q49V7Pv4pGG-sQkFRL6L9q7TI_nIUstxI89lcly1WWI'],
+    //   success(res) {
+    //     console.log(res)
+    //   }
+    // })
     wx.showModal({
       title: '提示！',
       content: '确认身份后不能随意修改，请认真选择，当前选择是' + statusName,
@@ -295,33 +304,11 @@ Page({
         console.log(res)
         if (res.confirm) {
           console.log('确认了身份选择', role, statusName)
-          let userRole = ''
-          that.getUserData().then(res2 => {
-            console.log(res2)
-            if (res2 == 0) { //用户没注册过
-              wx.setStorageSync('role', role)
-              // 再去调用接口跟新后台用户的身份
-              that.upDataRole()
-              that.onCloseDialog() //关闭弹窗
-              // 设置页面展示内容
-              that.setpageFG(role)
-              return
-            } else if (res2 != role) { //返回来的数据和用户选择的不一样，说明已经注册过
-              wx.showToast({
-                title: '用户已注册~',
-                icon: 'none'
-              })
-              that.onCloseDialog()
-              wx.setStorageSync('role', res2)
-              // 根据后台数据来显示页面内容
-              that.setpageFG(res2)
-              return
-            } else { //返回来的数据和用户选择的一样
-              that.setpageFG(res2)
-              that.onCloseDialog()
-              wx.setStorageSync('role', res2)
-            }
-          })
+          wx.setStorageSync('role', role)
+          // 再去调用接口跟新后台用户的身份
+          that.upDataRole()
+          // 设置页面展示内容
+          that.setpageFG(role)
         }
       }
     })
