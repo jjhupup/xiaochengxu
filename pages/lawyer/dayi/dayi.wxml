@@ -20,7 +20,10 @@
       </view>
     </view>
     <view wx:if="{{Allquestion.length==0}}">
-      暂无数据~
+      <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
   <!-- 文书起草 -->
@@ -119,28 +122,45 @@
         <view class="number">已有{{item.bidders.length}}个律师报价</view>
       </view>
     </view>
-    <view wx:if="{{AllOrder.length==0}}">
-      暂无数据~
+  </view>
+  <view wx:if="{{ordertype==0}}">
+    <view wx:if="{{Allquestion.length==0}}">
+     <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
   <view wx:if="{{ordertype==1}}">
     <view wx:if="{{WSAllOrder.length==0}}">
-      暂无数据~
+     <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
-   <view wx:if="{{ordertype==2}}">
+  <view wx:if="{{ordertype==2}}">
     <view wx:if="{{AJAllOrder.length==0}}">
-      暂无数据~
+      <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
   <view wx:if="{{ordertype==3}}">
     <view wx:if="{{GWAllOrder.length==0}}">
-      暂无数据~
+      <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
   <view wx:if="{{ordertype==4}}">
     <view wx:if="{{CXAllOrder.length==0}}">
-      暂无数据~
+      <view class="showErr">
+        <image src="/static/images/chaxunErr.png" />
+        <view>暂无数据</view>
+      </view>
     </view>
   </view>
 </view>

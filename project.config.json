@@ -65,73 +65,10 @@
 					"scene": null
 				},
 				{
-					"id": 1,
-					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
-					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
-					"query": "case_id=2",
-					"scene": null
-				},
-				{
 					"id": -1,
 					"name": "pages/customer/wenshuDetail/wenshuDetail",
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
-					"query": "id=6",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/lawyer/myWenShu/myWenShu",
-					"pathName": "pages/lawyer/myWenShu/myWenShu",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/wenshuDetail/wenshuDetail",
-					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/personal/personal",
-					"pathName": "pages/personal/personal",
-					"query": "userid=2&price=9999&case_id=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/userdata/userdata",
-					"pathName": "pages/userdata/userdata",
-					"query": "userid=2&price=9999&case_id=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/personal/personal",
-					"pathName": "pages/personal/personal",
-					"query": "userid=2&price=9999&case_id=0",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/customer/mywenshu/mywenshu",
-					"pathName": "pages/customer/mywenshu/mywenshu",
-					"query": "type=1&name=我的文书",
-					"scene": null
-				},
-				{
-					"id": 9,
-					"name": "pages/lawyer/AJquote/AJquote",
-					"pathName": "pages/lawyer/AJquote/AJquote",
-					"query": "id=2",
-					"scene": null
-				},
-				{
-					"id": 10,
-					"name": "pages/lawyer/offerDetail/offerDetail",
-					"pathName": "pages/lawyer/offerDetail/offerDetail",
-					"query": "id=3",
+					"query": "id=4&type=2&status=0",
 					"scene": null
 				}
 			]

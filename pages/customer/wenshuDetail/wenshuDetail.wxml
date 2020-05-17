@@ -38,7 +38,7 @@
     <text>案件管辖地：</text>
     <text>{{allData.extra_info.GXdi[0]+'-'+allData.extra_info.GXdi[1]+'-'+allData.extra_info.GXdi[2]}}</text>
   </view>
-  <view class="contentlist" wx:if="{{allData.extra_info.SJmoney==true}}">
+  <view class="contentlist" wx:if="{{allData.extra_info.SJmoney=='true'}}">
     <text>案件涉及金额：</text>
     <text>{{allData.extra_info.ZYmoney}}</text>
   </view>

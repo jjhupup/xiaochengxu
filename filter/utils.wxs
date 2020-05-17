@@ -76,7 +76,7 @@ var DateFr = {
       case 4:
         return '待确认'
         break;
-      case 5:
+      case 6:
         return '已完成'
         break;
     }

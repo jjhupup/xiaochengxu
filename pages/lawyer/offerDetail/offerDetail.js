@@ -73,12 +73,7 @@ Page({
       }
     })
     if (can) {
-      wx.requestSubscribeMessage({
-        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
-        success(res) {
-          console.log(res)
-        }
-      })
+      
       wx.showModal({
         title: '提示',
         content: '您对该订单的报价为' + that.data.bjmoney + '元',
@@ -103,11 +98,25 @@ Page({
           title: '提交成功，即将返回首页~',
           icon: 'none'
         })
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
-        }, 1000)
+        wx.requestSubscribeMessage({
+          tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+          success(res) {
+            console.log(res)
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }, 1000)
+          },
+          fail(err){
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }, 1000)
+          }
+        })
+        
       } else {
         wx.showToast({
           title: '服务器出错，请联系管理员！',

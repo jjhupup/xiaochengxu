@@ -119,7 +119,9 @@ Page({
         })
         if (res.data.extra_profile) {
           that.setData({
-            regionVal: res.data.extra_profile.location
+            regionVal: res.data.extra_profile.location,
+            userImg: res.data.extra_profile.id_photo,
+            zhenjianImg: res.data.extra_profile.license_photo
           })
         }
       }
@@ -313,6 +315,17 @@ Page({
       License_no: e.detail.value
     })
   },
+  tongzhi(){
+    wx.requestSubscribeMessage({
+      tmplIds: ['_uZ9yGSNAit3ler7kga7AfhH6TmuEjQ9wkKSKUgyL8s'],
+      success(res) {
+        console.log(res)
+      },
+      fail(err) {
+        console.log(err)
+      }
+    })
+  },
   attestLawyer() {
 
     let that = this
@@ -324,12 +337,7 @@ Page({
       })
       return
     }
-    wx.requestSubscribeMessage({
-      tmplIds: ['_uZ9yGSNAit3ler7kga7AfhH6TmuEjQ9wkKSKUgyL8s'],
-      success(res) {
-        console.log(res)
-      }
-    })
+    
     if (that.data.License_no == '') {
       wx.showToast({
         title: '请输入您的律师执业编号！',
@@ -351,13 +359,14 @@ Page({
       })
       return
     }
+    that.tongzhi()
     wx.showModal({
       title: '提示',
       content: '确认无误后即将提交~',
       success(res) {
         if (res.confirm) {
           wx.showLoading({
-            title: '上传中~',
+            title: '图片上传中~',
           })
           let upload1 = new Promise((reslove, reject) => {
             wx.uploadFile({
@@ -409,24 +418,29 @@ Page({
           })
           Promise.all([upload1, upload2]).then(allres => {
             console.log('allres', allres)
+            
             wx.hideLoading()
             let updata = {
               user_id: wx.getStorageSync('user_id'),
-              base_info: '',
+              base_info: JSON.stringify({
+                verify_status:2
+              }),
               extra_profile: JSON.stringify({
-                id_photo: that.data.userImg,
-                license_photo: that.data.zhenjianImg,
+                id_photo: that.data.uploadUserImg,
+                license_photo: that.data.uploadZjImg,
                 license_no: that.data.License_no
               })
             }
             utils.request(Api.UpDataUserData, updata, "POST").then(res => {
               if (res) {
+                console.log(res)
                 wx.showToast({
                   title: '认证信息已提交',
                 })
                 that.setData({
                   canUplod:false
                 })
+               
               }
             })
           }).catch((err) => {

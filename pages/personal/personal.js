@@ -98,8 +98,22 @@ Page({
           paySign: res.data.paySign,
           success(res) { 
             console.log(res)
+            wx.showModal({
+              title: '提示',
+              content: '支付成功！',
+              success(res){
+                wx.switchTab({
+                  url: 'pages/index/index',
+                })
+              }
+            })
           },
-          fail(res) { }
+          fail(res) {
+            wx.showToast({
+              title: '支付失败',
+              icon:'../../static/images/close.png'
+            })
+           }
         })
       }
     })

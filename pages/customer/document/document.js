@@ -85,18 +85,23 @@ Page({
   // 添加文档
   addWord() {
     let that = this
-    wx.chooseMessageFile({
-      count: 3,
-      type: 'file',
+    // wx.chooseMessageFile({
+    //   count: 3,
+    //   type: 'file',
+    //   success(res) {
+    //     console.log(res)
+    //     let files = that.data.tempFiles
+    //     files = files.concat(res.tempFiles)
+    //     that.setData({
+    //       tempFiles: files,
+    //       uploadFiles: files
+    //     })
+    //     that.addSwiperH()
+    //   }
+    // })
+    wx.getFileSystemManager({
       success(res) {
-        console.log(res)
-        let files = that.data.tempFiles
-        files = files.concat(res.tempFiles)
-        that.setData({
-          tempFiles: files,
-          uploadFiles: files
-        })
-        that.addSwiperH()
+        console.log(res.fileList)
       }
     })
   },
@@ -151,12 +156,7 @@ Page({
         duration: 2000
       })
     } else {
-      wx.requestSubscribeMessage({
-        tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
-        success(res) {
-          console.log(res)
-        }
-      })
+     
       wx.showModal({
         title: '提示',
         content: '请确认文书提交类型和相关证据的上传提交~',
@@ -209,9 +209,21 @@ Page({
         wx.showToast({
           title: '咨询提交成功',
         })
-        setTimeout(() => {
-          wx.navigateBack()
-        }, 1000)
+        wx.requestSubscribeMessage({
+          tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+          success(res) {
+            console.log(res)
+            setTimeout(() => {
+              wx.navigateBack()
+            }, 1000)
+          },
+          fail(err){
+            setTimeout(() => {
+              wx.navigateBack()
+            }, 1000)
+          }
+        })
+        
       }
     })
   },

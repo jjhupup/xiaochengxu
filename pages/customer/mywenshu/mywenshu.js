@@ -7,10 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['全部文书', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr2: ['全部案件', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr3: ['全部顾问', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr4: ['全部查询', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
+    NavArr2: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
+    NavArr3: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
+    NavArr4: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
     key: 0,
     allWenshu: [],
     allAnjian: [],
@@ -29,8 +29,7 @@ Page({
     wx.setNavigationBarTitle({
       title: options.name
     })
-    // 请求数据
-    this.getAllData(options.type)
+  
   },
 
   /**
@@ -44,7 +43,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    // 请求数据
+    this.getAllData(this.data.type)
   },
   getAllData(type) {
     let that = this
@@ -100,6 +100,13 @@ Page({
   },
   getData(e) {
     console.log(e)
+    this.getAllData(this.data.type)
+    if (e.currentTarget.dataset.index==4){
+      this.setData({
+        key: 5
+      })
+      return
+    }
     this.setData({
       key: e.currentTarget.dataset.index
     })

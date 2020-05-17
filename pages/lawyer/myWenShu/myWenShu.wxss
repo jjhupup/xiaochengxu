@@ -18,7 +18,9 @@
   text-align: center;
   line-height: 76rpx;
 }
-
+.topitem:nth-child(5){
+  display: none;
+}
 .active {
   color: #5677FC;
   position: relative;

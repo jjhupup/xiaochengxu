@@ -21,7 +21,7 @@
     <text>案件管辖地：</text>
     <text>{{AJDetail.extra_info.GXdi[0]+'-'+AJDetail.extra_info.GXdi[1]+'-'+AJDetail.extra_info.GXdi[2]}}</text>
   </view>
-  <view class="contentlist" wx:if="{{AJDetail.extra_info.SJmoney==true}}">
+  <view class="contentlist" wx:if="{{AJDetail.extra_info.SJmoney=='true'}}">
     <text>案件涉及金额：</text>
     <text>{{AJDetail.extra_info.ZYmoney}}</text>
   </view>

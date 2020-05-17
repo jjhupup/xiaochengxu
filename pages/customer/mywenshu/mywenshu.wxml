@@ -14,7 +14,7 @@
 <!-- 全部订单 -->
 <view>
   <!-- 文书 -->
-  <view class='item card' wx:if="{{type==1}}" wx:for="{{key==0?allWenshu:dateFr.PendingOrder(allWenshu,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+  <view class='item card' wx:if="{{type==1}}" wx:for="{{key==0?dateFr.PendingOrder(allWenshu,key):dateFr.PendingOrder(allWenshu,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <view class='title'>{{item.extra_info.description}}</view>
       <view class='desc'>{{item.extra_info.textType}}</view>
@@ -28,7 +28,7 @@
     </view>
   </view>
   <!-- 案件 -->
-  <view class='item card' wx:if="{{type==2}}" wx:for="{{key==0?allAnjian:dateFr.PendingOrder(allAnjian,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+  <view class='item card' wx:if="{{type==2}}" wx:for="{{key==0?dateFr.PendingOrder(allAnjian,key):dateFr.PendingOrder(allAnjian,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
       <view class='title'>{{item.extra_info.DetailTxt}}</view>
@@ -43,7 +43,7 @@
     </view>
   </view>
   <!-- 顾问 -->
-  <view class='item card' wx:if="{{type==3}}" wx:for="{{key==0?allGuwen:dateFr.PendingOrder(allGuwen,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+  <view class='item card' wx:if="{{type==3}}" wx:for="{{key==0?dateFr.PendingOrder(allGuwen,key):dateFr.PendingOrder(allGuwen,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <!-- <view class='title'>{{item.extra_info.textType}}</view> -->
       <view class='title'>{{item.extra_info.describe}}</view>
@@ -58,7 +58,7 @@
     </view>
   </view>
   <!-- 查询 -->
-  <view class='item card' wx:if="{{type==4}}" wx:for="{{key==0?allChaxun:dateFr.PendingOrder(allChaxun,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
+  <view class='item card' wx:if="{{type==4}}" wx:for="{{key==0?dateFr.PendingOrder(allChaxun,key):dateFr.PendingOrder(allChaxun,key+1)}}" hover-class='hover-class' data-questionId="{{item.id}}" data-orderstatus='{{item.status}}' catchtap='lookDetail'>
     <view class='content'>
       <view class='title'>{{item.extra_info.desc}}</view>
       <view class='desc'>{{item.extra_info.findtype}}</view>
@@ -72,25 +72,25 @@
     </view>
   </view>
   <view wx:if="{{type==1}}">
-    <view class="showErr" wx:if="{{allWenshu.length==0}}">
+    <view class="showErr" wx:if="{{allWenshu.length==0||(key==0?allWenshu.length==0:dateFr.PendingOrder(allWenshu,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==2}}">
-    <view class="showErr" wx:if="{{allAnjian.length==0}}">
+    <view class="showErr" wx:if="{{allAnjian.length==0||(key==0?allAnjian.length==0:dateFr.PendingOrder(allAnjian,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==3}}">
-    <view class="showErr" wx:if="{{allGuwen.length==0}}">
+    <view class="showErr" wx:if="{{allGuwen.length==0||(key==0?allGuwen.length==0:dateFr.PendingOrder(allGuwen,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==4}}">
-    <view class="showErr" wx:if="{{allChaxun.length==0}}">
+    <view class="showErr" wx:if="{{allChaxun.length==0||(key==0?allChaxun.length==0:dateFr.PendingOrder(allChaxun,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>

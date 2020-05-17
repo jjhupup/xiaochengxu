@@ -186,6 +186,7 @@ Page({
       })
       console.log(wx.getStorageSync('role'))
       wx.setStorageSync('userInfo', JSON.stringify(e.detail.userInfo));
+      that.getUserData()
       // utils.request()
     }
   },
@@ -236,6 +237,10 @@ Page({
               if(res.data.role==0){
                 that.setData({
                   showStatusDialog: true
+                })
+              }else if(res.data.role==2){
+                that.setData({
+                  isShow: false
                 })
               }
               resolve(res.data.role)
