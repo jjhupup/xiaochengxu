@@ -85,25 +85,25 @@ Page({
   // 添加文档
   addWord() {
     let that = this
-    // wx.chooseMessageFile({
-    //   count: 3,
-    //   type: 'file',
-    //   success(res) {
-    //     console.log(res)
-    //     let files = that.data.tempFiles
-    //     files = files.concat(res.tempFiles)
-    //     that.setData({
-    //       tempFiles: files,
-    //       uploadFiles: files
-    //     })
-    //     that.addSwiperH()
-    //   }
-    // })
-    wx.getFileSystemManager({
+    wx.chooseMessageFile({
+      count: 3,
+      type: 'file',
       success(res) {
-        console.log(res.fileList)
+        console.log(res)
+        let files = that.data.tempFiles
+        files = files.concat(res.tempFiles)
+        that.setData({
+          tempFiles: files,
+          uploadFiles: files
+        })
+        that.addSwiperH()
       }
     })
+    // wx.getFileSystemManager({
+    //   success(res) {
+    //     console.log(res.fileList)
+    //   }
+    // })
   },
   // 删除图片
   deleteImg(e) {
