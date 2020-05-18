@@ -72,25 +72,25 @@
     </view>
   </view>
   <view wx:if="{{type==1}}">
-    <view class="showErr" wx:if="{{allWenshu.length==0||(key==0?allWenshu.length==0:dateFr.PendingOrder(allWenshu,key+1).length==0)}}">
+    <view class="showErr" wx:if="{{allWenshu.length==0||(key==0?dateFr.PendingOrder(allWenshu,key).length==0:dateFr.PendingOrder(allWenshu,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==2}}">
-    <view class="showErr" wx:if="{{allAnjian.length==0||(key==0?allAnjian.length==0:dateFr.PendingOrder(allAnjian,key+1).length==0)}}">
+    <view class="showErr" wx:if="{{allAnjian.length==0||(key==0?dateFr.PendingOrder(allAnjian,key).length==0:dateFr.PendingOrder(allAnjian,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==3}}">
-    <view class="showErr" wx:if="{{allGuwen.length==0||(key==0?allGuwen.length==0:dateFr.PendingOrder(allGuwen,key+1).length==0)}}">
+    <view class="showErr" wx:if="{{allGuwen.length==0||(key==0?dateFr.PendingOrder(allGuwen,key).length==0:dateFr.PendingOrder(allGuwen,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>
   </view>
   <view wx:if="{{type==4}}">
-    <view class="showErr" wx:if="{{allChaxun.length==0||(key==0?allChaxun.length==0:dateFr.PendingOrder(allChaxun,key+1).length==0)}}">
+    <view class="showErr" wx:if="{{allChaxun.length==0||(key==0?dateFr.PendingOrder(allChaxun,key).length==0:dateFr.PendingOrder(allChaxun,key+1).length==0)}}">
       <image src="/static/images/chaxunErr.png" />
       <view>暂无数据</view>
     </view>

@@ -71,7 +71,7 @@ var DateFr = {
         return '服务中'
         break;
       case 3:
-        return '申述中'
+        return '申诉中'
         break;
       case 4:
         return '待确认'

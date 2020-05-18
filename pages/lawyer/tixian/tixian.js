@@ -53,9 +53,9 @@ Page({
     let that=this
     let txmoney=that.data.txmoney
     let totalBalance = that.data.totalBalance
-    if(txmoney==0){
+    if(txmoney<100){
       wx.showToast({
-        title: '提现金额要大于0',
+        title: '提现金额要大于100元',
         icon:'none'
       })
     }else if(!txmoney){
@@ -63,7 +63,7 @@ Page({
         title: '请输入提现金额',
         icon: 'none'
       })
-    } else if (txmoney > totalBalance){
+    } else if (txmoney*100 > totalBalance){
       wx.showToast({
         title: '提现金额不能大于余额',
         icon: 'none'

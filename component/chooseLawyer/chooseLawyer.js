@@ -26,7 +26,7 @@ Component({
       let userid = e.currentTarget.dataset.userid
       let price = e.currentTarget.dataset.price
       let case_id = e.currentTarget.dataset.case_id
-      wx.navigateTo({
+      wx.redirectTo({
         url: '/pages/personal/personal?userid=' + userid + '&price=' + price + '&case_id=' + case_id
       })
     }

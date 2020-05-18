@@ -2,7 +2,7 @@
 <view class="content">
   <view class="Mymoney">
     <view>我的余额</view>
-    <view>{{totalBalance}}</view>
+    <view>{{totalBalance*0.01}}元</view>
   </view>
   <view class="draw">
     <view>提现金额</view>
