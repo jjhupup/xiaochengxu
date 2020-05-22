@@ -79,6 +79,7 @@ page{
 
 .content .text {
   flex: 1;
+  width: 100%;
 }
 
 .content .img {

@@ -201,8 +201,8 @@ Page({
    */
   onShareAppMessage: function(res) {
     return {
-      title: '搞咩法律',
-      desc: '青青草原法律大规',
+      title: '我爱法律',
+      desc: '法律让世界变得美好',
       path: '/pages/index/index'
     }
   },
