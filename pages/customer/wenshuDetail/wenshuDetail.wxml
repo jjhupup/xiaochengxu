@@ -74,6 +74,10 @@
     <text>顾问类型：</text>
     <view>{{allData.extra_info.adviserType}}</view>
   </view>
+  <view class="yaoqiu">
+    <text>顾问需求描述：</text>
+    <view>{{allData.extra_info.describe}}</view>
+  </view>
 </view>
 <view class="content" wx:if="{{type==4}}">
   <view class="title1">查询要求</view>
@@ -98,8 +102,12 @@
 <!-- 申诉中 -->
 <!-- 除了待抢单状态，显示选择的律师信息 -->
 <view wx:if="{{status!=0}}" style="margin-bottom:80px">
-   <view class="title2 ml10">当前律师正为您服务</view>
+   <view class="title2 ml10">当前正在为客户服务</view>
    <lawyer-data orderData="{{allData.selectLawyer}}" caseid="{{case_id}}" bindparent="shensu" bindqxshensu="quxiaoshensu" status="{{status}}"></lawyer-data>
+</view>
+<view wx:if="{{allData.bidders.length==0}}" class="tool2">
+  <view class="upload" bindtap="editMoney">修改内容</view>
+  <view class="shensu">取消发布</view>
 </view>
 <view class="dialog-login " wx:if="{{isShowComment}}">
   <view class="dialog-body" catchtap='onDialogBody'>
@@ -109,5 +117,15 @@
     </view>
     <textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
     <!-- <view class="tjComment" >提交回答</view> -->
+  </view>
+</view>
+<view class="show-back" wx:if="{{editShow}}">
+  <view class="showHiden">
+  <view class="editT">修改内容</view>
+  <textarea  bindinput="getEditMoney"  value="{{desctxt}}" />
+  <view class="btntool">
+    <view bindtap="enterEdit">确认</view>
+    <view bindtap="cancelShow">取消</view>
+  </view>
   </view>
 </view>

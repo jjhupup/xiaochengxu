@@ -21,7 +21,9 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.11.0",
@@ -69,6 +71,41 @@
 					"name": "pages/customer/wenshuDetail/wenshuDetail",
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
 					"query": "id=4&type=2&status=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/tixian/tixian",
+					"pathName": "pages/lawyer/tixian/tixian",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/offerDetail/offerDetail",
+					"pathName": "pages/lawyer/offerDetail/offerDetail",
+					"query": "id=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"query": "case_id=2&type=1&orderstatus=0",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/uploadData/uploadData",
+					"pathName": "pages/lawyer/uploadData/uploadData",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "id=10&type=1&status=0",
 					"scene": null
 				}
 			]

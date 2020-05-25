@@ -12,7 +12,8 @@ Page({
     type:0,
     isShowComment: false,
     status:0,
-    shensuTxt:''
+    shensuTxt:'',
+    editShow:false
   },
 
   /**
@@ -49,7 +50,8 @@ Page({
       console.log(res)
       if(res.code=='S_Ok'){
         that.setData({
-          allData:res.data
+          allData:res.data,
+          desctxt:res.data.extra_info.description||res.data.extra_info.DetailTxt||res.data.extra_info.describe
         })
       }else{
         wx.showModal({
@@ -164,5 +166,21 @@ Page({
         }
       }
     })
-  }
+  },
+  editMoney(){
+    this.setData({
+      editShow:true
+    })
+  },
+  cancelShow(){
+    this.setData({
+      editShow:false
+    })
+  },
+  getEditMoney(e){
+    console.log(e.detail.value);
+    this.setData({
+      getEditMoney:e.detail.value
+    })
+  },
 })

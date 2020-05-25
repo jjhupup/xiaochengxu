@@ -13,7 +13,9 @@ Page({
     isShowComment: false,
     shensuTxt: '',
     status: 0,
-    case_id: 0
+    case_id: 0,
+    editShow:false,
+    editmoney:''
   },
 
   /**
@@ -26,13 +28,6 @@ Page({
       status: options.orderstatus,
       case_id: options.case_id
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
   },
 
   /**
@@ -151,5 +146,58 @@ Page({
         }
       }
     })
+  },
+  getEditMoney(e){
+    console.log(e.detail.value);
+    this.setData({
+      editmoney:e.detail.value
+    })
+  },
+  editMoney(){
+    this.setData({
+      editShow:true
+    })
+  },
+  cancelShow(){
+    this.setData({
+      editShow:false
+    })
+  },
+  cancelOrder(){
+    wx.showModal({
+      title:'提示',
+      content:'是否要取消对该订单的报价？',
+      success(res){
+        if(res.confirm){
+          console.log('请求数据删除报价');
+          
+        }
+      }
+    })
+  },
+  enterEdit(){
+    let that=this
+    console.log(that.data.editmoney);
+    let editmoney=that.data.editmoney
+    if(!that.isNumber(editmoney)){
+      wx.showToast({
+        title: '请输入数字金额',
+        icon:'none'
+      })
+      that.setData({
+        editmoney:''
+      })
+      return
+    }
+    
+  },
+  isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if (regPos.test(val) || regNeg.test(val)) {
+      return true;
+    } else {
+      return false;
+    }
   }
 })

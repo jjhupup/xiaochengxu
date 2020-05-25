@@ -54,3 +54,40 @@
   background-color: #fff;
   border-radius: 50%;
 }
+.file .uploadfile {
+  width: 25%;
+  height: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+}
+
+.file {
+  display: flex;
+  flex-wrap: wrap;
+  padding-right: 14px;
+  margin-top: 16px;
+}
+
+.file view {
+  padding: 9px 5px;
+  line-height: 18px;
+  font-size: 13px;
+  border: 1px dotted;
+  margin-bottom: 12px;
+}
+
+.filelist {
+  margin-left: 6px;
+  position: relative;
+}
+
+.filelist image {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: #fff;
+}

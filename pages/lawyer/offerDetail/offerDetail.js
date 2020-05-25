@@ -47,9 +47,26 @@ Page({
       bjmoney: e.detail.value * 1
     })
   },
+  isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if (regPos.test(val) || regNeg.test(val)) {
+      return true;
+    } else {
+      return false;
+    }
+
+  },
   BaoJiaFun() {
     let that = this
     let can = true
+    if (!that.isNumber(that.data.bjmoney)){
+      wx.showToast({
+        title: '请输入报价数字金额',
+        icon: 'none'
+      })
+      return
+    }
     if (that.data.bjmoney == 0) {
       wx.showToast({
         title: '请填写报价金额！',
@@ -73,7 +90,6 @@ Page({
       }
     })
     if (can) {
-      
       wx.showModal({
         title: '提示',
         content: '您对该订单的报价为' + that.data.bjmoney + '元',
@@ -90,7 +106,7 @@ Page({
     utils.request(Api.Baojia, {
       case_id: that.data.id,
       lawyer_id: wx.getStorageSync('user_id'), 
-      price: that.data.bjmoney
+      price: that.data.bjmoney*100
     }, 'POST').then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {

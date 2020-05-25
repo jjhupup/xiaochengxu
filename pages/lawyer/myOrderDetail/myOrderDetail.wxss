@@ -43,6 +43,7 @@
   top: 17px;
   background-color: #404040;
 }
+
 .contentlist text:nth-child(1) {
   font-size: 14px;
   color: #555;
@@ -58,6 +59,7 @@
   display: flex;
   padding: 5px 0;
 }
+
 .yaoqiu {
   height: 50px;
   line-height: 50px;
@@ -70,50 +72,58 @@
   flex: 1;
   border-bottom: 1px solid #ccc;
 }
-.baojia{
+
+.baojia {
   color: red;
 }
-.mybidder{
+
+.mybidder {
   height: 36px;
   line-height: 36px;
 }
-.tools{
+
+.tools {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
   display: flex;
 }
-.tools2{
+
+.tools2 {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  display: flex; 
+  display: flex;
 }
-.tools view{
+
+.tools view {
   width: 100%;
   text-align: center;
   height: 50px;
   line-height: 50px;
 }
-.tools2 view{
+
+.tools2 view {
   width: 100%;
   text-align: center;
   height: 50px;
   line-height: 50px;
   background-color: #5677fc;
   color: #fff;
+}
 
-}
-.upload{
-  background-color: #4b8bf4;
+.upload {
+  background-color: #4b8bf4 !important;
   color: #fff;
 }
-.shensu{
-  background-color: #dd4f43;
+
+.shensu {
+  background-color: #dd4f43 !important;
   color: #fff;
 }
+
 .dialog-login {
   width: 100%;
   height: 100%;
@@ -169,6 +179,7 @@
 .dialog-login .dialog-body button {
   margin-top: 30rpx;
 }
+
 .questionInp2 {
   width: 90%;
   height: 100%;
@@ -177,6 +188,7 @@
   text-indent: 8px;
   margin-bottom: 12px;
 }
+
 .imglist {
   display: flex;
   flex-wrap: wrap;
@@ -192,6 +204,7 @@
 .imglist image:nth-child(3) {
   margin: 0;
 }
+
 .filelist {
   display: flex;
   flex-wrap: wrap;
@@ -201,4 +214,63 @@
   padding: 7px 8px;
   border: 1px dotted #aaa;
   margin-right: 10px;
+}
+
+page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+page>view {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.show-back{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.showHiden {
+  position: fixed;
+  width: 80%;
+  height: 142px;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px #ccc;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.showHiden input {
+  width: 90%;
+  border: 1px solid #ccc;
+  height: 40px;
+  margin: auto;
+
+}
+
+.btntool {
+  display: flex;
+  margin-top: 9px;
+}
+
+.btntool view {
+  width: 50%;
+  text-align: center;
+  height: 42px;
+  line-height: 42px;
+}
+.btntool view:nth-child(1){
+  border-right: 1px solid #ccc;
+}
+.editT {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
 }

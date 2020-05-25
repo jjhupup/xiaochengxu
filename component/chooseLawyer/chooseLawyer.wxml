@@ -19,7 +19,7 @@
     </view>
     <view class="lawyerR">
       <view class="tag">从业{{item.lawyer.extra_profile.experience_year}}年</view>
-      <view class="price">￥{{item.price}}.00</view>
+      <view class="price">￥{{item.price/100}}</view>
       <view class="choose" data-userid="{{item.lawyer.id}}" data-case_id="{{caseid}}" data-price="{{item.price}}" bindtap="golawyerData">选他</view>
     </view>
   </view>

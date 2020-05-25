@@ -82,7 +82,7 @@ Page({
     let that = this
     util.request(Api.GetPayParams, {
       body: '支付给' + that.data.lawyerData.nick_name + '的律师费用',
-      total_fee: that.data.price * 100,
+      total_fee: that.data.price ,
       openid: wx.getStorageSync('openid'),
       select_lawyer_id: that.data.lawyerData.id,
       case_id: that.data.caseid

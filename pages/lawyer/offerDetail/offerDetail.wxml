@@ -16,6 +16,6 @@
   <view class="type">{{OrderData.extra_info.textType}}</view>
 </view>
 <view class="baojia">
-    <input type="number" bindblur="getMoney" placeholder="请输入报价金额" />
+    <input type="text" bindinput="getMoney" placeholder="请输入报价金额" />
     <view bindtap="BaoJiaFun">我要报价</view>
   </view>

@@ -21,7 +21,7 @@ module.exports = {
   UpdateOrder: ApiRootUrl +'case/updateStatus',             //更新订单状态
   //支付接口！！！！
   GetPayParams: ApiRootUrl +'order/getPayParams',      //获取支付参数
-  Withdrawal: ApiRootUrl +'order/withdrawal',           //提现申请
+  Withdrawal: ApiRootUrl +'order/applyWithdrawal',           //提现申请
   GetUserBalance: ApiRootUrl +'user/balance',            //获取余额
   ApplyRefund: ApiRootUrl +'order/applyRefund',         //用户申诉  
   // 文件上传

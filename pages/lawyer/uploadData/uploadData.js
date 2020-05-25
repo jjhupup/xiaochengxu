@@ -1,11 +1,16 @@
 // pages/lawyer/uploadData/uploadData.js
+const utils = require('../../../utils/util.js')
+const Api = require('../../../config/api.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgurl: []
+    imgurl: [],
+    uploadImgs:[],
+    tempFiles:[],
+    uploadFiles:[]
   },
 
   /**
@@ -42,19 +47,112 @@ Page({
         that.setData({
           imgurl: imgurl2
         })
-        that.addSwiperH()
       }
     })
   },
   // 删除图片
   deleteImg(e) {
+    console.log(e.currentTarget.dataset.index)
+    let key = e.currentTarget.dataset.index
+    let imgarr = this.data.imgurl
+    imgarr.splice(key, 1)
     this.setData({
-      userImg: ''
+      imgurl: imgarr
     })
   },
-  deleteZJImg() {
+  // 删除文档
+  deletefile(e) {
+    let key = e.currentTarget.dataset.index
+    let files = this.data.tempFiles
+    files.splice(key, 1)
     this.setData({
-      zhenjianImg: ''
+      tempFiles: files
     })
+  },
+   // 添加文档
+   addWord() {
+    let that = this
+    wx.chooseMessageFile({
+      count: 3,
+      type: 'file',
+      success(res) {
+        console.log(res)
+        let files = that.data.tempFiles
+        files = files.concat(res.tempFiles)
+        that.setData({
+          tempFiles: files,
+          uploadFiles: files
+        })
+      }
+    })
+  },
+  uploadData(){
+    let that=this
+    console.log(123,that.data.imgurl);
+    if(that.data.imgurl.length==0&&that.data.tempFiles.length==0){
+      wx.showToast({
+        title: '请选择相关的资料图片上传',
+        icon:'none'
+      })
+    }
+    let obj={}
+    Promise.all([...that.FilesUpload(that.data.imgurl), ...that.FilesUpload(that.data.tempFiles, true)]).then(allres=>{
+      console.log('allres', allres)
+      obj.imgs = that.data.uploadImgs
+      obj.files = that.data.uploadFiles
+      // obj.fileName=[]
+      console.log(obj)
+      wx.hideLoading()
+      that.publishOrder(obj)
+    })
+  },
+  FilesUpload(filesData, isFile = false) {
+    let that = this
+    if (filesData.length != 0) {
+      console.log(456, filesData, isFile)
+      let allres11 = []
+      let aa
+      for (let i = 0; i < filesData.length; i++) {
+        aa = new Promise((resolve, reject) => {
+          wx.uploadFile({
+            url: Api.FileUpload,
+            header: {
+              'content-type': 'multipart/form-data',
+              'Authorization': 'Bearer ' + wx.getStorageSync('token')
+            },
+            filePath: isFile ? filesData[i].path : filesData[i],
+            name: 'files',
+            success(res) {
+              console.log('files', res)
+              const data = res.data
+              if (isFile) {
+                filesData[i].path = JSON.parse(data).data.urls[0]
+                that.setData({
+                  uploadFiles: filesData
+                })
+              } else {
+                filesData[i] = JSON.parse(data).data.urls[0]
+                that.setData({
+                  uploadImgs: filesData
+                })
+              }
+              resolve(data)
+              //do something
+            },
+            fail(err) {
+              console.log(err)
+              reject(err)
+            }
+          })
+        })
+        allres11.push(aa)
+      }
+      console.log(allres11)
+      return (allres11)
+    } else {
+      return new Promise((resolve, reject) => {
+        resolve([])
+      })
+    }
   }
 })

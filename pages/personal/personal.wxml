@@ -69,7 +69,7 @@
 <view class="down" wx:if="{{price!=0}}">
   <view class="money">
     <text></text>
-    <text>￥{{price}}</text>
+    <text>￥{{price/100}}</text>
   </view>
   <view bindtap="tanchuPay" class="paybtn">选择该律师并支付</view>
 </view>
@@ -77,7 +77,7 @@
 <view class="shade" wx:if="{{payshow}}" bindtap="closeShow">
   <view class="paymothed" catchtap="onDialogBody">
     <view class="paymothedtxt">选择支付</view>
-    <view class="money">￥{{price}}</view>
+    <view class="money">￥{{price/100}}</view>
     <view class="weixin">
       <image src="/static/images/pay.png" />
       <text>微信支付</text>

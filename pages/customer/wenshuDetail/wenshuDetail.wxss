@@ -64,7 +64,7 @@
 }
 
 .yaoqiu {
-  height: 50px;
+  /* height: 50px; */
   line-height: 50px;
   display: flex;
 }
@@ -97,7 +97,7 @@
 }
 
 .shensu {
-  background-color: #dd4f43;
+  background-color: #dd4f43 !important;
   color: #fff;
 }
 
@@ -164,4 +164,69 @@
   padding: 10px 0;
   text-indent: 8px;
   margin-bottom: 12px;
+}
+
+.tool2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+}
+
+.tool2 view {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  background-color: #5677fc;
+  color: #fff;
+}
+.show-back{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.showHiden {
+  position: fixed;
+  width: 80%;
+  /* height: 142px; */
+  padding-bottom: 6px;
+  background-color: #fff;
+  box-shadow: 1px 1px 10px #ccc;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+}
+
+.showHiden textarea  {
+  width: 90%;
+  border: 1px solid #ccc;
+  height: 110px;
+  margin: auto;
+
+}
+
+.btntool {
+  display: flex;
+  margin-top: 9px;
+}
+
+.btntool view {
+  width: 50%;
+  text-align: center;
+  height: 42px;
+  line-height: 42px;
+}
+.btntool view:nth-child(1){
+  border-right: 1px solid #ccc;
+}
+.editT {
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
 }

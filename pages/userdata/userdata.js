@@ -82,7 +82,8 @@ Page({
     userData: {},
     License_no: '',
     canClick:true,
-    canUplod:true
+    canUplod:true,
+    id_photo:''
   },
 
   /**
@@ -120,6 +121,7 @@ Page({
         if (res.data.extra_profile) {
           that.setData({
             regionVal: res.data.extra_profile.location,
+            id_photo:res.data.extra_profile.id_photo,
             userImg: res.data.extra_profile.id_photo,
             zhenjianImg: res.data.extra_profile.license_photo
           })
@@ -268,6 +270,7 @@ Page({
     } else {
       console.log(456)
       // utils.request(Api.FileUpload,)
+      // if()
       wx.showLoading({
         title: '上传中~',
       })

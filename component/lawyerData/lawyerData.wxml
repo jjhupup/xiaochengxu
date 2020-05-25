@@ -22,7 +22,7 @@
     <view wx:if="{{status==3}}" class="tag" bindtap="quxiaoshensu">取消申诉</view>
     <view class="price" bindtap="call">
       <image src="/static/images/call.png" />
-      <text>13268720081</text>
+      <text>13000000000</text>
     </view>
   </view>
 </view>
