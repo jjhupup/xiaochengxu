@@ -1,118 +1,118 @@
 <view>
-  <!--pages/lawyer/myOrderDetail/myOrderDetail.wxml-->
-  <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
-  <view class="content">
-    <view wx:if="{{type==1}}">
-      <view class="title2">{{allData.extra_info.textType}}</view>
-      <view class="clearfix">
-        <text>{{allData.extra_info.description}}</text>
-        <view class="date">发布时间：{{dateFr.getDate2(allData.create_time,'-',':')}}</view>
-      </view>
-      <view class="titleMini">上传的图片</view>
-      <view class="imglist">
-        <image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" wx:for="{{allData.extra_info.imgs}}" wx:key="index" />
-      </view>
-      <view class="titleMini">上传的文档</view>
-      <view class="filelist">
-        <text class="file" wx:for="{{allData.extra_info.files}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
-      </view>
-      <view class="textTips">文档点击可供下载</view>
-      <view wx:if="{{allData.extra_info.files.length==0}}">暂无</view>
-    </view>
-    <view wx:if="{{type==2}}">
-      <view class="title2">案件信息</view>
-      <view class="contentlist">
-        <text>申请人姓名：</text>
-        <text>{{allData.extra_info.real_name}}</text>
-      </view>
-      <view class="contentlist">
-        <text>案件类型：</text>
-        <text>{{allData.extra_info.AJtype}}</text>
-      </view>
-      <view class="contentlist">
-        <text>委托人在本案中的地位：</text>
-        <text>{{allData.extra_info.DiWei}}</text>
-      </view>
-      <view class="contentlist">
-        <text>案件所处阶段：</text>
-        <text>{{allData.extra_info.JieDuan}}</text>
-      </view>
-      <view class="contentlist">
-        <text>案件管辖地：</text>
-        <text>{{allData.extra_info.GXdi[0]+'-'+allData.extra_info.GXdi[1]+'-'+allData.extra_info.GXdi[2]}}</text>
-      </view>
-      <view class="contentlist" wx:if="{{allData.extra_info.SJmoney==true}}">
-        <text>案件涉及金额：</text>
-        <text>{{allData.extra_info.ZYmoney}}</text>
-      </view>
-      <view class="contentlist">
-        <text>案件详情：</text>
-        <text>{{allData.extra_info.DetailTxt}}</text>
-      </view>
-    </view>
-    <view wx:if="{{type==3}}">
-      <view class="title2">用户信息</view>
-      <view class="yaoqiu">
-        <text>客户姓名：</text>
-        <view>{{allData.extra_info.real_name}}</view>
-      </view>
-      <view class="yaoqiu">
-        <text>工作单位：</text>
-        <view>{{allData.extra_info.danweiName}}</view>
-      </view>
-      <view class="yaoqiu">
-        <text>工作性质：</text>
-        <view>{{allData.extra_info.DweiType}}</view>
-      </view>
-      <view class="yaoqiu">
-        <text>工作行业：</text>
-        <view>{{allData.extra_info.profession}}</view>
-      </view>
-      <view class="title2">顾问需求信息</view>
-      <view class="yaoqiu">
-        <text>工作经验：</text>
-        <view>{{allData.extra_info.experience}}</view>
-      </view>
-      <view class="yaoqiu">
-        <text>顾问类型：</text>
-        <view>{{allData.extra_info.adviserType}}</view>
-      </view>
-    </view>
-    <view wx:if="{{type==4}}">
-      <view class="title1">查询要求</view>
-      <view class="contentlist">
-        <text>查询者姓名：</text>
-        <text>{{allData.publisher.real_name||allData.publisher.nick_name}}</text>
-      </view>
-      <view class="contentlist">
-        <text>查询信息：</text>
-        <text>{{allData.extra_info.findtype}}</text>
-      </view>
-      <view class="contentlist">
-        <text>相关信息：</text>
-        <text>{{allData.extra_info.desc}}</text>
-      </view>
-    </view>
-    <view class="titleMini">我的报价</view>
-    <view class="mybidder">
-      <text></text>
-      <text class="baojia">￥{{mybidder[0].price/100}}</text>
-    </view>
+	<!--pages/lawyer/myOrderDetail/myOrderDetail.wxml-->
+	<wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
+	<view class="content">
+		<view wx:if="{{type==1}}">
+			<view class="title2">{{allData.extra_info.textType}}</view>
+			<view class="clearfix">
+				<text>{{allData.extra_info.description}}</text>
+				<view class="date">发布时间：{{dateFr.getDate2(allData.create_time,'-',':')}}</view>
+			</view>
+			<view class="titleMini">上传的图片</view>
+			<view class="imglist">
+				<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" wx:for="{{allData.extra_info.imgs}}" wx:key="index" />
+			</view>
+			<view class="titleMini">上传的文档</view>
+			<view class="filelist">
+				<text class="file" wx:for="{{allData.extra_info.files}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+			</view>
+			<view class="textTips">文档点击可供下载</view>
+			<view wx:if="{{allData.extra_info.files.length==0}}">暂无</view>
+		</view>
+		<view wx:if="{{type==2}}">
+			<view class="title2">案件信息</view>
+			<view class="contentlist">
+				<text>申请人姓名：</text>
+				<text>{{allData.extra_info.real_name}}</text>
+			</view>
+			<view class="contentlist">
+				<text>案件类型：</text>
+				<text>{{allData.extra_info.AJtype}}</text>
+			</view>
+			<view class="contentlist">
+				<text>委托人在本案中的地位：</text>
+				<text>{{allData.extra_info.DiWei}}</text>
+			</view>
+			<view class="contentlist">
+				<text>案件所处阶段：</text>
+				<text>{{allData.extra_info.JieDuan}}</text>
+			</view>
+			<view class="contentlist">
+				<text>案件管辖地：</text>
+				<text>{{allData.extra_info.GXdi[0]+'-'+allData.extra_info.GXdi[1]+'-'+allData.extra_info.GXdi[2]}}</text>
+			</view>
+			<view class="contentlist" wx:if="{{allData.extra_info.SJmoney==true}}">
+				<text>案件涉及金额：</text>
+				<text>{{allData.extra_info.ZYmoney}}</text>
+			</view>
+			<view class="contentlist">
+				<text>案件详情：</text>
+				<text>{{allData.extra_info.DetailTxt}}</text>
+			</view>
+		</view>
+		<view wx:if="{{type==3}}">
+			<view class="title2">用户信息</view>
+			<view class="yaoqiu">
+				<text>客户姓名：</text>
+				<view>{{allData.extra_info.real_name}}</view>
+			</view>
+			<view class="yaoqiu">
+				<text>工作单位：</text>
+				<view>{{allData.extra_info.danweiName}}</view>
+			</view>
+			<view class="yaoqiu">
+				<text>工作性质：</text>
+				<view>{{allData.extra_info.DweiType}}</view>
+			</view>
+			<view class="yaoqiu">
+				<text>工作行业：</text>
+				<view>{{allData.extra_info.profession}}</view>
+			</view>
+			<view class="title2">顾问需求信息</view>
+			<view class="yaoqiu">
+				<text>工作经验：</text>
+				<view>{{allData.extra_info.experience}}</view>
+			</view>
+			<view class="yaoqiu">
+				<text>顾问类型：</text>
+				<view>{{allData.extra_info.adviserType}}</view>
+			</view>
+		</view>
+		<view wx:if="{{type==4}}">
+			<view class="title1">查询要求</view>
+			<view class="contentlist">
+				<text>查询者姓名：</text>
+				<text>{{allData.publisher.real_name||allData.publisher.nick_name}}</text>
+			</view>
+			<view class="contentlist">
+				<text>查询信息：</text>
+				<text>{{allData.extra_info.findtype}}</text>
+			</view>
+			<view class="contentlist">
+				<text>相关信息：</text>
+				<text>{{allData.extra_info.desc}}</text>
+			</view>
+		</view>
+		<view class="titleMini">我的报价</view>
+		<view class="mybidder">
+			<text></text>
+			<text class="baojia">￥{{mybidder[0].price/100}}</text>
+		</view>
 
-  </view>
-  <view class="tools" wx:if="{{status==2}}">
-    <!-- <navigator url="/pages/lawyer/uploadData/uploadData"> -->
-    <view class="upload" bindtap="goUpload">完成服务</view>
-    <!-- <view class="shensu" bindtap="shensu">申诉</view> -->
-  </view>
-  <view class="dialog-login " wx:if="{{isShowComment}}">
-    <view class="dialog-body" catchtap='onDialogBody'>
-      <view class="topTool">
-        <image bindtap="closeComment" src="/static/images/close2.png" />
-        <view bindtap="subQuestion">确认</view>
-      </view>
-      <textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
-      <!-- <view class="tjComment" >提交回答</view> -->
+	</view>
+	<view class="tools" wx:if="{{status==2}}">
+		<!-- <navigator url="/pages/lawyer/uploadData/uploadData"> -->
+		<view class="upload" bindtap="goUpload">完成服务</view>
+		<!-- <view class="shensu" bindtap="shensu">申诉</view> -->
+	</view>
+	<view class="dialog-login " wx:if="{{isShowComment}}">
+		<view class="dialog-body" catchtap='onDialogBody'>
+			<view class="topTool">
+				<image bindtap="closeComment" src="/static/images/close2.png" />
+				<view bindtap="subQuestion">确认</view>
+			</view>
+			<textarea class="questionInp2" bindinput="bindTextAreaBlur" placeholder="请输入您的申诉理由" />
+			<!-- <view class="tjComment" >提交回答</view> -->
     </view>
   </view>
   <!-- 申诉中 -->
@@ -124,13 +124,29 @@
     <view class="upload" bindtap="editMoney">修改金额</view>
     <view class="shensu" bindtap="cancelOrder">取消报价</view>
   </view>
+  <!-- 待确认 -->
+  <view wx:if="{{status==4}}" style="padding: 15px 10px;">
+    <view class="title2">完成订单的资料信息（待确认中）</view>
+    	<view class="titleMini">上传的图片</view>
+			<view class="imglist">
+				<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" data-myimg="true" wx:for="{{allData.extra_info.confirmimgs}}" wx:key="index" />
+			</view>
+			<view class="titleMini">上传的文档</view>
+			<view class="filelist">
+				<text class="file" wx:for="{{allData.extra_info.confirmfiles}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+			</view>
+      	<view class="textTips">文档点击可供下载</view>
+  </view>
 
 
 </view>
 <view class="show-back" wx:if="{{editShow}}">
   <view class="showHiden">
   <view class="editT">修改提示</view>
-  <input type="text" bindinput="getEditMoney" value="{{editmoney}}" placeholder="请填写报价金额" />
+  <view class="inputMoney">
+    <input type="text" bindinput="getEditMoney" value="{{editmoney}}" placeholder="请填写报价金额" />
+    <text>元</text>
+  </view>
   <view class="btntool">
     <view bindtap="enterEdit">确认</view>
     <view bindtap="cancelShow">取消</view>

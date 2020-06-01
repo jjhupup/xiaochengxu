@@ -107,7 +107,7 @@ this.getData(options.id)
     utils.request(Api.Baojia, {
       case_id: that.data.order_id,
       lawyer_id: wx.getStorageSync('user_id'),
-      price: that.data.bjmoney
+      price: that.data.bjmoney*100
     }, 'POST').then(res => {
       console.log(res)
       if (res.code == 'S_Ok') {
@@ -115,11 +115,24 @@ this.getData(options.id)
           title: '提交成功，即将返回首页~',
           icon: 'none'
         })
-        setTimeout(() => {
-          wx.switchTab({
-            url: '/pages/index/index',
-          })
-        }, 1000)
+        wx.requestSubscribeMessage({
+          tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+          success(res) {
+            console.log(res)
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }, 1000)
+          },
+          fail(err){
+            setTimeout(() => {
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }, 1000)
+          }
+        })
       } else {
         wx.showToast({
           title: '服务器出错，请联系管理员！',

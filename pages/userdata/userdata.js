@@ -81,15 +81,15 @@ Page({
     uploadZjImg: '',
     userData: {},
     License_no: '',
-    canClick:true,
-    canUplod:true,
-    id_photo:''
+    canClick: true,
+    canUplod: true,
+    id_photo: ''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
+  onLoad: function (options) {
     this.setData({
       status: wx.getStorageSync('role')
     })
@@ -109,7 +109,7 @@ Page({
                 return val
               }
             })
-          }else{
+          } else {
             return val
           }
         })
@@ -121,7 +121,7 @@ Page({
         if (res.data.extra_profile) {
           that.setData({
             regionVal: res.data.extra_profile.location,
-            id_photo:res.data.extra_profile.id_photo,
+            id_photo: res.data.extra_profile.id_photo,
             userImg: res.data.extra_profile.id_photo,
             zhenjianImg: res.data.extra_profile.license_photo
           })
@@ -133,14 +133,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
+  onShow: function () {
 
   },
   getData(e) {
@@ -195,7 +195,7 @@ Page({
   saveLawyerData(e) {
     console.log(e.detail.value, 123)
     let obj = e.detail.value
-    let that=this
+    let that = this
     if (!(/^1[3456789]\d{9}$/.test(obj.phone))) {
       wx.showToast({
         title: '请填写正确的手机号码~',
@@ -208,18 +208,18 @@ Page({
         icon: 'none'
       })
       return
-    } else { 
-      if(that.data.canClick){
+    } else {
+      if (that.data.canClick) {
         this.updataUserData(obj)
       }
-      
+
     }
     // this.updataUserData(e.detail.value)
   },
   updataUserData(obj) {
-    let that=this
+    let that = this
     that.setData({
-      canClick:false
+      canClick: false
     })
     let updata = {
       user_id: wx.getStorageSync('user_id'),
@@ -245,7 +245,7 @@ Page({
           title: '信息修改成功~',
         })
         that.setData({
-          canClick:true
+          canClick: true
         })
         // setTimeout(() => {
         //   wx.navigateBack()
@@ -257,6 +257,8 @@ Page({
     console.log(e.detail.value)
     let that = this
     let real_name = e.detail.value.real_name
+    let phone=e.detail.value.phone
+    let qqnum=e.detail.value.qqnum
     if (e.detail.value.real_name = '') {
       wx.showToast({
         title: '请填写您的姓名',
@@ -270,45 +272,68 @@ Page({
     } else {
       console.log(456)
       // utils.request(Api.FileUpload,)
-      // if()
-      wx.showLoading({
-        title: '上传中~',
-      })
-      wx.uploadFile({
-        url: Api.FileUpload,
-        header: {
-          'content-type': 'multipart/form-data',
-          'Authorization': 'Bearer ' + wx.getStorageSync('token')
-        },
-        filePath: that.data.userImg,
-        name: 'files',
-        success(res) {
-          console.log('files', res)
-          wx.hideLoading()
-          let data = res.data
-          data = JSON.parse(data)
-          that.setData({
-            uploadImgs: data.data.urls[0]
-          })
-          let updata = {
-            user_id: wx.getStorageSync('user_id'),
-            base_info: JSON.stringify({
-              real_name: real_name
-            }),
-            extra_profile: JSON.stringify({
-              id_photo: data.data.urls[0]
+      if (that.data.id_photo != that.data.userImg) {
+        wx.showLoading({
+          title: '上传中~',
+        })
+        wx.uploadFile({
+          url: Api.FileUpload,
+          header: {
+            'content-type': 'multipart/form-data',
+            'Authorization': 'Bearer ' + wx.getStorageSync('token')
+          },
+          filePath: that.data.userImg,
+          name: 'files',
+          success(res) {
+            console.log('files', res)
+            wx.hideLoading()
+            let data = res.data
+            data = JSON.parse(data)
+            that.setData({
+              uploadImgs: data.data.urls[0]
             })
-          }
-          utils.request(Api.UpDataUserData, updata, "POST").then(res => {
-            console.log(res)
-            if(res.code=='S_Ok'){
-              wx.showToast({
-                title: '修改成功',
+            let updata = {
+              user_id: wx.getStorageSync('user_id'),
+              base_info: JSON.stringify({
+                real_name: real_name,
+                phone:phone
+              }),
+              extra_profile: JSON.stringify({
+                id_photo: data.data.urls[0],
+                qqnum:qqnum
               })
             }
+            utils.request(Api.UpDataUserData, updata, "POST").then(res => {
+              console.log(res)
+              if (res.code == 'S_Ok') {
+                wx.showToast({
+                  title: '修改成功',
+                })
+              }
+            })
+          }
+        })
+      }else{
+        let updata = {
+          user_id: wx.getStorageSync('user_id'),
+          base_info: JSON.stringify({
+            real_name: real_name,
+            phone:phone
+          }),
+          extra_profile: JSON.stringify({
+            qqnum:qqnum
           })
         }
-      })
+        utils.request(Api.UpDataUserData, updata, "POST").then(res => {
+          console.log(res)
+          if (res.code == 'S_Ok') {
+            wx.showToast({
+              title: '修改成功',
+            })
+          }
+        })
+      }
+
     }
 
   },
@@ -318,7 +343,7 @@ Page({
       License_no: e.detail.value
     })
   },
-  tongzhi(){
+  tongzhi() {
     wx.requestSubscribeMessage({
       tmplIds: ['_uZ9yGSNAit3ler7kga7AfhH6TmuEjQ9wkKSKUgyL8s'],
       success(res) {
@@ -333,14 +358,14 @@ Page({
 
     let that = this
     console.log(444, that.data.License_no, that.data.userImg, that.data.zhenjianImg)
-    if (!that.data.canUplod){
+    if (!that.data.canUplod) {
       wx.showToast({
         title: '已经提交申请认证，请等待认证结果',
-        icon:'none'
+        icon: 'none'
       })
       return
     }
-    
+
     if (that.data.License_no == '') {
       wx.showToast({
         title: '请输入您的律师执业编号！',
@@ -348,10 +373,10 @@ Page({
       })
       return
     }
-    if (that.data.userImg==''){
+    if (that.data.userImg == '') {
       wx.showToast({
         title: '选择您的免冠照片！',
-        icon:'none'
+        icon: 'none'
       })
       return
     }
@@ -421,12 +446,12 @@ Page({
           })
           Promise.all([upload1, upload2]).then(allres => {
             console.log('allres', allres)
-            
+
             wx.hideLoading()
             let updata = {
               user_id: wx.getStorageSync('user_id'),
               base_info: JSON.stringify({
-                verify_status:2
+                verify_status: 2
               }),
               extra_profile: JSON.stringify({
                 id_photo: that.data.uploadUserImg,
@@ -441,9 +466,9 @@ Page({
                   title: '认证信息已提交',
                 })
                 that.setData({
-                  canUplod:false
+                  canUplod: false
                 })
-               
+
               }
             })
           }).catch((err) => {
@@ -451,7 +476,7 @@ Page({
             wx.hideLoading()
             wx.showToast({
               title: '上传出错，请重试',
-              icon:'none'
+              icon: 'none'
             })
           })
         }

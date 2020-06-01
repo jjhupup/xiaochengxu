@@ -12,34 +12,78 @@ Page({
     textType: '代写诉状',
     imgurl: [],
     tempFiles: [],
+    imgurl2:[],
+    tempFiles2:[],
     uploadFiles: [],
     uploadImgs: [],
-    swiperH: "126%"
+    swiperH: "126%",
+    case_id: '',
+    desctxt: '',
+    btnTxt: '提交咨询',
+    isEdit: false
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad: function (options) {
+    if (options.edit) {
+      let key = this.getArrayIndex(this.data.stage, options.index1)
+      this.setData({
+        case_id: options.case_id,
+        index1: key,
+        isEdit: true,
+        btnTxt: '确认修改'
+      })
+      this.getDetail(options.case_id)
+    }else{
+      this.addSwiperH()
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
+  getArrayIndex(arr, obj) {
+    var i = arr.length;
+    while (i--) {
+      if (arr[i] === obj) {
+        return i;
+      }
+    }
+    return -1;
+  },
+  getDetail(id) {
+    let that = this
+    utils.request(Api.GetOrderDetail, {
+      case_id: id
+    }, "POST").then(res => {
+      console.log(res)
+      if (res.code == 'S_Ok') {
+        let alldata = res.data
+        that.setData({
+          desctxt: alldata.extra_info.description,
+          imgurl2:alldata.extra_info.imgs,
+          tempFiles2:alldata.extra_info.files
+        })
+        that.addSwiperH()
+      } else {
+        wx.showModal({
+          title: '提示',
+          content: '数据请求出错！',
+          success() {
+            wx.navigateBack()
+          }
+        })
+      }
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function() {
-    this.addSwiperH()
+  onShow: function () {
+   
   },
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function(res) {
+  onShareAppMessage: function (res) {
     return {
       title: '搞咩法律',
       desc: '青青草原法律大规',
@@ -156,7 +200,7 @@ Page({
         duration: 2000
       })
     } else {
-     
+
       wx.showModal({
         title: '提示',
         content: '请确认文书提交类型和相关证据的上传提交~',
@@ -173,16 +217,14 @@ Page({
             Promise.all([...that.FilesUpload(that.data.imgurl), ...that.FilesUpload(that.data.tempFiles, true)]).then(allres => {
               // let filesData=[]
               console.log('allres', allres)
-              // for(let j=0;j<allres.length;j++){
-              //   let Alldata=JSON.parse(allres[j])
-              //   console.log('alldata',Alldata)
-              //   filesData.push(Alldata.data.urls[0])
-              // }
-              // obj.filesData = filesData
-              obj.imgs = that.data.uploadImgs
-              obj.files = that.data.uploadFiles
+              obj.imgs = that.data.uploadImgs.concat(that.data.imgurl2)
+              obj.files = that.data.uploadFiles.concat(that.data.tempFiles2)
               // obj.fileName=[]
               console.log(obj)
+              wx.hideLoading()
+              that.publishOrder(obj)
+            }).catch(err=>{
+              console.log(err);
               wx.hideLoading()
               that.publishOrder(obj)
             })
@@ -195,37 +237,58 @@ Page({
   },
   publishOrder(obj) {
     console.log(obj)
-    wx.showLoading({
-      title: '提交中...',
-    })
-    utils.request(Api.OrderPublish, {
-      customer_id: wx.getStorageSync('user_id'),
-      case_type: 1,
-      extra_info: JSON.stringify(obj)
-    }, 'POST').then(res => {
-      console.log(res)
-      wx.hideLoading()
-      if (res.code == 'S_Ok') {
-        wx.showToast({
-          title: '咨询提交成功',
-        })
-        wx.requestSubscribeMessage({
-          tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
-          success(res) {
-            console.log(res)
-            setTimeout(() => {
-              wx.navigateBack()
-            }, 1000)
-          },
-          fail(err){
-            setTimeout(() => {
-              wx.navigateBack()
-            }, 1000)
-          }
-        })
-        
-      }
-    })
+    if (!this.data.isEdit) {
+      wx.showLoading({
+        title: '提交中...',
+      })
+      utils.request(Api.OrderPublish, {
+        customer_id: wx.getStorageSync('user_id'),
+        case_type: 1,
+        extra_info: JSON.stringify(obj)
+      }, 'POST').then(res => {
+        console.log(res)
+        wx.hideLoading()
+        if (res.code == 'S_Ok') {
+          wx.showToast({
+            title: '咨询提交成功',
+          })
+          wx.requestSubscribeMessage({
+            tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+            success(res) {
+              console.log(res)
+              setTimeout(() => {
+                wx.navigateBack()
+              }, 1000)
+            },
+            fail(err) {
+              setTimeout(() => {
+                wx.navigateBack()
+              }, 1000)
+            }
+          })
+
+        }
+      })
+    }else{
+
+      utils.request(Api.UpdateOrder,{
+        case_id:this.data.case_id,
+        extra_info:JSON.stringify(obj),
+        status:0
+      },'POST').then(res=>{
+        console.log(res);
+        if(res.code=='S_Ok'){
+          wx.showToast({
+            title: '修改成功！',
+          })
+          setTimeout(()=>{
+            wx.navigateBack()
+          },1200)
+         
+        }
+      })
+    }
+
   },
   // 图片预览
   seeImg(e) {

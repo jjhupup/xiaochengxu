@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData()
+    this.getBJData()
   },
 
   /**
@@ -34,11 +34,25 @@ Page({
 
   },
 
-  getData(){
+  getBJData(){
+    let that=this
+    utils.request(Api.GetBidList,{
+      lawyer_id:wx.getStorageSync('user_id'),
+      type:1
+    },'POST').then(res=>{
+      console.log(res)
+      if(res.code=='S_Ok'){
+        that.setData({
+          allWenshu:res.data
+        })
+      }
+    })
+  },
+  getorder(){
     let that=this
     utils.request(Api.GetLawyerListData,{
-      type:1,
-      lawyer_id:wx.getStorageSync('user_id')
+      lawyer_id:wx.getStorageSync('user_id'),
+      type:1
     },'POST').then(res=>{
       console.log(res)
       if(res.code=='S_Ok'){
@@ -50,7 +64,12 @@ Page({
   },
   getDatalist(e) {
     console.log(e)
-    this.getData()
+    
+    if(e.currentTarget.dataset.index==0){
+      this.getBJData()
+    }else{
+      this.getorder()
+    }
     if (e.currentTarget.dataset.index==4){
       this.setData({
         key: 5
@@ -65,6 +84,7 @@ Page({
     console.log(e.currentTarget.dataset)
     let case_id = e.currentTarget.dataset.questionid
     let status = e.currentTarget.dataset.orderstatus
+    // this.data.allWenshu
     wx.navigateTo({
       url: '/pages/lawyer/myOrderDetail/myOrderDetail?case_id=' + case_id +'&type=1&orderstatus='+status,
     })

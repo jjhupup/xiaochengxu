@@ -227,13 +227,15 @@ page>view {
   height: 100%;
   position: relative;
 }
-.show-back{
+
+.show-back {
   position: fixed;
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
 }
+
 .showHiden {
   position: fixed;
   width: 80%;
@@ -254,6 +256,13 @@ page>view {
 
 }
 
+.inputMoney {
+  display: flex;
+  padding: 0 12px;
+  line-height: 40px;
+
+}
+
 .btntool {
   display: flex;
   margin-top: 9px;
@@ -265,9 +274,11 @@ page>view {
   height: 42px;
   line-height: 42px;
 }
-.btntool view:nth-child(1){
+
+.btntool view:nth-child(1) {
   border-right: 1px solid #ccc;
 }
+
 .editT {
   height: 40px;
   text-align: center;

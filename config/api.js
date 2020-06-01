@@ -17,13 +17,18 @@ module.exports = {
   Baojia: ApiRootUrl +'case/bid',                  // 律师对订单报价
   GetCustomerOrderData: ApiRootUrl +'case/customerList',     //客户获取自己的需求订单
   GetLawyerListData: ApiRootUrl +'case/lawyerList',   //律师获取自己的需求订单
-  GetUserData: ApiRootUrl +'user/detail',            //获取用户信息
-  UpdateOrder: ApiRootUrl +'case/updateStatus',             //更新订单状态
+  GetBidList:ApiRootUrl+'case/lawyerBidCaseList',      // 律师获取抢单报价列表
+  GetUserData: ApiRootUrl +'user/detail',            //获取用户信息 
+  UpdateOrder: ApiRootUrl +'case/updateCaseInfo',             //更新订单状态
+  ConfirmOrder:ApiRootUrl+'order/confirmOrder',    //客户确认订单
+  GetIndex:ApiRootUrl+'admin/getSwiperImages',  //轮播图数据
   //支付接口！！！！
   GetPayParams: ApiRootUrl +'order/getPayParams',      //获取支付参数
   Withdrawal: ApiRootUrl +'order/applyWithdrawal',           //提现申请
   GetUserBalance: ApiRootUrl +'user/balance',            //获取余额
   ApplyRefund: ApiRootUrl +'order/applyRefund',         //用户申诉  
+  CancelBid:ApiRootUrl+'case/cancelBid',      //取消竞价
+  UpdataBmoney:ApiRootUrl+'case/updateBidPrice',  //更新律师报价
   // 文件上传
   FileUpload: ApiRootUrl +'files/upload',          //文件图片上传
 };

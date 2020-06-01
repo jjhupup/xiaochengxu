@@ -17,21 +17,52 @@ Page({
     anJianArray2:[],
     stage: ['请选择...','一审','二审','再审','执行','仲裁','复议'],
     regionVal: ['广东省', '广州市', '天河区'],
-    regionVal2: ['广东省', '广州市', '天河区']
+    regionVal2: ['广东省', '广州市', '天河区'],
+    real_name:'',
+    case_id:'',
+    gender:0,
+    btnTxt:'开始匹配律师',
+    isedit:false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    if(options.edit){
+      this.setData({
+        case_id:options.case_id,
+        isedit:true,
+        btnTxt:'确认修改'
+      })
+      this.getOrderdata(options.case_id)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getOrderdata(id){
+    let that=this
+    utils.request(Api.GetOrderDetail,{
+      case_id:id
+    },"POST").then(res=>{
+      console.log(res)
+      if(res.code=='S_Ok'){
+       let alldata=res.data.extra_info
+        that.setData({
+          real_name:alldata.real_name,
+          gender:alldata.gender,
+          DetailTxt:alldata.DetailTxt,
+          regionVal:alldata.GXdi,
+          regionVal2:alldata.fiedWhere
+        })
+      }else{
+        wx.showModal({
+          title: '提示',
+          content: '数据请求出错！',
+          success(){
+            wx.navigateBack()
+          }
+        })
+      }
+    })
   },
 
   /**
@@ -124,15 +155,28 @@ Page({
           console.log(res)
         }
       })
-      wx.showModal({
-        title: '提交数据提示',
-        content: '确认无误后，即可提交委托信息~',
-        success(res){
-          if(res.confirm){
-            that.tijiaoData(obj)
+      if(!that.data.isedit){
+        wx.showModal({
+          title: '提交数据提示',
+          content: '确认无误后，即可提交委托信息~',
+          success(res){
+            if(res.confirm){
+              that.tijiaoData(obj)
+            }
           }
-        }
-      })
+        })
+      }else{
+        wx.showModal({
+          title: '修改数据提示',
+          content: '确认无误后，即可修改委托信息~',
+          success(res){
+            if(res.confirm){
+              that.tijiaoData(obj)
+            }
+          }
+        })
+      }
+     
       
     }
   },
@@ -147,23 +191,44 @@ Page({
     })
   },
   tijiaoData(obj){
-    utils.request(Api.OrderPublish,{
-      customer_id:wx.getStorageSync('user_id'),
-      case_type:2,
-      extra_info:JSON.stringify(obj)
-    },'POST').then(res=>{
-      console.log(res)
-      if(res.code=='S_Ok'){
-        wx.showModal({
-          title: '提示',
-          content: '案件委托提交成功~',
-          success:()=>{
-            wx.switchTab({
-              url: '/pages/index/index',
-            })
-          }
-        })
-      }
-    })
+    let that=this
+    if(!that.data.isedit){
+      utils.request(Api.OrderPublish,{
+        customer_id:wx.getStorageSync('user_id'),
+        case_type:2,
+        extra_info:JSON.stringify(obj)
+      },'POST').then(res=>{
+        console.log(res)
+        if(res.code=='S_Ok'){
+          wx.showModal({
+            title: '提示',
+            content: '案件委托提交成功~',
+            success:()=>{
+              wx.switchTab({
+                url: '/pages/index/index',
+              })
+            }
+          })
+        }
+      })
+    }else{
+      utils.request(Api.UpdateOrder,{
+        case_id:that.data.case_id,
+        extra_info:JSON.stringify(obj),
+        status:0
+      },'POST').then(res=>{
+        console.log(res);
+        if(res.code=='S_Ok'){
+          wx.showToast({
+            title: '修改成功！',
+          })
+          setTimeout(()=>{
+            wx.navigateBack()
+          },1200)
+         
+        }
+      })
+    }
+   
   }
 })

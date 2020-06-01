@@ -93,7 +93,7 @@ Page({
     utils.request(Api.Baojia, {
       case_id	: that.data.GuwenData.id,
       lawyer_id: wx.getStorageSync('user_id'),
-      price: that.data.bjmoney
+      price: that.data.bjmoney*100
     }, 'POST').then(res => {
       console.log(res)
       wx.hideLoading()

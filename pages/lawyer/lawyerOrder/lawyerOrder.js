@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getData()
+ 
   },
 
   /**
@@ -31,11 +31,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getBJData()
   },
   getDatalist(e) {
     console.log(e)
-    this.getData()
+   
+    if(e.currentTarget.dataset.index==0){
+      this.getBJData()
+    }else{
+      this.getData()
+    }
     this.setData({
       key: e.currentTarget.dataset.index
     })
@@ -45,6 +50,20 @@ Page({
         scrollL:100
       })
     }
+  },
+  getBJData() {
+    let that = this
+    utils.request(Api.GetBidList, {
+      type: 3,
+      lawyer_id: wx.getStorageSync('user_id')
+    }, 'POST').then(res => {
+      console.log(res)
+      if (res.code == 'S_Ok') {
+        that.setData({
+          allGuwen: res.data
+        })
+      }
+    })
   },
   getData() {
     let that = this

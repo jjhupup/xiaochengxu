@@ -4,14 +4,14 @@
   <form bindsubmit="getAnJianData">
     <view class="title1">个人信息</view>
     <view class="titleMini">您的姓名</view>
-    <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的真实姓名" />
+    <input confirm-type='next' class="nameinput" value="{{real_name}}" name='real_name' type="text" placeholder="请输入您的真实姓名" />
     <view class="titleMini">您的性别</view>
     <view class="genderchoose">
-      <radio-group class="radio-group" name='gender'>
-        <radio class="radio" color="#5677FC" value="1" checked="true">
+      <radio-group class="radio-group" value="{{gender}}" name='gender'>
+        <radio class="radio" color="#5677FC" value="0" checked="true">
           <text>男士</text>
         </radio>
-        <radio class="radio" color="#5677FC" value="0">
+        <radio class="radio" color="#5677FC" value="1">
           <text>女士</text>
         </radio>
       </radio-group>
@@ -112,7 +112,7 @@
       </radio>
     </radio-group>
     <view class="titleMini">请输入案情简介</view>
-    <textarea class="questionInp" name="DetailTxt" placeholder="(请尽量详尽描述案情，以便律师做准确分析，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。)" />
-    <button form-type="submit" class="submit">开始匹配律师</button>
+    <textarea class="questionInp" name="DetailTxt" value="{{DetailTxt}}" placeholder="(请尽量详尽描述案情，以便律师做准确分析，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。)" />
+    <button form-type="submit" class="submit">{{btnTxt}}</button>
   </form>
 </view>

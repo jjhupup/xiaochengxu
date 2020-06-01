@@ -5,10 +5,10 @@
   <form bindsubmit="getAllData">
     <view class="title1">个人信息</view>
     <view class="titleMini">您的姓名</view>
-    <input confirm-type='next' class="nameinput" name="real_name" type="text" placeholder="请输入您的真实姓名" />
+    <input confirm-type='next' class="nameinput" value="{{real_name}}" name="real_name" type="text" placeholder="请输入您的真实姓名" />
     <view class="titleMini">您的性别</view>
     <view class="genderchoose">
-      <radio-group class="radio-group" name="gender">
+      <radio-group class="radio-group"  name="gender">
         <radio class="radio" color="#5677fc" value="男" checked="true">
           <text>男士</text>
         </radio>
@@ -18,7 +18,7 @@
       </radio-group>
     </view>
     <view class="titleMini">您的单位名称</view>
-    <input confirm-type='next' class="nameinput" name="danweiName" type="text" placeholder="请输入您所在单位的完整名称" />
+    <input confirm-type='next' class="nameinput" value="{{danweiName}}" name="danweiName" type="text" placeholder="请输入您所在单位的完整名称" />
     <view class="titleMini">您的单位性质</view>
     <view class="danwei">
       <picker class="inputS" bindchange="getDWeiType" mode='selector' name="DweiType" range="{{danweiType}}" value="{{danweiType[wordTypeKey]}}">
@@ -85,7 +85,7 @@
       </radio>
     </radio-group>
     <view class="titleMini">需求描述</view>
-    <textarea class="questionInp" name='describe' placeholder="(说明您的需求及特殊要求)" />
-    <button class="submit" form-type="submit">开始匹配律师</button>
+    <textarea class="questionInp" value="{{desctxt}}" name='describe' placeholder="(说明您的需求及特殊要求)" />
+    <button class="submit" form-type="submit">{{btnTxt}}</button>
   </form>
 </view>

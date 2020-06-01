@@ -68,9 +68,11 @@
 <view wx:if="{{status==1&&key==0}}" class="content">
   <form bindsubmit="subQuestion">
     <view class="titleMini">姓名</view>
-    <input confirm-type='next' class="nameinput" name='real_name' type="text" placeholder="请输入您的用户昵称" />
+    <input confirm-type='next' class="nameinput"  value="{{userData.real_name||userData.nick_name}}" name='real_name' type="text" placeholder="请输入您的用户昵称" />
    <view class="titleMini">电话</view>
  <input confirm-type='next' class="nameinput" name='phone' value="{{userData.phone}}" type="number" placeholder="请输入您的手机号码" />
+  <view class="titleMini">qq号码</view>
+ <input confirm-type='next' class="nameinput" name='qqnum' value="{{userData.qqnum}}" type="number" placeholder="请输入您的qq号码" />
     <view class="titleMini">请上传您的照片</view>
     <view class="upload">
       <image src="/static/images/add.png" class="addimg" data-Lx="0" wx-if="{{!userImg}}" bindtap="addImg" />

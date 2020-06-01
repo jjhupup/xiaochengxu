@@ -1,11 +1,11 @@
 <!--index.wxml-->
 <view class="container">
-<view bindtap="change">改成律师</view>
-<view bindtap="change2">改成客户</view>
+<!-- <view bindtap="change">改成律师</view>
+<view bindtap="change2">改成客户</view> -->
   <swiper class="banner" autoplay="true" interval="3000" duration="1000">
     <swiper-item wx:for="{{banner}}" wx:key="{{item.id}}">
       <navigator url="{{item.link}}">
-        <image src="{{item.image_url}}" background-size="cover"></image>
+        <image src="{{item.url}}" background-size="cover"></image>
       </navigator>
     </swiper-item>
   </swiper>

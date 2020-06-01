@@ -2,6 +2,7 @@
 
 .content {
   padding: 10px;
+  padding-bottom: 70px;
 }
 
 .showimg {
@@ -25,7 +26,7 @@
   border: 1px dotted #ccc;
   padding: 6px 10px;
   margin-right: 10px;
-
+  font-size: 13px;
 }
 
 .title2 {
@@ -92,7 +93,7 @@
 }
 
 .upload {
-  background-color: #4b8bf4;
+  background-color: #98e165;
   color: #fff;
 }
 
@@ -179,54 +180,21 @@
   text-align: center;
   height: 50px;
   line-height: 50px;
-  background-color: #5677fc;
+  background-color: #1dc8a4;
   color: #fff;
 }
-.show-back{
-  position: fixed;
+
+.comfinOrder {
+  background-color: #1dc8a4;
+  color: #fff;
   width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-}
-.showHiden {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
   position: fixed;
-  width: 80%;
-  /* height: 142px; */
-  padding-bottom: 6px;
-  background-color: #fff;
-  box-shadow: 1px 1px 10px #ccc;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 5px;
-}
-
-.showHiden textarea  {
-  width: 90%;
-  border: 1px solid #ccc;
-  height: 110px;
-  margin: auto;
-
-}
-
-.btntool {
-  display: flex;
-  margin-top: 9px;
-}
-
-.btntool view {
-  width: 50%;
-  text-align: center;
-  height: 42px;
-  line-height: 42px;
-}
-.btntool view:nth-child(1){
-  border-right: 1px solid #ccc;
-}
-.editT {
-  height: 40px;
-  text-align: center;
-  line-height: 40px;
+  bottom: 0px;
+  left: 0;
   font-size: 18px;
+  letter-spacing: 2px;
+
 }

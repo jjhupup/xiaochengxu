@@ -107,6 +107,20 @@
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
 					"query": "id=10&type=1&status=0",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/uploadData/uploadData",
+					"pathName": "pages/lawyer/uploadData/uploadData",
+					"query": "case_id=9&extra_info={\"response_time\":\"8\",\"limit_time\":\"1\",\"description\":\"要求再审，这个案子有问题，请帮我做主。\",\"textType\":\"再审申请书\",\"imgs\":[\"https://hr-1257037304.cos.ap-guangzhou.myqcloud.com/wx1ff6190b4c35f587.o6zAJsz54ICSgR3Y1OZAutUILQ5o.UXhNQnfYXVFx185e96d8c10e796fa5fc64783e839acc.png\"],\"files\":[]}",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "id=9&type=1&status=4",
+					"scene": null
 				}
 			]
 		}

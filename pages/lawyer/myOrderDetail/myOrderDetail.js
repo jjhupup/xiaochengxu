@@ -58,7 +58,7 @@ Page({
   },
   goUpload() {
     wx.navigateTo({
-      url: '/pages/lawyer/uploadData/uploadData',
+      url: '/pages/lawyer/uploadData/uploadData?case_id='+this.data.case_id+"&extra_info="+JSON.stringify(this.data.allData.extra_info),
     })
   },
   shensu() {
@@ -115,10 +115,18 @@ Page({
     let that = this
     console.log(e.target.dataset.index)
     let key = e.target.dataset.index
-    wx.previewImage({
-      current: that.data.allData.extra_info.imgs[key], // 当前显示图片的http链接
-      urls: that.data.allData.extra_info.imgs // 需要预览的图片http链接列表
-    })
+    if(e.target.dataset.myimg){
+      wx.previewImage({
+        current: that.data.allData.extra_info.confirmimgs[key], // 当前显示图片的http链接
+        urls: that.data.allData.extra_info.confirmimgs // 需要预览的图片http链接列表
+      })
+    }else{
+      wx.previewImage({
+        current: that.data.allData.extra_info.imgs[key], // 当前显示图片的http链接
+        urls: that.data.allData.extra_info.imgs // 需要预览的图片http链接列表
+      })
+    }
+    
   },
   uploadFile(e) {
     wx.showModal({
@@ -164,13 +172,25 @@ Page({
     })
   },
   cancelOrder(){
+    let that=this
     wx.showModal({
       title:'提示',
       content:'是否要取消对该订单的报价？',
       success(res){
         if(res.confirm){
           console.log('请求数据删除报价');
-          
+          util.request(Api.CancelBid,{
+            bid_id:that.data.mybidder[0].id
+          },'POST').then(res=>{
+            if(res.code=='S_Ok'){
+              wx.showToast({
+                title: '取消报价成功！',
+              })
+              setTimeout(()=>{
+                wx.navigateBack()
+              },1200)
+            }
+          })
         }
       }
     })
@@ -189,7 +209,23 @@ Page({
       })
       return
     }
-    
+    util.request(Api.UpdataBmoney,{
+      bid_id:that.data.mybidder[0].id,
+      price:that.data.editmoney*100
+    },'POST').then(res=>{
+      if(res.code=='S_Ok'){
+        that.data.mybidder[0].price=that.data.editmoney*100
+        that.setData({
+          mybidder:that.data.mybidder
+        })
+        wx.showToast({
+          title: '更新报价成功！',
+        })
+        // setTimeout(()=>{
+        //   wx.navigateBack()
+        // },1200)
+      }
+    })
   },
   isNumber(val) {
     var regPos = /^\d+(\.\d+)?$/; //非负浮点数

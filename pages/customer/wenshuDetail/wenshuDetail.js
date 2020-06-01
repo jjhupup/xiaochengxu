@@ -25,7 +25,7 @@ Page({
       type:options.type,
       status: options.status
     })
-    this.getDetail(options.id)
+    
     console.log(123)
   },
 
@@ -40,7 +40,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getDetail(this.data.case_id)
   },
   getDetail(id){
     let that=this
@@ -168,19 +168,86 @@ Page({
     })
   },
   editMoney(){
-    this.setData({
-      editShow:true
-    })
+    let type=this.data.type
+    if(type==3){
+      wx.navigateTo({
+        url: '/pages/customer/corporateLawyer/corporateLawyer?edit=true&case_id='+this.data.case_id,
+      })
+    }else if(type==1){
+      wx.navigateTo({
+        url: '/pages/customer/document/document?edit=true&case_id='+this.data.case_id+'&index1='+this.data.allData.extra_info.textType,
+      })
+    }else if(type==2){
+      wx.navigateTo({
+        url: '/pages/customer/caseEntrusted/caseEntrusted?edit=true&case_id='+this.data.case_id
+      })
+    }else{
+      wx.navigateTo({
+        url: '/pages/customer/queryBusiness/queryBusiness?edit=true&case_id='+this.data.case_id
+      })
+    }
+   
   },
-  cancelShow(){
-    this.setData({
-      editShow:false
+  cancelOrder(){
+    let  that=this
+    wx.showModal({
+      title:'取消提示',
+      content:'确认取消该订单的发布？',
+      success(res){
+        if(res.confirm){
+          util.request(Api.UpdateOrder,{
+            case_id:that.data.case_id,
+            status:5
+          },'POST').then(res=>{
+            console.log('res',res);
+              if(res.code=='S_Ok'){
+                wx.showToast({
+                  title: '取消发布成功~',
+                })
+                setTimeout(()=>{
+                  wx.navigateBack()
+                },1500)
+              }else{
+                wx.showToast({
+                  title: '取消发布失败~',
+                })
+              }
+          })
+        }
+      }
     })
+    
   },
   getEditMoney(e){
     console.log(e.detail.value);
     this.setData({
       getEditMoney:e.detail.value
     })
+    
   },
+  //客户确认完成订单
+  comfinOrder(){
+    let that=this
+    wx.showModal({
+      title:'完成提示',
+      content:'确认律师已完成该订单工作？',
+      success(res){
+        if(res.confirm){
+          util.request(Api.ConfirmOrder,{
+            out_trade_no:that.data.allData.payOrder[0].out_trade_no,
+          },'POST').then(res=>{
+            console.log('res',res);
+            if(res.code=='S_Ok'){
+              wx.showToast({
+                title: '订单已确认完成~',
+              })
+              setTimeout(()=>{
+                wx.navigateBack()
+              },1200)
+            }
+          })
+        }
+      }
+    })
+  }
 })

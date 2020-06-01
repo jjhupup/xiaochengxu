@@ -120,6 +120,7 @@ Page({
       console.log('还没身份')
       that.getUserData()
     } else {
+      that.getLunBo()
       that.setData({
         role: role * 1,
         showStatusDialog: false
@@ -131,6 +132,15 @@ Page({
       }
     }
 
+  },
+  getLunBo(){
+    let that=this
+    utils.request(Api.GetIndex).then(res=>{
+      console.log(res);
+      that.setData({
+        banner:res.data
+      })
+    })
   },
   // 打开页面
   goPage: function(e) {

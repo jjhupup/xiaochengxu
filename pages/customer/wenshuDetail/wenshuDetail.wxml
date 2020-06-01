@@ -95,19 +95,19 @@
   </view>
 </view>
 <!-- 代抢单时显示可选择的律师列表 -->
-<view wx:if="{{status==0}}">
+<view wx:if="{{status==0&&allData.bidders.length!=0}}" style="margin-bottom:80px">
   <view class="title2 ml10">以下律师可以为您服务</view>
   <choose-lawyer orderData="{{allData.bidders}}" caseid="{{case_id}}"></choose-lawyer>
 </view>
 <!-- 申诉中 -->
 <!-- 除了待抢单状态，显示选择的律师信息 -->
-<view wx:if="{{status!=0}}" style="margin-bottom:80px">
+<view wx:if="{{status!=0&&allData.bidders.length!=0}}" style="margin-bottom:80px">
    <view class="title2 ml10">当前正在为客户服务</view>
    <lawyer-data orderData="{{allData.selectLawyer}}" caseid="{{case_id}}" bindparent="shensu" bindqxshensu="quxiaoshensu" status="{{status}}"></lawyer-data>
 </view>
-<view wx:if="{{allData.bidders.length==0}}" class="tool2">
+<view wx:if="{{allData.bidders.length==0&&status==0}}" class="tool2">
   <view class="upload" bindtap="editMoney">修改内容</view>
-  <view class="shensu">取消发布</view>
+  <view class="shensu" bindtap="cancelOrder">取消发布</view>
 </view>
 <view class="dialog-login " wx:if="{{isShowComment}}">
   <view class="dialog-body" catchtap='onDialogBody'>
@@ -119,7 +119,10 @@
     <!-- <view class="tjComment" >提交回答</view> -->
   </view>
 </view>
-<view class="show-back" wx:if="{{editShow}}">
+<view wx:if="{{status==4}}">
+<view class="comfinOrder" bindtap="comfinOrder">确认完成</view>
+</view>
+<!-- <view class="show-back" wx:if="{{editShow}}">
   <view class="showHiden">
   <view class="editT">修改内容</view>
   <textarea  bindinput="getEditMoney"  value="{{desctxt}}" />
@@ -128,4 +131,4 @@
     <view bindtap="cancelShow">取消</view>
   </view>
   </view>
-</view>
+</view> -->

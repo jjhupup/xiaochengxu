@@ -10,14 +10,21 @@ Page({
     imgurl: [],
     uploadImgs:[],
     tempFiles:[],
-    uploadFiles:[]
+    uploadFiles:[],
+    case_id:'',
+    extra_info:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options);
+    this.setData({
+      case_id:options.case_id,
+      extra_info:JSON.parse(options.extra_info)
+    })
+    
   },
 
   /**
@@ -96,10 +103,13 @@ Page({
       })
     }
     let obj={}
+    wx.showLoading({
+      title: '资料上传中~',
+    })
     Promise.all([...that.FilesUpload(that.data.imgurl), ...that.FilesUpload(that.data.tempFiles, true)]).then(allres=>{
       console.log('allres', allres)
-      obj.imgs = that.data.uploadImgs
-      obj.files = that.data.uploadFiles
+      obj.confirmimgs = that.data.uploadImgs
+      obj.confirmfiles = that.data.uploadFiles
       // obj.fileName=[]
       console.log(obj)
       wx.hideLoading()
@@ -154,5 +164,26 @@ Page({
         resolve([])
       })
     }
+  },
+  publishOrder(obj){
+    let that=this
+    let extra_info=that.data.extra_info
+    extra_info={...extra_info,...obj}
+    console.log('extra_info',extra_info);
+    
+    utils.request(Api.UpdateOrder,{
+      case_id:that.data.case_id,
+      status:4,
+      extra_info:JSON.stringify(extra_info)
+    },'POST').then(res=>{
+      if(res.code=='S_Ok'){
+        wx.showToast({
+          title: '资料上传完毕',
+        })
+        setTimeout(()=>{
+          wx.navigateBack()
+        },1200)
+      }
+    })
   }
 })

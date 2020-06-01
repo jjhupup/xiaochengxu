@@ -7,10 +7,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
-    NavArr2: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
-    NavArr3: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
-    NavArr4: ['报价中', '服务中', '申诉中', '待确认','', '已结束'],
+    NavArr: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr2: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr3: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr4: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
     key: 0,
     allWenshu: [],
     allAnjian: [],
@@ -101,12 +101,12 @@ Page({
   getData(e) {
     console.log(e)
     this.getAllData(this.data.type)
-    if (e.currentTarget.dataset.index==4){
-      this.setData({
-        key: 5
-      })
-      return
-    }
+    // if (e.currentTarget.dataset.index==4){
+    //   this.setData({
+    //     key: 5
+    //   })
+    //   return
+    // }
     this.setData({
       key: e.currentTarget.dataset.index
     })

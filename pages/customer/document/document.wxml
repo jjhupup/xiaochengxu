@@ -61,11 +61,11 @@
             </radio>
           </radio-group>
           <view class="titleMini">审核要求</view>
-          <textarea class="questionInp" wx:if="{{index1=='0'}}" name='description' placeholder="请尽量详尽描述案情，以便律师起草诉状，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。" />
-          <textarea class="questionInp" wx:if="{{index1=='1'}}" name='description' placeholder="请尽量详尽描述案情，以便律师起草律师函，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；您的要求和理由是什么。" />
-          <textarea class="questionInp" wx:if="{{index1=='2'}}" name='description' placeholder="请说明您是合同的哪一方，请描述您的审核要求，以便律师准确审核。" />
-          <textarea class="questionInp" wx:if="{{index1=='4'}}" name='description' placeholder="请尽量详尽描述案情,包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况等。" />
-          <button class="submit BtnSubmit" form-type="submit">提交咨询</button>
+          <textarea class="questionInp" wx:if="{{index1=='0'}}" maxlength='250' value="{{desctxt}}" name='description' placeholder="请尽量详尽描述案情，以便律师起草诉状，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；是否经过有权机关的处理；您的要求和理由是什么。" />
+          <textarea class="questionInp" wx:if="{{index1=='1'}}" maxlength='250' value="{{desctxt}}" name='description' placeholder="请尽量详尽描述案情，以便律师起草律师函，包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况；您的要求和理由是什么。" />
+          <textarea class="questionInp" wx:if="{{index1=='2'}}" maxlength='250' value="{{desctxt}}" name='description' placeholder="请说明您是合同的哪一方，请描述您的审核要求，以便律师准确审核。" />
+          <textarea class="questionInp" wx:if="{{index1=='4'}}" maxlength='250' value="{{desctxt}}" name='description' placeholder="请尽量详尽描述案情,包括但不限于什么人于什么时间、地点与谁发生了什么事；事情的经过和目前的状况等。" />
+          <button class="submit BtnSubmit" form-type="submit">{{btnTxt}}</button>
         </view>
       </form>
 
@@ -123,8 +123,8 @@
           </radio>
         </radio-group>
         <view class="titleMini ">审核要求</view>
-        <textarea class="questionInp " name='description' wx:if="{{index1=='3' }} "  placeholder="请说明您具体的申诉要求，和申诉人发生的事情和理由。" />
-        <button class="submit " form-type="submit">提交咨询</button>
+        <textarea class="questionInp " maxlength='250' name='description' wx:if="{{index1=='3' }} "  placeholder="请说明您具体的申诉要求，和申诉人发生的事情和理由。" />
+        <button class="submit " form-type="submit">{{btnTxt}}</button>
       </view>
       </form>
       
