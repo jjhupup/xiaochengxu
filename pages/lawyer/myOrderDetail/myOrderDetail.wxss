@@ -2,6 +2,7 @@
 
 .content {
   padding: 10px;
+  padding-bottom: 0;
 }
 
 .showimg {
@@ -192,10 +193,19 @@
 .imglist {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-end;
 }
 
+.imglist>view {
+  width: 29%;
+  position: relative;
+  margin-right:17px ;
+}
+.imglist>view:nth-child(3n){
+  margin-right:0 ;
+}
 .imglist image {
-  width: 32%;
+  width: 100%;
   height: 120px;
   margin-bottom: 12px;
   margin-right: 2%;
@@ -205,15 +215,50 @@
   margin: 0;
 }
 
+.addCimg {
+  width: 65px !important;
+  height: 65px !important;
+  margin-left: 12px;
+}
+
+.filelist .delete,
+.imglist .delete {
+  width: 20px !important;
+  height: 20px !important;
+  position: absolute;
+  right: -12px;
+  top: -10px;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+.addCfile {
+  width: 38px;
+  height: 38px;
+  margin-left: 18px;
+  margin-top: 7px;
+
+}
+
 .filelist {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.filelist>view {
+  height: 40px;
+  position: relative;
+  margin-right: 16px;
 }
 
 .filelist text {
-  padding: 7px 8px;
   border: 1px dotted #aaa;
-  margin-right: 10px;
+  display: block;
+  padding: 0 8px;
+  height: 40px;
+  line-height: 40px;
+
 }
 
 page {
@@ -284,4 +329,17 @@ page>view {
   text-align: center;
   line-height: 40px;
   font-size: 18px;
+}
+
+.editZiliao {
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #4b8bf4;
+  color: #fff;
+  border-radius: 8px;
 }

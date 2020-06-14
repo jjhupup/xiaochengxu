@@ -1,0 +1,113 @@
+/* component/lawyerData/lawyerData.wxss */
+
+.lawyer {
+  display: flex;
+  height: 140px;
+  margin-bottom: 16px;
+  box-shadow: 2px 2px 6px #cecece;
+}
+
+.lawyerL {
+  width: 22%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.lawyerL image {
+  width: 120rpx;
+  height: 120rpx;
+  margin-left: 12px;
+}
+
+.lawyerL view {
+  text-indent: 12px;
+}
+
+.lawyerC {
+  width: 210px;
+  padding: 10px 0;
+  padding-left: 10px;
+}
+
+.price {
+  color: #ff3b30 !important;
+}
+
+.price image {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  margin-right: 2px;
+}
+
+.lawyerC view {
+  font-size: 28rpx;
+  padding: 4px 0;
+  color: #010101;
+}
+
+.lawyerC .name{
+    margin-top: 20px;
+}
+.lawyerC .office {
+  text-indent: 2px;
+  margin-top: 20px;
+}
+
+
+.lawyerC .centerB {
+  font-size: 12px;
+}
+
+.lawyerC .centerB image {
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+}
+
+.lawyerC .grade {
+  color: #ff9800;
+}
+
+.lawyerC .num {
+  color: #888;
+  font-size: 13px;
+  margin-left: 14px;
+}
+
+.lawyerR {
+  width: 34%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 15px 0;
+  padding-right: 6px;
+}
+
+.lawyerR view {
+  font-size: 28rpx;
+  line-height: 30px;
+  color: #5677fc;
+  margin: 4px 0;
+}
+
+.lawyer .tag {
+  border: 1px solid #28b8a1;
+  height: 28px;
+  color: #28b8a1;
+  line-height: 28px;
+  text-align: center;
+  padding: 0 6px;
+  border-radius: 16px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.lawyerR .choose {
+  border: 1px solid #afd196;
+  background: #1aad19;
+  color: #fff;
+  border-radius: 4px;
+}

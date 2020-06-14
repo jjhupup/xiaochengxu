@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getBJData()
+  
   },
 
   /**
@@ -31,7 +31,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(this.data.key==0){
+      this.getBJData()
+    }else{
+      this.getorder()
+    }
+   
   },
 
   getBJData(){

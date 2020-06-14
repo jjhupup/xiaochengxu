@@ -258,7 +258,7 @@ Page({
     let that = this
     let real_name = e.detail.value.real_name
     let phone=e.detail.value.phone
-    let qqnum=e.detail.value.qqnum
+    let WXnum=e.detail.value.WXnum
     if (e.detail.value.real_name = '') {
       wx.showToast({
         title: '请填写您的姓名',
@@ -296,11 +296,11 @@ Page({
               user_id: wx.getStorageSync('user_id'),
               base_info: JSON.stringify({
                 real_name: real_name,
-                phone:phone
+                phone:phone,
+                WXnum:WXnum
               }),
               extra_profile: JSON.stringify({
-                id_photo: data.data.urls[0],
-                qqnum:qqnum
+                id_photo: data.data.urls[0]
               })
             }
             utils.request(Api.UpDataUserData, updata, "POST").then(res => {
@@ -318,10 +318,8 @@ Page({
           user_id: wx.getStorageSync('user_id'),
           base_info: JSON.stringify({
             real_name: real_name,
-            phone:phone
-          }),
-          extra_profile: JSON.stringify({
-            qqnum:qqnum
+            phone:phone,
+            WXnum:WXnum
           })
         }
         utils.request(Api.UpDataUserData, updata, "POST").then(res => {

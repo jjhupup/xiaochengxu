@@ -4,8 +4,7 @@ Component({
    * 组件的属性列表
    */
   properties: {
-    orderData: Object,
-    caseid: Number,
+    userData: Object,
     status: Number
   },
 
@@ -13,7 +12,7 @@ Component({
    * 组件的初始数据
    */
   data: {
-    orderData: {},
+    userData: {},
     caseid: 0,
     status: 0
   },
@@ -41,11 +40,11 @@ Component({
       let that=this
       wx.showModal({
         title: '拨号提示',
-        content: '是否拨打号码'+that.data.orderData.phone+'？',
+        content: '是否拨打号码'+that.data.userData.phone+'？',
         success: (res => {
           if (res.confirm) {
             wx.makePhoneCall({
-              phoneNumber: that.data.orderData.phone //仅为示例，并非真实的电话号码
+              phoneNumber: that.data.userData.phone //仅为示例，并非真实的电话号码
             })
           }
         })

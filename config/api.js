@@ -27,6 +27,7 @@ module.exports = {
   Withdrawal: ApiRootUrl +'order/applyWithdrawal',           //提现申请
   GetUserBalance: ApiRootUrl +'user/balance',            //获取余额
   ApplyRefund: ApiRootUrl +'order/applyRefund',         //用户申诉  
+  CancelAppeal:ApiRootUrl+'order/cancelAppeal',         //用户取消申诉
   CancelBid:ApiRootUrl+'case/cancelBid',      //取消竞价
   UpdataBmoney:ApiRootUrl+'case/updateBidPrice',  //更新律师报价
   // 文件上传

@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
- 
+    wx.setStorageSync('isGetdata', false)
   },
 
   /**
@@ -31,12 +31,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getBJData()
+    let isGetdata=wx.getStorageSync('isGetdata')
+    if(isGetdata){
+      this.getData()
+    }else{
+      this.getBJData()
+    }
+    
   },
   getDatalist(e) {
     console.log(e)
    
     if(e.currentTarget.dataset.index==0){
+      wx.setStorageSync('isGetdata', false)
       this.getBJData()
     }else{
       this.getData()
@@ -83,6 +90,11 @@ Page({
     console.log(e.currentTarget.dataset)
     let case_id = e.currentTarget.dataset.questionid
     let orderstatus = e.currentTarget.dataset.orderstatus
+    if(orderstatus!=0){
+      wx.setStorageSync('isGetdata', true)
+    }else{
+      wx.setStorageSync('isGetdata', false)
+    }
     wx.navigateTo({
       url: '/pages/lawyer/myOrderDetail/myOrderDetail?case_id=' + case_id + '&type=3&orderstatus=' + orderstatus,
     })

@@ -183,18 +183,54 @@
   background-color: #1dc8a4;
   color: #fff;
 }
-
-.comfinOrder {
-  background-color: #1dc8a4;
-  color: #fff;
-  width: 100%;
-  text-align: center;
-  height: 50px;
-  line-height: 50px;
+.daiqueren{
   position: fixed;
   bottom: 0px;
   left: 0;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  display: flex;
+}
+.comfinOrder {
+  width: 50%;
+  background-color: #1dc8a4;
+  color: #fff;
+  text-align: center;
   font-size: 18px;
   letter-spacing: 2px;
+}
+.shensubtn{
+  width: 50%;
+  background-color: #dd4f43;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+.imglist {
+  display: flex;
+  flex-wrap: wrap;
+}
 
+.imglist image {
+  width: 32%;
+  height: 120px;
+  margin-bottom: 12px;
+  margin-right: 2%;
+}
+
+.imglist image:nth-child(3) {
+  margin: 0;
+}
+
+.filelist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filelist text {
+  padding: 7px 8px;
+  border: 1px dotted #aaa;
+  margin-right: 10px;
 }

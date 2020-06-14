@@ -30,7 +30,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getBJData()
+    
+    if(this.data.key==0){
+      this.getBJData()
+    }else{
+      this.getData()
+    }
   },
   getDatalist(e) {
     console.log(e)

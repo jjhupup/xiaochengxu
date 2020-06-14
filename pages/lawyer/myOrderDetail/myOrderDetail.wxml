@@ -98,7 +98,11 @@
 			<text></text>
 			<text class="baojia">￥{{mybidder[0].price/100}}</text>
 		</view>
-
+		<!-- 展示用户信息 -->
+		<view wx:if="{{status!=0}}" style="margin-bottom:60px">
+			<view class="title2">客户信息</view>
+			<lawyer-data userData="{{allData.publisher}}" status="{{status}}"></lawyer-data>
+		</view>
 	</view>
 	<view class="tools" wx:if="{{status==2}}">
 		<!-- <navigator url="/pages/lawyer/uploadData/uploadData"> -->
@@ -116,26 +120,35 @@
     </view>
   </view>
   <!-- 申诉中 -->
-  <view class="tools2" wx:if="{{status==3}}">
+  <!-- <view class="tools2" wx:if="{{status==3}}">
     <view class="cancel" bindtap="cancelShenSu">取消申诉</view>
-  </view>
+  </view> -->
   <!-- 代抢单 -->
   <view class="tools2" wx:if="{{status==0}}">
     <view class="upload" bindtap="editMoney">修改金额</view>
     <view class="shensu" bindtap="cancelOrder">取消报价</view>
   </view>
   <!-- 待确认 -->
-  <view wx:if="{{status==4}}" style="padding: 15px 10px;">
-    <view class="title2">完成订单的资料信息（待确认中）</view>
+  <view wx:if="{{status==4||status==5}}" style="padding: 0px 10px;">
+    <view class="title2">完成订单的资料信息({{status==4?'待完成':'已完成'}})</view>
     	<view class="titleMini">上传的图片</view>
 			<view class="imglist">
-				<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" data-myimg="true" wx:for="{{allData.extra_info.confirmimgs}}" wx:key="index" />
+				<view wx:for="{{imgurl}}" wx:key="{{index}}">
+					<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" data-myimg="true"  />
+					<image src="/static/images/close.png" class="delete" bindtap="deleteImg" data-index="{{index}}" wx:if="{{isEdit}}" />
+				</view>
+				<image src="/static/images/add.png" class="addCimg" bindtap="addConImg" wx:if="{{isEdit}}"  />
 			</view>
 			<view class="titleMini">上传的文档</view>
 			<view class="filelist">
-				<text class="file" wx:for="{{allData.extra_info.confirmfiles}}" data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+				<view wx:for="{{fileurl}}">
+					<text class="file"  data-filename="{{item.name}}" data-path="{{item.path}}" bindtap='uploadFile'>{{item.name}}</text>
+						<image src="/static/images/close.png" class="delete" bindtap="deletefile" data-index="{{index}}" wx:if="{{isEdit}}" />
+				</view>
+				<image src="/static/images/add.png" class="addCfile" bindtap="addConFile" wx:if="{{isEdit}}"  />
 			</view>
       	<view class="textTips">文档点击可供下载</view>
+				<view class="editZiliao" wx:if="{{status==4}}" bindtap="editZiliao">{{editTxt}}</view>
   </view>
 
 

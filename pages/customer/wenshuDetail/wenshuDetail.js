@@ -7,13 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    case_id:0,
-    allData:{},
-    type:0,
+    case_id: 0,
+    allData: {},
+    type: 0,
     isShowComment: false,
-    status:0,
-    shensuTxt:'',
-    editShow:false
+    status: 0,
+    shensuTxt: '',
+    editShow: false
   },
 
   /**
@@ -21,11 +21,11 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      case_id:options.id,
-      type:options.type,
+      case_id: options.id,
+      type: options.type,
       status: options.status
     })
-    
+
     console.log(123)
   },
 
@@ -42,22 +42,22 @@ Page({
   onShow: function () {
     this.getDetail(this.data.case_id)
   },
-  getDetail(id){
-    let that=this
-    util.request(Api.GetOrderDetail,{
-      case_id:id
-    },"POST").then(res=>{
+  getDetail(id) {
+    let that = this
+    util.request(Api.GetOrderDetail, {
+      case_id: id
+    }, "POST").then(res => {
       console.log(res)
-      if(res.code=='S_Ok'){
+      if (res.code == 'S_Ok') {
         that.setData({
-          allData:res.data,
-          desctxt:res.data.extra_info.description||res.data.extra_info.DetailTxt||res.data.extra_info.describe
+          allData: res.data,
+          desctxt: res.data.extra_info.description || res.data.extra_info.DetailTxt || res.data.extra_info.describe
         })
-      }else{
+      } else {
         wx.showModal({
           title: '提示',
           content: '数据请求出错！',
-          success(){
+          success() {
             wx.navigateBack()
           }
         })
@@ -82,7 +82,7 @@ Page({
     })
   },
   // 阻止冒泡
-  onDialogBody() { },
+  onDialogBody() {},
   bindTextAreaBlur(e) {
     console.log(e)
     this.setData({
@@ -115,24 +115,46 @@ Page({
     util.request(Api.ApplyRefund, {
       case_id: that.data.case_id,
       appealer_id: wx.getStorageSync('user_id'),
-      reason: txt
+      reason: txt,
+      pre_appeal_status:that.data.status
     }, 'POST').then(res => {
       console.log(res)
-      if(res.code=='S_Ok'){
+      if (res.code == 'S_Ok') {
         wx.showToast({
           title: '申诉成功！',
         })
-        setTimeout(()=>{
+        setTimeout(() => {
           wx.navigateBack()
-        },1200)
+        }, 1200)
       }
     })
   },
-  quxiaoshensu(e){
-    console.log(e,'取消申诉')
-  },
-  seeImg(e){
+  quxiaoshensu(e) {
+    console.log(e, '取消申诉')
     let that=this
+    wx.showModal({
+      title: '取消提示',
+      content: '即将取消对改律师的申诉？',
+      success(res) {
+        if (res.confirm) {
+          util.request(Api.CancelAppeal,{
+            case_id:that.data.case_id
+          },'POST').then(res=>{
+            if (res.code == 'S_Ok'){
+              wx.showToast({
+                title: '取消申诉成功',
+              })
+              setTimeout(()=>{
+                wx.navigateBack()
+              },1200)
+            }
+          })
+        }
+      }
+    })
+  },
+  seeImg(e) {
+    let that = this
     console.log(e.target.dataset.index)
     let key = e.target.dataset.index
     wx.previewImage({
@@ -140,16 +162,29 @@ Page({
       urls: that.data.allData.extra_info.imgs // 需要预览的图片http链接列表
     })
   },
-  uploadFile(e){
+  seeConImg(e) {
+    let that = this
+    console.log(e.target.dataset.index)
+    let key = e.target.dataset.index
+    wx.previewImage({
+      current: that.data.allData.extra_info.confirmimgs[key], // 当前显示图片的http链接
+      urls: that.data.allData.extra_info.confirmimgs // 需要预览的图片http链接列表
+    })
+  },
+  uploadFile(e) {
     wx.showModal({
       title: '下载提示~',
-      content: '是否下载'+e.target.dataset.filename+'文件？',
-      success:(res)=>{
-        if(res.confirm){
+      content: '是否下载' + e.target.dataset.filename + '文件？',
+      success: (res) => {
+        if (res.confirm) {
+          wx.showLoading({
+            title: '下载中~~',
+          })
           wx.downloadFile({
             url: e.target.dataset.path, //仅为示例，并非真实的资源
             success(res) {
               console.log(res)
+              wx.hideLoading()
               if (res.statusCode === 200) {
                 wx.openDocument({
                   filePath: res.tempFilePath,
@@ -161,89 +196,92 @@ Page({
                   },
                 })
               }
+            },
+            fail(err) {
+              wx.hideLoading()
             }
           })
         }
       }
     })
   },
-  editMoney(){
-    let type=this.data.type
-    if(type==3){
+  editMoney() {
+    let type = this.data.type
+    if (type == 3) {
       wx.navigateTo({
-        url: '/pages/customer/corporateLawyer/corporateLawyer?edit=true&case_id='+this.data.case_id,
+        url: '/pages/customer/corporateLawyer/corporateLawyer?edit=true&case_id=' + this.data.case_id,
       })
-    }else if(type==1){
+    } else if (type == 1) {
       wx.navigateTo({
-        url: '/pages/customer/document/document?edit=true&case_id='+this.data.case_id+'&index1='+this.data.allData.extra_info.textType,
+        url: '/pages/customer/document/document?edit=true&case_id=' + this.data.case_id + '&index1=' + this.data.allData.extra_info.textType,
       })
-    }else if(type==2){
+    } else if (type == 2) {
       wx.navigateTo({
-        url: '/pages/customer/caseEntrusted/caseEntrusted?edit=true&case_id='+this.data.case_id
+        url: '/pages/customer/caseEntrusted/caseEntrusted?edit=true&case_id=' + this.data.case_id
       })
-    }else{
+    } else {
       wx.navigateTo({
-        url: '/pages/customer/queryBusiness/queryBusiness?edit=true&case_id='+this.data.case_id
+        url: '/pages/customer/queryBusiness/queryBusiness?edit=true&case_id=' + this.data.case_id
       })
     }
-   
+
   },
-  cancelOrder(){
-    let  that=this
+  cancelOrder() {
+    let that = this
     wx.showModal({
-      title:'取消提示',
-      content:'确认取消该订单的发布？',
-      success(res){
-        if(res.confirm){
-          util.request(Api.UpdateOrder,{
-            case_id:that.data.case_id,
-            status:5
-          },'POST').then(res=>{
-            console.log('res',res);
-              if(res.code=='S_Ok'){
-                wx.showToast({
-                  title: '取消发布成功~',
-                })
-                setTimeout(()=>{
-                  wx.navigateBack()
-                },1500)
-              }else{
-                wx.showToast({
-                  title: '取消发布失败~',
-                })
-              }
+      title: '取消提示',
+      content: '确认取消该订单的发布？',
+      success(res) {
+        if (res.confirm) {
+          util.request(Api.UpdateOrder, {
+            case_id: that.data.case_id,
+            status: 5
+          }, 'POST').then(res => {
+            console.log('res', res);
+            if (res.code == 'S_Ok') {
+              wx.showToast({
+                title: '取消发布成功~',
+              })
+              setTimeout(() => {
+                wx.navigateBack()
+              }, 1500)
+            } else {
+              wx.showToast({
+                title: '取消发布失败~',
+              })
+            }
           })
         }
       }
     })
-    
+
   },
-  getEditMoney(e){
+  getEditMoney(e) {
     console.log(e.detail.value);
     this.setData({
-      getEditMoney:e.detail.value
+      getEditMoney: e.detail.value
     })
-    
+
   },
   //客户确认完成订单
-  comfinOrder(){
-    let that=this
+  comfinOrder() {
+    let that = this
     wx.showModal({
-      title:'完成提示',
-      content:'确认律师已完成该订单工作？',
-      success(res){
-        if(res.confirm){
-          util.request(Api.ConfirmOrder,{
-            out_trade_no:that.data.allData.payOrder[0].out_trade_no,
-          },'POST').then(res=>{
-            console.log('res',res);
-            if(res.code=='S_Ok'){
+      title: '完成提示',
+      content: '确认律师已完成该订单工作？',
+      success(res) {
+        if (res.confirm) {
+          util.request(Api.ConfirmOrder, {
+            out_trade_no: that.data.allData.payOrder[0].out_trade_no,
+          }, 'POST').then(res => {
+            console.log('res', res);
+            if (res.code == 'S_Ok') {
               wx.showToast({
                 title: '订单已确认完成~',
               })
-              setTimeout(()=>{
+              setTimeout(() => {
                 wx.navigateBack()
-              },1200)
+              }, 1200)
             }
           })
         }

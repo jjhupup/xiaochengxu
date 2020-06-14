@@ -22,6 +22,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"useIsolateContext": true,
 		"useCompilerModule": false,
 		"userConfirmedUseCompilerModuleSwitch": false
 	},
@@ -120,6 +121,27 @@
 					"name": "pages/customer/wenshuDetail/wenshuDetail",
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
 					"query": "id=9&type=1&status=4",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"query": "case_id=3&type=2&orderstatus=2",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"query": "case_id=5&type=1&orderstatus=4",
+					"scene": null
+				},
+				{
+					"id": 11,
+					"name": "pages/customer/wenshuDetail/wenshuDetail",
+					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
+					"query": "id=5&type=1&status=3",
 					"scene": null
 				}
 			]

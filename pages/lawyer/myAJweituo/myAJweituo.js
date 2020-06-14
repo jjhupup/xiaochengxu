@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['抢单报价', '服务中', '申诉中', '待确认','', '已结束'],
+    NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '已结束'],
     key:0,
     allAjweituo:[],
     scrollL:0
@@ -17,7 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    wx.setStorageSync('isGetdata', false)
   },
 
   /**
@@ -31,7 +31,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.getBJData()
+    let isGetdata=wx.getStorageSync('isGetdata')
+    if(isGetdata){
+      this.getData()
+    }else{
+      this.getBJData()
+    }
+   
   },
   getDatalist(e) {
     console.log(e)
@@ -40,12 +46,6 @@ Page({
       this.getBJData()
     }else{
       this.getData()
-    }
-    if (e.currentTarget.dataset.index==4){
-      this.setData({
-        key: 5
-      })
-      return
     }
     this.setData({
       key: e.currentTarget.dataset.index
@@ -89,6 +89,11 @@ Page({
     console.log(e.currentTarget.dataset)
     let case_id = e.currentTarget.dataset.questionid
     let status = e.currentTarget.dataset.orderstatus
+    if(status!=0){
+      wx.setStorageSync('isGetdata', true)
+    }else{
+      wx.setStorageSync('isGetdata', false)
+    }
     wx.navigateTo({
       url: '/pages/lawyer/myOrderDetail/myOrderDetail?case_id=' + case_id + '&type=2&orderstatus=' + status,
     })

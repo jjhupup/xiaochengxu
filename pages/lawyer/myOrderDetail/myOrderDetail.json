@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "lawyer-data":"../../../component/userData/userData"
+  }
 }

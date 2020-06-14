@@ -62,7 +62,8 @@ Page({
   getOrderData() {
     let that = this
     utils.request(Api.GetOrderList, {
-      type: that.data.ordertype
+      type: that.data.ordertype,
+      status:0
     }, 'POST').then(res => {
       console.log(res)
       let type = that.data.ordertype

@@ -48,7 +48,7 @@
 <!-- 律师证上传 -->
 <view wx:if="{{status==2&&key==1}}" class="content">
   <view class="titleMini">请填写律师执业编号</view>
-  <input confirm-type='next' class="nameinput" bindinput="getLicense_no" name='lawyerNum' type="number" placeholder="请输入您的律师执业编号" />
+  <input confirm-type='next' class="nameinput" value="{{userData.extra_profile.license_no}}" bindinput="getLicense_no" name='lawyerNum' type="number" placeholder="请输入您的律师执业编号" />
   <view class="titleMini">请上传您的免冠照片</view>
   <view class="upload">
     <image src="/static/images/add.png" class="addimg" data-Lx="0" wx-if="{{!userImg}}" bindtap="addImg" />
@@ -71,8 +71,8 @@
     <input confirm-type='next' class="nameinput"  value="{{userData.real_name||userData.nick_name}}" name='real_name' type="text" placeholder="请输入您的用户昵称" />
    <view class="titleMini">电话</view>
  <input confirm-type='next' class="nameinput" name='phone' value="{{userData.phone}}" type="number" placeholder="请输入您的手机号码" />
-  <view class="titleMini">qq号码</view>
- <input confirm-type='next' class="nameinput" name='qqnum' value="{{userData.qqnum}}" type="number" placeholder="请输入您的qq号码" />
+  <view class="titleMini">微信号码</view>
+ <input confirm-type='next' class="nameinput" name='WXnum' value="{{userData.WXnum}}" type="number" placeholder="请输入您的微信号码" />
     <view class="titleMini">请上传您的照片</view>
     <view class="upload">
       <image src="/static/images/add.png" class="addimg" data-Lx="0" wx-if="{{!userImg}}" bindtap="addImg" />
