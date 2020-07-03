@@ -60,6 +60,7 @@ Page({
         let bb = res.data.extra_info.confirmfiles
         wx.setStorageSync('confirmimgs', JSON.stringify(aa))
         wx.setStorageSync('confirmfiles', JSON.stringify(bb))
+        res.data.publisher.create_time=res.data.publisher.create_time.slice(0,10)
         that.setData({
           allData: res.data,
           mybidder: bidder,
@@ -230,7 +231,8 @@ Page({
       if (res.code == 'S_Ok') {
         that.data.mybidder[0].price = that.data.editmoney * 100
         that.setData({
-          mybidder: that.data.mybidder
+          mybidder: that.data.mybidder,
+          editShow:false
         })
         wx.showToast({
           title: '更新报价成功！',

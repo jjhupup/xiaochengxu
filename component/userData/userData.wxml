@@ -6,14 +6,7 @@
   </view>
   <view class="lawyerC">
     <view class="name">{{userData.real_name||userData.nick_name}}</view>
-    <view class="office">微信号码：<text selectable='true'>{{userData.WXnum}}</text> </view>
-  </view>
-  <view class="lawyerR">
-    <!-- <view wx:if="{{status==2}}" class="tag" bindtap='shensu'>申诉</view>
-    <view wx:if="{{status==3}}" class="tag" bindtap="quxiaoshensu">取消申诉</view> -->
-    <view class="price" bindtap="call">
-      <image src="/static/images/call.png" />
-      <text>{{userData.phone}}</text>
-    </view>
+   
+    <view class="office">客户注册时间：<text selectable='true'>{{userData.create_time}}</text> </view>
   </view>
 </view>

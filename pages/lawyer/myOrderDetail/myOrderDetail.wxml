@@ -10,7 +10,9 @@
 			</view>
 			<view class="titleMini">上传的图片</view>
 			<view class="imglist">
-				<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" wx:for="{{allData.extra_info.imgs}}" wx:key="index" />
+				<view wx:for="{{allData.extra_info.imgs}}" wx:key="index">
+					<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}"  />
+				</view>
 			</view>
 			<view class="titleMini">上传的文档</view>
 			<view class="filelist">

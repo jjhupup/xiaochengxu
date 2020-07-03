@@ -272,7 +272,7 @@ Page({
       success(res) {
         if (res.confirm) {
           util.request(Api.ConfirmOrder, {
-            out_trade_no: that.data.allData.payOrder[0].out_trade_no,
+            case_id: that.data.case_id,
           }, 'POST').then(res => {
             console.log('res', res);
             if (res.code == 'S_Ok') {
