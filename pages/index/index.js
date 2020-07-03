@@ -116,6 +116,7 @@ Page({
     }
     console.log(utils, Api)
     console.log(role)
+   
     if (!role) {
       console.log('还没身份')
       that.getUserData()
@@ -218,7 +219,9 @@ Page({
   },
   // 获取openid和role身份
   getUserData() {
+    
     let that = this
+   
     wx.showLoading({
       title: '加载中',
     })
@@ -233,6 +236,7 @@ Page({
           }, "POST").then(res => {
             // 获取的openid再通过登录接口发给后台
             console.log(res)
+           
            wx.hideLoading()
             if (res.code == 'S_Ok') {
               wx.setStorageSync('openid', res.data.openid)
@@ -260,6 +264,7 @@ Page({
                 icon: 'none'
               })
             }
+            that.getLunBo()
           })
         })
     })
