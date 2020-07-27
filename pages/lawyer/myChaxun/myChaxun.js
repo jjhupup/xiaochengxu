@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '','已结束'],
+    NavArr: ['抢单报价', '服务中', '申诉中', '待确认','已结束','已取消'],
     key: 0,
     allChaxun: []
   },
@@ -47,6 +47,7 @@ Page({
     this.setData({
       key: e.currentTarget.dataset.index
     })
+    
   },
   getData() {
     let that = this

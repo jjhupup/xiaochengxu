@@ -32,7 +32,7 @@
     <view class="lsname">
       <image src="{{item.from.avatar_url}}" />
       <text>{{item.from.real_name||item.from.nick_name}}</text>
-      <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+      <text class="date">{{dateFr.getDate2(item.create_time,'-',':')}}</text>
     </view>
     <view class="answerContent clearfix">
       <text>{{item.content}}</text>
@@ -45,7 +45,7 @@
       <view class="usertop">
         <image src="{{item.from.avatar_url}}" />
         <text class="username">{{item.from.real_name||item.from.nick_name}}</text>
-        <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+        <text class="date">{{dateFr.getDate2(item.create_time,'-',':')}}</text>
       </view>
       <view class="pd10 ml30">{{item.content}}</view>
       <view class="tools2" data-pid="{{item.id}}" data-to_id="{{item.from.uid}}" bindtap="openComment">
@@ -56,14 +56,14 @@
         <view class="usertop">
           <image src="{{item.from.avatar_url}}" />
           <text class="username">{{item.from.real_name||item.from.nick_name}}</text>
-          <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+          <text class="date">{{dateFr.getDate2(item.create_time,'-',':')}}</text>
         </view>
         <view class="pd10 ml30">{{item.content}}</view>
         <view class="recomment2" wx:for="{{item.children}}">
           <view class="usertop">
             <image src="/static/images/default_avatar.png" />
             <text class="username">{{item.from_name}}</text>
-            <text class="date">{{dateFr.getDate(item.create_time,'-',':')}}</text>
+            <text class="date">{{dateFr.getDate2(item.create_time,'-',':')}}</text>
           </view>
           <view class="pd10 ml30">{{item.content}}</view>
         </view>

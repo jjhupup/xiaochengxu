@@ -1,6 +1,6 @@
 var DateFr = {
 
-  getDate: function(time, splitStr, splitStr2) {
+  getDate: function (time, splitStr, splitStr2) {
 
     if (!time) return '';
     var date = getDate(time);
@@ -26,7 +26,7 @@ var DateFr = {
         d: d
       };
   },
-  getDate2: function(time, splitStr, splitStr2) {
+  getDate2: function (time, splitStr, splitStr2) {
 
     if (!time) return '';
     var date = getDate(time);
@@ -53,16 +53,16 @@ var DateFr = {
       };
   },
   // 过滤待处理的订单
-  PendingOrder: function(data, type) {
-    return data.filter(function(val) {
+  PendingOrder: function (data, type) {
+    return data.filter(function (val) {
       console.log(999)
       if (val.status == type) {
         return val
       }
     })
   },
-  StatusTxt: function(status) {
-    console.log(444,status)
+  StatusTxt: function (status) {
+    console.log(444, status)
     switch (status) {
       case 0:
         return '待抢单'
@@ -76,8 +76,11 @@ var DateFr = {
       case 4:
         return '待确认'
         break;
-      case 6:
+      case 5:
         return '已完成'
+        break;
+      case 6:
+        return '已取消'
         break;
     }
   }

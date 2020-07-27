@@ -1,7 +1,7 @@
 <!--pages/customer/mywenshu/mywenshu.wxml-->
 <wxs module="dateFr" src="../../../filter/utils.wxs"></wxs>
 <view class="headBar">
-  <scroll-view scroll-x="true">
+  <scroll-view scroll-x="true" scroll-left="{{scrLeft}}">
     <view class="tabnav">
       <view bindtap="getData" wx:if="{{type==1}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr}}" data-index="{{index}}">{{item}}</view>
       <view bindtap="getData" wx:if="{{type==2}}" class="topitem {{index==key?'active':''}}" wx:for="{{NavArr2}}" data-index="{{index}}">{{item}}</view>

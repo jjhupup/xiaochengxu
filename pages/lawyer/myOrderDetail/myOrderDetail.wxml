@@ -11,7 +11,7 @@
 			<view class="titleMini">上传的图片</view>
 			<view class="imglist">
 				<view wx:for="{{allData.extra_info.imgs}}" wx:key="index">
-					<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}"  />
+					<image src="{{item}}" mode="aspectFill" bindtap="seeImg" data-index="{{index}}" />
 				</view>
 			</view>
 			<view class="titleMini">上传的文档</view>
@@ -104,6 +104,11 @@
 		<view wx:if="{{status!=0}}" style="margin-bottom:60px">
 			<view class="title2">客户信息</view>
 			<lawyer-data userData="{{allData.publisher}}" status="{{status}}"></lawyer-data>
+		</view>
+		<!-- 显示客户的申诉理由 -->
+		<view wx:if="{{status==3}}" style="margin-bottom:30px">
+			<view class="title2 ">申诉理由</view>
+			<text class="ml10">{{allData.appeal.reason}}</text>
 		</view>
 	</view>
 	<view class="tools" wx:if="{{status==2}}">

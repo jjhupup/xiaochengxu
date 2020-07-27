@@ -82,7 +82,8 @@ Page({
       // }
     ],
     showStatusDialog: false,
-    role: 0
+    role: 0,
+    isgetData:true
   },
 
   /**
@@ -119,17 +120,6 @@ Page({
     if (userInfo) {
       that.getUser()
       // userInfo = JSON.parse(userInfo)
-      if (userInfo.real_name){
-        that.setData({
-          userName: userInfo.real_name,
-          userImage: userInfo.avatarUrl
-        })
-      }else{
-        that.setData({
-          userName:  userInfo.nickName,
-          userImage: userInfo.avatarUrl
-        })
-      }
      
     }
 
@@ -222,6 +212,9 @@ Page({
   getUserInfo: function(e) {
     console.log(e)
     wx.setStorageSync('userInfo', e.detail.userInfo)
+    if(!this.data.isgetData){
+      return
+    }
     this.setData({
       userName: e.detail.userInfo.nickName,
       userImage: e.detail.userInfo.avatarUrl
@@ -385,7 +378,8 @@ Page({
       })
       if (res.data.extra_profile){
         that.setData({
-          userImage: res.data.extra_profile.id_photo || res.data.avatar_url
+          userImage: res.data.extra_profile.id_photo || res.data.avatar_url,
+          isgetData:false
         })
       }
     })

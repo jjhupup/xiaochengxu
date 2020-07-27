@@ -143,6 +143,20 @@
 					"pathName": "pages/customer/wenshuDetail/wenshuDetail",
 					"query": "id=5&type=1&status=3",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/customer/queryBusiness/queryBusiness",
+					"pathName": "pages/customer/queryBusiness/queryBusiness",
+					"query": "edit=true&case_id=14&index1=工商内档/外档&desc=斯大林发生了电脑啊手动阀",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"pathName": "pages/lawyer/myOrderDetail/myOrderDetail",
+					"query": "case_id=8&type=1&orderstatus=3",
+					"scene": null
 				}
 			]
 		}

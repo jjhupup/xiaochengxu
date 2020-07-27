@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr: ['抢单报价', '服务中', '申诉中', '待确认', '已结束','已取消'],
     key:0,
     allAjweituo:[],
     scrollL:0
@@ -51,7 +51,7 @@ Page({
       key: e.currentTarget.dataset.index
     })
     let key = e.currentTarget.dataset.index
-    if (key == 3) {
+    if (key == 3||key==2||key==4) {
       this.setData({
         scrollL: 100
       })

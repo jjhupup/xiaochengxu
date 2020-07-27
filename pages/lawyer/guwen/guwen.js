@@ -52,6 +52,13 @@ Page({
   BaoJiaFun() {
     let that = this
     let can = true
+    if (!that.isNumber(that.data.bjmoney)){
+      wx.showToast({
+        title: '请输入报价数字金额',
+        icon: 'none'
+      })
+      return
+    }
     if (that.data.bjmoney == 0) {
       wx.showToast({
         title: '请填写报价金额！',
@@ -76,7 +83,7 @@ Page({
     if (can) {
       wx.showModal({
         title: '提示',
-        content: '您对该订单的报价为' + that.data.bjmoney + '元',
+        content: '您对该订单的报价为' + that.data.bjmoney*1 + '元',
         success(res) {
           if (res.confirm) {
             that.pushMoneyOrder()
@@ -114,6 +121,15 @@ Page({
         })
       }
     })
-  }
+  },
+  isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if (regPos.test(val) || regNeg.test(val)) {
+      return true;
+    } else {
+      return false;
+    }
 
+  }
 })

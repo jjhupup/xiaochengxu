@@ -138,3 +138,8 @@
   <view class="shensubtn" bindtap="shensu">申诉</view>
   <view class="comfinOrder" bindtap="comfinOrder">确认完成</view>
 </view>
+<!-- 显示自己的申诉理由 -->
+<view wx:if="{{status==3}}" style="margin-bottom:30px">
+  <view class="title2 ml10">申诉理由</view>
+  <text class="ml10">{{shensuTxt}}</text>
+</view>

@@ -254,7 +254,6 @@
 }
 
 .filelist text {
-   margin-right: 16px;
   border: 1px dotted #aaa;
   display: block;
   padding: 0 8px;

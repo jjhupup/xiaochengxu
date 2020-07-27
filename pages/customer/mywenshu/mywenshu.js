@@ -7,16 +7,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr2: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr3: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
-    NavArr4: ['报价中', '服务中', '申诉中', '待确认', '已结束'],
+    NavArr: ['报价中', '服务中', '申诉中', '待确认', '已结束','已取消'],
+    NavArr2: ['报价中', '服务中', '申诉中', '待确认', '已结束','已取消'],
+    NavArr3: ['报价中', '服务中', '申诉中', '待确认', '已结束','已取消'],
+    NavArr4: ['报价中', '服务中', '申诉中', '待确认', '已结束','已取消'],
     key: 0,
     allWenshu: [],
     allAnjian: [],
     allGuwen: [],
     allChaxun: [],
-    type: 0
+    type: 0,
+    scrLeft:0
   },
 
   /**
@@ -107,8 +108,14 @@ Page({
     //   })
     //   return
     // }
+    let key=e.currentTarget.dataset.index
+    if(key==3||key==2){
+      this.setData({
+        scrLeft: 280
+      })
+    }
     this.setData({
-      key: e.currentTarget.dataset.index
+      key: key
     })
   },
   lookDetail(e) {

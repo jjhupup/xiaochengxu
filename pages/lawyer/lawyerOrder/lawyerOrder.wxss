@@ -6,7 +6,7 @@
 
 .headBar .tabnav{
   height: 50px;
-  width: 500px;
+  width: 600px;
   display: flex;
   flex-direction:row;
   /* transform: translateX(20px); */
@@ -19,9 +19,6 @@
   height: 76rpx;
   text-align: center;
   line-height: 76rpx;
-}
-.topitem:nth-child(5){
-  display: none;
 }
 .active {
   color: #5677FC;

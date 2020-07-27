@@ -51,6 +51,7 @@ Page({
       if (res.code == 'S_Ok') {
         that.setData({
           allData: res.data,
+          shensuTxt:res.data.appeal&&res.data.appeal.reason,
           desctxt: res.data.extra_info.description || res.data.extra_info.DetailTxt || res.data.extra_info.describe
         })
       } else {
@@ -221,7 +222,7 @@ Page({
       })
     } else {
       wx.navigateTo({
-        url: '/pages/customer/queryBusiness/queryBusiness?edit=true&case_id=' + this.data.case_id
+        url: '/pages/customer/queryBusiness/queryBusiness?edit=true&case_id=' + this.data.case_id+"&index1="+this.data.allData.extra_info.findtype+'&desc='+this.data.allData.extra_info.desc
       })
     }
 
@@ -235,7 +236,7 @@ Page({
         if (res.confirm) {
           util.request(Api.UpdateOrder, {
             case_id: that.data.case_id,
-            status: 5
+            status: 6
           }, 'POST').then(res => {
             console.log('res', res);
             if (res.code == 'S_Ok') {

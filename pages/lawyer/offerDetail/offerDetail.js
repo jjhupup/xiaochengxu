@@ -115,7 +115,7 @@ Page({
           icon: 'none'
         })
         wx.requestSubscribeMessage({
-          tmplIds: ['okc6i2NLrkY6LGEK-eW6w5xqplqb5nbmNM3b2kwjZrU'],
+          tmplIds: ['dEkCIkrhMJW2L1IaBXmT8tYxs3nLZYAXf8sI9b5v8Qo'],
           success(res) {
             console.log(res)
             setTimeout(() => {

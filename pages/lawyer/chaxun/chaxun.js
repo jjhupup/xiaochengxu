@@ -78,6 +78,13 @@ this.getData(options.id)
     // 判断律师是否已经报过价了
     let bidders = this.data.chaxun.bidders
     console.log(123, bidders)
+    if (!that.isNumber(that.data.bjmoney)){
+      wx.showToast({
+        title: '请输入报价数字金额',
+        icon: 'none'
+      })
+      return
+    }
     bidders.map(val => {
       if (val.lawyer.id == wx.getStorageSync('user_id')) {
         can = false
@@ -140,5 +147,15 @@ this.getData(options.id)
         })
       }
     })
+  },
+  isNumber(val) {
+    var regPos = /^\d+(\.\d+)?$/; //非负浮点数
+    var regNeg = /^(-(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*)))$/; //负浮点数
+    if (regPos.test(val) || regNeg.test(val)) {
+      return true;
+    } else {
+      return false;
+    }
+
   }
 })

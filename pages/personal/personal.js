@@ -102,6 +102,7 @@ Page({
               title: '提示',
               content: '支付成功！',
               success(res) {
+                
                 wx.navigateBack()
                 // wx.navigateTo({
                 //   url: 'pages/customer/mywenshu/mywenshu?type=2&name=%E6%88%91%E7%9A%84%E6%A1%88%E4%BB%B6',

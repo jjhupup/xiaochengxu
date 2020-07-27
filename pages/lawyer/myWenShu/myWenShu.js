@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    NavArr: ['抢单报价', '服务中','申诉中','待确认','','已结束'],
+    NavArr: ['抢单报价', '服务中','申诉中','待确认','已结束','已取消'],
     key:0,
     allWenshu:[],
     scrollL:0
@@ -69,20 +69,21 @@ Page({
   },
   getDatalist(e) {
     console.log(e)
-    
-    if(e.currentTarget.dataset.index==0){
+    let key=e.currentTarget.dataset.index
+    if(key==0){
       this.getBJData()
     }else{
       this.getorder()
     }
-    if (e.currentTarget.dataset.index==4){
+    console.log('key',key);
+    
+    if (key == 3||key==2||key==4) {
       this.setData({
-        key: 5
+        scrollL: 100
       })
-      return
     }
     this.setData({
-      key: e.currentTarget.dataset.index
+      key: key
     })
   },
   lookDetail(e){

@@ -274,7 +274,6 @@ Page({
       utils.request(Api.UpdateOrder,{
         case_id:this.data.case_id,
         extra_info:JSON.stringify(obj),
-        status:0
       },'POST').then(res=>{
         console.log(res);
         if(res.code=='S_Ok'){

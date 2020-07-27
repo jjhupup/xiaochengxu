@@ -112,7 +112,17 @@
   width: 75%;
   margin: 0 auto;
 }
-
+.lawyer .quxiaotag {
+  border: 1px solid #aaa;
+  height: 28px;
+  color: #666;
+  line-height: 28px;
+  text-align: center;
+  padding: 0 6px;
+  border-radius: 16px;
+  width: 75%;
+  margin: 0 auto;
+}
 .lawyerR .choose {
   border: 1px solid #afd196;
   background: #1aad19;
